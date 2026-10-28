@@ -38,19 +38,28 @@ model User {
   chatMessages        ChatMessage[]
   reportsWritten      ParentReport[]      @relation("ReportTeacher")
   reportsReceived     ParentReport[]      @relation("ReportStudent")
+
+  announcements   Announcement[]
+  schedulesTaught Schedule[]            @relation("ScheduleTeacher")
+  chatAsTeacher   ChatConversation[]    @relation("ChatTeacher")
+  chatAsStudent   ChatConversation[]    @relation("ChatStudent")
+  directMessages  ConversationMessage[]
 }
 
 model ClassRoom {
-  id        Int            @id @default(autoincrement())
-  name      String
-  code      String         @unique
-  teacherId Int
-  teacher   User           @relation("ClassTeacher", fields: [teacherId], references: [id])
-  members   ClassMember[]
-  tasks     Task[]
-  sessions  LiveSession[]
-  reports   ParentReport[]
-  createdAt DateTime       @default(now())
+  id            Int                @id @default(autoincrement())
+  name          String
+  code          String             @unique
+  teacherId     Int
+  teacher       User               @relation("ClassTeacher", fields: [teacherId], references: [id])
+  members       ClassMember[]
+  tasks         Task[]
+  sessions      LiveSession[]
+  reports       ParentReport[]
+  announcements Announcement[]
+  schedules     Schedule[]
+  conversations ChatConversation[]
+  createdAt     DateTime           @default(now())
 }
 
 model ClassMember {
@@ -212,4 +221,65 @@ model ParentReport {
   class     ClassRoom @relation(fields: [classId], references: [id])
   student   User      @relation("ReportStudent", fields: [studentId], references: [id])
   teacher   User      @relation("ReportTeacher", fields: [teacherId], references: [id])
+}
+
+// ─── Putaran BINA GURU — cerminan skema utama ────────────────────────────────
+
+model Announcement {
+  id        Int       @id @default(autoincrement())
+  classId   Int
+  authorId  Int
+  text      String
+  createdAt DateTime  @default(now())
+  class     ClassRoom @relation(fields: [classId], references: [id])
+  author    User      @relation(fields: [authorId], references: [id])
+}
+
+model Schedule {
+  id        Int            @id @default(autoincrement())
+  classId   Int
+  teacherId Int
+  title     String
+  date      DateTime
+  createdAt DateTime       @default(now())
+  class     ClassRoom      @relation(fields: [classId], references: [id])
+  teacher   User           @relation("ScheduleTeacher", fields: [teacherId], references: [id])
+  parts     SchedulePart[]
+}
+
+model SchedulePart {
+  id         Int      @id @default(autoincrement())
+  scheduleId Int
+  title      String
+  sortOrder  Int      @default(0)
+  meetLink   String?
+  createdAt  DateTime @default(now())
+  schedule   Schedule @relation(fields: [scheduleId], references: [id])
+}
+
+model ChatConversation {
+  id          Int       @id @default(autoincrement())
+  classId     Int
+  teacherId   Int
+  studentId   Int
+  createdAt   DateTime  @default(now())
+  guruReadAt  DateTime?
+  siswaReadAt DateTime?
+
+  class    ClassRoom             @relation(fields: [classId], references: [id])
+  teacher  User                  @relation("ChatTeacher", fields: [teacherId], references: [id])
+  student  User                  @relation("ChatStudent", fields: [studentId], references: [id])
+  messages ConversationMessage[]
+
+  @@unique([classId, studentId])
+}
+
+model ConversationMessage {
+  id             Int              @id @default(autoincrement())
+  conversationId Int
+  senderId       Int
+  text           String
+  createdAt      DateTime         @default(now())
+  conversation   ChatConversation @relation(fields: [conversationId], references: [id])
+  sender         User             @relation(fields: [senderId], references: [id])
 }

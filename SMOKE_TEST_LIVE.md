@@ -1,6 +1,6 @@
 # Smoke Test Kelas Live BINA Server
 
-- Waktu: 2026-10-28T06:41:06.585Z
+- Waktu: 2026-10-28T20:42:45.611Z
 - Datasource uji: SQLite (test/schema.sqlite.prisma), mode BINA_TEST_SQLITE=1
 - Skema utama PostgreSQL tidak diubah.
 

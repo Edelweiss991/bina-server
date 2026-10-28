@@ -8,16 +8,18 @@ import { publicUser, requireAuth, signToken } from '../auth.js';
 
 const router = Router();
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 router.post('/auth/register', async (req, res, next) => {
   try {
     const { name, email, password, role } = req.body ?? {};
-    if (!name || typeof name !== 'string' || name.trim().length < 2) {
-      return res.status(400).json({ error: 'Nama wajib diisi (minimal 2 karakter).' });
+    // Putaran BINA GURU: register dibuat BEBAS — nama cukup teks tidak
+    // kosong, email cukup string tidak kosong (TIDAK lagi divalidasi
+    // format email); keunikan email tetap dijaga (409 bila ganda).
+    // Memang tidak ada email verifikasi di sistem ini.
+    if (!name || typeof name !== 'string' || name.trim().length < 1) {
+      return res.status(400).json({ error: 'Nama wajib diisi.' });
     }
-    if (!email || typeof email !== 'string' || !EMAIL_RE.test(email.trim())) {
-      return res.status(400).json({ error: 'Email tidak valid.' });
+    if (!email || typeof email !== 'string' || email.trim().length < 1) {
+      return res.status(400).json({ error: 'Email wajib diisi.' });
     }
     if (!password || typeof password !== 'string' || password.length < 6) {
       return res.status(400).json({ error: 'Password minimal 6 karakter.' });

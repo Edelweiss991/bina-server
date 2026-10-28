@@ -36,6 +36,12 @@ model User {
   chatMessages       ChatMessage[]
   reportsWritten     ParentReport[]      @relation("ReportTeacher")
   reportsReceived    ParentReport[]      @relation("ReportStudent")
+
+  announcements      Announcement[]
+  schedulesTaught    Schedule[]          @relation("ScheduleTeacher")
+  chatAsTeacher      ChatConversation[]  @relation("ChatTeacher")
+  chatAsStudent      ChatConversation[]  @relation("ChatStudent")
+  directMessages     ConversationMessage[]
 }
 
 model ClassRoom {
@@ -48,6 +54,9 @@ model ClassRoom {
   tasks     Task[]
   sessions  LiveSession[]
   reports   ParentReport[]
+  announcements Announcement[]
+  schedules Schedule[]
+  conversations ChatConversation[]
   createdAt DateTime      @default(now())
 }
 
@@ -213,4 +222,75 @@ model ParentReport {
   class     ClassRoom @relation(fields: [classId], references: [id])
   student   User      @relation("ReportStudent", fields: [studentId], references: [id])
   teacher   User      @relation("ReportTeacher", fields: [teacherId], references: [id])
+}
+
+// ─── Putaran BINA GURU: pengumuman, jadwal, chat guru↔siswa ──────────────────
+
+model Announcement {
+  id        Int       @id @default(autoincrement())
+  classId   Int
+  authorId  Int
+  text      String
+  createdAt DateTime  @default(now())
+  class     ClassRoom @relation(fields: [classId], references: [id])
+  author    User      @relation(fields: [authorId], references: [id])
+}
+
+// Satu jadwal mengajar untuk satu tanggal (date disimpan sebagai
+// tengah malam UTC dari tanggal kalender yang dipilih guru).
+model Schedule {
+  id        Int           @id @default(autoincrement())
+  classId   Int
+  teacherId Int
+  title     String
+  date      DateTime
+  createdAt DateTime      @default(now())
+  class     ClassRoom     @relation(fields: [classId], references: [id])
+  teacher   User          @relation("ScheduleTeacher", fields: [teacherId], references: [id])
+  parts     SchedulePart[]
+}
+
+// Bagian/pertemuan di dalam satu jadwal (urut via sortOrder).
+model SchedulePart {
+  id         Int      @id @default(autoincrement())
+  scheduleId Int
+  title      String
+  sortOrder  Int      @default(0)
+  meetLink   String?
+  createdAt  DateTime @default(now())
+  schedule   Schedule @relation(fields: [scheduleId], references: [id])
+}
+
+// Percakapan chat persisten guru↔siswa: satu percakapan per
+// (kelas, siswa). Status baca per pihak disimpan sebagai timestamp
+// terakhir membaca (guruReadAt / siswaReadAt); pesan pihak lawan
+// dengan createdAt lebih baru dari itu = belum dibaca.
+//
+// Catatan penamaan: model pesan breakout room yang sudah ada bernama
+// ChatMessage, jadi pesan chat langsung ini bernama ConversationMessage.
+model ChatConversation {
+  id          Int      @id @default(autoincrement())
+  classId     Int
+  teacherId   Int
+  studentId   Int
+  createdAt   DateTime @default(now())
+  guruReadAt  DateTime?
+  siswaReadAt DateTime?
+
+  class    ClassRoom           @relation(fields: [classId], references: [id])
+  teacher  User                  @relation("ChatTeacher", fields: [teacherId], references: [id])
+  student  User                  @relation("ChatStudent", fields: [studentId], references: [id])
+  messages ConversationMessage[]
+
+  @@unique([classId, studentId])
+}
+
+model ConversationMessage {
+  id             Int              @id @default(autoincrement())
+  conversationId Int
+  senderId       Int
+  text           String
+  createdAt      DateTime         @default(now())
+  conversation   ChatConversation @relation(fields: [conversationId], references: [id])
+  sender         User             @relation(fields: [senderId], references: [id])
 }

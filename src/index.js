@@ -12,6 +12,8 @@ import classRoutes from './routes/classes.js';
 import taskRoutes from './routes/tasks.js';
 import scoreRoutes from './routes/scores.js';
 import liveRoutes from './routes/live.js';
+import guruRoutes from './routes/guru.js';
+import chatRoutes from './routes/chat.js';
 
 const app = express();
 
@@ -25,6 +27,8 @@ app.use('/api', classRoutes);
 app.use('/api', taskRoutes);
 app.use('/api', scoreRoutes);
 app.use('/api', liveRoutes);
+app.use('/api', guruRoutes);
+app.use('/api', chatRoutes);
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
 app.use((req, res) => {

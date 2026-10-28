@@ -251,6 +251,50 @@ exports.Prisma.ParentReportScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.AnnouncementScalarFieldEnum = {
+  id: 'id',
+  classId: 'classId',
+  authorId: 'authorId',
+  text: 'text',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ScheduleScalarFieldEnum = {
+  id: 'id',
+  classId: 'classId',
+  teacherId: 'teacherId',
+  title: 'title',
+  date: 'date',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SchedulePartScalarFieldEnum = {
+  id: 'id',
+  scheduleId: 'scheduleId',
+  title: 'title',
+  sortOrder: 'sortOrder',
+  meetLink: 'meetLink',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ChatConversationScalarFieldEnum = {
+  id: 'id',
+  classId: 'classId',
+  teacherId: 'teacherId',
+  studentId: 'studentId',
+  createdAt: 'createdAt',
+  guruReadAt: 'guruReadAt',
+  siswaReadAt: 'siswaReadAt'
+};
+
+exports.Prisma.ConversationMessageScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  senderId: 'senderId',
+  text: 'text',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -277,7 +321,12 @@ exports.Prisma.ModelName = {
   BreakoutGroup: 'BreakoutGroup',
   BreakoutMember: 'BreakoutMember',
   ChatMessage: 'ChatMessage',
-  ParentReport: 'ParentReport'
+  ParentReport: 'ParentReport',
+  Announcement: 'Announcement',
+  Schedule: 'Schedule',
+  SchedulePart: 'SchedulePart',
+  ChatConversation: 'ChatConversation',
+  ConversationMessage: 'ConversationMessage'
 };
 
 /**
