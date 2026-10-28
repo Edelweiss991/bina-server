@@ -1,0 +1,92 @@
+// Skema database BINA Server (PostgreSQL — Neon di produksi).
+//
+// Catatan: kolom `questions` (Task) dan `answers` (Submission) memakai
+// tipe Json (JSONB di PostgreSQL). Untuk smoke test lokal tersedia
+// salinan skema SQLite di test/schema.sqlite.prisma dengan kolom yang
+// sama disimpan sebagai String JSON — lihat test/SMOKE_TEST.md dan
+// helper jsonIn/jsonOut di src/db.js.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  name         String
+  email        String        @unique
+  passwordHash String
+  role         String // 'guru' | 'siswa' (divalidasi di lapisan route)
+  createdAt    DateTime      @default(now())
+
+  classesOwned ClassRoom[]   @relation("ClassTeacher")
+  memberships  ClassMember[]
+  submissions  Submission[]
+  scoreSync    ScoreSync?
+}
+
+model ClassRoom {
+  id        Int           @id @default(autoincrement())
+  name      String
+  code      String        @unique
+  teacherId Int
+  teacher   User          @relation("ClassTeacher", fields: [teacherId], references: [id])
+  members   ClassMember[]
+  tasks     Task[]
+  createdAt DateTime      @default(now())
+}
+
+model ClassMember {
+  id       Int       @id @default(autoincrement())
+  classId  Int
+  userId   Int
+  class    ClassRoom @relation(fields: [classId], references: [id])
+  user     User      @relation(fields: [userId], references: [id])
+  joinedAt DateTime  @default(now())
+
+  @@unique([classId, userId])
+}
+
+model Task {
+  id          Int          @id @default(autoincrement())
+  classId     Int
+  teacherId   Int
+  title       String
+  description String?
+  // [{ "question": string, "options": [string x4], "correctIndex": 0..3 }]
+  questions   Json
+  class       ClassRoom    @relation(fields: [classId], references: [id])
+  submissions Submission[]
+  createdAt   DateTime     @default(now())
+}
+
+model Submission {
+  id          Int      @id @default(autoincrement())
+  taskId      Int
+  studentId   Int
+  // [int] indeks opsi yang dipilih per soal
+  answers     Json
+  autoScore   Int // skor otomatis 0..100 dari kunci jawaban
+  score       Int? // nilai final dari guru (mengalahkan autoScore)
+  review      String? // ulasan guru
+  submittedAt DateTime @default(now())
+  task        Task     @relation(fields: [taskId], references: [id])
+  student     User     @relation(fields: [studentId], references: [id])
+
+  @@unique([taskId, studentId])
+}
+
+model ScoreSync {
+  id            Int      @id @default(autoincrement())
+  userId        Int      @unique
+  user          User     @relation(fields: [userId], references: [id])
+  pretest       Int?
+  posttest      Int?
+  latihanBest   Int?
+  simulatorBest Int?
+  updatedAt     DateTime @updatedAt
+}

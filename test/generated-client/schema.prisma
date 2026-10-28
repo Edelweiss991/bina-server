@@ -1,0 +1,92 @@
+// SALINAN skema khusus smoke test lokal (SQLite) — BUKAN skema utama.
+//
+// Dipakai hanya oleh test/smoke.mjs ketika PostgreSQL tidak tersedia di
+// mesin pengembangan. Perbedaan dari prisma/schema.prisma:
+// - provider sqlite, output client ke test/generated-client.
+// - Kolom Json (questions, answers) menjadi String berisi JSON; server
+//   menangani perbedaan ini lewat jsonIn/jsonOut (src/db.js) yang aktif
+//   hanya saat BINA_TEST_SQLITE=1.
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated-client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String
+  createdAt    DateTime @default(now())
+
+  classesOwned ClassRoom[]   @relation("ClassTeacher")
+  memberships  ClassMember[]
+  submissions  Submission[]
+  scoreSync    ScoreSync?
+}
+
+model ClassRoom {
+  id        Int           @id @default(autoincrement())
+  name      String
+  code      String        @unique
+  teacherId Int
+  teacher   User          @relation("ClassTeacher", fields: [teacherId], references: [id])
+  members   ClassMember[]
+  tasks     Task[]
+  createdAt DateTime      @default(now())
+}
+
+model ClassMember {
+  id       Int       @id @default(autoincrement())
+  classId  Int
+  userId   Int
+  class    ClassRoom @relation(fields: [classId], references: [id])
+  user     User      @relation(fields: [userId], references: [id])
+  joinedAt DateTime  @default(now())
+
+  @@unique([classId, userId])
+}
+
+model Task {
+  id          Int          @id @default(autoincrement())
+  classId     Int
+  teacherId   Int
+  title       String
+  description String?
+  questions   String // JSON ter-encode (lihat catatan di atas)
+  class       ClassRoom    @relation(fields: [classId], references: [id])
+  submissions Submission[]
+  createdAt   DateTime     @default(now())
+}
+
+model Submission {
+  id          Int      @id @default(autoincrement())
+  taskId      Int
+  studentId   Int
+  answers     String // JSON ter-encode (lihat catatan di atas)
+  autoScore   Int
+  score       Int?
+  review      String?
+  submittedAt DateTime @default(now())
+  task        Task     @relation(fields: [taskId], references: [id])
+  student     User     @relation(fields: [studentId], references: [id])
+
+  @@unique([taskId, studentId])
+}
+
+model ScoreSync {
+  id            Int      @id @default(autoincrement())
+  userId        Int      @unique
+  user          User     @relation(fields: [userId], references: [id])
+  pretest       Int?
+  posttest      Int?
+  latihanBest   Int?
+  simulatorBest Int?
+  updatedAt     DateTime @updatedAt
+}
