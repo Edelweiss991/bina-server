@@ -11,6 +11,7 @@ import authRoutes from './routes/auth.js';
 import classRoutes from './routes/classes.js';
 import taskRoutes from './routes/tasks.js';
 import scoreRoutes from './routes/scores.js';
+import liveRoutes from './routes/live.js';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use('/api', authRoutes);
 app.use('/api', classRoutes);
 app.use('/api', taskRoutes);
 app.use('/api', scoreRoutes);
+app.use('/api', liveRoutes);
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
 app.use((req, res) => {

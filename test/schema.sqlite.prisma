@@ -29,6 +29,15 @@ model User {
   memberships  ClassMember[]
   submissions  Submission[]
   scoreSync    ScoreSync?
+
+  liveSessionsTaught  LiveSession[]       @relation("SessionTeacher")
+  attendances         Attendance[]
+  liveAnswers         LiveAnswer[]
+  understandingVotes  UnderstandingVote[]
+  breakoutMemberships BreakoutMember[]
+  chatMessages        ChatMessage[]
+  reportsWritten      ParentReport[]      @relation("ReportTeacher")
+  reportsReceived     ParentReport[]      @relation("ReportStudent")
 }
 
 model ClassRoom {
@@ -39,6 +48,8 @@ model ClassRoom {
   teacher   User          @relation("ClassTeacher", fields: [teacherId], references: [id])
   members   ClassMember[]
   tasks     Task[]
+  sessions  LiveSession[]
+  reports   ParentReport[]
   createdAt DateTime      @default(now())
 }
 
@@ -89,4 +100,116 @@ model ScoreSync {
   latihanBest   Int?
   simulatorBest Int?
   updatedAt     DateTime @updatedAt
+}
+
+// ─── Kelas Live (putaran BINA LIVE) — cerminan skema utama ──────────────────
+
+model LiveSession {
+  id           Int      @id @default(autoincrement())
+  classId      Int
+  teacherId    Int
+  title        String
+  openingText  String?
+  materialText String?
+  status       String   @default("active")
+  startedAt    DateTime @default(now())
+  endedAt      DateTime?
+
+  class       ClassRoom         @relation(fields: [classId], references: [id])
+  teacher     User              @relation("SessionTeacher", fields: [teacherId], references: [id])
+  attendances Attendance[]
+  quizzes     LiveQuiz[]
+  votes       UnderstandingVote[]
+  groups      BreakoutGroup[]
+}
+
+model Attendance {
+  id        Int         @id @default(autoincrement())
+  sessionId Int
+  userId    Int
+  joinedAt  DateTime    @default(now())
+  session   LiveSession @relation(fields: [sessionId], references: [id])
+  user      User        @relation(fields: [userId], references: [id])
+
+  @@unique([sessionId, userId])
+}
+
+model LiveQuiz {
+  id           Int         @id @default(autoincrement())
+  sessionId    Int
+  title        String
+  questions    String // JSON ter-encode (lihat catatan di atas)
+  status       String      @default("waiting")
+  currentIndex Int         @default(-1)
+  bossMaxHp    Int
+  createdAt    DateTime    @default(now())
+  session      LiveSession @relation(fields: [sessionId], references: [id])
+  answers      LiveAnswer[]
+}
+
+model LiveAnswer {
+  id            Int      @id @default(autoincrement())
+  quizId        Int
+  userId        Int
+  questionIndex Int
+  selectedIndex Int
+  correct       Boolean
+  answeredAt    DateTime @default(now())
+  quiz          LiveQuiz @relation(fields: [quizId], references: [id])
+  user          User        @relation(fields: [userId], references: [id])
+
+  @@unique([quizId, userId, questionIndex])
+}
+
+model UnderstandingVote {
+  id        Int         @id @default(autoincrement())
+  sessionId Int
+  userId    Int
+  level     Int
+  updatedAt DateTime    @updatedAt
+  session   LiveSession @relation(fields: [sessionId], references: [id])
+  user      User        @relation(fields: [userId], references: [id])
+
+  @@unique([sessionId, userId])
+}
+
+model BreakoutGroup {
+  id        Int              @id @default(autoincrement())
+  sessionId Int
+  name      String
+  session   LiveSession      @relation(fields: [sessionId], references: [id])
+  members   BreakoutMember[]
+  messages  ChatMessage[]
+}
+
+model BreakoutMember {
+  id      Int           @id @default(autoincrement())
+  groupId Int
+  userId  Int
+  group   BreakoutGroup @relation(fields: [groupId], references: [id])
+  user    User          @relation(fields: [userId], references: [id])
+
+  @@unique([groupId, userId])
+}
+
+model ChatMessage {
+  id        Int           @id @default(autoincrement())
+  groupId   Int
+  userId    Int
+  text      String
+  createdAt DateTime      @default(now())
+  group     BreakoutGroup @relation(fields: [groupId], references: [id])
+  user      User          @relation(fields: [userId], references: [id])
+}
+
+model ParentReport {
+  id        Int       @id @default(autoincrement())
+  classId   Int
+  studentId Int
+  teacherId Int
+  content   String
+  createdAt DateTime  @default(now())
+  class     ClassRoom @relation(fields: [classId], references: [id])
+  student   User      @relation("ReportStudent", fields: [studentId], references: [id])
+  teacher   User      @relation("ReportTeacher", fields: [teacherId], references: [id])
 }

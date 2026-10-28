@@ -10,7 +10,8 @@
     "dev": "node --watch src/index.js",
     "prisma:generate": "prisma generate",
     "db:push": "prisma db push",
-    "smoke": "node test/smoke.mjs"
+    "smoke": "node test/smoke.mjs",
+    "smoke:live": "node test/smoke-live.mjs"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",

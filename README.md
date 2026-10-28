@@ -60,3 +60,45 @@ npm run smoke          # hasil ringkas ditulis ke SMOKE_TEST.md
 
 Catatan perilaku: mengirim ulang jawaban tugas menimpa jawaban & skor
 otomatis serta mengosongkan nilai final/ulasan guru (dinilai ulang).
+
+## Kelas Live (putaran BINA LIVE)
+
+| Method | Path | Peran | Keterangan |
+|---|---|---|---|
+| GET | `/guru/briefing` | guru | ringkasan: jumlah kelas/siswa, sesi aktif, belum dinilai, kiriman terbaru |
+| POST | `/classes/:id/sessions` | guru pemilik | mulai sesi live `{title, openingText?}` — hanya 1 aktif per kelas (409 bila sudah ada) |
+| GET | `/classes/:id/sessions/active` | anggota | sesi aktif kelas atau `null` |
+| POST | `/sessions/:id/end` | guru pemilik | akhiri sesi → ringkasan (hadir, kuis, lampu) |
+| POST | `/sessions/:id/join` | siswa anggota | masuk sesi = absensi otomatis tercatat |
+| PUT | `/sessions/:id/material` | guru pemilik | `{materialText?, openingText?}` |
+| GET | `/sessions/:id/state` | anggota | keadaan sesi untuk polling: hadir, kuis (+HP boss), lampu pemahaman. Soal berjalan TANPA `correctIndex` |
+| POST | `/sessions/:id/quizzes` | guru pemilik | buat kuis Boss Battle `{title, questions, bossMaxHp?}` (bawaan HP = jumlah soal × 5) |
+| POST | `/quizzes/:id/control` | guru pemilik | `{action: 'start' \| 'next' \| 'finish'}` |
+| POST | `/quizzes/:id/answer` | siswa anggota | jawab soal berjalan → `{correct, bossHpRemaining}` |
+| PUT | `/sessions/:id/understanding` | siswa anggota | lampu pemahaman `{level: 0\|1\|2}` |
+| POST | `/sessions/:id/groups` | guru pemilik | bagi kelas acak ke `{groupCount}` kelompok breakout |
+| GET | `/sessions/:id/groups` | anggota | daftar kelompok + kelompok saya |
+| GET/POST | `/groups/:id/messages` | anggota kelompok | chat kelompok (guru pemilik boleh memantau) |
+| GET | `/classes/:id/leaderboard` | anggota | papan prestasi XP & badge (rumus di bawah) |
+| POST | `/classes/:id/students/:userId/parent-report` | guru pemilik | susun + simpan laporan naratif orang tua |
+| GET | `/my/parent-reports` | siswa | laporan orang tua untuk dirinya |
+
+**HP Boss** = `bossMaxHp − jumlah jawaban BENAR seluruh kelas` (tidak
+pernah negatif).
+
+**Rumus XP** per siswa dalam satu kelas:
+
+```
+XP = (pretest ?? 0) + (posttest ?? 0) + (latihanBest ?? 0) + (simulatorBest ?? 0)
+   + 10 × kehadiran sesi live kelas ini
+   + 5  × jawaban kuis live yang benar di kelas ini
+   + rata-rata autoScore tugas kelas ini (dibulatkan; 0 bila belum ada)
+```
+
+**Badge:** `hadir-1` Langkah Pertama (hadir ≥1), `hadir-5` Hadir Andal
+(hadir ≥5), `master-simulator` Master Simulator (simulatorBest ≥90),
+`ahli-kuis` Ahli Kuis Live (jawaban live benar ≥20), `rajin-tugas`
+Pejuang Tugas (submit ≥5 tugas), `bintang-kelas` Bintang Kelas
+(XP ≥400).
+
+Uji fitur live: `npm run smoke:live` (hasil di `SMOKE_TEST_LIVE.md`).

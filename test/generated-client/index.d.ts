@@ -43,6 +43,51 @@ export type Submission = $Result.DefaultSelection<Prisma.$SubmissionPayload>
  * 
  */
 export type ScoreSync = $Result.DefaultSelection<Prisma.$ScoreSyncPayload>
+/**
+ * Model LiveSession
+ * 
+ */
+export type LiveSession = $Result.DefaultSelection<Prisma.$LiveSessionPayload>
+/**
+ * Model Attendance
+ * 
+ */
+export type Attendance = $Result.DefaultSelection<Prisma.$AttendancePayload>
+/**
+ * Model LiveQuiz
+ * 
+ */
+export type LiveQuiz = $Result.DefaultSelection<Prisma.$LiveQuizPayload>
+/**
+ * Model LiveAnswer
+ * 
+ */
+export type LiveAnswer = $Result.DefaultSelection<Prisma.$LiveAnswerPayload>
+/**
+ * Model UnderstandingVote
+ * 
+ */
+export type UnderstandingVote = $Result.DefaultSelection<Prisma.$UnderstandingVotePayload>
+/**
+ * Model BreakoutGroup
+ * 
+ */
+export type BreakoutGroup = $Result.DefaultSelection<Prisma.$BreakoutGroupPayload>
+/**
+ * Model BreakoutMember
+ * 
+ */
+export type BreakoutMember = $Result.DefaultSelection<Prisma.$BreakoutMemberPayload>
+/**
+ * Model ChatMessage
+ * 
+ */
+export type ChatMessage = $Result.DefaultSelection<Prisma.$ChatMessagePayload>
+/**
+ * Model ParentReport
+ * 
+ */
+export type ParentReport = $Result.DefaultSelection<Prisma.$ParentReportPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -226,6 +271,96 @@ export class PrismaClient<
     * ```
     */
   get scoreSync(): Prisma.ScoreSyncDelegate<ExtArgs>;
+
+  /**
+   * `prisma.liveSession`: Exposes CRUD operations for the **LiveSession** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LiveSessions
+    * const liveSessions = await prisma.liveSession.findMany()
+    * ```
+    */
+  get liveSession(): Prisma.LiveSessionDelegate<ExtArgs>;
+
+  /**
+   * `prisma.attendance`: Exposes CRUD operations for the **Attendance** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Attendances
+    * const attendances = await prisma.attendance.findMany()
+    * ```
+    */
+  get attendance(): Prisma.AttendanceDelegate<ExtArgs>;
+
+  /**
+   * `prisma.liveQuiz`: Exposes CRUD operations for the **LiveQuiz** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LiveQuizs
+    * const liveQuizs = await prisma.liveQuiz.findMany()
+    * ```
+    */
+  get liveQuiz(): Prisma.LiveQuizDelegate<ExtArgs>;
+
+  /**
+   * `prisma.liveAnswer`: Exposes CRUD operations for the **LiveAnswer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LiveAnswers
+    * const liveAnswers = await prisma.liveAnswer.findMany()
+    * ```
+    */
+  get liveAnswer(): Prisma.LiveAnswerDelegate<ExtArgs>;
+
+  /**
+   * `prisma.understandingVote`: Exposes CRUD operations for the **UnderstandingVote** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UnderstandingVotes
+    * const understandingVotes = await prisma.understandingVote.findMany()
+    * ```
+    */
+  get understandingVote(): Prisma.UnderstandingVoteDelegate<ExtArgs>;
+
+  /**
+   * `prisma.breakoutGroup`: Exposes CRUD operations for the **BreakoutGroup** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BreakoutGroups
+    * const breakoutGroups = await prisma.breakoutGroup.findMany()
+    * ```
+    */
+  get breakoutGroup(): Prisma.BreakoutGroupDelegate<ExtArgs>;
+
+  /**
+   * `prisma.breakoutMember`: Exposes CRUD operations for the **BreakoutMember** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BreakoutMembers
+    * const breakoutMembers = await prisma.breakoutMember.findMany()
+    * ```
+    */
+  get breakoutMember(): Prisma.BreakoutMemberDelegate<ExtArgs>;
+
+  /**
+   * `prisma.chatMessage`: Exposes CRUD operations for the **ChatMessage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ChatMessages
+    * const chatMessages = await prisma.chatMessage.findMany()
+    * ```
+    */
+  get chatMessage(): Prisma.ChatMessageDelegate<ExtArgs>;
+
+  /**
+   * `prisma.parentReport`: Exposes CRUD operations for the **ParentReport** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ParentReports
+    * const parentReports = await prisma.parentReport.findMany()
+    * ```
+    */
+  get parentReport(): Prisma.ParentReportDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -672,7 +807,16 @@ export namespace Prisma {
     ClassMember: 'ClassMember',
     Task: 'Task',
     Submission: 'Submission',
-    ScoreSync: 'ScoreSync'
+    ScoreSync: 'ScoreSync',
+    LiveSession: 'LiveSession',
+    Attendance: 'Attendance',
+    LiveQuiz: 'LiveQuiz',
+    LiveAnswer: 'LiveAnswer',
+    UnderstandingVote: 'UnderstandingVote',
+    BreakoutGroup: 'BreakoutGroup',
+    BreakoutMember: 'BreakoutMember',
+    ChatMessage: 'ChatMessage',
+    ParentReport: 'ParentReport'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -688,7 +832,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "classRoom" | "classMember" | "task" | "submission" | "scoreSync"
+      modelProps: "user" | "classRoom" | "classMember" | "task" | "submission" | "scoreSync" | "liveSession" | "attendance" | "liveQuiz" | "liveAnswer" | "understandingVote" | "breakoutGroup" | "breakoutMember" | "chatMessage" | "parentReport"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1112,6 +1256,636 @@ export namespace Prisma {
           }
         }
       }
+      LiveSession: {
+        payload: Prisma.$LiveSessionPayload<ExtArgs>
+        fields: Prisma.LiveSessionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LiveSessionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveSessionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LiveSessionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveSessionPayload>
+          }
+          findFirst: {
+            args: Prisma.LiveSessionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveSessionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LiveSessionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveSessionPayload>
+          }
+          findMany: {
+            args: Prisma.LiveSessionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveSessionPayload>[]
+          }
+          create: {
+            args: Prisma.LiveSessionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveSessionPayload>
+          }
+          createMany: {
+            args: Prisma.LiveSessionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LiveSessionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveSessionPayload>[]
+          }
+          delete: {
+            args: Prisma.LiveSessionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveSessionPayload>
+          }
+          update: {
+            args: Prisma.LiveSessionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveSessionPayload>
+          }
+          deleteMany: {
+            args: Prisma.LiveSessionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LiveSessionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.LiveSessionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveSessionPayload>
+          }
+          aggregate: {
+            args: Prisma.LiveSessionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLiveSession>
+          }
+          groupBy: {
+            args: Prisma.LiveSessionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LiveSessionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LiveSessionCountArgs<ExtArgs>
+            result: $Utils.Optional<LiveSessionCountAggregateOutputType> | number
+          }
+        }
+      }
+      Attendance: {
+        payload: Prisma.$AttendancePayload<ExtArgs>
+        fields: Prisma.AttendanceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AttendanceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AttendanceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          findFirst: {
+            args: Prisma.AttendanceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AttendanceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          findMany: {
+            args: Prisma.AttendanceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>[]
+          }
+          create: {
+            args: Prisma.AttendanceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          createMany: {
+            args: Prisma.AttendanceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AttendanceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>[]
+          }
+          delete: {
+            args: Prisma.AttendanceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          update: {
+            args: Prisma.AttendanceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          deleteMany: {
+            args: Prisma.AttendanceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AttendanceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AttendanceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          aggregate: {
+            args: Prisma.AttendanceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAttendance>
+          }
+          groupBy: {
+            args: Prisma.AttendanceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AttendanceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AttendanceCountArgs<ExtArgs>
+            result: $Utils.Optional<AttendanceCountAggregateOutputType> | number
+          }
+        }
+      }
+      LiveQuiz: {
+        payload: Prisma.$LiveQuizPayload<ExtArgs>
+        fields: Prisma.LiveQuizFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LiveQuizFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveQuizPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LiveQuizFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveQuizPayload>
+          }
+          findFirst: {
+            args: Prisma.LiveQuizFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveQuizPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LiveQuizFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveQuizPayload>
+          }
+          findMany: {
+            args: Prisma.LiveQuizFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveQuizPayload>[]
+          }
+          create: {
+            args: Prisma.LiveQuizCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveQuizPayload>
+          }
+          createMany: {
+            args: Prisma.LiveQuizCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LiveQuizCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveQuizPayload>[]
+          }
+          delete: {
+            args: Prisma.LiveQuizDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveQuizPayload>
+          }
+          update: {
+            args: Prisma.LiveQuizUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveQuizPayload>
+          }
+          deleteMany: {
+            args: Prisma.LiveQuizDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LiveQuizUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.LiveQuizUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveQuizPayload>
+          }
+          aggregate: {
+            args: Prisma.LiveQuizAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLiveQuiz>
+          }
+          groupBy: {
+            args: Prisma.LiveQuizGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LiveQuizGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LiveQuizCountArgs<ExtArgs>
+            result: $Utils.Optional<LiveQuizCountAggregateOutputType> | number
+          }
+        }
+      }
+      LiveAnswer: {
+        payload: Prisma.$LiveAnswerPayload<ExtArgs>
+        fields: Prisma.LiveAnswerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LiveAnswerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveAnswerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LiveAnswerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveAnswerPayload>
+          }
+          findFirst: {
+            args: Prisma.LiveAnswerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveAnswerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LiveAnswerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveAnswerPayload>
+          }
+          findMany: {
+            args: Prisma.LiveAnswerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveAnswerPayload>[]
+          }
+          create: {
+            args: Prisma.LiveAnswerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveAnswerPayload>
+          }
+          createMany: {
+            args: Prisma.LiveAnswerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LiveAnswerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveAnswerPayload>[]
+          }
+          delete: {
+            args: Prisma.LiveAnswerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveAnswerPayload>
+          }
+          update: {
+            args: Prisma.LiveAnswerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveAnswerPayload>
+          }
+          deleteMany: {
+            args: Prisma.LiveAnswerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LiveAnswerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.LiveAnswerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LiveAnswerPayload>
+          }
+          aggregate: {
+            args: Prisma.LiveAnswerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLiveAnswer>
+          }
+          groupBy: {
+            args: Prisma.LiveAnswerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LiveAnswerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LiveAnswerCountArgs<ExtArgs>
+            result: $Utils.Optional<LiveAnswerCountAggregateOutputType> | number
+          }
+        }
+      }
+      UnderstandingVote: {
+        payload: Prisma.$UnderstandingVotePayload<ExtArgs>
+        fields: Prisma.UnderstandingVoteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UnderstandingVoteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnderstandingVotePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UnderstandingVoteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnderstandingVotePayload>
+          }
+          findFirst: {
+            args: Prisma.UnderstandingVoteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnderstandingVotePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UnderstandingVoteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnderstandingVotePayload>
+          }
+          findMany: {
+            args: Prisma.UnderstandingVoteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnderstandingVotePayload>[]
+          }
+          create: {
+            args: Prisma.UnderstandingVoteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnderstandingVotePayload>
+          }
+          createMany: {
+            args: Prisma.UnderstandingVoteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UnderstandingVoteCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnderstandingVotePayload>[]
+          }
+          delete: {
+            args: Prisma.UnderstandingVoteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnderstandingVotePayload>
+          }
+          update: {
+            args: Prisma.UnderstandingVoteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnderstandingVotePayload>
+          }
+          deleteMany: {
+            args: Prisma.UnderstandingVoteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UnderstandingVoteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.UnderstandingVoteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnderstandingVotePayload>
+          }
+          aggregate: {
+            args: Prisma.UnderstandingVoteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUnderstandingVote>
+          }
+          groupBy: {
+            args: Prisma.UnderstandingVoteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UnderstandingVoteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UnderstandingVoteCountArgs<ExtArgs>
+            result: $Utils.Optional<UnderstandingVoteCountAggregateOutputType> | number
+          }
+        }
+      }
+      BreakoutGroup: {
+        payload: Prisma.$BreakoutGroupPayload<ExtArgs>
+        fields: Prisma.BreakoutGroupFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BreakoutGroupFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutGroupPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BreakoutGroupFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutGroupPayload>
+          }
+          findFirst: {
+            args: Prisma.BreakoutGroupFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutGroupPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BreakoutGroupFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutGroupPayload>
+          }
+          findMany: {
+            args: Prisma.BreakoutGroupFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutGroupPayload>[]
+          }
+          create: {
+            args: Prisma.BreakoutGroupCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutGroupPayload>
+          }
+          createMany: {
+            args: Prisma.BreakoutGroupCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BreakoutGroupCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutGroupPayload>[]
+          }
+          delete: {
+            args: Prisma.BreakoutGroupDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutGroupPayload>
+          }
+          update: {
+            args: Prisma.BreakoutGroupUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutGroupPayload>
+          }
+          deleteMany: {
+            args: Prisma.BreakoutGroupDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BreakoutGroupUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.BreakoutGroupUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutGroupPayload>
+          }
+          aggregate: {
+            args: Prisma.BreakoutGroupAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBreakoutGroup>
+          }
+          groupBy: {
+            args: Prisma.BreakoutGroupGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BreakoutGroupGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BreakoutGroupCountArgs<ExtArgs>
+            result: $Utils.Optional<BreakoutGroupCountAggregateOutputType> | number
+          }
+        }
+      }
+      BreakoutMember: {
+        payload: Prisma.$BreakoutMemberPayload<ExtArgs>
+        fields: Prisma.BreakoutMemberFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BreakoutMemberFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutMemberPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BreakoutMemberFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutMemberPayload>
+          }
+          findFirst: {
+            args: Prisma.BreakoutMemberFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutMemberPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BreakoutMemberFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutMemberPayload>
+          }
+          findMany: {
+            args: Prisma.BreakoutMemberFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutMemberPayload>[]
+          }
+          create: {
+            args: Prisma.BreakoutMemberCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutMemberPayload>
+          }
+          createMany: {
+            args: Prisma.BreakoutMemberCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BreakoutMemberCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutMemberPayload>[]
+          }
+          delete: {
+            args: Prisma.BreakoutMemberDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutMemberPayload>
+          }
+          update: {
+            args: Prisma.BreakoutMemberUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutMemberPayload>
+          }
+          deleteMany: {
+            args: Prisma.BreakoutMemberDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BreakoutMemberUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.BreakoutMemberUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BreakoutMemberPayload>
+          }
+          aggregate: {
+            args: Prisma.BreakoutMemberAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBreakoutMember>
+          }
+          groupBy: {
+            args: Prisma.BreakoutMemberGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BreakoutMemberGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BreakoutMemberCountArgs<ExtArgs>
+            result: $Utils.Optional<BreakoutMemberCountAggregateOutputType> | number
+          }
+        }
+      }
+      ChatMessage: {
+        payload: Prisma.$ChatMessagePayload<ExtArgs>
+        fields: Prisma.ChatMessageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ChatMessageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ChatMessageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          findFirst: {
+            args: Prisma.ChatMessageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ChatMessageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          findMany: {
+            args: Prisma.ChatMessageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>[]
+          }
+          create: {
+            args: Prisma.ChatMessageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          createMany: {
+            args: Prisma.ChatMessageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ChatMessageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>[]
+          }
+          delete: {
+            args: Prisma.ChatMessageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          update: {
+            args: Prisma.ChatMessageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          deleteMany: {
+            args: Prisma.ChatMessageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ChatMessageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ChatMessageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatMessagePayload>
+          }
+          aggregate: {
+            args: Prisma.ChatMessageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateChatMessage>
+          }
+          groupBy: {
+            args: Prisma.ChatMessageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ChatMessageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ChatMessageCountArgs<ExtArgs>
+            result: $Utils.Optional<ChatMessageCountAggregateOutputType> | number
+          }
+        }
+      }
+      ParentReport: {
+        payload: Prisma.$ParentReportPayload<ExtArgs>
+        fields: Prisma.ParentReportFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ParentReportFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParentReportPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ParentReportFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParentReportPayload>
+          }
+          findFirst: {
+            args: Prisma.ParentReportFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParentReportPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ParentReportFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParentReportPayload>
+          }
+          findMany: {
+            args: Prisma.ParentReportFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParentReportPayload>[]
+          }
+          create: {
+            args: Prisma.ParentReportCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParentReportPayload>
+          }
+          createMany: {
+            args: Prisma.ParentReportCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ParentReportCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParentReportPayload>[]
+          }
+          delete: {
+            args: Prisma.ParentReportDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParentReportPayload>
+          }
+          update: {
+            args: Prisma.ParentReportUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParentReportPayload>
+          }
+          deleteMany: {
+            args: Prisma.ParentReportDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ParentReportUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ParentReportUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ParentReportPayload>
+          }
+          aggregate: {
+            args: Prisma.ParentReportAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateParentReport>
+          }
+          groupBy: {
+            args: Prisma.ParentReportGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ParentReportGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ParentReportCountArgs<ExtArgs>
+            result: $Utils.Optional<ParentReportCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1276,12 +2050,28 @@ export namespace Prisma {
     classesOwned: number
     memberships: number
     submissions: number
+    liveSessionsTaught: number
+    attendances: number
+    liveAnswers: number
+    understandingVotes: number
+    breakoutMemberships: number
+    chatMessages: number
+    reportsWritten: number
+    reportsReceived: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     classesOwned?: boolean | UserCountOutputTypeCountClassesOwnedArgs
     memberships?: boolean | UserCountOutputTypeCountMembershipsArgs
     submissions?: boolean | UserCountOutputTypeCountSubmissionsArgs
+    liveSessionsTaught?: boolean | UserCountOutputTypeCountLiveSessionsTaughtArgs
+    attendances?: boolean | UserCountOutputTypeCountAttendancesArgs
+    liveAnswers?: boolean | UserCountOutputTypeCountLiveAnswersArgs
+    understandingVotes?: boolean | UserCountOutputTypeCountUnderstandingVotesArgs
+    breakoutMemberships?: boolean | UserCountOutputTypeCountBreakoutMembershipsArgs
+    chatMessages?: boolean | UserCountOutputTypeCountChatMessagesArgs
+    reportsWritten?: boolean | UserCountOutputTypeCountReportsWrittenArgs
+    reportsReceived?: boolean | UserCountOutputTypeCountReportsReceivedArgs
   }
 
   // Custom InputTypes
@@ -1316,6 +2106,62 @@ export namespace Prisma {
     where?: SubmissionWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountLiveSessionsTaughtArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LiveSessionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAttendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AttendanceWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountLiveAnswersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LiveAnswerWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUnderstandingVotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UnderstandingVoteWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountBreakoutMembershipsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BreakoutMemberWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountChatMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatMessageWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountReportsWrittenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ParentReportWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountReportsReceivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ParentReportWhereInput
+  }
+
 
   /**
    * Count Type ClassRoomCountOutputType
@@ -1324,11 +2170,15 @@ export namespace Prisma {
   export type ClassRoomCountOutputType = {
     members: number
     tasks: number
+    sessions: number
+    reports: number
   }
 
   export type ClassRoomCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     members?: boolean | ClassRoomCountOutputTypeCountMembersArgs
     tasks?: boolean | ClassRoomCountOutputTypeCountTasksArgs
+    sessions?: boolean | ClassRoomCountOutputTypeCountSessionsArgs
+    reports?: boolean | ClassRoomCountOutputTypeCountReportsArgs
   }
 
   // Custom InputTypes
@@ -1354,6 +2204,20 @@ export namespace Prisma {
    */
   export type ClassRoomCountOutputTypeCountTasksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TaskWhereInput
+  }
+
+  /**
+   * ClassRoomCountOutputType without action
+   */
+  export type ClassRoomCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LiveSessionWhereInput
+  }
+
+  /**
+   * ClassRoomCountOutputType without action
+   */
+  export type ClassRoomCountOutputTypeCountReportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ParentReportWhereInput
   }
 
 
@@ -1385,6 +2249,135 @@ export namespace Prisma {
    */
   export type TaskCountOutputTypeCountSubmissionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SubmissionWhereInput
+  }
+
+
+  /**
+   * Count Type LiveSessionCountOutputType
+   */
+
+  export type LiveSessionCountOutputType = {
+    attendances: number
+    quizzes: number
+    votes: number
+    groups: number
+  }
+
+  export type LiveSessionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    attendances?: boolean | LiveSessionCountOutputTypeCountAttendancesArgs
+    quizzes?: boolean | LiveSessionCountOutputTypeCountQuizzesArgs
+    votes?: boolean | LiveSessionCountOutputTypeCountVotesArgs
+    groups?: boolean | LiveSessionCountOutputTypeCountGroupsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * LiveSessionCountOutputType without action
+   */
+  export type LiveSessionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSessionCountOutputType
+     */
+    select?: LiveSessionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LiveSessionCountOutputType without action
+   */
+  export type LiveSessionCountOutputTypeCountAttendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AttendanceWhereInput
+  }
+
+  /**
+   * LiveSessionCountOutputType without action
+   */
+  export type LiveSessionCountOutputTypeCountQuizzesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LiveQuizWhereInput
+  }
+
+  /**
+   * LiveSessionCountOutputType without action
+   */
+  export type LiveSessionCountOutputTypeCountVotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UnderstandingVoteWhereInput
+  }
+
+  /**
+   * LiveSessionCountOutputType without action
+   */
+  export type LiveSessionCountOutputTypeCountGroupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BreakoutGroupWhereInput
+  }
+
+
+  /**
+   * Count Type LiveQuizCountOutputType
+   */
+
+  export type LiveQuizCountOutputType = {
+    answers: number
+  }
+
+  export type LiveQuizCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    answers?: boolean | LiveQuizCountOutputTypeCountAnswersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * LiveQuizCountOutputType without action
+   */
+  export type LiveQuizCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuizCountOutputType
+     */
+    select?: LiveQuizCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LiveQuizCountOutputType without action
+   */
+  export type LiveQuizCountOutputTypeCountAnswersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LiveAnswerWhereInput
+  }
+
+
+  /**
+   * Count Type BreakoutGroupCountOutputType
+   */
+
+  export type BreakoutGroupCountOutputType = {
+    members: number
+    messages: number
+  }
+
+  export type BreakoutGroupCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    members?: boolean | BreakoutGroupCountOutputTypeCountMembersArgs
+    messages?: boolean | BreakoutGroupCountOutputTypeCountMessagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BreakoutGroupCountOutputType without action
+   */
+  export type BreakoutGroupCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroupCountOutputType
+     */
+    select?: BreakoutGroupCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BreakoutGroupCountOutputType without action
+   */
+  export type BreakoutGroupCountOutputTypeCountMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BreakoutMemberWhereInput
+  }
+
+  /**
+   * BreakoutGroupCountOutputType without action
+   */
+  export type BreakoutGroupCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatMessageWhereInput
   }
 
 
@@ -1602,6 +2595,14 @@ export namespace Prisma {
     memberships?: boolean | User$membershipsArgs<ExtArgs>
     submissions?: boolean | User$submissionsArgs<ExtArgs>
     scoreSync?: boolean | User$scoreSyncArgs<ExtArgs>
+    liveSessionsTaught?: boolean | User$liveSessionsTaughtArgs<ExtArgs>
+    attendances?: boolean | User$attendancesArgs<ExtArgs>
+    liveAnswers?: boolean | User$liveAnswersArgs<ExtArgs>
+    understandingVotes?: boolean | User$understandingVotesArgs<ExtArgs>
+    breakoutMemberships?: boolean | User$breakoutMembershipsArgs<ExtArgs>
+    chatMessages?: boolean | User$chatMessagesArgs<ExtArgs>
+    reportsWritten?: boolean | User$reportsWrittenArgs<ExtArgs>
+    reportsReceived?: boolean | User$reportsReceivedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1628,6 +2629,14 @@ export namespace Prisma {
     memberships?: boolean | User$membershipsArgs<ExtArgs>
     submissions?: boolean | User$submissionsArgs<ExtArgs>
     scoreSync?: boolean | User$scoreSyncArgs<ExtArgs>
+    liveSessionsTaught?: boolean | User$liveSessionsTaughtArgs<ExtArgs>
+    attendances?: boolean | User$attendancesArgs<ExtArgs>
+    liveAnswers?: boolean | User$liveAnswersArgs<ExtArgs>
+    understandingVotes?: boolean | User$understandingVotesArgs<ExtArgs>
+    breakoutMemberships?: boolean | User$breakoutMembershipsArgs<ExtArgs>
+    chatMessages?: boolean | User$chatMessagesArgs<ExtArgs>
+    reportsWritten?: boolean | User$reportsWrittenArgs<ExtArgs>
+    reportsReceived?: boolean | User$reportsReceivedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1639,6 +2648,14 @@ export namespace Prisma {
       memberships: Prisma.$ClassMemberPayload<ExtArgs>[]
       submissions: Prisma.$SubmissionPayload<ExtArgs>[]
       scoreSync: Prisma.$ScoreSyncPayload<ExtArgs> | null
+      liveSessionsTaught: Prisma.$LiveSessionPayload<ExtArgs>[]
+      attendances: Prisma.$AttendancePayload<ExtArgs>[]
+      liveAnswers: Prisma.$LiveAnswerPayload<ExtArgs>[]
+      understandingVotes: Prisma.$UnderstandingVotePayload<ExtArgs>[]
+      breakoutMemberships: Prisma.$BreakoutMemberPayload<ExtArgs>[]
+      chatMessages: Prisma.$ChatMessagePayload<ExtArgs>[]
+      reportsWritten: Prisma.$ParentReportPayload<ExtArgs>[]
+      reportsReceived: Prisma.$ParentReportPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2015,6 +3032,14 @@ export namespace Prisma {
     memberships<T extends User$membershipsArgs<ExtArgs> = {}>(args?: Subset<T, User$membershipsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassMemberPayload<ExtArgs>, T, "findMany"> | Null>
     submissions<T extends User$submissionsArgs<ExtArgs> = {}>(args?: Subset<T, User$submissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany"> | Null>
     scoreSync<T extends User$scoreSyncArgs<ExtArgs> = {}>(args?: Subset<T, User$scoreSyncArgs<ExtArgs>>): Prisma__ScoreSyncClient<$Result.GetResult<Prisma.$ScoreSyncPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    liveSessionsTaught<T extends User$liveSessionsTaughtArgs<ExtArgs> = {}>(args?: Subset<T, User$liveSessionsTaughtArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findMany"> | Null>
+    attendances<T extends User$attendancesArgs<ExtArgs> = {}>(args?: Subset<T, User$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany"> | Null>
+    liveAnswers<T extends User$liveAnswersArgs<ExtArgs> = {}>(args?: Subset<T, User$liveAnswersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "findMany"> | Null>
+    understandingVotes<T extends User$understandingVotesArgs<ExtArgs> = {}>(args?: Subset<T, User$understandingVotesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "findMany"> | Null>
+    breakoutMemberships<T extends User$breakoutMembershipsArgs<ExtArgs> = {}>(args?: Subset<T, User$breakoutMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "findMany"> | Null>
+    chatMessages<T extends User$chatMessagesArgs<ExtArgs> = {}>(args?: Subset<T, User$chatMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany"> | Null>
+    reportsWritten<T extends User$reportsWrittenArgs<ExtArgs> = {}>(args?: Subset<T, User$reportsWrittenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "findMany"> | Null>
+    reportsReceived<T extends User$reportsReceivedArgs<ExtArgs> = {}>(args?: Subset<T, User$reportsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2437,6 +3462,166 @@ export namespace Prisma {
   }
 
   /**
+   * User.liveSessionsTaught
+   */
+  export type User$liveSessionsTaughtArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+    where?: LiveSessionWhereInput
+    orderBy?: LiveSessionOrderByWithRelationInput | LiveSessionOrderByWithRelationInput[]
+    cursor?: LiveSessionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LiveSessionScalarFieldEnum | LiveSessionScalarFieldEnum[]
+  }
+
+  /**
+   * User.attendances
+   */
+  export type User$attendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    where?: AttendanceWhereInput
+    orderBy?: AttendanceOrderByWithRelationInput | AttendanceOrderByWithRelationInput[]
+    cursor?: AttendanceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AttendanceScalarFieldEnum | AttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * User.liveAnswers
+   */
+  export type User$liveAnswersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+    where?: LiveAnswerWhereInput
+    orderBy?: LiveAnswerOrderByWithRelationInput | LiveAnswerOrderByWithRelationInput[]
+    cursor?: LiveAnswerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LiveAnswerScalarFieldEnum | LiveAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * User.understandingVotes
+   */
+  export type User$understandingVotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+    where?: UnderstandingVoteWhereInput
+    orderBy?: UnderstandingVoteOrderByWithRelationInput | UnderstandingVoteOrderByWithRelationInput[]
+    cursor?: UnderstandingVoteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UnderstandingVoteScalarFieldEnum | UnderstandingVoteScalarFieldEnum[]
+  }
+
+  /**
+   * User.breakoutMemberships
+   */
+  export type User$breakoutMembershipsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+    where?: BreakoutMemberWhereInput
+    orderBy?: BreakoutMemberOrderByWithRelationInput | BreakoutMemberOrderByWithRelationInput[]
+    cursor?: BreakoutMemberWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BreakoutMemberScalarFieldEnum | BreakoutMemberScalarFieldEnum[]
+  }
+
+  /**
+   * User.chatMessages
+   */
+  export type User$chatMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    where?: ChatMessageWhereInput
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    cursor?: ChatMessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChatMessageScalarFieldEnum | ChatMessageScalarFieldEnum[]
+  }
+
+  /**
+   * User.reportsWritten
+   */
+  export type User$reportsWrittenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    where?: ParentReportWhereInput
+    orderBy?: ParentReportOrderByWithRelationInput | ParentReportOrderByWithRelationInput[]
+    cursor?: ParentReportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ParentReportScalarFieldEnum | ParentReportScalarFieldEnum[]
+  }
+
+  /**
+   * User.reportsReceived
+   */
+  export type User$reportsReceivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    where?: ParentReportWhereInput
+    orderBy?: ParentReportOrderByWithRelationInput | ParentReportOrderByWithRelationInput[]
+    cursor?: ParentReportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ParentReportScalarFieldEnum | ParentReportScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2656,6 +3841,8 @@ export namespace Prisma {
     teacher?: boolean | UserDefaultArgs<ExtArgs>
     members?: boolean | ClassRoom$membersArgs<ExtArgs>
     tasks?: boolean | ClassRoom$tasksArgs<ExtArgs>
+    sessions?: boolean | ClassRoom$sessionsArgs<ExtArgs>
+    reports?: boolean | ClassRoom$reportsArgs<ExtArgs>
     _count?: boolean | ClassRoomCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["classRoom"]>
 
@@ -2680,6 +3867,8 @@ export namespace Prisma {
     teacher?: boolean | UserDefaultArgs<ExtArgs>
     members?: boolean | ClassRoom$membersArgs<ExtArgs>
     tasks?: boolean | ClassRoom$tasksArgs<ExtArgs>
+    sessions?: boolean | ClassRoom$sessionsArgs<ExtArgs>
+    reports?: boolean | ClassRoom$reportsArgs<ExtArgs>
     _count?: boolean | ClassRoomCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ClassRoomIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2692,6 +3881,8 @@ export namespace Prisma {
       teacher: Prisma.$UserPayload<ExtArgs>
       members: Prisma.$ClassMemberPayload<ExtArgs>[]
       tasks: Prisma.$TaskPayload<ExtArgs>[]
+      sessions: Prisma.$LiveSessionPayload<ExtArgs>[]
+      reports: Prisma.$ParentReportPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3066,6 +4257,8 @@ export namespace Prisma {
     teacher<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     members<T extends ClassRoom$membersArgs<ExtArgs> = {}>(args?: Subset<T, ClassRoom$membersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassMemberPayload<ExtArgs>, T, "findMany"> | Null>
     tasks<T extends ClassRoom$tasksArgs<ExtArgs> = {}>(args?: Subset<T, ClassRoom$tasksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany"> | Null>
+    sessions<T extends ClassRoom$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, ClassRoom$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findMany"> | Null>
+    reports<T extends ClassRoom$reportsArgs<ExtArgs> = {}>(args?: Subset<T, ClassRoom$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3453,6 +4646,46 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TaskScalarFieldEnum | TaskScalarFieldEnum[]
+  }
+
+  /**
+   * ClassRoom.sessions
+   */
+  export type ClassRoom$sessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+    where?: LiveSessionWhereInput
+    orderBy?: LiveSessionOrderByWithRelationInput | LiveSessionOrderByWithRelationInput[]
+    cursor?: LiveSessionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LiveSessionScalarFieldEnum | LiveSessionScalarFieldEnum[]
+  }
+
+  /**
+   * ClassRoom.reports
+   */
+  export type ClassRoom$reportsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    where?: ParentReportWhereInput
+    orderBy?: ParentReportOrderByWithRelationInput | ParentReportOrderByWithRelationInput[]
+    cursor?: ParentReportWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ParentReportScalarFieldEnum | ParentReportScalarFieldEnum[]
   }
 
   /**
@@ -7493,6 +8726,9061 @@ export namespace Prisma {
 
 
   /**
+   * Model LiveSession
+   */
+
+  export type AggregateLiveSession = {
+    _count: LiveSessionCountAggregateOutputType | null
+    _avg: LiveSessionAvgAggregateOutputType | null
+    _sum: LiveSessionSumAggregateOutputType | null
+    _min: LiveSessionMinAggregateOutputType | null
+    _max: LiveSessionMaxAggregateOutputType | null
+  }
+
+  export type LiveSessionAvgAggregateOutputType = {
+    id: number | null
+    classId: number | null
+    teacherId: number | null
+  }
+
+  export type LiveSessionSumAggregateOutputType = {
+    id: number | null
+    classId: number | null
+    teacherId: number | null
+  }
+
+  export type LiveSessionMinAggregateOutputType = {
+    id: number | null
+    classId: number | null
+    teacherId: number | null
+    title: string | null
+    openingText: string | null
+    materialText: string | null
+    status: string | null
+    startedAt: Date | null
+    endedAt: Date | null
+  }
+
+  export type LiveSessionMaxAggregateOutputType = {
+    id: number | null
+    classId: number | null
+    teacherId: number | null
+    title: string | null
+    openingText: string | null
+    materialText: string | null
+    status: string | null
+    startedAt: Date | null
+    endedAt: Date | null
+  }
+
+  export type LiveSessionCountAggregateOutputType = {
+    id: number
+    classId: number
+    teacherId: number
+    title: number
+    openingText: number
+    materialText: number
+    status: number
+    startedAt: number
+    endedAt: number
+    _all: number
+  }
+
+
+  export type LiveSessionAvgAggregateInputType = {
+    id?: true
+    classId?: true
+    teacherId?: true
+  }
+
+  export type LiveSessionSumAggregateInputType = {
+    id?: true
+    classId?: true
+    teacherId?: true
+  }
+
+  export type LiveSessionMinAggregateInputType = {
+    id?: true
+    classId?: true
+    teacherId?: true
+    title?: true
+    openingText?: true
+    materialText?: true
+    status?: true
+    startedAt?: true
+    endedAt?: true
+  }
+
+  export type LiveSessionMaxAggregateInputType = {
+    id?: true
+    classId?: true
+    teacherId?: true
+    title?: true
+    openingText?: true
+    materialText?: true
+    status?: true
+    startedAt?: true
+    endedAt?: true
+  }
+
+  export type LiveSessionCountAggregateInputType = {
+    id?: true
+    classId?: true
+    teacherId?: true
+    title?: true
+    openingText?: true
+    materialText?: true
+    status?: true
+    startedAt?: true
+    endedAt?: true
+    _all?: true
+  }
+
+  export type LiveSessionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LiveSession to aggregate.
+     */
+    where?: LiveSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveSessions to fetch.
+     */
+    orderBy?: LiveSessionOrderByWithRelationInput | LiveSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LiveSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LiveSessions
+    **/
+    _count?: true | LiveSessionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LiveSessionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LiveSessionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LiveSessionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LiveSessionMaxAggregateInputType
+  }
+
+  export type GetLiveSessionAggregateType<T extends LiveSessionAggregateArgs> = {
+        [P in keyof T & keyof AggregateLiveSession]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLiveSession[P]>
+      : GetScalarType<T[P], AggregateLiveSession[P]>
+  }
+
+
+
+
+  export type LiveSessionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LiveSessionWhereInput
+    orderBy?: LiveSessionOrderByWithAggregationInput | LiveSessionOrderByWithAggregationInput[]
+    by: LiveSessionScalarFieldEnum[] | LiveSessionScalarFieldEnum
+    having?: LiveSessionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LiveSessionCountAggregateInputType | true
+    _avg?: LiveSessionAvgAggregateInputType
+    _sum?: LiveSessionSumAggregateInputType
+    _min?: LiveSessionMinAggregateInputType
+    _max?: LiveSessionMaxAggregateInputType
+  }
+
+  export type LiveSessionGroupByOutputType = {
+    id: number
+    classId: number
+    teacherId: number
+    title: string
+    openingText: string | null
+    materialText: string | null
+    status: string
+    startedAt: Date
+    endedAt: Date | null
+    _count: LiveSessionCountAggregateOutputType | null
+    _avg: LiveSessionAvgAggregateOutputType | null
+    _sum: LiveSessionSumAggregateOutputType | null
+    _min: LiveSessionMinAggregateOutputType | null
+    _max: LiveSessionMaxAggregateOutputType | null
+  }
+
+  type GetLiveSessionGroupByPayload<T extends LiveSessionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LiveSessionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LiveSessionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LiveSessionGroupByOutputType[P]>
+            : GetScalarType<T[P], LiveSessionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LiveSessionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    classId?: boolean
+    teacherId?: boolean
+    title?: boolean
+    openingText?: boolean
+    materialText?: boolean
+    status?: boolean
+    startedAt?: boolean
+    endedAt?: boolean
+    class?: boolean | ClassRoomDefaultArgs<ExtArgs>
+    teacher?: boolean | UserDefaultArgs<ExtArgs>
+    attendances?: boolean | LiveSession$attendancesArgs<ExtArgs>
+    quizzes?: boolean | LiveSession$quizzesArgs<ExtArgs>
+    votes?: boolean | LiveSession$votesArgs<ExtArgs>
+    groups?: boolean | LiveSession$groupsArgs<ExtArgs>
+    _count?: boolean | LiveSessionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["liveSession"]>
+
+  export type LiveSessionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    classId?: boolean
+    teacherId?: boolean
+    title?: boolean
+    openingText?: boolean
+    materialText?: boolean
+    status?: boolean
+    startedAt?: boolean
+    endedAt?: boolean
+    class?: boolean | ClassRoomDefaultArgs<ExtArgs>
+    teacher?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["liveSession"]>
+
+  export type LiveSessionSelectScalar = {
+    id?: boolean
+    classId?: boolean
+    teacherId?: boolean
+    title?: boolean
+    openingText?: boolean
+    materialText?: boolean
+    status?: boolean
+    startedAt?: boolean
+    endedAt?: boolean
+  }
+
+  export type LiveSessionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    class?: boolean | ClassRoomDefaultArgs<ExtArgs>
+    teacher?: boolean | UserDefaultArgs<ExtArgs>
+    attendances?: boolean | LiveSession$attendancesArgs<ExtArgs>
+    quizzes?: boolean | LiveSession$quizzesArgs<ExtArgs>
+    votes?: boolean | LiveSession$votesArgs<ExtArgs>
+    groups?: boolean | LiveSession$groupsArgs<ExtArgs>
+    _count?: boolean | LiveSessionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type LiveSessionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    class?: boolean | ClassRoomDefaultArgs<ExtArgs>
+    teacher?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $LiveSessionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LiveSession"
+    objects: {
+      class: Prisma.$ClassRoomPayload<ExtArgs>
+      teacher: Prisma.$UserPayload<ExtArgs>
+      attendances: Prisma.$AttendancePayload<ExtArgs>[]
+      quizzes: Prisma.$LiveQuizPayload<ExtArgs>[]
+      votes: Prisma.$UnderstandingVotePayload<ExtArgs>[]
+      groups: Prisma.$BreakoutGroupPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      classId: number
+      teacherId: number
+      title: string
+      openingText: string | null
+      materialText: string | null
+      status: string
+      startedAt: Date
+      endedAt: Date | null
+    }, ExtArgs["result"]["liveSession"]>
+    composites: {}
+  }
+
+  type LiveSessionGetPayload<S extends boolean | null | undefined | LiveSessionDefaultArgs> = $Result.GetResult<Prisma.$LiveSessionPayload, S>
+
+  type LiveSessionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<LiveSessionFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: LiveSessionCountAggregateInputType | true
+    }
+
+  export interface LiveSessionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LiveSession'], meta: { name: 'LiveSession' } }
+    /**
+     * Find zero or one LiveSession that matches the filter.
+     * @param {LiveSessionFindUniqueArgs} args - Arguments to find a LiveSession
+     * @example
+     * // Get one LiveSession
+     * const liveSession = await prisma.liveSession.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LiveSessionFindUniqueArgs>(args: SelectSubset<T, LiveSessionFindUniqueArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one LiveSession that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {LiveSessionFindUniqueOrThrowArgs} args - Arguments to find a LiveSession
+     * @example
+     * // Get one LiveSession
+     * const liveSession = await prisma.liveSession.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LiveSessionFindUniqueOrThrowArgs>(args: SelectSubset<T, LiveSessionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first LiveSession that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveSessionFindFirstArgs} args - Arguments to find a LiveSession
+     * @example
+     * // Get one LiveSession
+     * const liveSession = await prisma.liveSession.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LiveSessionFindFirstArgs>(args?: SelectSubset<T, LiveSessionFindFirstArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first LiveSession that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveSessionFindFirstOrThrowArgs} args - Arguments to find a LiveSession
+     * @example
+     * // Get one LiveSession
+     * const liveSession = await prisma.liveSession.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LiveSessionFindFirstOrThrowArgs>(args?: SelectSubset<T, LiveSessionFindFirstOrThrowArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more LiveSessions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveSessionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LiveSessions
+     * const liveSessions = await prisma.liveSession.findMany()
+     * 
+     * // Get first 10 LiveSessions
+     * const liveSessions = await prisma.liveSession.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const liveSessionWithIdOnly = await prisma.liveSession.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LiveSessionFindManyArgs>(args?: SelectSubset<T, LiveSessionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a LiveSession.
+     * @param {LiveSessionCreateArgs} args - Arguments to create a LiveSession.
+     * @example
+     * // Create one LiveSession
+     * const LiveSession = await prisma.liveSession.create({
+     *   data: {
+     *     // ... data to create a LiveSession
+     *   }
+     * })
+     * 
+     */
+    create<T extends LiveSessionCreateArgs>(args: SelectSubset<T, LiveSessionCreateArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many LiveSessions.
+     * @param {LiveSessionCreateManyArgs} args - Arguments to create many LiveSessions.
+     * @example
+     * // Create many LiveSessions
+     * const liveSession = await prisma.liveSession.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LiveSessionCreateManyArgs>(args?: SelectSubset<T, LiveSessionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many LiveSessions and returns the data saved in the database.
+     * @param {LiveSessionCreateManyAndReturnArgs} args - Arguments to create many LiveSessions.
+     * @example
+     * // Create many LiveSessions
+     * const liveSession = await prisma.liveSession.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many LiveSessions and only return the `id`
+     * const liveSessionWithIdOnly = await prisma.liveSession.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LiveSessionCreateManyAndReturnArgs>(args?: SelectSubset<T, LiveSessionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a LiveSession.
+     * @param {LiveSessionDeleteArgs} args - Arguments to delete one LiveSession.
+     * @example
+     * // Delete one LiveSession
+     * const LiveSession = await prisma.liveSession.delete({
+     *   where: {
+     *     // ... filter to delete one LiveSession
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LiveSessionDeleteArgs>(args: SelectSubset<T, LiveSessionDeleteArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one LiveSession.
+     * @param {LiveSessionUpdateArgs} args - Arguments to update one LiveSession.
+     * @example
+     * // Update one LiveSession
+     * const liveSession = await prisma.liveSession.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LiveSessionUpdateArgs>(args: SelectSubset<T, LiveSessionUpdateArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more LiveSessions.
+     * @param {LiveSessionDeleteManyArgs} args - Arguments to filter LiveSessions to delete.
+     * @example
+     * // Delete a few LiveSessions
+     * const { count } = await prisma.liveSession.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LiveSessionDeleteManyArgs>(args?: SelectSubset<T, LiveSessionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LiveSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveSessionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LiveSessions
+     * const liveSession = await prisma.liveSession.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LiveSessionUpdateManyArgs>(args: SelectSubset<T, LiveSessionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one LiveSession.
+     * @param {LiveSessionUpsertArgs} args - Arguments to update or create a LiveSession.
+     * @example
+     * // Update or create a LiveSession
+     * const liveSession = await prisma.liveSession.upsert({
+     *   create: {
+     *     // ... data to create a LiveSession
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LiveSession we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LiveSessionUpsertArgs>(args: SelectSubset<T, LiveSessionUpsertArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of LiveSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveSessionCountArgs} args - Arguments to filter LiveSessions to count.
+     * @example
+     * // Count the number of LiveSessions
+     * const count = await prisma.liveSession.count({
+     *   where: {
+     *     // ... the filter for the LiveSessions we want to count
+     *   }
+     * })
+    **/
+    count<T extends LiveSessionCountArgs>(
+      args?: Subset<T, LiveSessionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LiveSessionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LiveSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveSessionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LiveSessionAggregateArgs>(args: Subset<T, LiveSessionAggregateArgs>): Prisma.PrismaPromise<GetLiveSessionAggregateType<T>>
+
+    /**
+     * Group by LiveSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveSessionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LiveSessionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LiveSessionGroupByArgs['orderBy'] }
+        : { orderBy?: LiveSessionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LiveSessionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLiveSessionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LiveSession model
+   */
+  readonly fields: LiveSessionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LiveSession.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LiveSessionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    class<T extends ClassRoomDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClassRoomDefaultArgs<ExtArgs>>): Prisma__ClassRoomClient<$Result.GetResult<Prisma.$ClassRoomPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    teacher<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    attendances<T extends LiveSession$attendancesArgs<ExtArgs> = {}>(args?: Subset<T, LiveSession$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany"> | Null>
+    quizzes<T extends LiveSession$quizzesArgs<ExtArgs> = {}>(args?: Subset<T, LiveSession$quizzesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "findMany"> | Null>
+    votes<T extends LiveSession$votesArgs<ExtArgs> = {}>(args?: Subset<T, LiveSession$votesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "findMany"> | Null>
+    groups<T extends LiveSession$groupsArgs<ExtArgs> = {}>(args?: Subset<T, LiveSession$groupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LiveSession model
+   */ 
+  interface LiveSessionFieldRefs {
+    readonly id: FieldRef<"LiveSession", 'Int'>
+    readonly classId: FieldRef<"LiveSession", 'Int'>
+    readonly teacherId: FieldRef<"LiveSession", 'Int'>
+    readonly title: FieldRef<"LiveSession", 'String'>
+    readonly openingText: FieldRef<"LiveSession", 'String'>
+    readonly materialText: FieldRef<"LiveSession", 'String'>
+    readonly status: FieldRef<"LiveSession", 'String'>
+    readonly startedAt: FieldRef<"LiveSession", 'DateTime'>
+    readonly endedAt: FieldRef<"LiveSession", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LiveSession findUnique
+   */
+  export type LiveSessionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveSession to fetch.
+     */
+    where: LiveSessionWhereUniqueInput
+  }
+
+  /**
+   * LiveSession findUniqueOrThrow
+   */
+  export type LiveSessionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveSession to fetch.
+     */
+    where: LiveSessionWhereUniqueInput
+  }
+
+  /**
+   * LiveSession findFirst
+   */
+  export type LiveSessionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveSession to fetch.
+     */
+    where?: LiveSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveSessions to fetch.
+     */
+    orderBy?: LiveSessionOrderByWithRelationInput | LiveSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LiveSessions.
+     */
+    cursor?: LiveSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LiveSessions.
+     */
+    distinct?: LiveSessionScalarFieldEnum | LiveSessionScalarFieldEnum[]
+  }
+
+  /**
+   * LiveSession findFirstOrThrow
+   */
+  export type LiveSessionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveSession to fetch.
+     */
+    where?: LiveSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveSessions to fetch.
+     */
+    orderBy?: LiveSessionOrderByWithRelationInput | LiveSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LiveSessions.
+     */
+    cursor?: LiveSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LiveSessions.
+     */
+    distinct?: LiveSessionScalarFieldEnum | LiveSessionScalarFieldEnum[]
+  }
+
+  /**
+   * LiveSession findMany
+   */
+  export type LiveSessionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveSessions to fetch.
+     */
+    where?: LiveSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveSessions to fetch.
+     */
+    orderBy?: LiveSessionOrderByWithRelationInput | LiveSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LiveSessions.
+     */
+    cursor?: LiveSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveSessions.
+     */
+    skip?: number
+    distinct?: LiveSessionScalarFieldEnum | LiveSessionScalarFieldEnum[]
+  }
+
+  /**
+   * LiveSession create
+   */
+  export type LiveSessionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a LiveSession.
+     */
+    data: XOR<LiveSessionCreateInput, LiveSessionUncheckedCreateInput>
+  }
+
+  /**
+   * LiveSession createMany
+   */
+  export type LiveSessionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LiveSessions.
+     */
+    data: LiveSessionCreateManyInput | LiveSessionCreateManyInput[]
+  }
+
+  /**
+   * LiveSession createManyAndReturn
+   */
+  export type LiveSessionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many LiveSessions.
+     */
+    data: LiveSessionCreateManyInput | LiveSessionCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * LiveSession update
+   */
+  export type LiveSessionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a LiveSession.
+     */
+    data: XOR<LiveSessionUpdateInput, LiveSessionUncheckedUpdateInput>
+    /**
+     * Choose, which LiveSession to update.
+     */
+    where: LiveSessionWhereUniqueInput
+  }
+
+  /**
+   * LiveSession updateMany
+   */
+  export type LiveSessionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LiveSessions.
+     */
+    data: XOR<LiveSessionUpdateManyMutationInput, LiveSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which LiveSessions to update
+     */
+    where?: LiveSessionWhereInput
+  }
+
+  /**
+   * LiveSession upsert
+   */
+  export type LiveSessionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the LiveSession to update in case it exists.
+     */
+    where: LiveSessionWhereUniqueInput
+    /**
+     * In case the LiveSession found by the `where` argument doesn't exist, create a new LiveSession with this data.
+     */
+    create: XOR<LiveSessionCreateInput, LiveSessionUncheckedCreateInput>
+    /**
+     * In case the LiveSession was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LiveSessionUpdateInput, LiveSessionUncheckedUpdateInput>
+  }
+
+  /**
+   * LiveSession delete
+   */
+  export type LiveSessionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+    /**
+     * Filter which LiveSession to delete.
+     */
+    where: LiveSessionWhereUniqueInput
+  }
+
+  /**
+   * LiveSession deleteMany
+   */
+  export type LiveSessionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LiveSessions to delete
+     */
+    where?: LiveSessionWhereInput
+  }
+
+  /**
+   * LiveSession.attendances
+   */
+  export type LiveSession$attendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    where?: AttendanceWhereInput
+    orderBy?: AttendanceOrderByWithRelationInput | AttendanceOrderByWithRelationInput[]
+    cursor?: AttendanceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AttendanceScalarFieldEnum | AttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * LiveSession.quizzes
+   */
+  export type LiveSession$quizzesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizInclude<ExtArgs> | null
+    where?: LiveQuizWhereInput
+    orderBy?: LiveQuizOrderByWithRelationInput | LiveQuizOrderByWithRelationInput[]
+    cursor?: LiveQuizWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LiveQuizScalarFieldEnum | LiveQuizScalarFieldEnum[]
+  }
+
+  /**
+   * LiveSession.votes
+   */
+  export type LiveSession$votesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+    where?: UnderstandingVoteWhereInput
+    orderBy?: UnderstandingVoteOrderByWithRelationInput | UnderstandingVoteOrderByWithRelationInput[]
+    cursor?: UnderstandingVoteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UnderstandingVoteScalarFieldEnum | UnderstandingVoteScalarFieldEnum[]
+  }
+
+  /**
+   * LiveSession.groups
+   */
+  export type LiveSession$groupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupInclude<ExtArgs> | null
+    where?: BreakoutGroupWhereInput
+    orderBy?: BreakoutGroupOrderByWithRelationInput | BreakoutGroupOrderByWithRelationInput[]
+    cursor?: BreakoutGroupWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BreakoutGroupScalarFieldEnum | BreakoutGroupScalarFieldEnum[]
+  }
+
+  /**
+   * LiveSession without action
+   */
+  export type LiveSessionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveSession
+     */
+    select?: LiveSessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveSessionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Attendance
+   */
+
+  export type AggregateAttendance = {
+    _count: AttendanceCountAggregateOutputType | null
+    _avg: AttendanceAvgAggregateOutputType | null
+    _sum: AttendanceSumAggregateOutputType | null
+    _min: AttendanceMinAggregateOutputType | null
+    _max: AttendanceMaxAggregateOutputType | null
+  }
+
+  export type AttendanceAvgAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    userId: number | null
+  }
+
+  export type AttendanceSumAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    userId: number | null
+  }
+
+  export type AttendanceMinAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    userId: number | null
+    joinedAt: Date | null
+  }
+
+  export type AttendanceMaxAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    userId: number | null
+    joinedAt: Date | null
+  }
+
+  export type AttendanceCountAggregateOutputType = {
+    id: number
+    sessionId: number
+    userId: number
+    joinedAt: number
+    _all: number
+  }
+
+
+  export type AttendanceAvgAggregateInputType = {
+    id?: true
+    sessionId?: true
+    userId?: true
+  }
+
+  export type AttendanceSumAggregateInputType = {
+    id?: true
+    sessionId?: true
+    userId?: true
+  }
+
+  export type AttendanceMinAggregateInputType = {
+    id?: true
+    sessionId?: true
+    userId?: true
+    joinedAt?: true
+  }
+
+  export type AttendanceMaxAggregateInputType = {
+    id?: true
+    sessionId?: true
+    userId?: true
+    joinedAt?: true
+  }
+
+  export type AttendanceCountAggregateInputType = {
+    id?: true
+    sessionId?: true
+    userId?: true
+    joinedAt?: true
+    _all?: true
+  }
+
+  export type AttendanceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Attendance to aggregate.
+     */
+    where?: AttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attendances to fetch.
+     */
+    orderBy?: AttendanceOrderByWithRelationInput | AttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Attendances
+    **/
+    _count?: true | AttendanceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AttendanceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AttendanceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AttendanceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AttendanceMaxAggregateInputType
+  }
+
+  export type GetAttendanceAggregateType<T extends AttendanceAggregateArgs> = {
+        [P in keyof T & keyof AggregateAttendance]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAttendance[P]>
+      : GetScalarType<T[P], AggregateAttendance[P]>
+  }
+
+
+
+
+  export type AttendanceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AttendanceWhereInput
+    orderBy?: AttendanceOrderByWithAggregationInput | AttendanceOrderByWithAggregationInput[]
+    by: AttendanceScalarFieldEnum[] | AttendanceScalarFieldEnum
+    having?: AttendanceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AttendanceCountAggregateInputType | true
+    _avg?: AttendanceAvgAggregateInputType
+    _sum?: AttendanceSumAggregateInputType
+    _min?: AttendanceMinAggregateInputType
+    _max?: AttendanceMaxAggregateInputType
+  }
+
+  export type AttendanceGroupByOutputType = {
+    id: number
+    sessionId: number
+    userId: number
+    joinedAt: Date
+    _count: AttendanceCountAggregateOutputType | null
+    _avg: AttendanceAvgAggregateOutputType | null
+    _sum: AttendanceSumAggregateOutputType | null
+    _min: AttendanceMinAggregateOutputType | null
+    _max: AttendanceMaxAggregateOutputType | null
+  }
+
+  type GetAttendanceGroupByPayload<T extends AttendanceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AttendanceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AttendanceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AttendanceGroupByOutputType[P]>
+            : GetScalarType<T[P], AttendanceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AttendanceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionId?: boolean
+    userId?: boolean
+    joinedAt?: boolean
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["attendance"]>
+
+  export type AttendanceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionId?: boolean
+    userId?: boolean
+    joinedAt?: boolean
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["attendance"]>
+
+  export type AttendanceSelectScalar = {
+    id?: boolean
+    sessionId?: boolean
+    userId?: boolean
+    joinedAt?: boolean
+  }
+
+  export type AttendanceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AttendanceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $AttendancePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Attendance"
+    objects: {
+      session: Prisma.$LiveSessionPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      sessionId: number
+      userId: number
+      joinedAt: Date
+    }, ExtArgs["result"]["attendance"]>
+    composites: {}
+  }
+
+  type AttendanceGetPayload<S extends boolean | null | undefined | AttendanceDefaultArgs> = $Result.GetResult<Prisma.$AttendancePayload, S>
+
+  type AttendanceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<AttendanceFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: AttendanceCountAggregateInputType | true
+    }
+
+  export interface AttendanceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Attendance'], meta: { name: 'Attendance' } }
+    /**
+     * Find zero or one Attendance that matches the filter.
+     * @param {AttendanceFindUniqueArgs} args - Arguments to find a Attendance
+     * @example
+     * // Get one Attendance
+     * const attendance = await prisma.attendance.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AttendanceFindUniqueArgs>(args: SelectSubset<T, AttendanceFindUniqueArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Attendance that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {AttendanceFindUniqueOrThrowArgs} args - Arguments to find a Attendance
+     * @example
+     * // Get one Attendance
+     * const attendance = await prisma.attendance.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AttendanceFindUniqueOrThrowArgs>(args: SelectSubset<T, AttendanceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Attendance that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceFindFirstArgs} args - Arguments to find a Attendance
+     * @example
+     * // Get one Attendance
+     * const attendance = await prisma.attendance.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AttendanceFindFirstArgs>(args?: SelectSubset<T, AttendanceFindFirstArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Attendance that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceFindFirstOrThrowArgs} args - Arguments to find a Attendance
+     * @example
+     * // Get one Attendance
+     * const attendance = await prisma.attendance.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AttendanceFindFirstOrThrowArgs>(args?: SelectSubset<T, AttendanceFindFirstOrThrowArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Attendances that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Attendances
+     * const attendances = await prisma.attendance.findMany()
+     * 
+     * // Get first 10 Attendances
+     * const attendances = await prisma.attendance.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const attendanceWithIdOnly = await prisma.attendance.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AttendanceFindManyArgs>(args?: SelectSubset<T, AttendanceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Attendance.
+     * @param {AttendanceCreateArgs} args - Arguments to create a Attendance.
+     * @example
+     * // Create one Attendance
+     * const Attendance = await prisma.attendance.create({
+     *   data: {
+     *     // ... data to create a Attendance
+     *   }
+     * })
+     * 
+     */
+    create<T extends AttendanceCreateArgs>(args: SelectSubset<T, AttendanceCreateArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Attendances.
+     * @param {AttendanceCreateManyArgs} args - Arguments to create many Attendances.
+     * @example
+     * // Create many Attendances
+     * const attendance = await prisma.attendance.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AttendanceCreateManyArgs>(args?: SelectSubset<T, AttendanceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Attendances and returns the data saved in the database.
+     * @param {AttendanceCreateManyAndReturnArgs} args - Arguments to create many Attendances.
+     * @example
+     * // Create many Attendances
+     * const attendance = await prisma.attendance.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Attendances and only return the `id`
+     * const attendanceWithIdOnly = await prisma.attendance.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AttendanceCreateManyAndReturnArgs>(args?: SelectSubset<T, AttendanceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Attendance.
+     * @param {AttendanceDeleteArgs} args - Arguments to delete one Attendance.
+     * @example
+     * // Delete one Attendance
+     * const Attendance = await prisma.attendance.delete({
+     *   where: {
+     *     // ... filter to delete one Attendance
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AttendanceDeleteArgs>(args: SelectSubset<T, AttendanceDeleteArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Attendance.
+     * @param {AttendanceUpdateArgs} args - Arguments to update one Attendance.
+     * @example
+     * // Update one Attendance
+     * const attendance = await prisma.attendance.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AttendanceUpdateArgs>(args: SelectSubset<T, AttendanceUpdateArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Attendances.
+     * @param {AttendanceDeleteManyArgs} args - Arguments to filter Attendances to delete.
+     * @example
+     * // Delete a few Attendances
+     * const { count } = await prisma.attendance.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AttendanceDeleteManyArgs>(args?: SelectSubset<T, AttendanceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Attendances.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Attendances
+     * const attendance = await prisma.attendance.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AttendanceUpdateManyArgs>(args: SelectSubset<T, AttendanceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Attendance.
+     * @param {AttendanceUpsertArgs} args - Arguments to update or create a Attendance.
+     * @example
+     * // Update or create a Attendance
+     * const attendance = await prisma.attendance.upsert({
+     *   create: {
+     *     // ... data to create a Attendance
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Attendance we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AttendanceUpsertArgs>(args: SelectSubset<T, AttendanceUpsertArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Attendances.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceCountArgs} args - Arguments to filter Attendances to count.
+     * @example
+     * // Count the number of Attendances
+     * const count = await prisma.attendance.count({
+     *   where: {
+     *     // ... the filter for the Attendances we want to count
+     *   }
+     * })
+    **/
+    count<T extends AttendanceCountArgs>(
+      args?: Subset<T, AttendanceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AttendanceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Attendance.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AttendanceAggregateArgs>(args: Subset<T, AttendanceAggregateArgs>): Prisma.PrismaPromise<GetAttendanceAggregateType<T>>
+
+    /**
+     * Group by Attendance.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AttendanceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AttendanceGroupByArgs['orderBy'] }
+        : { orderBy?: AttendanceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AttendanceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAttendanceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Attendance model
+   */
+  readonly fields: AttendanceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Attendance.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AttendanceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    session<T extends LiveSessionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LiveSessionDefaultArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Attendance model
+   */ 
+  interface AttendanceFieldRefs {
+    readonly id: FieldRef<"Attendance", 'Int'>
+    readonly sessionId: FieldRef<"Attendance", 'Int'>
+    readonly userId: FieldRef<"Attendance", 'Int'>
+    readonly joinedAt: FieldRef<"Attendance", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Attendance findUnique
+   */
+  export type AttendanceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which Attendance to fetch.
+     */
+    where: AttendanceWhereUniqueInput
+  }
+
+  /**
+   * Attendance findUniqueOrThrow
+   */
+  export type AttendanceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which Attendance to fetch.
+     */
+    where: AttendanceWhereUniqueInput
+  }
+
+  /**
+   * Attendance findFirst
+   */
+  export type AttendanceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which Attendance to fetch.
+     */
+    where?: AttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attendances to fetch.
+     */
+    orderBy?: AttendanceOrderByWithRelationInput | AttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Attendances.
+     */
+    cursor?: AttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Attendances.
+     */
+    distinct?: AttendanceScalarFieldEnum | AttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * Attendance findFirstOrThrow
+   */
+  export type AttendanceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which Attendance to fetch.
+     */
+    where?: AttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attendances to fetch.
+     */
+    orderBy?: AttendanceOrderByWithRelationInput | AttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Attendances.
+     */
+    cursor?: AttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Attendances.
+     */
+    distinct?: AttendanceScalarFieldEnum | AttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * Attendance findMany
+   */
+  export type AttendanceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which Attendances to fetch.
+     */
+    where?: AttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attendances to fetch.
+     */
+    orderBy?: AttendanceOrderByWithRelationInput | AttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Attendances.
+     */
+    cursor?: AttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attendances.
+     */
+    skip?: number
+    distinct?: AttendanceScalarFieldEnum | AttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * Attendance create
+   */
+  export type AttendanceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Attendance.
+     */
+    data: XOR<AttendanceCreateInput, AttendanceUncheckedCreateInput>
+  }
+
+  /**
+   * Attendance createMany
+   */
+  export type AttendanceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Attendances.
+     */
+    data: AttendanceCreateManyInput | AttendanceCreateManyInput[]
+  }
+
+  /**
+   * Attendance createManyAndReturn
+   */
+  export type AttendanceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Attendances.
+     */
+    data: AttendanceCreateManyInput | AttendanceCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Attendance update
+   */
+  export type AttendanceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Attendance.
+     */
+    data: XOR<AttendanceUpdateInput, AttendanceUncheckedUpdateInput>
+    /**
+     * Choose, which Attendance to update.
+     */
+    where: AttendanceWhereUniqueInput
+  }
+
+  /**
+   * Attendance updateMany
+   */
+  export type AttendanceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Attendances.
+     */
+    data: XOR<AttendanceUpdateManyMutationInput, AttendanceUncheckedUpdateManyInput>
+    /**
+     * Filter which Attendances to update
+     */
+    where?: AttendanceWhereInput
+  }
+
+  /**
+   * Attendance upsert
+   */
+  export type AttendanceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Attendance to update in case it exists.
+     */
+    where: AttendanceWhereUniqueInput
+    /**
+     * In case the Attendance found by the `where` argument doesn't exist, create a new Attendance with this data.
+     */
+    create: XOR<AttendanceCreateInput, AttendanceUncheckedCreateInput>
+    /**
+     * In case the Attendance was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AttendanceUpdateInput, AttendanceUncheckedUpdateInput>
+  }
+
+  /**
+   * Attendance delete
+   */
+  export type AttendanceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter which Attendance to delete.
+     */
+    where: AttendanceWhereUniqueInput
+  }
+
+  /**
+   * Attendance deleteMany
+   */
+  export type AttendanceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Attendances to delete
+     */
+    where?: AttendanceWhereInput
+  }
+
+  /**
+   * Attendance without action
+   */
+  export type AttendanceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model LiveQuiz
+   */
+
+  export type AggregateLiveQuiz = {
+    _count: LiveQuizCountAggregateOutputType | null
+    _avg: LiveQuizAvgAggregateOutputType | null
+    _sum: LiveQuizSumAggregateOutputType | null
+    _min: LiveQuizMinAggregateOutputType | null
+    _max: LiveQuizMaxAggregateOutputType | null
+  }
+
+  export type LiveQuizAvgAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    currentIndex: number | null
+    bossMaxHp: number | null
+  }
+
+  export type LiveQuizSumAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    currentIndex: number | null
+    bossMaxHp: number | null
+  }
+
+  export type LiveQuizMinAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    title: string | null
+    questions: string | null
+    status: string | null
+    currentIndex: number | null
+    bossMaxHp: number | null
+    createdAt: Date | null
+  }
+
+  export type LiveQuizMaxAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    title: string | null
+    questions: string | null
+    status: string | null
+    currentIndex: number | null
+    bossMaxHp: number | null
+    createdAt: Date | null
+  }
+
+  export type LiveQuizCountAggregateOutputType = {
+    id: number
+    sessionId: number
+    title: number
+    questions: number
+    status: number
+    currentIndex: number
+    bossMaxHp: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type LiveQuizAvgAggregateInputType = {
+    id?: true
+    sessionId?: true
+    currentIndex?: true
+    bossMaxHp?: true
+  }
+
+  export type LiveQuizSumAggregateInputType = {
+    id?: true
+    sessionId?: true
+    currentIndex?: true
+    bossMaxHp?: true
+  }
+
+  export type LiveQuizMinAggregateInputType = {
+    id?: true
+    sessionId?: true
+    title?: true
+    questions?: true
+    status?: true
+    currentIndex?: true
+    bossMaxHp?: true
+    createdAt?: true
+  }
+
+  export type LiveQuizMaxAggregateInputType = {
+    id?: true
+    sessionId?: true
+    title?: true
+    questions?: true
+    status?: true
+    currentIndex?: true
+    bossMaxHp?: true
+    createdAt?: true
+  }
+
+  export type LiveQuizCountAggregateInputType = {
+    id?: true
+    sessionId?: true
+    title?: true
+    questions?: true
+    status?: true
+    currentIndex?: true
+    bossMaxHp?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type LiveQuizAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LiveQuiz to aggregate.
+     */
+    where?: LiveQuizWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveQuizs to fetch.
+     */
+    orderBy?: LiveQuizOrderByWithRelationInput | LiveQuizOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LiveQuizWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveQuizs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveQuizs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LiveQuizs
+    **/
+    _count?: true | LiveQuizCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LiveQuizAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LiveQuizSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LiveQuizMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LiveQuizMaxAggregateInputType
+  }
+
+  export type GetLiveQuizAggregateType<T extends LiveQuizAggregateArgs> = {
+        [P in keyof T & keyof AggregateLiveQuiz]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLiveQuiz[P]>
+      : GetScalarType<T[P], AggregateLiveQuiz[P]>
+  }
+
+
+
+
+  export type LiveQuizGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LiveQuizWhereInput
+    orderBy?: LiveQuizOrderByWithAggregationInput | LiveQuizOrderByWithAggregationInput[]
+    by: LiveQuizScalarFieldEnum[] | LiveQuizScalarFieldEnum
+    having?: LiveQuizScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LiveQuizCountAggregateInputType | true
+    _avg?: LiveQuizAvgAggregateInputType
+    _sum?: LiveQuizSumAggregateInputType
+    _min?: LiveQuizMinAggregateInputType
+    _max?: LiveQuizMaxAggregateInputType
+  }
+
+  export type LiveQuizGroupByOutputType = {
+    id: number
+    sessionId: number
+    title: string
+    questions: string
+    status: string
+    currentIndex: number
+    bossMaxHp: number
+    createdAt: Date
+    _count: LiveQuizCountAggregateOutputType | null
+    _avg: LiveQuizAvgAggregateOutputType | null
+    _sum: LiveQuizSumAggregateOutputType | null
+    _min: LiveQuizMinAggregateOutputType | null
+    _max: LiveQuizMaxAggregateOutputType | null
+  }
+
+  type GetLiveQuizGroupByPayload<T extends LiveQuizGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LiveQuizGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LiveQuizGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LiveQuizGroupByOutputType[P]>
+            : GetScalarType<T[P], LiveQuizGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LiveQuizSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionId?: boolean
+    title?: boolean
+    questions?: boolean
+    status?: boolean
+    currentIndex?: boolean
+    bossMaxHp?: boolean
+    createdAt?: boolean
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    answers?: boolean | LiveQuiz$answersArgs<ExtArgs>
+    _count?: boolean | LiveQuizCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["liveQuiz"]>
+
+  export type LiveQuizSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionId?: boolean
+    title?: boolean
+    questions?: boolean
+    status?: boolean
+    currentIndex?: boolean
+    bossMaxHp?: boolean
+    createdAt?: boolean
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["liveQuiz"]>
+
+  export type LiveQuizSelectScalar = {
+    id?: boolean
+    sessionId?: boolean
+    title?: boolean
+    questions?: boolean
+    status?: boolean
+    currentIndex?: boolean
+    bossMaxHp?: boolean
+    createdAt?: boolean
+  }
+
+  export type LiveQuizInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    answers?: boolean | LiveQuiz$answersArgs<ExtArgs>
+    _count?: boolean | LiveQuizCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type LiveQuizIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+  }
+
+  export type $LiveQuizPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LiveQuiz"
+    objects: {
+      session: Prisma.$LiveSessionPayload<ExtArgs>
+      answers: Prisma.$LiveAnswerPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      sessionId: number
+      title: string
+      questions: string
+      status: string
+      currentIndex: number
+      bossMaxHp: number
+      createdAt: Date
+    }, ExtArgs["result"]["liveQuiz"]>
+    composites: {}
+  }
+
+  type LiveQuizGetPayload<S extends boolean | null | undefined | LiveQuizDefaultArgs> = $Result.GetResult<Prisma.$LiveQuizPayload, S>
+
+  type LiveQuizCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<LiveQuizFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: LiveQuizCountAggregateInputType | true
+    }
+
+  export interface LiveQuizDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LiveQuiz'], meta: { name: 'LiveQuiz' } }
+    /**
+     * Find zero or one LiveQuiz that matches the filter.
+     * @param {LiveQuizFindUniqueArgs} args - Arguments to find a LiveQuiz
+     * @example
+     * // Get one LiveQuiz
+     * const liveQuiz = await prisma.liveQuiz.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LiveQuizFindUniqueArgs>(args: SelectSubset<T, LiveQuizFindUniqueArgs<ExtArgs>>): Prisma__LiveQuizClient<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one LiveQuiz that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {LiveQuizFindUniqueOrThrowArgs} args - Arguments to find a LiveQuiz
+     * @example
+     * // Get one LiveQuiz
+     * const liveQuiz = await prisma.liveQuiz.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LiveQuizFindUniqueOrThrowArgs>(args: SelectSubset<T, LiveQuizFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LiveQuizClient<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first LiveQuiz that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveQuizFindFirstArgs} args - Arguments to find a LiveQuiz
+     * @example
+     * // Get one LiveQuiz
+     * const liveQuiz = await prisma.liveQuiz.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LiveQuizFindFirstArgs>(args?: SelectSubset<T, LiveQuizFindFirstArgs<ExtArgs>>): Prisma__LiveQuizClient<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first LiveQuiz that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveQuizFindFirstOrThrowArgs} args - Arguments to find a LiveQuiz
+     * @example
+     * // Get one LiveQuiz
+     * const liveQuiz = await prisma.liveQuiz.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LiveQuizFindFirstOrThrowArgs>(args?: SelectSubset<T, LiveQuizFindFirstOrThrowArgs<ExtArgs>>): Prisma__LiveQuizClient<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more LiveQuizs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveQuizFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LiveQuizs
+     * const liveQuizs = await prisma.liveQuiz.findMany()
+     * 
+     * // Get first 10 LiveQuizs
+     * const liveQuizs = await prisma.liveQuiz.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const liveQuizWithIdOnly = await prisma.liveQuiz.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LiveQuizFindManyArgs>(args?: SelectSubset<T, LiveQuizFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a LiveQuiz.
+     * @param {LiveQuizCreateArgs} args - Arguments to create a LiveQuiz.
+     * @example
+     * // Create one LiveQuiz
+     * const LiveQuiz = await prisma.liveQuiz.create({
+     *   data: {
+     *     // ... data to create a LiveQuiz
+     *   }
+     * })
+     * 
+     */
+    create<T extends LiveQuizCreateArgs>(args: SelectSubset<T, LiveQuizCreateArgs<ExtArgs>>): Prisma__LiveQuizClient<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many LiveQuizs.
+     * @param {LiveQuizCreateManyArgs} args - Arguments to create many LiveQuizs.
+     * @example
+     * // Create many LiveQuizs
+     * const liveQuiz = await prisma.liveQuiz.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LiveQuizCreateManyArgs>(args?: SelectSubset<T, LiveQuizCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many LiveQuizs and returns the data saved in the database.
+     * @param {LiveQuizCreateManyAndReturnArgs} args - Arguments to create many LiveQuizs.
+     * @example
+     * // Create many LiveQuizs
+     * const liveQuiz = await prisma.liveQuiz.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many LiveQuizs and only return the `id`
+     * const liveQuizWithIdOnly = await prisma.liveQuiz.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LiveQuizCreateManyAndReturnArgs>(args?: SelectSubset<T, LiveQuizCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a LiveQuiz.
+     * @param {LiveQuizDeleteArgs} args - Arguments to delete one LiveQuiz.
+     * @example
+     * // Delete one LiveQuiz
+     * const LiveQuiz = await prisma.liveQuiz.delete({
+     *   where: {
+     *     // ... filter to delete one LiveQuiz
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LiveQuizDeleteArgs>(args: SelectSubset<T, LiveQuizDeleteArgs<ExtArgs>>): Prisma__LiveQuizClient<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one LiveQuiz.
+     * @param {LiveQuizUpdateArgs} args - Arguments to update one LiveQuiz.
+     * @example
+     * // Update one LiveQuiz
+     * const liveQuiz = await prisma.liveQuiz.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LiveQuizUpdateArgs>(args: SelectSubset<T, LiveQuizUpdateArgs<ExtArgs>>): Prisma__LiveQuizClient<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more LiveQuizs.
+     * @param {LiveQuizDeleteManyArgs} args - Arguments to filter LiveQuizs to delete.
+     * @example
+     * // Delete a few LiveQuizs
+     * const { count } = await prisma.liveQuiz.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LiveQuizDeleteManyArgs>(args?: SelectSubset<T, LiveQuizDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LiveQuizs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveQuizUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LiveQuizs
+     * const liveQuiz = await prisma.liveQuiz.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LiveQuizUpdateManyArgs>(args: SelectSubset<T, LiveQuizUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one LiveQuiz.
+     * @param {LiveQuizUpsertArgs} args - Arguments to update or create a LiveQuiz.
+     * @example
+     * // Update or create a LiveQuiz
+     * const liveQuiz = await prisma.liveQuiz.upsert({
+     *   create: {
+     *     // ... data to create a LiveQuiz
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LiveQuiz we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LiveQuizUpsertArgs>(args: SelectSubset<T, LiveQuizUpsertArgs<ExtArgs>>): Prisma__LiveQuizClient<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of LiveQuizs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveQuizCountArgs} args - Arguments to filter LiveQuizs to count.
+     * @example
+     * // Count the number of LiveQuizs
+     * const count = await prisma.liveQuiz.count({
+     *   where: {
+     *     // ... the filter for the LiveQuizs we want to count
+     *   }
+     * })
+    **/
+    count<T extends LiveQuizCountArgs>(
+      args?: Subset<T, LiveQuizCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LiveQuizCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LiveQuiz.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveQuizAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LiveQuizAggregateArgs>(args: Subset<T, LiveQuizAggregateArgs>): Prisma.PrismaPromise<GetLiveQuizAggregateType<T>>
+
+    /**
+     * Group by LiveQuiz.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveQuizGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LiveQuizGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LiveQuizGroupByArgs['orderBy'] }
+        : { orderBy?: LiveQuizGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LiveQuizGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLiveQuizGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LiveQuiz model
+   */
+  readonly fields: LiveQuizFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LiveQuiz.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LiveQuizClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    session<T extends LiveSessionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LiveSessionDefaultArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    answers<T extends LiveQuiz$answersArgs<ExtArgs> = {}>(args?: Subset<T, LiveQuiz$answersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LiveQuiz model
+   */ 
+  interface LiveQuizFieldRefs {
+    readonly id: FieldRef<"LiveQuiz", 'Int'>
+    readonly sessionId: FieldRef<"LiveQuiz", 'Int'>
+    readonly title: FieldRef<"LiveQuiz", 'String'>
+    readonly questions: FieldRef<"LiveQuiz", 'String'>
+    readonly status: FieldRef<"LiveQuiz", 'String'>
+    readonly currentIndex: FieldRef<"LiveQuiz", 'Int'>
+    readonly bossMaxHp: FieldRef<"LiveQuiz", 'Int'>
+    readonly createdAt: FieldRef<"LiveQuiz", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LiveQuiz findUnique
+   */
+  export type LiveQuizFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveQuiz to fetch.
+     */
+    where: LiveQuizWhereUniqueInput
+  }
+
+  /**
+   * LiveQuiz findUniqueOrThrow
+   */
+  export type LiveQuizFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveQuiz to fetch.
+     */
+    where: LiveQuizWhereUniqueInput
+  }
+
+  /**
+   * LiveQuiz findFirst
+   */
+  export type LiveQuizFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveQuiz to fetch.
+     */
+    where?: LiveQuizWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveQuizs to fetch.
+     */
+    orderBy?: LiveQuizOrderByWithRelationInput | LiveQuizOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LiveQuizs.
+     */
+    cursor?: LiveQuizWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveQuizs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveQuizs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LiveQuizs.
+     */
+    distinct?: LiveQuizScalarFieldEnum | LiveQuizScalarFieldEnum[]
+  }
+
+  /**
+   * LiveQuiz findFirstOrThrow
+   */
+  export type LiveQuizFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveQuiz to fetch.
+     */
+    where?: LiveQuizWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveQuizs to fetch.
+     */
+    orderBy?: LiveQuizOrderByWithRelationInput | LiveQuizOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LiveQuizs.
+     */
+    cursor?: LiveQuizWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveQuizs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveQuizs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LiveQuizs.
+     */
+    distinct?: LiveQuizScalarFieldEnum | LiveQuizScalarFieldEnum[]
+  }
+
+  /**
+   * LiveQuiz findMany
+   */
+  export type LiveQuizFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveQuizs to fetch.
+     */
+    where?: LiveQuizWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveQuizs to fetch.
+     */
+    orderBy?: LiveQuizOrderByWithRelationInput | LiveQuizOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LiveQuizs.
+     */
+    cursor?: LiveQuizWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveQuizs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveQuizs.
+     */
+    skip?: number
+    distinct?: LiveQuizScalarFieldEnum | LiveQuizScalarFieldEnum[]
+  }
+
+  /**
+   * LiveQuiz create
+   */
+  export type LiveQuizCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizInclude<ExtArgs> | null
+    /**
+     * The data needed to create a LiveQuiz.
+     */
+    data: XOR<LiveQuizCreateInput, LiveQuizUncheckedCreateInput>
+  }
+
+  /**
+   * LiveQuiz createMany
+   */
+  export type LiveQuizCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LiveQuizs.
+     */
+    data: LiveQuizCreateManyInput | LiveQuizCreateManyInput[]
+  }
+
+  /**
+   * LiveQuiz createManyAndReturn
+   */
+  export type LiveQuizCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many LiveQuizs.
+     */
+    data: LiveQuizCreateManyInput | LiveQuizCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * LiveQuiz update
+   */
+  export type LiveQuizUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizInclude<ExtArgs> | null
+    /**
+     * The data needed to update a LiveQuiz.
+     */
+    data: XOR<LiveQuizUpdateInput, LiveQuizUncheckedUpdateInput>
+    /**
+     * Choose, which LiveQuiz to update.
+     */
+    where: LiveQuizWhereUniqueInput
+  }
+
+  /**
+   * LiveQuiz updateMany
+   */
+  export type LiveQuizUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LiveQuizs.
+     */
+    data: XOR<LiveQuizUpdateManyMutationInput, LiveQuizUncheckedUpdateManyInput>
+    /**
+     * Filter which LiveQuizs to update
+     */
+    where?: LiveQuizWhereInput
+  }
+
+  /**
+   * LiveQuiz upsert
+   */
+  export type LiveQuizUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizInclude<ExtArgs> | null
+    /**
+     * The filter to search for the LiveQuiz to update in case it exists.
+     */
+    where: LiveQuizWhereUniqueInput
+    /**
+     * In case the LiveQuiz found by the `where` argument doesn't exist, create a new LiveQuiz with this data.
+     */
+    create: XOR<LiveQuizCreateInput, LiveQuizUncheckedCreateInput>
+    /**
+     * In case the LiveQuiz was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LiveQuizUpdateInput, LiveQuizUncheckedUpdateInput>
+  }
+
+  /**
+   * LiveQuiz delete
+   */
+  export type LiveQuizDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizInclude<ExtArgs> | null
+    /**
+     * Filter which LiveQuiz to delete.
+     */
+    where: LiveQuizWhereUniqueInput
+  }
+
+  /**
+   * LiveQuiz deleteMany
+   */
+  export type LiveQuizDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LiveQuizs to delete
+     */
+    where?: LiveQuizWhereInput
+  }
+
+  /**
+   * LiveQuiz.answers
+   */
+  export type LiveQuiz$answersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+    where?: LiveAnswerWhereInput
+    orderBy?: LiveAnswerOrderByWithRelationInput | LiveAnswerOrderByWithRelationInput[]
+    cursor?: LiveAnswerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LiveAnswerScalarFieldEnum | LiveAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * LiveQuiz without action
+   */
+  export type LiveQuizDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveQuiz
+     */
+    select?: LiveQuizSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveQuizInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model LiveAnswer
+   */
+
+  export type AggregateLiveAnswer = {
+    _count: LiveAnswerCountAggregateOutputType | null
+    _avg: LiveAnswerAvgAggregateOutputType | null
+    _sum: LiveAnswerSumAggregateOutputType | null
+    _min: LiveAnswerMinAggregateOutputType | null
+    _max: LiveAnswerMaxAggregateOutputType | null
+  }
+
+  export type LiveAnswerAvgAggregateOutputType = {
+    id: number | null
+    quizId: number | null
+    userId: number | null
+    questionIndex: number | null
+    selectedIndex: number | null
+  }
+
+  export type LiveAnswerSumAggregateOutputType = {
+    id: number | null
+    quizId: number | null
+    userId: number | null
+    questionIndex: number | null
+    selectedIndex: number | null
+  }
+
+  export type LiveAnswerMinAggregateOutputType = {
+    id: number | null
+    quizId: number | null
+    userId: number | null
+    questionIndex: number | null
+    selectedIndex: number | null
+    correct: boolean | null
+    answeredAt: Date | null
+  }
+
+  export type LiveAnswerMaxAggregateOutputType = {
+    id: number | null
+    quizId: number | null
+    userId: number | null
+    questionIndex: number | null
+    selectedIndex: number | null
+    correct: boolean | null
+    answeredAt: Date | null
+  }
+
+  export type LiveAnswerCountAggregateOutputType = {
+    id: number
+    quizId: number
+    userId: number
+    questionIndex: number
+    selectedIndex: number
+    correct: number
+    answeredAt: number
+    _all: number
+  }
+
+
+  export type LiveAnswerAvgAggregateInputType = {
+    id?: true
+    quizId?: true
+    userId?: true
+    questionIndex?: true
+    selectedIndex?: true
+  }
+
+  export type LiveAnswerSumAggregateInputType = {
+    id?: true
+    quizId?: true
+    userId?: true
+    questionIndex?: true
+    selectedIndex?: true
+  }
+
+  export type LiveAnswerMinAggregateInputType = {
+    id?: true
+    quizId?: true
+    userId?: true
+    questionIndex?: true
+    selectedIndex?: true
+    correct?: true
+    answeredAt?: true
+  }
+
+  export type LiveAnswerMaxAggregateInputType = {
+    id?: true
+    quizId?: true
+    userId?: true
+    questionIndex?: true
+    selectedIndex?: true
+    correct?: true
+    answeredAt?: true
+  }
+
+  export type LiveAnswerCountAggregateInputType = {
+    id?: true
+    quizId?: true
+    userId?: true
+    questionIndex?: true
+    selectedIndex?: true
+    correct?: true
+    answeredAt?: true
+    _all?: true
+  }
+
+  export type LiveAnswerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LiveAnswer to aggregate.
+     */
+    where?: LiveAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveAnswers to fetch.
+     */
+    orderBy?: LiveAnswerOrderByWithRelationInput | LiveAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LiveAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveAnswers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LiveAnswers
+    **/
+    _count?: true | LiveAnswerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LiveAnswerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LiveAnswerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LiveAnswerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LiveAnswerMaxAggregateInputType
+  }
+
+  export type GetLiveAnswerAggregateType<T extends LiveAnswerAggregateArgs> = {
+        [P in keyof T & keyof AggregateLiveAnswer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLiveAnswer[P]>
+      : GetScalarType<T[P], AggregateLiveAnswer[P]>
+  }
+
+
+
+
+  export type LiveAnswerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LiveAnswerWhereInput
+    orderBy?: LiveAnswerOrderByWithAggregationInput | LiveAnswerOrderByWithAggregationInput[]
+    by: LiveAnswerScalarFieldEnum[] | LiveAnswerScalarFieldEnum
+    having?: LiveAnswerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LiveAnswerCountAggregateInputType | true
+    _avg?: LiveAnswerAvgAggregateInputType
+    _sum?: LiveAnswerSumAggregateInputType
+    _min?: LiveAnswerMinAggregateInputType
+    _max?: LiveAnswerMaxAggregateInputType
+  }
+
+  export type LiveAnswerGroupByOutputType = {
+    id: number
+    quizId: number
+    userId: number
+    questionIndex: number
+    selectedIndex: number
+    correct: boolean
+    answeredAt: Date
+    _count: LiveAnswerCountAggregateOutputType | null
+    _avg: LiveAnswerAvgAggregateOutputType | null
+    _sum: LiveAnswerSumAggregateOutputType | null
+    _min: LiveAnswerMinAggregateOutputType | null
+    _max: LiveAnswerMaxAggregateOutputType | null
+  }
+
+  type GetLiveAnswerGroupByPayload<T extends LiveAnswerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LiveAnswerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LiveAnswerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LiveAnswerGroupByOutputType[P]>
+            : GetScalarType<T[P], LiveAnswerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LiveAnswerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quizId?: boolean
+    userId?: boolean
+    questionIndex?: boolean
+    selectedIndex?: boolean
+    correct?: boolean
+    answeredAt?: boolean
+    quiz?: boolean | LiveQuizDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["liveAnswer"]>
+
+  export type LiveAnswerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quizId?: boolean
+    userId?: boolean
+    questionIndex?: boolean
+    selectedIndex?: boolean
+    correct?: boolean
+    answeredAt?: boolean
+    quiz?: boolean | LiveQuizDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["liveAnswer"]>
+
+  export type LiveAnswerSelectScalar = {
+    id?: boolean
+    quizId?: boolean
+    userId?: boolean
+    questionIndex?: boolean
+    selectedIndex?: boolean
+    correct?: boolean
+    answeredAt?: boolean
+  }
+
+  export type LiveAnswerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    quiz?: boolean | LiveQuizDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type LiveAnswerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    quiz?: boolean | LiveQuizDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $LiveAnswerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LiveAnswer"
+    objects: {
+      quiz: Prisma.$LiveQuizPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      quizId: number
+      userId: number
+      questionIndex: number
+      selectedIndex: number
+      correct: boolean
+      answeredAt: Date
+    }, ExtArgs["result"]["liveAnswer"]>
+    composites: {}
+  }
+
+  type LiveAnswerGetPayload<S extends boolean | null | undefined | LiveAnswerDefaultArgs> = $Result.GetResult<Prisma.$LiveAnswerPayload, S>
+
+  type LiveAnswerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<LiveAnswerFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: LiveAnswerCountAggregateInputType | true
+    }
+
+  export interface LiveAnswerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LiveAnswer'], meta: { name: 'LiveAnswer' } }
+    /**
+     * Find zero or one LiveAnswer that matches the filter.
+     * @param {LiveAnswerFindUniqueArgs} args - Arguments to find a LiveAnswer
+     * @example
+     * // Get one LiveAnswer
+     * const liveAnswer = await prisma.liveAnswer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LiveAnswerFindUniqueArgs>(args: SelectSubset<T, LiveAnswerFindUniqueArgs<ExtArgs>>): Prisma__LiveAnswerClient<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one LiveAnswer that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {LiveAnswerFindUniqueOrThrowArgs} args - Arguments to find a LiveAnswer
+     * @example
+     * // Get one LiveAnswer
+     * const liveAnswer = await prisma.liveAnswer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LiveAnswerFindUniqueOrThrowArgs>(args: SelectSubset<T, LiveAnswerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LiveAnswerClient<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first LiveAnswer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveAnswerFindFirstArgs} args - Arguments to find a LiveAnswer
+     * @example
+     * // Get one LiveAnswer
+     * const liveAnswer = await prisma.liveAnswer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LiveAnswerFindFirstArgs>(args?: SelectSubset<T, LiveAnswerFindFirstArgs<ExtArgs>>): Prisma__LiveAnswerClient<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first LiveAnswer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveAnswerFindFirstOrThrowArgs} args - Arguments to find a LiveAnswer
+     * @example
+     * // Get one LiveAnswer
+     * const liveAnswer = await prisma.liveAnswer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LiveAnswerFindFirstOrThrowArgs>(args?: SelectSubset<T, LiveAnswerFindFirstOrThrowArgs<ExtArgs>>): Prisma__LiveAnswerClient<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more LiveAnswers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveAnswerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LiveAnswers
+     * const liveAnswers = await prisma.liveAnswer.findMany()
+     * 
+     * // Get first 10 LiveAnswers
+     * const liveAnswers = await prisma.liveAnswer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const liveAnswerWithIdOnly = await prisma.liveAnswer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LiveAnswerFindManyArgs>(args?: SelectSubset<T, LiveAnswerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a LiveAnswer.
+     * @param {LiveAnswerCreateArgs} args - Arguments to create a LiveAnswer.
+     * @example
+     * // Create one LiveAnswer
+     * const LiveAnswer = await prisma.liveAnswer.create({
+     *   data: {
+     *     // ... data to create a LiveAnswer
+     *   }
+     * })
+     * 
+     */
+    create<T extends LiveAnswerCreateArgs>(args: SelectSubset<T, LiveAnswerCreateArgs<ExtArgs>>): Prisma__LiveAnswerClient<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many LiveAnswers.
+     * @param {LiveAnswerCreateManyArgs} args - Arguments to create many LiveAnswers.
+     * @example
+     * // Create many LiveAnswers
+     * const liveAnswer = await prisma.liveAnswer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LiveAnswerCreateManyArgs>(args?: SelectSubset<T, LiveAnswerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many LiveAnswers and returns the data saved in the database.
+     * @param {LiveAnswerCreateManyAndReturnArgs} args - Arguments to create many LiveAnswers.
+     * @example
+     * // Create many LiveAnswers
+     * const liveAnswer = await prisma.liveAnswer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many LiveAnswers and only return the `id`
+     * const liveAnswerWithIdOnly = await prisma.liveAnswer.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LiveAnswerCreateManyAndReturnArgs>(args?: SelectSubset<T, LiveAnswerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a LiveAnswer.
+     * @param {LiveAnswerDeleteArgs} args - Arguments to delete one LiveAnswer.
+     * @example
+     * // Delete one LiveAnswer
+     * const LiveAnswer = await prisma.liveAnswer.delete({
+     *   where: {
+     *     // ... filter to delete one LiveAnswer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LiveAnswerDeleteArgs>(args: SelectSubset<T, LiveAnswerDeleteArgs<ExtArgs>>): Prisma__LiveAnswerClient<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one LiveAnswer.
+     * @param {LiveAnswerUpdateArgs} args - Arguments to update one LiveAnswer.
+     * @example
+     * // Update one LiveAnswer
+     * const liveAnswer = await prisma.liveAnswer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LiveAnswerUpdateArgs>(args: SelectSubset<T, LiveAnswerUpdateArgs<ExtArgs>>): Prisma__LiveAnswerClient<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more LiveAnswers.
+     * @param {LiveAnswerDeleteManyArgs} args - Arguments to filter LiveAnswers to delete.
+     * @example
+     * // Delete a few LiveAnswers
+     * const { count } = await prisma.liveAnswer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LiveAnswerDeleteManyArgs>(args?: SelectSubset<T, LiveAnswerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LiveAnswers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveAnswerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LiveAnswers
+     * const liveAnswer = await prisma.liveAnswer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LiveAnswerUpdateManyArgs>(args: SelectSubset<T, LiveAnswerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one LiveAnswer.
+     * @param {LiveAnswerUpsertArgs} args - Arguments to update or create a LiveAnswer.
+     * @example
+     * // Update or create a LiveAnswer
+     * const liveAnswer = await prisma.liveAnswer.upsert({
+     *   create: {
+     *     // ... data to create a LiveAnswer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LiveAnswer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LiveAnswerUpsertArgs>(args: SelectSubset<T, LiveAnswerUpsertArgs<ExtArgs>>): Prisma__LiveAnswerClient<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of LiveAnswers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveAnswerCountArgs} args - Arguments to filter LiveAnswers to count.
+     * @example
+     * // Count the number of LiveAnswers
+     * const count = await prisma.liveAnswer.count({
+     *   where: {
+     *     // ... the filter for the LiveAnswers we want to count
+     *   }
+     * })
+    **/
+    count<T extends LiveAnswerCountArgs>(
+      args?: Subset<T, LiveAnswerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LiveAnswerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LiveAnswer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveAnswerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LiveAnswerAggregateArgs>(args: Subset<T, LiveAnswerAggregateArgs>): Prisma.PrismaPromise<GetLiveAnswerAggregateType<T>>
+
+    /**
+     * Group by LiveAnswer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LiveAnswerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LiveAnswerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LiveAnswerGroupByArgs['orderBy'] }
+        : { orderBy?: LiveAnswerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LiveAnswerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLiveAnswerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LiveAnswer model
+   */
+  readonly fields: LiveAnswerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LiveAnswer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LiveAnswerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    quiz<T extends LiveQuizDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LiveQuizDefaultArgs<ExtArgs>>): Prisma__LiveQuizClient<$Result.GetResult<Prisma.$LiveQuizPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LiveAnswer model
+   */ 
+  interface LiveAnswerFieldRefs {
+    readonly id: FieldRef<"LiveAnswer", 'Int'>
+    readonly quizId: FieldRef<"LiveAnswer", 'Int'>
+    readonly userId: FieldRef<"LiveAnswer", 'Int'>
+    readonly questionIndex: FieldRef<"LiveAnswer", 'Int'>
+    readonly selectedIndex: FieldRef<"LiveAnswer", 'Int'>
+    readonly correct: FieldRef<"LiveAnswer", 'Boolean'>
+    readonly answeredAt: FieldRef<"LiveAnswer", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LiveAnswer findUnique
+   */
+  export type LiveAnswerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveAnswer to fetch.
+     */
+    where: LiveAnswerWhereUniqueInput
+  }
+
+  /**
+   * LiveAnswer findUniqueOrThrow
+   */
+  export type LiveAnswerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveAnswer to fetch.
+     */
+    where: LiveAnswerWhereUniqueInput
+  }
+
+  /**
+   * LiveAnswer findFirst
+   */
+  export type LiveAnswerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveAnswer to fetch.
+     */
+    where?: LiveAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveAnswers to fetch.
+     */
+    orderBy?: LiveAnswerOrderByWithRelationInput | LiveAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LiveAnswers.
+     */
+    cursor?: LiveAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveAnswers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LiveAnswers.
+     */
+    distinct?: LiveAnswerScalarFieldEnum | LiveAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * LiveAnswer findFirstOrThrow
+   */
+  export type LiveAnswerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveAnswer to fetch.
+     */
+    where?: LiveAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveAnswers to fetch.
+     */
+    orderBy?: LiveAnswerOrderByWithRelationInput | LiveAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LiveAnswers.
+     */
+    cursor?: LiveAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveAnswers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LiveAnswers.
+     */
+    distinct?: LiveAnswerScalarFieldEnum | LiveAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * LiveAnswer findMany
+   */
+  export type LiveAnswerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+    /**
+     * Filter, which LiveAnswers to fetch.
+     */
+    where?: LiveAnswerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LiveAnswers to fetch.
+     */
+    orderBy?: LiveAnswerOrderByWithRelationInput | LiveAnswerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LiveAnswers.
+     */
+    cursor?: LiveAnswerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LiveAnswers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LiveAnswers.
+     */
+    skip?: number
+    distinct?: LiveAnswerScalarFieldEnum | LiveAnswerScalarFieldEnum[]
+  }
+
+  /**
+   * LiveAnswer create
+   */
+  export type LiveAnswerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a LiveAnswer.
+     */
+    data: XOR<LiveAnswerCreateInput, LiveAnswerUncheckedCreateInput>
+  }
+
+  /**
+   * LiveAnswer createMany
+   */
+  export type LiveAnswerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LiveAnswers.
+     */
+    data: LiveAnswerCreateManyInput | LiveAnswerCreateManyInput[]
+  }
+
+  /**
+   * LiveAnswer createManyAndReturn
+   */
+  export type LiveAnswerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many LiveAnswers.
+     */
+    data: LiveAnswerCreateManyInput | LiveAnswerCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * LiveAnswer update
+   */
+  export type LiveAnswerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a LiveAnswer.
+     */
+    data: XOR<LiveAnswerUpdateInput, LiveAnswerUncheckedUpdateInput>
+    /**
+     * Choose, which LiveAnswer to update.
+     */
+    where: LiveAnswerWhereUniqueInput
+  }
+
+  /**
+   * LiveAnswer updateMany
+   */
+  export type LiveAnswerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LiveAnswers.
+     */
+    data: XOR<LiveAnswerUpdateManyMutationInput, LiveAnswerUncheckedUpdateManyInput>
+    /**
+     * Filter which LiveAnswers to update
+     */
+    where?: LiveAnswerWhereInput
+  }
+
+  /**
+   * LiveAnswer upsert
+   */
+  export type LiveAnswerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the LiveAnswer to update in case it exists.
+     */
+    where: LiveAnswerWhereUniqueInput
+    /**
+     * In case the LiveAnswer found by the `where` argument doesn't exist, create a new LiveAnswer with this data.
+     */
+    create: XOR<LiveAnswerCreateInput, LiveAnswerUncheckedCreateInput>
+    /**
+     * In case the LiveAnswer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LiveAnswerUpdateInput, LiveAnswerUncheckedUpdateInput>
+  }
+
+  /**
+   * LiveAnswer delete
+   */
+  export type LiveAnswerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+    /**
+     * Filter which LiveAnswer to delete.
+     */
+    where: LiveAnswerWhereUniqueInput
+  }
+
+  /**
+   * LiveAnswer deleteMany
+   */
+  export type LiveAnswerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LiveAnswers to delete
+     */
+    where?: LiveAnswerWhereInput
+  }
+
+  /**
+   * LiveAnswer without action
+   */
+  export type LiveAnswerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LiveAnswer
+     */
+    select?: LiveAnswerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LiveAnswerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UnderstandingVote
+   */
+
+  export type AggregateUnderstandingVote = {
+    _count: UnderstandingVoteCountAggregateOutputType | null
+    _avg: UnderstandingVoteAvgAggregateOutputType | null
+    _sum: UnderstandingVoteSumAggregateOutputType | null
+    _min: UnderstandingVoteMinAggregateOutputType | null
+    _max: UnderstandingVoteMaxAggregateOutputType | null
+  }
+
+  export type UnderstandingVoteAvgAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    userId: number | null
+    level: number | null
+  }
+
+  export type UnderstandingVoteSumAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    userId: number | null
+    level: number | null
+  }
+
+  export type UnderstandingVoteMinAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    userId: number | null
+    level: number | null
+    updatedAt: Date | null
+  }
+
+  export type UnderstandingVoteMaxAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    userId: number | null
+    level: number | null
+    updatedAt: Date | null
+  }
+
+  export type UnderstandingVoteCountAggregateOutputType = {
+    id: number
+    sessionId: number
+    userId: number
+    level: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UnderstandingVoteAvgAggregateInputType = {
+    id?: true
+    sessionId?: true
+    userId?: true
+    level?: true
+  }
+
+  export type UnderstandingVoteSumAggregateInputType = {
+    id?: true
+    sessionId?: true
+    userId?: true
+    level?: true
+  }
+
+  export type UnderstandingVoteMinAggregateInputType = {
+    id?: true
+    sessionId?: true
+    userId?: true
+    level?: true
+    updatedAt?: true
+  }
+
+  export type UnderstandingVoteMaxAggregateInputType = {
+    id?: true
+    sessionId?: true
+    userId?: true
+    level?: true
+    updatedAt?: true
+  }
+
+  export type UnderstandingVoteCountAggregateInputType = {
+    id?: true
+    sessionId?: true
+    userId?: true
+    level?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UnderstandingVoteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UnderstandingVote to aggregate.
+     */
+    where?: UnderstandingVoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UnderstandingVotes to fetch.
+     */
+    orderBy?: UnderstandingVoteOrderByWithRelationInput | UnderstandingVoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UnderstandingVoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UnderstandingVotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UnderstandingVotes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UnderstandingVotes
+    **/
+    _count?: true | UnderstandingVoteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UnderstandingVoteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UnderstandingVoteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UnderstandingVoteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UnderstandingVoteMaxAggregateInputType
+  }
+
+  export type GetUnderstandingVoteAggregateType<T extends UnderstandingVoteAggregateArgs> = {
+        [P in keyof T & keyof AggregateUnderstandingVote]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUnderstandingVote[P]>
+      : GetScalarType<T[P], AggregateUnderstandingVote[P]>
+  }
+
+
+
+
+  export type UnderstandingVoteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UnderstandingVoteWhereInput
+    orderBy?: UnderstandingVoteOrderByWithAggregationInput | UnderstandingVoteOrderByWithAggregationInput[]
+    by: UnderstandingVoteScalarFieldEnum[] | UnderstandingVoteScalarFieldEnum
+    having?: UnderstandingVoteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UnderstandingVoteCountAggregateInputType | true
+    _avg?: UnderstandingVoteAvgAggregateInputType
+    _sum?: UnderstandingVoteSumAggregateInputType
+    _min?: UnderstandingVoteMinAggregateInputType
+    _max?: UnderstandingVoteMaxAggregateInputType
+  }
+
+  export type UnderstandingVoteGroupByOutputType = {
+    id: number
+    sessionId: number
+    userId: number
+    level: number
+    updatedAt: Date
+    _count: UnderstandingVoteCountAggregateOutputType | null
+    _avg: UnderstandingVoteAvgAggregateOutputType | null
+    _sum: UnderstandingVoteSumAggregateOutputType | null
+    _min: UnderstandingVoteMinAggregateOutputType | null
+    _max: UnderstandingVoteMaxAggregateOutputType | null
+  }
+
+  type GetUnderstandingVoteGroupByPayload<T extends UnderstandingVoteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UnderstandingVoteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UnderstandingVoteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UnderstandingVoteGroupByOutputType[P]>
+            : GetScalarType<T[P], UnderstandingVoteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UnderstandingVoteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionId?: boolean
+    userId?: boolean
+    level?: boolean
+    updatedAt?: boolean
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["understandingVote"]>
+
+  export type UnderstandingVoteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionId?: boolean
+    userId?: boolean
+    level?: boolean
+    updatedAt?: boolean
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["understandingVote"]>
+
+  export type UnderstandingVoteSelectScalar = {
+    id?: boolean
+    sessionId?: boolean
+    userId?: boolean
+    level?: boolean
+    updatedAt?: boolean
+  }
+
+  export type UnderstandingVoteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UnderstandingVoteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $UnderstandingVotePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UnderstandingVote"
+    objects: {
+      session: Prisma.$LiveSessionPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      sessionId: number
+      userId: number
+      level: number
+      updatedAt: Date
+    }, ExtArgs["result"]["understandingVote"]>
+    composites: {}
+  }
+
+  type UnderstandingVoteGetPayload<S extends boolean | null | undefined | UnderstandingVoteDefaultArgs> = $Result.GetResult<Prisma.$UnderstandingVotePayload, S>
+
+  type UnderstandingVoteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<UnderstandingVoteFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: UnderstandingVoteCountAggregateInputType | true
+    }
+
+  export interface UnderstandingVoteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UnderstandingVote'], meta: { name: 'UnderstandingVote' } }
+    /**
+     * Find zero or one UnderstandingVote that matches the filter.
+     * @param {UnderstandingVoteFindUniqueArgs} args - Arguments to find a UnderstandingVote
+     * @example
+     * // Get one UnderstandingVote
+     * const understandingVote = await prisma.understandingVote.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UnderstandingVoteFindUniqueArgs>(args: SelectSubset<T, UnderstandingVoteFindUniqueArgs<ExtArgs>>): Prisma__UnderstandingVoteClient<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one UnderstandingVote that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {UnderstandingVoteFindUniqueOrThrowArgs} args - Arguments to find a UnderstandingVote
+     * @example
+     * // Get one UnderstandingVote
+     * const understandingVote = await prisma.understandingVote.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UnderstandingVoteFindUniqueOrThrowArgs>(args: SelectSubset<T, UnderstandingVoteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UnderstandingVoteClient<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first UnderstandingVote that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnderstandingVoteFindFirstArgs} args - Arguments to find a UnderstandingVote
+     * @example
+     * // Get one UnderstandingVote
+     * const understandingVote = await prisma.understandingVote.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UnderstandingVoteFindFirstArgs>(args?: SelectSubset<T, UnderstandingVoteFindFirstArgs<ExtArgs>>): Prisma__UnderstandingVoteClient<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first UnderstandingVote that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnderstandingVoteFindFirstOrThrowArgs} args - Arguments to find a UnderstandingVote
+     * @example
+     * // Get one UnderstandingVote
+     * const understandingVote = await prisma.understandingVote.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UnderstandingVoteFindFirstOrThrowArgs>(args?: SelectSubset<T, UnderstandingVoteFindFirstOrThrowArgs<ExtArgs>>): Prisma__UnderstandingVoteClient<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more UnderstandingVotes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnderstandingVoteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UnderstandingVotes
+     * const understandingVotes = await prisma.understandingVote.findMany()
+     * 
+     * // Get first 10 UnderstandingVotes
+     * const understandingVotes = await prisma.understandingVote.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const understandingVoteWithIdOnly = await prisma.understandingVote.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UnderstandingVoteFindManyArgs>(args?: SelectSubset<T, UnderstandingVoteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a UnderstandingVote.
+     * @param {UnderstandingVoteCreateArgs} args - Arguments to create a UnderstandingVote.
+     * @example
+     * // Create one UnderstandingVote
+     * const UnderstandingVote = await prisma.understandingVote.create({
+     *   data: {
+     *     // ... data to create a UnderstandingVote
+     *   }
+     * })
+     * 
+     */
+    create<T extends UnderstandingVoteCreateArgs>(args: SelectSubset<T, UnderstandingVoteCreateArgs<ExtArgs>>): Prisma__UnderstandingVoteClient<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many UnderstandingVotes.
+     * @param {UnderstandingVoteCreateManyArgs} args - Arguments to create many UnderstandingVotes.
+     * @example
+     * // Create many UnderstandingVotes
+     * const understandingVote = await prisma.understandingVote.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UnderstandingVoteCreateManyArgs>(args?: SelectSubset<T, UnderstandingVoteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UnderstandingVotes and returns the data saved in the database.
+     * @param {UnderstandingVoteCreateManyAndReturnArgs} args - Arguments to create many UnderstandingVotes.
+     * @example
+     * // Create many UnderstandingVotes
+     * const understandingVote = await prisma.understandingVote.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UnderstandingVotes and only return the `id`
+     * const understandingVoteWithIdOnly = await prisma.understandingVote.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UnderstandingVoteCreateManyAndReturnArgs>(args?: SelectSubset<T, UnderstandingVoteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a UnderstandingVote.
+     * @param {UnderstandingVoteDeleteArgs} args - Arguments to delete one UnderstandingVote.
+     * @example
+     * // Delete one UnderstandingVote
+     * const UnderstandingVote = await prisma.understandingVote.delete({
+     *   where: {
+     *     // ... filter to delete one UnderstandingVote
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UnderstandingVoteDeleteArgs>(args: SelectSubset<T, UnderstandingVoteDeleteArgs<ExtArgs>>): Prisma__UnderstandingVoteClient<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one UnderstandingVote.
+     * @param {UnderstandingVoteUpdateArgs} args - Arguments to update one UnderstandingVote.
+     * @example
+     * // Update one UnderstandingVote
+     * const understandingVote = await prisma.understandingVote.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UnderstandingVoteUpdateArgs>(args: SelectSubset<T, UnderstandingVoteUpdateArgs<ExtArgs>>): Prisma__UnderstandingVoteClient<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more UnderstandingVotes.
+     * @param {UnderstandingVoteDeleteManyArgs} args - Arguments to filter UnderstandingVotes to delete.
+     * @example
+     * // Delete a few UnderstandingVotes
+     * const { count } = await prisma.understandingVote.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UnderstandingVoteDeleteManyArgs>(args?: SelectSubset<T, UnderstandingVoteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UnderstandingVotes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnderstandingVoteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UnderstandingVotes
+     * const understandingVote = await prisma.understandingVote.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UnderstandingVoteUpdateManyArgs>(args: SelectSubset<T, UnderstandingVoteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one UnderstandingVote.
+     * @param {UnderstandingVoteUpsertArgs} args - Arguments to update or create a UnderstandingVote.
+     * @example
+     * // Update or create a UnderstandingVote
+     * const understandingVote = await prisma.understandingVote.upsert({
+     *   create: {
+     *     // ... data to create a UnderstandingVote
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UnderstandingVote we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UnderstandingVoteUpsertArgs>(args: SelectSubset<T, UnderstandingVoteUpsertArgs<ExtArgs>>): Prisma__UnderstandingVoteClient<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of UnderstandingVotes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnderstandingVoteCountArgs} args - Arguments to filter UnderstandingVotes to count.
+     * @example
+     * // Count the number of UnderstandingVotes
+     * const count = await prisma.understandingVote.count({
+     *   where: {
+     *     // ... the filter for the UnderstandingVotes we want to count
+     *   }
+     * })
+    **/
+    count<T extends UnderstandingVoteCountArgs>(
+      args?: Subset<T, UnderstandingVoteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UnderstandingVoteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UnderstandingVote.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnderstandingVoteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UnderstandingVoteAggregateArgs>(args: Subset<T, UnderstandingVoteAggregateArgs>): Prisma.PrismaPromise<GetUnderstandingVoteAggregateType<T>>
+
+    /**
+     * Group by UnderstandingVote.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnderstandingVoteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UnderstandingVoteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UnderstandingVoteGroupByArgs['orderBy'] }
+        : { orderBy?: UnderstandingVoteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UnderstandingVoteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUnderstandingVoteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UnderstandingVote model
+   */
+  readonly fields: UnderstandingVoteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UnderstandingVote.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UnderstandingVoteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    session<T extends LiveSessionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LiveSessionDefaultArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UnderstandingVote model
+   */ 
+  interface UnderstandingVoteFieldRefs {
+    readonly id: FieldRef<"UnderstandingVote", 'Int'>
+    readonly sessionId: FieldRef<"UnderstandingVote", 'Int'>
+    readonly userId: FieldRef<"UnderstandingVote", 'Int'>
+    readonly level: FieldRef<"UnderstandingVote", 'Int'>
+    readonly updatedAt: FieldRef<"UnderstandingVote", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UnderstandingVote findUnique
+   */
+  export type UnderstandingVoteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+    /**
+     * Filter, which UnderstandingVote to fetch.
+     */
+    where: UnderstandingVoteWhereUniqueInput
+  }
+
+  /**
+   * UnderstandingVote findUniqueOrThrow
+   */
+  export type UnderstandingVoteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+    /**
+     * Filter, which UnderstandingVote to fetch.
+     */
+    where: UnderstandingVoteWhereUniqueInput
+  }
+
+  /**
+   * UnderstandingVote findFirst
+   */
+  export type UnderstandingVoteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+    /**
+     * Filter, which UnderstandingVote to fetch.
+     */
+    where?: UnderstandingVoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UnderstandingVotes to fetch.
+     */
+    orderBy?: UnderstandingVoteOrderByWithRelationInput | UnderstandingVoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UnderstandingVotes.
+     */
+    cursor?: UnderstandingVoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UnderstandingVotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UnderstandingVotes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UnderstandingVotes.
+     */
+    distinct?: UnderstandingVoteScalarFieldEnum | UnderstandingVoteScalarFieldEnum[]
+  }
+
+  /**
+   * UnderstandingVote findFirstOrThrow
+   */
+  export type UnderstandingVoteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+    /**
+     * Filter, which UnderstandingVote to fetch.
+     */
+    where?: UnderstandingVoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UnderstandingVotes to fetch.
+     */
+    orderBy?: UnderstandingVoteOrderByWithRelationInput | UnderstandingVoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UnderstandingVotes.
+     */
+    cursor?: UnderstandingVoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UnderstandingVotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UnderstandingVotes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UnderstandingVotes.
+     */
+    distinct?: UnderstandingVoteScalarFieldEnum | UnderstandingVoteScalarFieldEnum[]
+  }
+
+  /**
+   * UnderstandingVote findMany
+   */
+  export type UnderstandingVoteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+    /**
+     * Filter, which UnderstandingVotes to fetch.
+     */
+    where?: UnderstandingVoteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UnderstandingVotes to fetch.
+     */
+    orderBy?: UnderstandingVoteOrderByWithRelationInput | UnderstandingVoteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UnderstandingVotes.
+     */
+    cursor?: UnderstandingVoteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UnderstandingVotes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UnderstandingVotes.
+     */
+    skip?: number
+    distinct?: UnderstandingVoteScalarFieldEnum | UnderstandingVoteScalarFieldEnum[]
+  }
+
+  /**
+   * UnderstandingVote create
+   */
+  export type UnderstandingVoteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UnderstandingVote.
+     */
+    data: XOR<UnderstandingVoteCreateInput, UnderstandingVoteUncheckedCreateInput>
+  }
+
+  /**
+   * UnderstandingVote createMany
+   */
+  export type UnderstandingVoteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UnderstandingVotes.
+     */
+    data: UnderstandingVoteCreateManyInput | UnderstandingVoteCreateManyInput[]
+  }
+
+  /**
+   * UnderstandingVote createManyAndReturn
+   */
+  export type UnderstandingVoteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many UnderstandingVotes.
+     */
+    data: UnderstandingVoteCreateManyInput | UnderstandingVoteCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UnderstandingVote update
+   */
+  export type UnderstandingVoteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UnderstandingVote.
+     */
+    data: XOR<UnderstandingVoteUpdateInput, UnderstandingVoteUncheckedUpdateInput>
+    /**
+     * Choose, which UnderstandingVote to update.
+     */
+    where: UnderstandingVoteWhereUniqueInput
+  }
+
+  /**
+   * UnderstandingVote updateMany
+   */
+  export type UnderstandingVoteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UnderstandingVotes.
+     */
+    data: XOR<UnderstandingVoteUpdateManyMutationInput, UnderstandingVoteUncheckedUpdateManyInput>
+    /**
+     * Filter which UnderstandingVotes to update
+     */
+    where?: UnderstandingVoteWhereInput
+  }
+
+  /**
+   * UnderstandingVote upsert
+   */
+  export type UnderstandingVoteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UnderstandingVote to update in case it exists.
+     */
+    where: UnderstandingVoteWhereUniqueInput
+    /**
+     * In case the UnderstandingVote found by the `where` argument doesn't exist, create a new UnderstandingVote with this data.
+     */
+    create: XOR<UnderstandingVoteCreateInput, UnderstandingVoteUncheckedCreateInput>
+    /**
+     * In case the UnderstandingVote was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UnderstandingVoteUpdateInput, UnderstandingVoteUncheckedUpdateInput>
+  }
+
+  /**
+   * UnderstandingVote delete
+   */
+  export type UnderstandingVoteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+    /**
+     * Filter which UnderstandingVote to delete.
+     */
+    where: UnderstandingVoteWhereUniqueInput
+  }
+
+  /**
+   * UnderstandingVote deleteMany
+   */
+  export type UnderstandingVoteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UnderstandingVotes to delete
+     */
+    where?: UnderstandingVoteWhereInput
+  }
+
+  /**
+   * UnderstandingVote without action
+   */
+  export type UnderstandingVoteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnderstandingVote
+     */
+    select?: UnderstandingVoteSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnderstandingVoteInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BreakoutGroup
+   */
+
+  export type AggregateBreakoutGroup = {
+    _count: BreakoutGroupCountAggregateOutputType | null
+    _avg: BreakoutGroupAvgAggregateOutputType | null
+    _sum: BreakoutGroupSumAggregateOutputType | null
+    _min: BreakoutGroupMinAggregateOutputType | null
+    _max: BreakoutGroupMaxAggregateOutputType | null
+  }
+
+  export type BreakoutGroupAvgAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+  }
+
+  export type BreakoutGroupSumAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+  }
+
+  export type BreakoutGroupMinAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    name: string | null
+  }
+
+  export type BreakoutGroupMaxAggregateOutputType = {
+    id: number | null
+    sessionId: number | null
+    name: string | null
+  }
+
+  export type BreakoutGroupCountAggregateOutputType = {
+    id: number
+    sessionId: number
+    name: number
+    _all: number
+  }
+
+
+  export type BreakoutGroupAvgAggregateInputType = {
+    id?: true
+    sessionId?: true
+  }
+
+  export type BreakoutGroupSumAggregateInputType = {
+    id?: true
+    sessionId?: true
+  }
+
+  export type BreakoutGroupMinAggregateInputType = {
+    id?: true
+    sessionId?: true
+    name?: true
+  }
+
+  export type BreakoutGroupMaxAggregateInputType = {
+    id?: true
+    sessionId?: true
+    name?: true
+  }
+
+  export type BreakoutGroupCountAggregateInputType = {
+    id?: true
+    sessionId?: true
+    name?: true
+    _all?: true
+  }
+
+  export type BreakoutGroupAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BreakoutGroup to aggregate.
+     */
+    where?: BreakoutGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BreakoutGroups to fetch.
+     */
+    orderBy?: BreakoutGroupOrderByWithRelationInput | BreakoutGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BreakoutGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BreakoutGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BreakoutGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BreakoutGroups
+    **/
+    _count?: true | BreakoutGroupCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BreakoutGroupAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BreakoutGroupSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BreakoutGroupMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BreakoutGroupMaxAggregateInputType
+  }
+
+  export type GetBreakoutGroupAggregateType<T extends BreakoutGroupAggregateArgs> = {
+        [P in keyof T & keyof AggregateBreakoutGroup]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBreakoutGroup[P]>
+      : GetScalarType<T[P], AggregateBreakoutGroup[P]>
+  }
+
+
+
+
+  export type BreakoutGroupGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BreakoutGroupWhereInput
+    orderBy?: BreakoutGroupOrderByWithAggregationInput | BreakoutGroupOrderByWithAggregationInput[]
+    by: BreakoutGroupScalarFieldEnum[] | BreakoutGroupScalarFieldEnum
+    having?: BreakoutGroupScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BreakoutGroupCountAggregateInputType | true
+    _avg?: BreakoutGroupAvgAggregateInputType
+    _sum?: BreakoutGroupSumAggregateInputType
+    _min?: BreakoutGroupMinAggregateInputType
+    _max?: BreakoutGroupMaxAggregateInputType
+  }
+
+  export type BreakoutGroupGroupByOutputType = {
+    id: number
+    sessionId: number
+    name: string
+    _count: BreakoutGroupCountAggregateOutputType | null
+    _avg: BreakoutGroupAvgAggregateOutputType | null
+    _sum: BreakoutGroupSumAggregateOutputType | null
+    _min: BreakoutGroupMinAggregateOutputType | null
+    _max: BreakoutGroupMaxAggregateOutputType | null
+  }
+
+  type GetBreakoutGroupGroupByPayload<T extends BreakoutGroupGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BreakoutGroupGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BreakoutGroupGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BreakoutGroupGroupByOutputType[P]>
+            : GetScalarType<T[P], BreakoutGroupGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BreakoutGroupSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionId?: boolean
+    name?: boolean
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    members?: boolean | BreakoutGroup$membersArgs<ExtArgs>
+    messages?: boolean | BreakoutGroup$messagesArgs<ExtArgs>
+    _count?: boolean | BreakoutGroupCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["breakoutGroup"]>
+
+  export type BreakoutGroupSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionId?: boolean
+    name?: boolean
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["breakoutGroup"]>
+
+  export type BreakoutGroupSelectScalar = {
+    id?: boolean
+    sessionId?: boolean
+    name?: boolean
+  }
+
+  export type BreakoutGroupInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+    members?: boolean | BreakoutGroup$membersArgs<ExtArgs>
+    messages?: boolean | BreakoutGroup$messagesArgs<ExtArgs>
+    _count?: boolean | BreakoutGroupCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BreakoutGroupIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    session?: boolean | LiveSessionDefaultArgs<ExtArgs>
+  }
+
+  export type $BreakoutGroupPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BreakoutGroup"
+    objects: {
+      session: Prisma.$LiveSessionPayload<ExtArgs>
+      members: Prisma.$BreakoutMemberPayload<ExtArgs>[]
+      messages: Prisma.$ChatMessagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      sessionId: number
+      name: string
+    }, ExtArgs["result"]["breakoutGroup"]>
+    composites: {}
+  }
+
+  type BreakoutGroupGetPayload<S extends boolean | null | undefined | BreakoutGroupDefaultArgs> = $Result.GetResult<Prisma.$BreakoutGroupPayload, S>
+
+  type BreakoutGroupCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<BreakoutGroupFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: BreakoutGroupCountAggregateInputType | true
+    }
+
+  export interface BreakoutGroupDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BreakoutGroup'], meta: { name: 'BreakoutGroup' } }
+    /**
+     * Find zero or one BreakoutGroup that matches the filter.
+     * @param {BreakoutGroupFindUniqueArgs} args - Arguments to find a BreakoutGroup
+     * @example
+     * // Get one BreakoutGroup
+     * const breakoutGroup = await prisma.breakoutGroup.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BreakoutGroupFindUniqueArgs>(args: SelectSubset<T, BreakoutGroupFindUniqueArgs<ExtArgs>>): Prisma__BreakoutGroupClient<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one BreakoutGroup that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {BreakoutGroupFindUniqueOrThrowArgs} args - Arguments to find a BreakoutGroup
+     * @example
+     * // Get one BreakoutGroup
+     * const breakoutGroup = await prisma.breakoutGroup.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BreakoutGroupFindUniqueOrThrowArgs>(args: SelectSubset<T, BreakoutGroupFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BreakoutGroupClient<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first BreakoutGroup that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutGroupFindFirstArgs} args - Arguments to find a BreakoutGroup
+     * @example
+     * // Get one BreakoutGroup
+     * const breakoutGroup = await prisma.breakoutGroup.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BreakoutGroupFindFirstArgs>(args?: SelectSubset<T, BreakoutGroupFindFirstArgs<ExtArgs>>): Prisma__BreakoutGroupClient<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first BreakoutGroup that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutGroupFindFirstOrThrowArgs} args - Arguments to find a BreakoutGroup
+     * @example
+     * // Get one BreakoutGroup
+     * const breakoutGroup = await prisma.breakoutGroup.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BreakoutGroupFindFirstOrThrowArgs>(args?: SelectSubset<T, BreakoutGroupFindFirstOrThrowArgs<ExtArgs>>): Prisma__BreakoutGroupClient<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more BreakoutGroups that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutGroupFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BreakoutGroups
+     * const breakoutGroups = await prisma.breakoutGroup.findMany()
+     * 
+     * // Get first 10 BreakoutGroups
+     * const breakoutGroups = await prisma.breakoutGroup.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const breakoutGroupWithIdOnly = await prisma.breakoutGroup.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BreakoutGroupFindManyArgs>(args?: SelectSubset<T, BreakoutGroupFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a BreakoutGroup.
+     * @param {BreakoutGroupCreateArgs} args - Arguments to create a BreakoutGroup.
+     * @example
+     * // Create one BreakoutGroup
+     * const BreakoutGroup = await prisma.breakoutGroup.create({
+     *   data: {
+     *     // ... data to create a BreakoutGroup
+     *   }
+     * })
+     * 
+     */
+    create<T extends BreakoutGroupCreateArgs>(args: SelectSubset<T, BreakoutGroupCreateArgs<ExtArgs>>): Prisma__BreakoutGroupClient<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many BreakoutGroups.
+     * @param {BreakoutGroupCreateManyArgs} args - Arguments to create many BreakoutGroups.
+     * @example
+     * // Create many BreakoutGroups
+     * const breakoutGroup = await prisma.breakoutGroup.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BreakoutGroupCreateManyArgs>(args?: SelectSubset<T, BreakoutGroupCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BreakoutGroups and returns the data saved in the database.
+     * @param {BreakoutGroupCreateManyAndReturnArgs} args - Arguments to create many BreakoutGroups.
+     * @example
+     * // Create many BreakoutGroups
+     * const breakoutGroup = await prisma.breakoutGroup.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BreakoutGroups and only return the `id`
+     * const breakoutGroupWithIdOnly = await prisma.breakoutGroup.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BreakoutGroupCreateManyAndReturnArgs>(args?: SelectSubset<T, BreakoutGroupCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a BreakoutGroup.
+     * @param {BreakoutGroupDeleteArgs} args - Arguments to delete one BreakoutGroup.
+     * @example
+     * // Delete one BreakoutGroup
+     * const BreakoutGroup = await prisma.breakoutGroup.delete({
+     *   where: {
+     *     // ... filter to delete one BreakoutGroup
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BreakoutGroupDeleteArgs>(args: SelectSubset<T, BreakoutGroupDeleteArgs<ExtArgs>>): Prisma__BreakoutGroupClient<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one BreakoutGroup.
+     * @param {BreakoutGroupUpdateArgs} args - Arguments to update one BreakoutGroup.
+     * @example
+     * // Update one BreakoutGroup
+     * const breakoutGroup = await prisma.breakoutGroup.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BreakoutGroupUpdateArgs>(args: SelectSubset<T, BreakoutGroupUpdateArgs<ExtArgs>>): Prisma__BreakoutGroupClient<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more BreakoutGroups.
+     * @param {BreakoutGroupDeleteManyArgs} args - Arguments to filter BreakoutGroups to delete.
+     * @example
+     * // Delete a few BreakoutGroups
+     * const { count } = await prisma.breakoutGroup.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BreakoutGroupDeleteManyArgs>(args?: SelectSubset<T, BreakoutGroupDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BreakoutGroups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutGroupUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BreakoutGroups
+     * const breakoutGroup = await prisma.breakoutGroup.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BreakoutGroupUpdateManyArgs>(args: SelectSubset<T, BreakoutGroupUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one BreakoutGroup.
+     * @param {BreakoutGroupUpsertArgs} args - Arguments to update or create a BreakoutGroup.
+     * @example
+     * // Update or create a BreakoutGroup
+     * const breakoutGroup = await prisma.breakoutGroup.upsert({
+     *   create: {
+     *     // ... data to create a BreakoutGroup
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BreakoutGroup we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BreakoutGroupUpsertArgs>(args: SelectSubset<T, BreakoutGroupUpsertArgs<ExtArgs>>): Prisma__BreakoutGroupClient<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of BreakoutGroups.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutGroupCountArgs} args - Arguments to filter BreakoutGroups to count.
+     * @example
+     * // Count the number of BreakoutGroups
+     * const count = await prisma.breakoutGroup.count({
+     *   where: {
+     *     // ... the filter for the BreakoutGroups we want to count
+     *   }
+     * })
+    **/
+    count<T extends BreakoutGroupCountArgs>(
+      args?: Subset<T, BreakoutGroupCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BreakoutGroupCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BreakoutGroup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutGroupAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BreakoutGroupAggregateArgs>(args: Subset<T, BreakoutGroupAggregateArgs>): Prisma.PrismaPromise<GetBreakoutGroupAggregateType<T>>
+
+    /**
+     * Group by BreakoutGroup.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutGroupGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BreakoutGroupGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BreakoutGroupGroupByArgs['orderBy'] }
+        : { orderBy?: BreakoutGroupGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BreakoutGroupGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBreakoutGroupGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BreakoutGroup model
+   */
+  readonly fields: BreakoutGroupFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BreakoutGroup.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BreakoutGroupClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    session<T extends LiveSessionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LiveSessionDefaultArgs<ExtArgs>>): Prisma__LiveSessionClient<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    members<T extends BreakoutGroup$membersArgs<ExtArgs> = {}>(args?: Subset<T, BreakoutGroup$membersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "findMany"> | Null>
+    messages<T extends BreakoutGroup$messagesArgs<ExtArgs> = {}>(args?: Subset<T, BreakoutGroup$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BreakoutGroup model
+   */ 
+  interface BreakoutGroupFieldRefs {
+    readonly id: FieldRef<"BreakoutGroup", 'Int'>
+    readonly sessionId: FieldRef<"BreakoutGroup", 'Int'>
+    readonly name: FieldRef<"BreakoutGroup", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BreakoutGroup findUnique
+   */
+  export type BreakoutGroupFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which BreakoutGroup to fetch.
+     */
+    where: BreakoutGroupWhereUniqueInput
+  }
+
+  /**
+   * BreakoutGroup findUniqueOrThrow
+   */
+  export type BreakoutGroupFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which BreakoutGroup to fetch.
+     */
+    where: BreakoutGroupWhereUniqueInput
+  }
+
+  /**
+   * BreakoutGroup findFirst
+   */
+  export type BreakoutGroupFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which BreakoutGroup to fetch.
+     */
+    where?: BreakoutGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BreakoutGroups to fetch.
+     */
+    orderBy?: BreakoutGroupOrderByWithRelationInput | BreakoutGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BreakoutGroups.
+     */
+    cursor?: BreakoutGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BreakoutGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BreakoutGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BreakoutGroups.
+     */
+    distinct?: BreakoutGroupScalarFieldEnum | BreakoutGroupScalarFieldEnum[]
+  }
+
+  /**
+   * BreakoutGroup findFirstOrThrow
+   */
+  export type BreakoutGroupFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which BreakoutGroup to fetch.
+     */
+    where?: BreakoutGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BreakoutGroups to fetch.
+     */
+    orderBy?: BreakoutGroupOrderByWithRelationInput | BreakoutGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BreakoutGroups.
+     */
+    cursor?: BreakoutGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BreakoutGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BreakoutGroups.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BreakoutGroups.
+     */
+    distinct?: BreakoutGroupScalarFieldEnum | BreakoutGroupScalarFieldEnum[]
+  }
+
+  /**
+   * BreakoutGroup findMany
+   */
+  export type BreakoutGroupFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupInclude<ExtArgs> | null
+    /**
+     * Filter, which BreakoutGroups to fetch.
+     */
+    where?: BreakoutGroupWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BreakoutGroups to fetch.
+     */
+    orderBy?: BreakoutGroupOrderByWithRelationInput | BreakoutGroupOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BreakoutGroups.
+     */
+    cursor?: BreakoutGroupWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BreakoutGroups from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BreakoutGroups.
+     */
+    skip?: number
+    distinct?: BreakoutGroupScalarFieldEnum | BreakoutGroupScalarFieldEnum[]
+  }
+
+  /**
+   * BreakoutGroup create
+   */
+  export type BreakoutGroupCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BreakoutGroup.
+     */
+    data: XOR<BreakoutGroupCreateInput, BreakoutGroupUncheckedCreateInput>
+  }
+
+  /**
+   * BreakoutGroup createMany
+   */
+  export type BreakoutGroupCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BreakoutGroups.
+     */
+    data: BreakoutGroupCreateManyInput | BreakoutGroupCreateManyInput[]
+  }
+
+  /**
+   * BreakoutGroup createManyAndReturn
+   */
+  export type BreakoutGroupCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many BreakoutGroups.
+     */
+    data: BreakoutGroupCreateManyInput | BreakoutGroupCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BreakoutGroup update
+   */
+  export type BreakoutGroupUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BreakoutGroup.
+     */
+    data: XOR<BreakoutGroupUpdateInput, BreakoutGroupUncheckedUpdateInput>
+    /**
+     * Choose, which BreakoutGroup to update.
+     */
+    where: BreakoutGroupWhereUniqueInput
+  }
+
+  /**
+   * BreakoutGroup updateMany
+   */
+  export type BreakoutGroupUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BreakoutGroups.
+     */
+    data: XOR<BreakoutGroupUpdateManyMutationInput, BreakoutGroupUncheckedUpdateManyInput>
+    /**
+     * Filter which BreakoutGroups to update
+     */
+    where?: BreakoutGroupWhereInput
+  }
+
+  /**
+   * BreakoutGroup upsert
+   */
+  export type BreakoutGroupUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BreakoutGroup to update in case it exists.
+     */
+    where: BreakoutGroupWhereUniqueInput
+    /**
+     * In case the BreakoutGroup found by the `where` argument doesn't exist, create a new BreakoutGroup with this data.
+     */
+    create: XOR<BreakoutGroupCreateInput, BreakoutGroupUncheckedCreateInput>
+    /**
+     * In case the BreakoutGroup was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BreakoutGroupUpdateInput, BreakoutGroupUncheckedUpdateInput>
+  }
+
+  /**
+   * BreakoutGroup delete
+   */
+  export type BreakoutGroupDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupInclude<ExtArgs> | null
+    /**
+     * Filter which BreakoutGroup to delete.
+     */
+    where: BreakoutGroupWhereUniqueInput
+  }
+
+  /**
+   * BreakoutGroup deleteMany
+   */
+  export type BreakoutGroupDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BreakoutGroups to delete
+     */
+    where?: BreakoutGroupWhereInput
+  }
+
+  /**
+   * BreakoutGroup.members
+   */
+  export type BreakoutGroup$membersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+    where?: BreakoutMemberWhereInput
+    orderBy?: BreakoutMemberOrderByWithRelationInput | BreakoutMemberOrderByWithRelationInput[]
+    cursor?: BreakoutMemberWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BreakoutMemberScalarFieldEnum | BreakoutMemberScalarFieldEnum[]
+  }
+
+  /**
+   * BreakoutGroup.messages
+   */
+  export type BreakoutGroup$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    where?: ChatMessageWhereInput
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    cursor?: ChatMessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChatMessageScalarFieldEnum | ChatMessageScalarFieldEnum[]
+  }
+
+  /**
+   * BreakoutGroup without action
+   */
+  export type BreakoutGroupDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutGroup
+     */
+    select?: BreakoutGroupSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutGroupInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BreakoutMember
+   */
+
+  export type AggregateBreakoutMember = {
+    _count: BreakoutMemberCountAggregateOutputType | null
+    _avg: BreakoutMemberAvgAggregateOutputType | null
+    _sum: BreakoutMemberSumAggregateOutputType | null
+    _min: BreakoutMemberMinAggregateOutputType | null
+    _max: BreakoutMemberMaxAggregateOutputType | null
+  }
+
+  export type BreakoutMemberAvgAggregateOutputType = {
+    id: number | null
+    groupId: number | null
+    userId: number | null
+  }
+
+  export type BreakoutMemberSumAggregateOutputType = {
+    id: number | null
+    groupId: number | null
+    userId: number | null
+  }
+
+  export type BreakoutMemberMinAggregateOutputType = {
+    id: number | null
+    groupId: number | null
+    userId: number | null
+  }
+
+  export type BreakoutMemberMaxAggregateOutputType = {
+    id: number | null
+    groupId: number | null
+    userId: number | null
+  }
+
+  export type BreakoutMemberCountAggregateOutputType = {
+    id: number
+    groupId: number
+    userId: number
+    _all: number
+  }
+
+
+  export type BreakoutMemberAvgAggregateInputType = {
+    id?: true
+    groupId?: true
+    userId?: true
+  }
+
+  export type BreakoutMemberSumAggregateInputType = {
+    id?: true
+    groupId?: true
+    userId?: true
+  }
+
+  export type BreakoutMemberMinAggregateInputType = {
+    id?: true
+    groupId?: true
+    userId?: true
+  }
+
+  export type BreakoutMemberMaxAggregateInputType = {
+    id?: true
+    groupId?: true
+    userId?: true
+  }
+
+  export type BreakoutMemberCountAggregateInputType = {
+    id?: true
+    groupId?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type BreakoutMemberAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BreakoutMember to aggregate.
+     */
+    where?: BreakoutMemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BreakoutMembers to fetch.
+     */
+    orderBy?: BreakoutMemberOrderByWithRelationInput | BreakoutMemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BreakoutMemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BreakoutMembers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BreakoutMembers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BreakoutMembers
+    **/
+    _count?: true | BreakoutMemberCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BreakoutMemberAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BreakoutMemberSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BreakoutMemberMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BreakoutMemberMaxAggregateInputType
+  }
+
+  export type GetBreakoutMemberAggregateType<T extends BreakoutMemberAggregateArgs> = {
+        [P in keyof T & keyof AggregateBreakoutMember]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBreakoutMember[P]>
+      : GetScalarType<T[P], AggregateBreakoutMember[P]>
+  }
+
+
+
+
+  export type BreakoutMemberGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BreakoutMemberWhereInput
+    orderBy?: BreakoutMemberOrderByWithAggregationInput | BreakoutMemberOrderByWithAggregationInput[]
+    by: BreakoutMemberScalarFieldEnum[] | BreakoutMemberScalarFieldEnum
+    having?: BreakoutMemberScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BreakoutMemberCountAggregateInputType | true
+    _avg?: BreakoutMemberAvgAggregateInputType
+    _sum?: BreakoutMemberSumAggregateInputType
+    _min?: BreakoutMemberMinAggregateInputType
+    _max?: BreakoutMemberMaxAggregateInputType
+  }
+
+  export type BreakoutMemberGroupByOutputType = {
+    id: number
+    groupId: number
+    userId: number
+    _count: BreakoutMemberCountAggregateOutputType | null
+    _avg: BreakoutMemberAvgAggregateOutputType | null
+    _sum: BreakoutMemberSumAggregateOutputType | null
+    _min: BreakoutMemberMinAggregateOutputType | null
+    _max: BreakoutMemberMaxAggregateOutputType | null
+  }
+
+  type GetBreakoutMemberGroupByPayload<T extends BreakoutMemberGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BreakoutMemberGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BreakoutMemberGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BreakoutMemberGroupByOutputType[P]>
+            : GetScalarType<T[P], BreakoutMemberGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BreakoutMemberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    groupId?: boolean
+    userId?: boolean
+    group?: boolean | BreakoutGroupDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["breakoutMember"]>
+
+  export type BreakoutMemberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    groupId?: boolean
+    userId?: boolean
+    group?: boolean | BreakoutGroupDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["breakoutMember"]>
+
+  export type BreakoutMemberSelectScalar = {
+    id?: boolean
+    groupId?: boolean
+    userId?: boolean
+  }
+
+  export type BreakoutMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    group?: boolean | BreakoutGroupDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type BreakoutMemberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    group?: boolean | BreakoutGroupDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $BreakoutMemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BreakoutMember"
+    objects: {
+      group: Prisma.$BreakoutGroupPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      groupId: number
+      userId: number
+    }, ExtArgs["result"]["breakoutMember"]>
+    composites: {}
+  }
+
+  type BreakoutMemberGetPayload<S extends boolean | null | undefined | BreakoutMemberDefaultArgs> = $Result.GetResult<Prisma.$BreakoutMemberPayload, S>
+
+  type BreakoutMemberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<BreakoutMemberFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: BreakoutMemberCountAggregateInputType | true
+    }
+
+  export interface BreakoutMemberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BreakoutMember'], meta: { name: 'BreakoutMember' } }
+    /**
+     * Find zero or one BreakoutMember that matches the filter.
+     * @param {BreakoutMemberFindUniqueArgs} args - Arguments to find a BreakoutMember
+     * @example
+     * // Get one BreakoutMember
+     * const breakoutMember = await prisma.breakoutMember.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BreakoutMemberFindUniqueArgs>(args: SelectSubset<T, BreakoutMemberFindUniqueArgs<ExtArgs>>): Prisma__BreakoutMemberClient<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one BreakoutMember that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {BreakoutMemberFindUniqueOrThrowArgs} args - Arguments to find a BreakoutMember
+     * @example
+     * // Get one BreakoutMember
+     * const breakoutMember = await prisma.breakoutMember.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BreakoutMemberFindUniqueOrThrowArgs>(args: SelectSubset<T, BreakoutMemberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BreakoutMemberClient<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first BreakoutMember that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutMemberFindFirstArgs} args - Arguments to find a BreakoutMember
+     * @example
+     * // Get one BreakoutMember
+     * const breakoutMember = await prisma.breakoutMember.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BreakoutMemberFindFirstArgs>(args?: SelectSubset<T, BreakoutMemberFindFirstArgs<ExtArgs>>): Prisma__BreakoutMemberClient<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first BreakoutMember that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutMemberFindFirstOrThrowArgs} args - Arguments to find a BreakoutMember
+     * @example
+     * // Get one BreakoutMember
+     * const breakoutMember = await prisma.breakoutMember.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BreakoutMemberFindFirstOrThrowArgs>(args?: SelectSubset<T, BreakoutMemberFindFirstOrThrowArgs<ExtArgs>>): Prisma__BreakoutMemberClient<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more BreakoutMembers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutMemberFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BreakoutMembers
+     * const breakoutMembers = await prisma.breakoutMember.findMany()
+     * 
+     * // Get first 10 BreakoutMembers
+     * const breakoutMembers = await prisma.breakoutMember.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const breakoutMemberWithIdOnly = await prisma.breakoutMember.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BreakoutMemberFindManyArgs>(args?: SelectSubset<T, BreakoutMemberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a BreakoutMember.
+     * @param {BreakoutMemberCreateArgs} args - Arguments to create a BreakoutMember.
+     * @example
+     * // Create one BreakoutMember
+     * const BreakoutMember = await prisma.breakoutMember.create({
+     *   data: {
+     *     // ... data to create a BreakoutMember
+     *   }
+     * })
+     * 
+     */
+    create<T extends BreakoutMemberCreateArgs>(args: SelectSubset<T, BreakoutMemberCreateArgs<ExtArgs>>): Prisma__BreakoutMemberClient<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many BreakoutMembers.
+     * @param {BreakoutMemberCreateManyArgs} args - Arguments to create many BreakoutMembers.
+     * @example
+     * // Create many BreakoutMembers
+     * const breakoutMember = await prisma.breakoutMember.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BreakoutMemberCreateManyArgs>(args?: SelectSubset<T, BreakoutMemberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BreakoutMembers and returns the data saved in the database.
+     * @param {BreakoutMemberCreateManyAndReturnArgs} args - Arguments to create many BreakoutMembers.
+     * @example
+     * // Create many BreakoutMembers
+     * const breakoutMember = await prisma.breakoutMember.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BreakoutMembers and only return the `id`
+     * const breakoutMemberWithIdOnly = await prisma.breakoutMember.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BreakoutMemberCreateManyAndReturnArgs>(args?: SelectSubset<T, BreakoutMemberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a BreakoutMember.
+     * @param {BreakoutMemberDeleteArgs} args - Arguments to delete one BreakoutMember.
+     * @example
+     * // Delete one BreakoutMember
+     * const BreakoutMember = await prisma.breakoutMember.delete({
+     *   where: {
+     *     // ... filter to delete one BreakoutMember
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BreakoutMemberDeleteArgs>(args: SelectSubset<T, BreakoutMemberDeleteArgs<ExtArgs>>): Prisma__BreakoutMemberClient<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one BreakoutMember.
+     * @param {BreakoutMemberUpdateArgs} args - Arguments to update one BreakoutMember.
+     * @example
+     * // Update one BreakoutMember
+     * const breakoutMember = await prisma.breakoutMember.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BreakoutMemberUpdateArgs>(args: SelectSubset<T, BreakoutMemberUpdateArgs<ExtArgs>>): Prisma__BreakoutMemberClient<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more BreakoutMembers.
+     * @param {BreakoutMemberDeleteManyArgs} args - Arguments to filter BreakoutMembers to delete.
+     * @example
+     * // Delete a few BreakoutMembers
+     * const { count } = await prisma.breakoutMember.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BreakoutMemberDeleteManyArgs>(args?: SelectSubset<T, BreakoutMemberDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BreakoutMembers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutMemberUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BreakoutMembers
+     * const breakoutMember = await prisma.breakoutMember.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BreakoutMemberUpdateManyArgs>(args: SelectSubset<T, BreakoutMemberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one BreakoutMember.
+     * @param {BreakoutMemberUpsertArgs} args - Arguments to update or create a BreakoutMember.
+     * @example
+     * // Update or create a BreakoutMember
+     * const breakoutMember = await prisma.breakoutMember.upsert({
+     *   create: {
+     *     // ... data to create a BreakoutMember
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BreakoutMember we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BreakoutMemberUpsertArgs>(args: SelectSubset<T, BreakoutMemberUpsertArgs<ExtArgs>>): Prisma__BreakoutMemberClient<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of BreakoutMembers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutMemberCountArgs} args - Arguments to filter BreakoutMembers to count.
+     * @example
+     * // Count the number of BreakoutMembers
+     * const count = await prisma.breakoutMember.count({
+     *   where: {
+     *     // ... the filter for the BreakoutMembers we want to count
+     *   }
+     * })
+    **/
+    count<T extends BreakoutMemberCountArgs>(
+      args?: Subset<T, BreakoutMemberCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BreakoutMemberCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BreakoutMember.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutMemberAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BreakoutMemberAggregateArgs>(args: Subset<T, BreakoutMemberAggregateArgs>): Prisma.PrismaPromise<GetBreakoutMemberAggregateType<T>>
+
+    /**
+     * Group by BreakoutMember.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BreakoutMemberGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BreakoutMemberGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BreakoutMemberGroupByArgs['orderBy'] }
+        : { orderBy?: BreakoutMemberGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BreakoutMemberGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBreakoutMemberGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BreakoutMember model
+   */
+  readonly fields: BreakoutMemberFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BreakoutMember.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BreakoutMemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    group<T extends BreakoutGroupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BreakoutGroupDefaultArgs<ExtArgs>>): Prisma__BreakoutGroupClient<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BreakoutMember model
+   */ 
+  interface BreakoutMemberFieldRefs {
+    readonly id: FieldRef<"BreakoutMember", 'Int'>
+    readonly groupId: FieldRef<"BreakoutMember", 'Int'>
+    readonly userId: FieldRef<"BreakoutMember", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BreakoutMember findUnique
+   */
+  export type BreakoutMemberFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+    /**
+     * Filter, which BreakoutMember to fetch.
+     */
+    where: BreakoutMemberWhereUniqueInput
+  }
+
+  /**
+   * BreakoutMember findUniqueOrThrow
+   */
+  export type BreakoutMemberFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+    /**
+     * Filter, which BreakoutMember to fetch.
+     */
+    where: BreakoutMemberWhereUniqueInput
+  }
+
+  /**
+   * BreakoutMember findFirst
+   */
+  export type BreakoutMemberFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+    /**
+     * Filter, which BreakoutMember to fetch.
+     */
+    where?: BreakoutMemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BreakoutMembers to fetch.
+     */
+    orderBy?: BreakoutMemberOrderByWithRelationInput | BreakoutMemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BreakoutMembers.
+     */
+    cursor?: BreakoutMemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BreakoutMembers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BreakoutMembers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BreakoutMembers.
+     */
+    distinct?: BreakoutMemberScalarFieldEnum | BreakoutMemberScalarFieldEnum[]
+  }
+
+  /**
+   * BreakoutMember findFirstOrThrow
+   */
+  export type BreakoutMemberFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+    /**
+     * Filter, which BreakoutMember to fetch.
+     */
+    where?: BreakoutMemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BreakoutMembers to fetch.
+     */
+    orderBy?: BreakoutMemberOrderByWithRelationInput | BreakoutMemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BreakoutMembers.
+     */
+    cursor?: BreakoutMemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BreakoutMembers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BreakoutMembers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BreakoutMembers.
+     */
+    distinct?: BreakoutMemberScalarFieldEnum | BreakoutMemberScalarFieldEnum[]
+  }
+
+  /**
+   * BreakoutMember findMany
+   */
+  export type BreakoutMemberFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+    /**
+     * Filter, which BreakoutMembers to fetch.
+     */
+    where?: BreakoutMemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BreakoutMembers to fetch.
+     */
+    orderBy?: BreakoutMemberOrderByWithRelationInput | BreakoutMemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BreakoutMembers.
+     */
+    cursor?: BreakoutMemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BreakoutMembers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BreakoutMembers.
+     */
+    skip?: number
+    distinct?: BreakoutMemberScalarFieldEnum | BreakoutMemberScalarFieldEnum[]
+  }
+
+  /**
+   * BreakoutMember create
+   */
+  export type BreakoutMemberCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BreakoutMember.
+     */
+    data: XOR<BreakoutMemberCreateInput, BreakoutMemberUncheckedCreateInput>
+  }
+
+  /**
+   * BreakoutMember createMany
+   */
+  export type BreakoutMemberCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BreakoutMembers.
+     */
+    data: BreakoutMemberCreateManyInput | BreakoutMemberCreateManyInput[]
+  }
+
+  /**
+   * BreakoutMember createManyAndReturn
+   */
+  export type BreakoutMemberCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many BreakoutMembers.
+     */
+    data: BreakoutMemberCreateManyInput | BreakoutMemberCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BreakoutMember update
+   */
+  export type BreakoutMemberUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BreakoutMember.
+     */
+    data: XOR<BreakoutMemberUpdateInput, BreakoutMemberUncheckedUpdateInput>
+    /**
+     * Choose, which BreakoutMember to update.
+     */
+    where: BreakoutMemberWhereUniqueInput
+  }
+
+  /**
+   * BreakoutMember updateMany
+   */
+  export type BreakoutMemberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BreakoutMembers.
+     */
+    data: XOR<BreakoutMemberUpdateManyMutationInput, BreakoutMemberUncheckedUpdateManyInput>
+    /**
+     * Filter which BreakoutMembers to update
+     */
+    where?: BreakoutMemberWhereInput
+  }
+
+  /**
+   * BreakoutMember upsert
+   */
+  export type BreakoutMemberUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BreakoutMember to update in case it exists.
+     */
+    where: BreakoutMemberWhereUniqueInput
+    /**
+     * In case the BreakoutMember found by the `where` argument doesn't exist, create a new BreakoutMember with this data.
+     */
+    create: XOR<BreakoutMemberCreateInput, BreakoutMemberUncheckedCreateInput>
+    /**
+     * In case the BreakoutMember was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BreakoutMemberUpdateInput, BreakoutMemberUncheckedUpdateInput>
+  }
+
+  /**
+   * BreakoutMember delete
+   */
+  export type BreakoutMemberDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+    /**
+     * Filter which BreakoutMember to delete.
+     */
+    where: BreakoutMemberWhereUniqueInput
+  }
+
+  /**
+   * BreakoutMember deleteMany
+   */
+  export type BreakoutMemberDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BreakoutMembers to delete
+     */
+    where?: BreakoutMemberWhereInput
+  }
+
+  /**
+   * BreakoutMember without action
+   */
+  export type BreakoutMemberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BreakoutMember
+     */
+    select?: BreakoutMemberSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BreakoutMemberInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ChatMessage
+   */
+
+  export type AggregateChatMessage = {
+    _count: ChatMessageCountAggregateOutputType | null
+    _avg: ChatMessageAvgAggregateOutputType | null
+    _sum: ChatMessageSumAggregateOutputType | null
+    _min: ChatMessageMinAggregateOutputType | null
+    _max: ChatMessageMaxAggregateOutputType | null
+  }
+
+  export type ChatMessageAvgAggregateOutputType = {
+    id: number | null
+    groupId: number | null
+    userId: number | null
+  }
+
+  export type ChatMessageSumAggregateOutputType = {
+    id: number | null
+    groupId: number | null
+    userId: number | null
+  }
+
+  export type ChatMessageMinAggregateOutputType = {
+    id: number | null
+    groupId: number | null
+    userId: number | null
+    text: string | null
+    createdAt: Date | null
+  }
+
+  export type ChatMessageMaxAggregateOutputType = {
+    id: number | null
+    groupId: number | null
+    userId: number | null
+    text: string | null
+    createdAt: Date | null
+  }
+
+  export type ChatMessageCountAggregateOutputType = {
+    id: number
+    groupId: number
+    userId: number
+    text: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ChatMessageAvgAggregateInputType = {
+    id?: true
+    groupId?: true
+    userId?: true
+  }
+
+  export type ChatMessageSumAggregateInputType = {
+    id?: true
+    groupId?: true
+    userId?: true
+  }
+
+  export type ChatMessageMinAggregateInputType = {
+    id?: true
+    groupId?: true
+    userId?: true
+    text?: true
+    createdAt?: true
+  }
+
+  export type ChatMessageMaxAggregateInputType = {
+    id?: true
+    groupId?: true
+    userId?: true
+    text?: true
+    createdAt?: true
+  }
+
+  export type ChatMessageCountAggregateInputType = {
+    id?: true
+    groupId?: true
+    userId?: true
+    text?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ChatMessageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ChatMessage to aggregate.
+     */
+    where?: ChatMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatMessages to fetch.
+     */
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ChatMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ChatMessages
+    **/
+    _count?: true | ChatMessageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ChatMessageAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ChatMessageSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ChatMessageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ChatMessageMaxAggregateInputType
+  }
+
+  export type GetChatMessageAggregateType<T extends ChatMessageAggregateArgs> = {
+        [P in keyof T & keyof AggregateChatMessage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateChatMessage[P]>
+      : GetScalarType<T[P], AggregateChatMessage[P]>
+  }
+
+
+
+
+  export type ChatMessageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatMessageWhereInput
+    orderBy?: ChatMessageOrderByWithAggregationInput | ChatMessageOrderByWithAggregationInput[]
+    by: ChatMessageScalarFieldEnum[] | ChatMessageScalarFieldEnum
+    having?: ChatMessageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ChatMessageCountAggregateInputType | true
+    _avg?: ChatMessageAvgAggregateInputType
+    _sum?: ChatMessageSumAggregateInputType
+    _min?: ChatMessageMinAggregateInputType
+    _max?: ChatMessageMaxAggregateInputType
+  }
+
+  export type ChatMessageGroupByOutputType = {
+    id: number
+    groupId: number
+    userId: number
+    text: string
+    createdAt: Date
+    _count: ChatMessageCountAggregateOutputType | null
+    _avg: ChatMessageAvgAggregateOutputType | null
+    _sum: ChatMessageSumAggregateOutputType | null
+    _min: ChatMessageMinAggregateOutputType | null
+    _max: ChatMessageMaxAggregateOutputType | null
+  }
+
+  type GetChatMessageGroupByPayload<T extends ChatMessageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ChatMessageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ChatMessageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ChatMessageGroupByOutputType[P]>
+            : GetScalarType<T[P], ChatMessageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ChatMessageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    groupId?: boolean
+    userId?: boolean
+    text?: boolean
+    createdAt?: boolean
+    group?: boolean | BreakoutGroupDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["chatMessage"]>
+
+  export type ChatMessageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    groupId?: boolean
+    userId?: boolean
+    text?: boolean
+    createdAt?: boolean
+    group?: boolean | BreakoutGroupDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["chatMessage"]>
+
+  export type ChatMessageSelectScalar = {
+    id?: boolean
+    groupId?: boolean
+    userId?: boolean
+    text?: boolean
+    createdAt?: boolean
+  }
+
+  export type ChatMessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    group?: boolean | BreakoutGroupDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ChatMessageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    group?: boolean | BreakoutGroupDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ChatMessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ChatMessage"
+    objects: {
+      group: Prisma.$BreakoutGroupPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      groupId: number
+      userId: number
+      text: string
+      createdAt: Date
+    }, ExtArgs["result"]["chatMessage"]>
+    composites: {}
+  }
+
+  type ChatMessageGetPayload<S extends boolean | null | undefined | ChatMessageDefaultArgs> = $Result.GetResult<Prisma.$ChatMessagePayload, S>
+
+  type ChatMessageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ChatMessageFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ChatMessageCountAggregateInputType | true
+    }
+
+  export interface ChatMessageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ChatMessage'], meta: { name: 'ChatMessage' } }
+    /**
+     * Find zero or one ChatMessage that matches the filter.
+     * @param {ChatMessageFindUniqueArgs} args - Arguments to find a ChatMessage
+     * @example
+     * // Get one ChatMessage
+     * const chatMessage = await prisma.chatMessage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ChatMessageFindUniqueArgs>(args: SelectSubset<T, ChatMessageFindUniqueArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ChatMessage that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ChatMessageFindUniqueOrThrowArgs} args - Arguments to find a ChatMessage
+     * @example
+     * // Get one ChatMessage
+     * const chatMessage = await prisma.chatMessage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ChatMessageFindUniqueOrThrowArgs>(args: SelectSubset<T, ChatMessageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ChatMessage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageFindFirstArgs} args - Arguments to find a ChatMessage
+     * @example
+     * // Get one ChatMessage
+     * const chatMessage = await prisma.chatMessage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ChatMessageFindFirstArgs>(args?: SelectSubset<T, ChatMessageFindFirstArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ChatMessage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageFindFirstOrThrowArgs} args - Arguments to find a ChatMessage
+     * @example
+     * // Get one ChatMessage
+     * const chatMessage = await prisma.chatMessage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ChatMessageFindFirstOrThrowArgs>(args?: SelectSubset<T, ChatMessageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ChatMessages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ChatMessages
+     * const chatMessages = await prisma.chatMessage.findMany()
+     * 
+     * // Get first 10 ChatMessages
+     * const chatMessages = await prisma.chatMessage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const chatMessageWithIdOnly = await prisma.chatMessage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ChatMessageFindManyArgs>(args?: SelectSubset<T, ChatMessageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ChatMessage.
+     * @param {ChatMessageCreateArgs} args - Arguments to create a ChatMessage.
+     * @example
+     * // Create one ChatMessage
+     * const ChatMessage = await prisma.chatMessage.create({
+     *   data: {
+     *     // ... data to create a ChatMessage
+     *   }
+     * })
+     * 
+     */
+    create<T extends ChatMessageCreateArgs>(args: SelectSubset<T, ChatMessageCreateArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ChatMessages.
+     * @param {ChatMessageCreateManyArgs} args - Arguments to create many ChatMessages.
+     * @example
+     * // Create many ChatMessages
+     * const chatMessage = await prisma.chatMessage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ChatMessageCreateManyArgs>(args?: SelectSubset<T, ChatMessageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ChatMessages and returns the data saved in the database.
+     * @param {ChatMessageCreateManyAndReturnArgs} args - Arguments to create many ChatMessages.
+     * @example
+     * // Create many ChatMessages
+     * const chatMessage = await prisma.chatMessage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ChatMessages and only return the `id`
+     * const chatMessageWithIdOnly = await prisma.chatMessage.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ChatMessageCreateManyAndReturnArgs>(args?: SelectSubset<T, ChatMessageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ChatMessage.
+     * @param {ChatMessageDeleteArgs} args - Arguments to delete one ChatMessage.
+     * @example
+     * // Delete one ChatMessage
+     * const ChatMessage = await prisma.chatMessage.delete({
+     *   where: {
+     *     // ... filter to delete one ChatMessage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ChatMessageDeleteArgs>(args: SelectSubset<T, ChatMessageDeleteArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ChatMessage.
+     * @param {ChatMessageUpdateArgs} args - Arguments to update one ChatMessage.
+     * @example
+     * // Update one ChatMessage
+     * const chatMessage = await prisma.chatMessage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ChatMessageUpdateArgs>(args: SelectSubset<T, ChatMessageUpdateArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ChatMessages.
+     * @param {ChatMessageDeleteManyArgs} args - Arguments to filter ChatMessages to delete.
+     * @example
+     * // Delete a few ChatMessages
+     * const { count } = await prisma.chatMessage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ChatMessageDeleteManyArgs>(args?: SelectSubset<T, ChatMessageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ChatMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ChatMessages
+     * const chatMessage = await prisma.chatMessage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ChatMessageUpdateManyArgs>(args: SelectSubset<T, ChatMessageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ChatMessage.
+     * @param {ChatMessageUpsertArgs} args - Arguments to update or create a ChatMessage.
+     * @example
+     * // Update or create a ChatMessage
+     * const chatMessage = await prisma.chatMessage.upsert({
+     *   create: {
+     *     // ... data to create a ChatMessage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ChatMessage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ChatMessageUpsertArgs>(args: SelectSubset<T, ChatMessageUpsertArgs<ExtArgs>>): Prisma__ChatMessageClient<$Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ChatMessages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageCountArgs} args - Arguments to filter ChatMessages to count.
+     * @example
+     * // Count the number of ChatMessages
+     * const count = await prisma.chatMessage.count({
+     *   where: {
+     *     // ... the filter for the ChatMessages we want to count
+     *   }
+     * })
+    **/
+    count<T extends ChatMessageCountArgs>(
+      args?: Subset<T, ChatMessageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ChatMessageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ChatMessage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ChatMessageAggregateArgs>(args: Subset<T, ChatMessageAggregateArgs>): Prisma.PrismaPromise<GetChatMessageAggregateType<T>>
+
+    /**
+     * Group by ChatMessage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatMessageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ChatMessageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ChatMessageGroupByArgs['orderBy'] }
+        : { orderBy?: ChatMessageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ChatMessageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChatMessageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ChatMessage model
+   */
+  readonly fields: ChatMessageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ChatMessage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ChatMessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    group<T extends BreakoutGroupDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BreakoutGroupDefaultArgs<ExtArgs>>): Prisma__BreakoutGroupClient<$Result.GetResult<Prisma.$BreakoutGroupPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ChatMessage model
+   */ 
+  interface ChatMessageFieldRefs {
+    readonly id: FieldRef<"ChatMessage", 'Int'>
+    readonly groupId: FieldRef<"ChatMessage", 'Int'>
+    readonly userId: FieldRef<"ChatMessage", 'Int'>
+    readonly text: FieldRef<"ChatMessage", 'String'>
+    readonly createdAt: FieldRef<"ChatMessage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ChatMessage findUnique
+   */
+  export type ChatMessageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatMessage to fetch.
+     */
+    where: ChatMessageWhereUniqueInput
+  }
+
+  /**
+   * ChatMessage findUniqueOrThrow
+   */
+  export type ChatMessageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatMessage to fetch.
+     */
+    where: ChatMessageWhereUniqueInput
+  }
+
+  /**
+   * ChatMessage findFirst
+   */
+  export type ChatMessageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatMessage to fetch.
+     */
+    where?: ChatMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatMessages to fetch.
+     */
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ChatMessages.
+     */
+    cursor?: ChatMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ChatMessages.
+     */
+    distinct?: ChatMessageScalarFieldEnum | ChatMessageScalarFieldEnum[]
+  }
+
+  /**
+   * ChatMessage findFirstOrThrow
+   */
+  export type ChatMessageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatMessage to fetch.
+     */
+    where?: ChatMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatMessages to fetch.
+     */
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ChatMessages.
+     */
+    cursor?: ChatMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatMessages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ChatMessages.
+     */
+    distinct?: ChatMessageScalarFieldEnum | ChatMessageScalarFieldEnum[]
+  }
+
+  /**
+   * ChatMessage findMany
+   */
+  export type ChatMessageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatMessages to fetch.
+     */
+    where?: ChatMessageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatMessages to fetch.
+     */
+    orderBy?: ChatMessageOrderByWithRelationInput | ChatMessageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ChatMessages.
+     */
+    cursor?: ChatMessageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatMessages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatMessages.
+     */
+    skip?: number
+    distinct?: ChatMessageScalarFieldEnum | ChatMessageScalarFieldEnum[]
+  }
+
+  /**
+   * ChatMessage create
+   */
+  export type ChatMessageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ChatMessage.
+     */
+    data: XOR<ChatMessageCreateInput, ChatMessageUncheckedCreateInput>
+  }
+
+  /**
+   * ChatMessage createMany
+   */
+  export type ChatMessageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ChatMessages.
+     */
+    data: ChatMessageCreateManyInput | ChatMessageCreateManyInput[]
+  }
+
+  /**
+   * ChatMessage createManyAndReturn
+   */
+  export type ChatMessageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ChatMessages.
+     */
+    data: ChatMessageCreateManyInput | ChatMessageCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ChatMessage update
+   */
+  export type ChatMessageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ChatMessage.
+     */
+    data: XOR<ChatMessageUpdateInput, ChatMessageUncheckedUpdateInput>
+    /**
+     * Choose, which ChatMessage to update.
+     */
+    where: ChatMessageWhereUniqueInput
+  }
+
+  /**
+   * ChatMessage updateMany
+   */
+  export type ChatMessageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ChatMessages.
+     */
+    data: XOR<ChatMessageUpdateManyMutationInput, ChatMessageUncheckedUpdateManyInput>
+    /**
+     * Filter which ChatMessages to update
+     */
+    where?: ChatMessageWhereInput
+  }
+
+  /**
+   * ChatMessage upsert
+   */
+  export type ChatMessageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ChatMessage to update in case it exists.
+     */
+    where: ChatMessageWhereUniqueInput
+    /**
+     * In case the ChatMessage found by the `where` argument doesn't exist, create a new ChatMessage with this data.
+     */
+    create: XOR<ChatMessageCreateInput, ChatMessageUncheckedCreateInput>
+    /**
+     * In case the ChatMessage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ChatMessageUpdateInput, ChatMessageUncheckedUpdateInput>
+  }
+
+  /**
+   * ChatMessage delete
+   */
+  export type ChatMessageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+    /**
+     * Filter which ChatMessage to delete.
+     */
+    where: ChatMessageWhereUniqueInput
+  }
+
+  /**
+   * ChatMessage deleteMany
+   */
+  export type ChatMessageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ChatMessages to delete
+     */
+    where?: ChatMessageWhereInput
+  }
+
+  /**
+   * ChatMessage without action
+   */
+  export type ChatMessageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: ChatMessageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatMessageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ParentReport
+   */
+
+  export type AggregateParentReport = {
+    _count: ParentReportCountAggregateOutputType | null
+    _avg: ParentReportAvgAggregateOutputType | null
+    _sum: ParentReportSumAggregateOutputType | null
+    _min: ParentReportMinAggregateOutputType | null
+    _max: ParentReportMaxAggregateOutputType | null
+  }
+
+  export type ParentReportAvgAggregateOutputType = {
+    id: number | null
+    classId: number | null
+    studentId: number | null
+    teacherId: number | null
+  }
+
+  export type ParentReportSumAggregateOutputType = {
+    id: number | null
+    classId: number | null
+    studentId: number | null
+    teacherId: number | null
+  }
+
+  export type ParentReportMinAggregateOutputType = {
+    id: number | null
+    classId: number | null
+    studentId: number | null
+    teacherId: number | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type ParentReportMaxAggregateOutputType = {
+    id: number | null
+    classId: number | null
+    studentId: number | null
+    teacherId: number | null
+    content: string | null
+    createdAt: Date | null
+  }
+
+  export type ParentReportCountAggregateOutputType = {
+    id: number
+    classId: number
+    studentId: number
+    teacherId: number
+    content: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ParentReportAvgAggregateInputType = {
+    id?: true
+    classId?: true
+    studentId?: true
+    teacherId?: true
+  }
+
+  export type ParentReportSumAggregateInputType = {
+    id?: true
+    classId?: true
+    studentId?: true
+    teacherId?: true
+  }
+
+  export type ParentReportMinAggregateInputType = {
+    id?: true
+    classId?: true
+    studentId?: true
+    teacherId?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type ParentReportMaxAggregateInputType = {
+    id?: true
+    classId?: true
+    studentId?: true
+    teacherId?: true
+    content?: true
+    createdAt?: true
+  }
+
+  export type ParentReportCountAggregateInputType = {
+    id?: true
+    classId?: true
+    studentId?: true
+    teacherId?: true
+    content?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ParentReportAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ParentReport to aggregate.
+     */
+    where?: ParentReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ParentReports to fetch.
+     */
+    orderBy?: ParentReportOrderByWithRelationInput | ParentReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ParentReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ParentReports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ParentReports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ParentReports
+    **/
+    _count?: true | ParentReportCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ParentReportAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ParentReportSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ParentReportMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ParentReportMaxAggregateInputType
+  }
+
+  export type GetParentReportAggregateType<T extends ParentReportAggregateArgs> = {
+        [P in keyof T & keyof AggregateParentReport]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateParentReport[P]>
+      : GetScalarType<T[P], AggregateParentReport[P]>
+  }
+
+
+
+
+  export type ParentReportGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ParentReportWhereInput
+    orderBy?: ParentReportOrderByWithAggregationInput | ParentReportOrderByWithAggregationInput[]
+    by: ParentReportScalarFieldEnum[] | ParentReportScalarFieldEnum
+    having?: ParentReportScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ParentReportCountAggregateInputType | true
+    _avg?: ParentReportAvgAggregateInputType
+    _sum?: ParentReportSumAggregateInputType
+    _min?: ParentReportMinAggregateInputType
+    _max?: ParentReportMaxAggregateInputType
+  }
+
+  export type ParentReportGroupByOutputType = {
+    id: number
+    classId: number
+    studentId: number
+    teacherId: number
+    content: string
+    createdAt: Date
+    _count: ParentReportCountAggregateOutputType | null
+    _avg: ParentReportAvgAggregateOutputType | null
+    _sum: ParentReportSumAggregateOutputType | null
+    _min: ParentReportMinAggregateOutputType | null
+    _max: ParentReportMaxAggregateOutputType | null
+  }
+
+  type GetParentReportGroupByPayload<T extends ParentReportGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ParentReportGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ParentReportGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ParentReportGroupByOutputType[P]>
+            : GetScalarType<T[P], ParentReportGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ParentReportSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    classId?: boolean
+    studentId?: boolean
+    teacherId?: boolean
+    content?: boolean
+    createdAt?: boolean
+    class?: boolean | ClassRoomDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
+    teacher?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["parentReport"]>
+
+  export type ParentReportSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    classId?: boolean
+    studentId?: boolean
+    teacherId?: boolean
+    content?: boolean
+    createdAt?: boolean
+    class?: boolean | ClassRoomDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
+    teacher?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["parentReport"]>
+
+  export type ParentReportSelectScalar = {
+    id?: boolean
+    classId?: boolean
+    studentId?: boolean
+    teacherId?: boolean
+    content?: boolean
+    createdAt?: boolean
+  }
+
+  export type ParentReportInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    class?: boolean | ClassRoomDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
+    teacher?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ParentReportIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    class?: boolean | ClassRoomDefaultArgs<ExtArgs>
+    student?: boolean | UserDefaultArgs<ExtArgs>
+    teacher?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ParentReportPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ParentReport"
+    objects: {
+      class: Prisma.$ClassRoomPayload<ExtArgs>
+      student: Prisma.$UserPayload<ExtArgs>
+      teacher: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      classId: number
+      studentId: number
+      teacherId: number
+      content: string
+      createdAt: Date
+    }, ExtArgs["result"]["parentReport"]>
+    composites: {}
+  }
+
+  type ParentReportGetPayload<S extends boolean | null | undefined | ParentReportDefaultArgs> = $Result.GetResult<Prisma.$ParentReportPayload, S>
+
+  type ParentReportCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ParentReportFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ParentReportCountAggregateInputType | true
+    }
+
+  export interface ParentReportDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ParentReport'], meta: { name: 'ParentReport' } }
+    /**
+     * Find zero or one ParentReport that matches the filter.
+     * @param {ParentReportFindUniqueArgs} args - Arguments to find a ParentReport
+     * @example
+     * // Get one ParentReport
+     * const parentReport = await prisma.parentReport.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ParentReportFindUniqueArgs>(args: SelectSubset<T, ParentReportFindUniqueArgs<ExtArgs>>): Prisma__ParentReportClient<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ParentReport that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ParentReportFindUniqueOrThrowArgs} args - Arguments to find a ParentReport
+     * @example
+     * // Get one ParentReport
+     * const parentReport = await prisma.parentReport.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ParentReportFindUniqueOrThrowArgs>(args: SelectSubset<T, ParentReportFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ParentReportClient<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ParentReport that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParentReportFindFirstArgs} args - Arguments to find a ParentReport
+     * @example
+     * // Get one ParentReport
+     * const parentReport = await prisma.parentReport.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ParentReportFindFirstArgs>(args?: SelectSubset<T, ParentReportFindFirstArgs<ExtArgs>>): Prisma__ParentReportClient<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ParentReport that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParentReportFindFirstOrThrowArgs} args - Arguments to find a ParentReport
+     * @example
+     * // Get one ParentReport
+     * const parentReport = await prisma.parentReport.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ParentReportFindFirstOrThrowArgs>(args?: SelectSubset<T, ParentReportFindFirstOrThrowArgs<ExtArgs>>): Prisma__ParentReportClient<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ParentReports that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParentReportFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ParentReports
+     * const parentReports = await prisma.parentReport.findMany()
+     * 
+     * // Get first 10 ParentReports
+     * const parentReports = await prisma.parentReport.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const parentReportWithIdOnly = await prisma.parentReport.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ParentReportFindManyArgs>(args?: SelectSubset<T, ParentReportFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ParentReport.
+     * @param {ParentReportCreateArgs} args - Arguments to create a ParentReport.
+     * @example
+     * // Create one ParentReport
+     * const ParentReport = await prisma.parentReport.create({
+     *   data: {
+     *     // ... data to create a ParentReport
+     *   }
+     * })
+     * 
+     */
+    create<T extends ParentReportCreateArgs>(args: SelectSubset<T, ParentReportCreateArgs<ExtArgs>>): Prisma__ParentReportClient<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ParentReports.
+     * @param {ParentReportCreateManyArgs} args - Arguments to create many ParentReports.
+     * @example
+     * // Create many ParentReports
+     * const parentReport = await prisma.parentReport.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ParentReportCreateManyArgs>(args?: SelectSubset<T, ParentReportCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ParentReports and returns the data saved in the database.
+     * @param {ParentReportCreateManyAndReturnArgs} args - Arguments to create many ParentReports.
+     * @example
+     * // Create many ParentReports
+     * const parentReport = await prisma.parentReport.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ParentReports and only return the `id`
+     * const parentReportWithIdOnly = await prisma.parentReport.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ParentReportCreateManyAndReturnArgs>(args?: SelectSubset<T, ParentReportCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ParentReport.
+     * @param {ParentReportDeleteArgs} args - Arguments to delete one ParentReport.
+     * @example
+     * // Delete one ParentReport
+     * const ParentReport = await prisma.parentReport.delete({
+     *   where: {
+     *     // ... filter to delete one ParentReport
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ParentReportDeleteArgs>(args: SelectSubset<T, ParentReportDeleteArgs<ExtArgs>>): Prisma__ParentReportClient<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ParentReport.
+     * @param {ParentReportUpdateArgs} args - Arguments to update one ParentReport.
+     * @example
+     * // Update one ParentReport
+     * const parentReport = await prisma.parentReport.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ParentReportUpdateArgs>(args: SelectSubset<T, ParentReportUpdateArgs<ExtArgs>>): Prisma__ParentReportClient<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ParentReports.
+     * @param {ParentReportDeleteManyArgs} args - Arguments to filter ParentReports to delete.
+     * @example
+     * // Delete a few ParentReports
+     * const { count } = await prisma.parentReport.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ParentReportDeleteManyArgs>(args?: SelectSubset<T, ParentReportDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ParentReports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParentReportUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ParentReports
+     * const parentReport = await prisma.parentReport.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ParentReportUpdateManyArgs>(args: SelectSubset<T, ParentReportUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ParentReport.
+     * @param {ParentReportUpsertArgs} args - Arguments to update or create a ParentReport.
+     * @example
+     * // Update or create a ParentReport
+     * const parentReport = await prisma.parentReport.upsert({
+     *   create: {
+     *     // ... data to create a ParentReport
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ParentReport we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ParentReportUpsertArgs>(args: SelectSubset<T, ParentReportUpsertArgs<ExtArgs>>): Prisma__ParentReportClient<$Result.GetResult<Prisma.$ParentReportPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ParentReports.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParentReportCountArgs} args - Arguments to filter ParentReports to count.
+     * @example
+     * // Count the number of ParentReports
+     * const count = await prisma.parentReport.count({
+     *   where: {
+     *     // ... the filter for the ParentReports we want to count
+     *   }
+     * })
+    **/
+    count<T extends ParentReportCountArgs>(
+      args?: Subset<T, ParentReportCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ParentReportCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ParentReport.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParentReportAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ParentReportAggregateArgs>(args: Subset<T, ParentReportAggregateArgs>): Prisma.PrismaPromise<GetParentReportAggregateType<T>>
+
+    /**
+     * Group by ParentReport.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ParentReportGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ParentReportGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ParentReportGroupByArgs['orderBy'] }
+        : { orderBy?: ParentReportGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ParentReportGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetParentReportGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ParentReport model
+   */
+  readonly fields: ParentReportFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ParentReport.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ParentReportClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    class<T extends ClassRoomDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClassRoomDefaultArgs<ExtArgs>>): Prisma__ClassRoomClient<$Result.GetResult<Prisma.$ClassRoomPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    student<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    teacher<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ParentReport model
+   */ 
+  interface ParentReportFieldRefs {
+    readonly id: FieldRef<"ParentReport", 'Int'>
+    readonly classId: FieldRef<"ParentReport", 'Int'>
+    readonly studentId: FieldRef<"ParentReport", 'Int'>
+    readonly teacherId: FieldRef<"ParentReport", 'Int'>
+    readonly content: FieldRef<"ParentReport", 'String'>
+    readonly createdAt: FieldRef<"ParentReport", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ParentReport findUnique
+   */
+  export type ParentReportFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    /**
+     * Filter, which ParentReport to fetch.
+     */
+    where: ParentReportWhereUniqueInput
+  }
+
+  /**
+   * ParentReport findUniqueOrThrow
+   */
+  export type ParentReportFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    /**
+     * Filter, which ParentReport to fetch.
+     */
+    where: ParentReportWhereUniqueInput
+  }
+
+  /**
+   * ParentReport findFirst
+   */
+  export type ParentReportFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    /**
+     * Filter, which ParentReport to fetch.
+     */
+    where?: ParentReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ParentReports to fetch.
+     */
+    orderBy?: ParentReportOrderByWithRelationInput | ParentReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ParentReports.
+     */
+    cursor?: ParentReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ParentReports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ParentReports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ParentReports.
+     */
+    distinct?: ParentReportScalarFieldEnum | ParentReportScalarFieldEnum[]
+  }
+
+  /**
+   * ParentReport findFirstOrThrow
+   */
+  export type ParentReportFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    /**
+     * Filter, which ParentReport to fetch.
+     */
+    where?: ParentReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ParentReports to fetch.
+     */
+    orderBy?: ParentReportOrderByWithRelationInput | ParentReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ParentReports.
+     */
+    cursor?: ParentReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ParentReports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ParentReports.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ParentReports.
+     */
+    distinct?: ParentReportScalarFieldEnum | ParentReportScalarFieldEnum[]
+  }
+
+  /**
+   * ParentReport findMany
+   */
+  export type ParentReportFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    /**
+     * Filter, which ParentReports to fetch.
+     */
+    where?: ParentReportWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ParentReports to fetch.
+     */
+    orderBy?: ParentReportOrderByWithRelationInput | ParentReportOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ParentReports.
+     */
+    cursor?: ParentReportWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ParentReports from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ParentReports.
+     */
+    skip?: number
+    distinct?: ParentReportScalarFieldEnum | ParentReportScalarFieldEnum[]
+  }
+
+  /**
+   * ParentReport create
+   */
+  export type ParentReportCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ParentReport.
+     */
+    data: XOR<ParentReportCreateInput, ParentReportUncheckedCreateInput>
+  }
+
+  /**
+   * ParentReport createMany
+   */
+  export type ParentReportCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ParentReports.
+     */
+    data: ParentReportCreateManyInput | ParentReportCreateManyInput[]
+  }
+
+  /**
+   * ParentReport createManyAndReturn
+   */
+  export type ParentReportCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ParentReports.
+     */
+    data: ParentReportCreateManyInput | ParentReportCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ParentReport update
+   */
+  export type ParentReportUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ParentReport.
+     */
+    data: XOR<ParentReportUpdateInput, ParentReportUncheckedUpdateInput>
+    /**
+     * Choose, which ParentReport to update.
+     */
+    where: ParentReportWhereUniqueInput
+  }
+
+  /**
+   * ParentReport updateMany
+   */
+  export type ParentReportUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ParentReports.
+     */
+    data: XOR<ParentReportUpdateManyMutationInput, ParentReportUncheckedUpdateManyInput>
+    /**
+     * Filter which ParentReports to update
+     */
+    where?: ParentReportWhereInput
+  }
+
+  /**
+   * ParentReport upsert
+   */
+  export type ParentReportUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ParentReport to update in case it exists.
+     */
+    where: ParentReportWhereUniqueInput
+    /**
+     * In case the ParentReport found by the `where` argument doesn't exist, create a new ParentReport with this data.
+     */
+    create: XOR<ParentReportCreateInput, ParentReportUncheckedCreateInput>
+    /**
+     * In case the ParentReport was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ParentReportUpdateInput, ParentReportUncheckedUpdateInput>
+  }
+
+  /**
+   * ParentReport delete
+   */
+  export type ParentReportDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+    /**
+     * Filter which ParentReport to delete.
+     */
+    where: ParentReportWhereUniqueInput
+  }
+
+  /**
+   * ParentReport deleteMany
+   */
+  export type ParentReportDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ParentReports to delete
+     */
+    where?: ParentReportWhereInput
+  }
+
+  /**
+   * ParentReport without action
+   */
+  export type ParentReportDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ParentReport
+     */
+    select?: ParentReportSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParentReportInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -7576,6 +17864,110 @@ export namespace Prisma {
   export type ScoreSyncScalarFieldEnum = (typeof ScoreSyncScalarFieldEnum)[keyof typeof ScoreSyncScalarFieldEnum]
 
 
+  export const LiveSessionScalarFieldEnum: {
+    id: 'id',
+    classId: 'classId',
+    teacherId: 'teacherId',
+    title: 'title',
+    openingText: 'openingText',
+    materialText: 'materialText',
+    status: 'status',
+    startedAt: 'startedAt',
+    endedAt: 'endedAt'
+  };
+
+  export type LiveSessionScalarFieldEnum = (typeof LiveSessionScalarFieldEnum)[keyof typeof LiveSessionScalarFieldEnum]
+
+
+  export const AttendanceScalarFieldEnum: {
+    id: 'id',
+    sessionId: 'sessionId',
+    userId: 'userId',
+    joinedAt: 'joinedAt'
+  };
+
+  export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
+
+
+  export const LiveQuizScalarFieldEnum: {
+    id: 'id',
+    sessionId: 'sessionId',
+    title: 'title',
+    questions: 'questions',
+    status: 'status',
+    currentIndex: 'currentIndex',
+    bossMaxHp: 'bossMaxHp',
+    createdAt: 'createdAt'
+  };
+
+  export type LiveQuizScalarFieldEnum = (typeof LiveQuizScalarFieldEnum)[keyof typeof LiveQuizScalarFieldEnum]
+
+
+  export const LiveAnswerScalarFieldEnum: {
+    id: 'id',
+    quizId: 'quizId',
+    userId: 'userId',
+    questionIndex: 'questionIndex',
+    selectedIndex: 'selectedIndex',
+    correct: 'correct',
+    answeredAt: 'answeredAt'
+  };
+
+  export type LiveAnswerScalarFieldEnum = (typeof LiveAnswerScalarFieldEnum)[keyof typeof LiveAnswerScalarFieldEnum]
+
+
+  export const UnderstandingVoteScalarFieldEnum: {
+    id: 'id',
+    sessionId: 'sessionId',
+    userId: 'userId',
+    level: 'level',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UnderstandingVoteScalarFieldEnum = (typeof UnderstandingVoteScalarFieldEnum)[keyof typeof UnderstandingVoteScalarFieldEnum]
+
+
+  export const BreakoutGroupScalarFieldEnum: {
+    id: 'id',
+    sessionId: 'sessionId',
+    name: 'name'
+  };
+
+  export type BreakoutGroupScalarFieldEnum = (typeof BreakoutGroupScalarFieldEnum)[keyof typeof BreakoutGroupScalarFieldEnum]
+
+
+  export const BreakoutMemberScalarFieldEnum: {
+    id: 'id',
+    groupId: 'groupId',
+    userId: 'userId'
+  };
+
+  export type BreakoutMemberScalarFieldEnum = (typeof BreakoutMemberScalarFieldEnum)[keyof typeof BreakoutMemberScalarFieldEnum]
+
+
+  export const ChatMessageScalarFieldEnum: {
+    id: 'id',
+    groupId: 'groupId',
+    userId: 'userId',
+    text: 'text',
+    createdAt: 'createdAt'
+  };
+
+  export type ChatMessageScalarFieldEnum = (typeof ChatMessageScalarFieldEnum)[keyof typeof ChatMessageScalarFieldEnum]
+
+
+  export const ParentReportScalarFieldEnum: {
+    id: 'id',
+    classId: 'classId',
+    studentId: 'studentId',
+    teacherId: 'teacherId',
+    content: 'content',
+    createdAt: 'createdAt'
+  };
+
+  export type ParentReportScalarFieldEnum = (typeof ParentReportScalarFieldEnum)[keyof typeof ParentReportScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -7619,6 +18011,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -7642,6 +18041,14 @@ export namespace Prisma {
     memberships?: ClassMemberListRelationFilter
     submissions?: SubmissionListRelationFilter
     scoreSync?: XOR<ScoreSyncNullableRelationFilter, ScoreSyncWhereInput> | null
+    liveSessionsTaught?: LiveSessionListRelationFilter
+    attendances?: AttendanceListRelationFilter
+    liveAnswers?: LiveAnswerListRelationFilter
+    understandingVotes?: UnderstandingVoteListRelationFilter
+    breakoutMemberships?: BreakoutMemberListRelationFilter
+    chatMessages?: ChatMessageListRelationFilter
+    reportsWritten?: ParentReportListRelationFilter
+    reportsReceived?: ParentReportListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -7655,6 +18062,14 @@ export namespace Prisma {
     memberships?: ClassMemberOrderByRelationAggregateInput
     submissions?: SubmissionOrderByRelationAggregateInput
     scoreSync?: ScoreSyncOrderByWithRelationInput
+    liveSessionsTaught?: LiveSessionOrderByRelationAggregateInput
+    attendances?: AttendanceOrderByRelationAggregateInput
+    liveAnswers?: LiveAnswerOrderByRelationAggregateInput
+    understandingVotes?: UnderstandingVoteOrderByRelationAggregateInput
+    breakoutMemberships?: BreakoutMemberOrderByRelationAggregateInput
+    chatMessages?: ChatMessageOrderByRelationAggregateInput
+    reportsWritten?: ParentReportOrderByRelationAggregateInput
+    reportsReceived?: ParentReportOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -7671,6 +18086,14 @@ export namespace Prisma {
     memberships?: ClassMemberListRelationFilter
     submissions?: SubmissionListRelationFilter
     scoreSync?: XOR<ScoreSyncNullableRelationFilter, ScoreSyncWhereInput> | null
+    liveSessionsTaught?: LiveSessionListRelationFilter
+    attendances?: AttendanceListRelationFilter
+    liveAnswers?: LiveAnswerListRelationFilter
+    understandingVotes?: UnderstandingVoteListRelationFilter
+    breakoutMemberships?: BreakoutMemberListRelationFilter
+    chatMessages?: ChatMessageListRelationFilter
+    reportsWritten?: ParentReportListRelationFilter
+    reportsReceived?: ParentReportListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -7711,6 +18134,8 @@ export namespace Prisma {
     teacher?: XOR<UserRelationFilter, UserWhereInput>
     members?: ClassMemberListRelationFilter
     tasks?: TaskListRelationFilter
+    sessions?: LiveSessionListRelationFilter
+    reports?: ParentReportListRelationFilter
   }
 
   export type ClassRoomOrderByWithRelationInput = {
@@ -7722,6 +18147,8 @@ export namespace Prisma {
     teacher?: UserOrderByWithRelationInput
     members?: ClassMemberOrderByRelationAggregateInput
     tasks?: TaskOrderByRelationAggregateInput
+    sessions?: LiveSessionOrderByRelationAggregateInput
+    reports?: ParentReportOrderByRelationAggregateInput
   }
 
   export type ClassRoomWhereUniqueInput = Prisma.AtLeast<{
@@ -7736,6 +18163,8 @@ export namespace Prisma {
     teacher?: XOR<UserRelationFilter, UserWhereInput>
     members?: ClassMemberListRelationFilter
     tasks?: TaskListRelationFilter
+    sessions?: LiveSessionListRelationFilter
+    reports?: ParentReportListRelationFilter
   }, "id" | "code">
 
   export type ClassRoomOrderByWithAggregationInput = {
@@ -8031,6 +18460,593 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"ScoreSync"> | Date | string
   }
 
+  export type LiveSessionWhereInput = {
+    AND?: LiveSessionWhereInput | LiveSessionWhereInput[]
+    OR?: LiveSessionWhereInput[]
+    NOT?: LiveSessionWhereInput | LiveSessionWhereInput[]
+    id?: IntFilter<"LiveSession"> | number
+    classId?: IntFilter<"LiveSession"> | number
+    teacherId?: IntFilter<"LiveSession"> | number
+    title?: StringFilter<"LiveSession"> | string
+    openingText?: StringNullableFilter<"LiveSession"> | string | null
+    materialText?: StringNullableFilter<"LiveSession"> | string | null
+    status?: StringFilter<"LiveSession"> | string
+    startedAt?: DateTimeFilter<"LiveSession"> | Date | string
+    endedAt?: DateTimeNullableFilter<"LiveSession"> | Date | string | null
+    class?: XOR<ClassRoomRelationFilter, ClassRoomWhereInput>
+    teacher?: XOR<UserRelationFilter, UserWhereInput>
+    attendances?: AttendanceListRelationFilter
+    quizzes?: LiveQuizListRelationFilter
+    votes?: UnderstandingVoteListRelationFilter
+    groups?: BreakoutGroupListRelationFilter
+  }
+
+  export type LiveSessionOrderByWithRelationInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    teacherId?: SortOrder
+    title?: SortOrder
+    openingText?: SortOrderInput | SortOrder
+    materialText?: SortOrderInput | SortOrder
+    status?: SortOrder
+    startedAt?: SortOrder
+    endedAt?: SortOrderInput | SortOrder
+    class?: ClassRoomOrderByWithRelationInput
+    teacher?: UserOrderByWithRelationInput
+    attendances?: AttendanceOrderByRelationAggregateInput
+    quizzes?: LiveQuizOrderByRelationAggregateInput
+    votes?: UnderstandingVoteOrderByRelationAggregateInput
+    groups?: BreakoutGroupOrderByRelationAggregateInput
+  }
+
+  export type LiveSessionWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: LiveSessionWhereInput | LiveSessionWhereInput[]
+    OR?: LiveSessionWhereInput[]
+    NOT?: LiveSessionWhereInput | LiveSessionWhereInput[]
+    classId?: IntFilter<"LiveSession"> | number
+    teacherId?: IntFilter<"LiveSession"> | number
+    title?: StringFilter<"LiveSession"> | string
+    openingText?: StringNullableFilter<"LiveSession"> | string | null
+    materialText?: StringNullableFilter<"LiveSession"> | string | null
+    status?: StringFilter<"LiveSession"> | string
+    startedAt?: DateTimeFilter<"LiveSession"> | Date | string
+    endedAt?: DateTimeNullableFilter<"LiveSession"> | Date | string | null
+    class?: XOR<ClassRoomRelationFilter, ClassRoomWhereInput>
+    teacher?: XOR<UserRelationFilter, UserWhereInput>
+    attendances?: AttendanceListRelationFilter
+    quizzes?: LiveQuizListRelationFilter
+    votes?: UnderstandingVoteListRelationFilter
+    groups?: BreakoutGroupListRelationFilter
+  }, "id">
+
+  export type LiveSessionOrderByWithAggregationInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    teacherId?: SortOrder
+    title?: SortOrder
+    openingText?: SortOrderInput | SortOrder
+    materialText?: SortOrderInput | SortOrder
+    status?: SortOrder
+    startedAt?: SortOrder
+    endedAt?: SortOrderInput | SortOrder
+    _count?: LiveSessionCountOrderByAggregateInput
+    _avg?: LiveSessionAvgOrderByAggregateInput
+    _max?: LiveSessionMaxOrderByAggregateInput
+    _min?: LiveSessionMinOrderByAggregateInput
+    _sum?: LiveSessionSumOrderByAggregateInput
+  }
+
+  export type LiveSessionScalarWhereWithAggregatesInput = {
+    AND?: LiveSessionScalarWhereWithAggregatesInput | LiveSessionScalarWhereWithAggregatesInput[]
+    OR?: LiveSessionScalarWhereWithAggregatesInput[]
+    NOT?: LiveSessionScalarWhereWithAggregatesInput | LiveSessionScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"LiveSession"> | number
+    classId?: IntWithAggregatesFilter<"LiveSession"> | number
+    teacherId?: IntWithAggregatesFilter<"LiveSession"> | number
+    title?: StringWithAggregatesFilter<"LiveSession"> | string
+    openingText?: StringNullableWithAggregatesFilter<"LiveSession"> | string | null
+    materialText?: StringNullableWithAggregatesFilter<"LiveSession"> | string | null
+    status?: StringWithAggregatesFilter<"LiveSession"> | string
+    startedAt?: DateTimeWithAggregatesFilter<"LiveSession"> | Date | string
+    endedAt?: DateTimeNullableWithAggregatesFilter<"LiveSession"> | Date | string | null
+  }
+
+  export type AttendanceWhereInput = {
+    AND?: AttendanceWhereInput | AttendanceWhereInput[]
+    OR?: AttendanceWhereInput[]
+    NOT?: AttendanceWhereInput | AttendanceWhereInput[]
+    id?: IntFilter<"Attendance"> | number
+    sessionId?: IntFilter<"Attendance"> | number
+    userId?: IntFilter<"Attendance"> | number
+    joinedAt?: DateTimeFilter<"Attendance"> | Date | string
+    session?: XOR<LiveSessionRelationFilter, LiveSessionWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type AttendanceOrderByWithRelationInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    joinedAt?: SortOrder
+    session?: LiveSessionOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type AttendanceWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    sessionId_userId?: AttendanceSessionIdUserIdCompoundUniqueInput
+    AND?: AttendanceWhereInput | AttendanceWhereInput[]
+    OR?: AttendanceWhereInput[]
+    NOT?: AttendanceWhereInput | AttendanceWhereInput[]
+    sessionId?: IntFilter<"Attendance"> | number
+    userId?: IntFilter<"Attendance"> | number
+    joinedAt?: DateTimeFilter<"Attendance"> | Date | string
+    session?: XOR<LiveSessionRelationFilter, LiveSessionWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id" | "sessionId_userId">
+
+  export type AttendanceOrderByWithAggregationInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    joinedAt?: SortOrder
+    _count?: AttendanceCountOrderByAggregateInput
+    _avg?: AttendanceAvgOrderByAggregateInput
+    _max?: AttendanceMaxOrderByAggregateInput
+    _min?: AttendanceMinOrderByAggregateInput
+    _sum?: AttendanceSumOrderByAggregateInput
+  }
+
+  export type AttendanceScalarWhereWithAggregatesInput = {
+    AND?: AttendanceScalarWhereWithAggregatesInput | AttendanceScalarWhereWithAggregatesInput[]
+    OR?: AttendanceScalarWhereWithAggregatesInput[]
+    NOT?: AttendanceScalarWhereWithAggregatesInput | AttendanceScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Attendance"> | number
+    sessionId?: IntWithAggregatesFilter<"Attendance"> | number
+    userId?: IntWithAggregatesFilter<"Attendance"> | number
+    joinedAt?: DateTimeWithAggregatesFilter<"Attendance"> | Date | string
+  }
+
+  export type LiveQuizWhereInput = {
+    AND?: LiveQuizWhereInput | LiveQuizWhereInput[]
+    OR?: LiveQuizWhereInput[]
+    NOT?: LiveQuizWhereInput | LiveQuizWhereInput[]
+    id?: IntFilter<"LiveQuiz"> | number
+    sessionId?: IntFilter<"LiveQuiz"> | number
+    title?: StringFilter<"LiveQuiz"> | string
+    questions?: StringFilter<"LiveQuiz"> | string
+    status?: StringFilter<"LiveQuiz"> | string
+    currentIndex?: IntFilter<"LiveQuiz"> | number
+    bossMaxHp?: IntFilter<"LiveQuiz"> | number
+    createdAt?: DateTimeFilter<"LiveQuiz"> | Date | string
+    session?: XOR<LiveSessionRelationFilter, LiveSessionWhereInput>
+    answers?: LiveAnswerListRelationFilter
+  }
+
+  export type LiveQuizOrderByWithRelationInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    title?: SortOrder
+    questions?: SortOrder
+    status?: SortOrder
+    currentIndex?: SortOrder
+    bossMaxHp?: SortOrder
+    createdAt?: SortOrder
+    session?: LiveSessionOrderByWithRelationInput
+    answers?: LiveAnswerOrderByRelationAggregateInput
+  }
+
+  export type LiveQuizWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: LiveQuizWhereInput | LiveQuizWhereInput[]
+    OR?: LiveQuizWhereInput[]
+    NOT?: LiveQuizWhereInput | LiveQuizWhereInput[]
+    sessionId?: IntFilter<"LiveQuiz"> | number
+    title?: StringFilter<"LiveQuiz"> | string
+    questions?: StringFilter<"LiveQuiz"> | string
+    status?: StringFilter<"LiveQuiz"> | string
+    currentIndex?: IntFilter<"LiveQuiz"> | number
+    bossMaxHp?: IntFilter<"LiveQuiz"> | number
+    createdAt?: DateTimeFilter<"LiveQuiz"> | Date | string
+    session?: XOR<LiveSessionRelationFilter, LiveSessionWhereInput>
+    answers?: LiveAnswerListRelationFilter
+  }, "id">
+
+  export type LiveQuizOrderByWithAggregationInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    title?: SortOrder
+    questions?: SortOrder
+    status?: SortOrder
+    currentIndex?: SortOrder
+    bossMaxHp?: SortOrder
+    createdAt?: SortOrder
+    _count?: LiveQuizCountOrderByAggregateInput
+    _avg?: LiveQuizAvgOrderByAggregateInput
+    _max?: LiveQuizMaxOrderByAggregateInput
+    _min?: LiveQuizMinOrderByAggregateInput
+    _sum?: LiveQuizSumOrderByAggregateInput
+  }
+
+  export type LiveQuizScalarWhereWithAggregatesInput = {
+    AND?: LiveQuizScalarWhereWithAggregatesInput | LiveQuizScalarWhereWithAggregatesInput[]
+    OR?: LiveQuizScalarWhereWithAggregatesInput[]
+    NOT?: LiveQuizScalarWhereWithAggregatesInput | LiveQuizScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"LiveQuiz"> | number
+    sessionId?: IntWithAggregatesFilter<"LiveQuiz"> | number
+    title?: StringWithAggregatesFilter<"LiveQuiz"> | string
+    questions?: StringWithAggregatesFilter<"LiveQuiz"> | string
+    status?: StringWithAggregatesFilter<"LiveQuiz"> | string
+    currentIndex?: IntWithAggregatesFilter<"LiveQuiz"> | number
+    bossMaxHp?: IntWithAggregatesFilter<"LiveQuiz"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"LiveQuiz"> | Date | string
+  }
+
+  export type LiveAnswerWhereInput = {
+    AND?: LiveAnswerWhereInput | LiveAnswerWhereInput[]
+    OR?: LiveAnswerWhereInput[]
+    NOT?: LiveAnswerWhereInput | LiveAnswerWhereInput[]
+    id?: IntFilter<"LiveAnswer"> | number
+    quizId?: IntFilter<"LiveAnswer"> | number
+    userId?: IntFilter<"LiveAnswer"> | number
+    questionIndex?: IntFilter<"LiveAnswer"> | number
+    selectedIndex?: IntFilter<"LiveAnswer"> | number
+    correct?: BoolFilter<"LiveAnswer"> | boolean
+    answeredAt?: DateTimeFilter<"LiveAnswer"> | Date | string
+    quiz?: XOR<LiveQuizRelationFilter, LiveQuizWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type LiveAnswerOrderByWithRelationInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    userId?: SortOrder
+    questionIndex?: SortOrder
+    selectedIndex?: SortOrder
+    correct?: SortOrder
+    answeredAt?: SortOrder
+    quiz?: LiveQuizOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type LiveAnswerWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    quizId_userId_questionIndex?: LiveAnswerQuizIdUserIdQuestionIndexCompoundUniqueInput
+    AND?: LiveAnswerWhereInput | LiveAnswerWhereInput[]
+    OR?: LiveAnswerWhereInput[]
+    NOT?: LiveAnswerWhereInput | LiveAnswerWhereInput[]
+    quizId?: IntFilter<"LiveAnswer"> | number
+    userId?: IntFilter<"LiveAnswer"> | number
+    questionIndex?: IntFilter<"LiveAnswer"> | number
+    selectedIndex?: IntFilter<"LiveAnswer"> | number
+    correct?: BoolFilter<"LiveAnswer"> | boolean
+    answeredAt?: DateTimeFilter<"LiveAnswer"> | Date | string
+    quiz?: XOR<LiveQuizRelationFilter, LiveQuizWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id" | "quizId_userId_questionIndex">
+
+  export type LiveAnswerOrderByWithAggregationInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    userId?: SortOrder
+    questionIndex?: SortOrder
+    selectedIndex?: SortOrder
+    correct?: SortOrder
+    answeredAt?: SortOrder
+    _count?: LiveAnswerCountOrderByAggregateInput
+    _avg?: LiveAnswerAvgOrderByAggregateInput
+    _max?: LiveAnswerMaxOrderByAggregateInput
+    _min?: LiveAnswerMinOrderByAggregateInput
+    _sum?: LiveAnswerSumOrderByAggregateInput
+  }
+
+  export type LiveAnswerScalarWhereWithAggregatesInput = {
+    AND?: LiveAnswerScalarWhereWithAggregatesInput | LiveAnswerScalarWhereWithAggregatesInput[]
+    OR?: LiveAnswerScalarWhereWithAggregatesInput[]
+    NOT?: LiveAnswerScalarWhereWithAggregatesInput | LiveAnswerScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"LiveAnswer"> | number
+    quizId?: IntWithAggregatesFilter<"LiveAnswer"> | number
+    userId?: IntWithAggregatesFilter<"LiveAnswer"> | number
+    questionIndex?: IntWithAggregatesFilter<"LiveAnswer"> | number
+    selectedIndex?: IntWithAggregatesFilter<"LiveAnswer"> | number
+    correct?: BoolWithAggregatesFilter<"LiveAnswer"> | boolean
+    answeredAt?: DateTimeWithAggregatesFilter<"LiveAnswer"> | Date | string
+  }
+
+  export type UnderstandingVoteWhereInput = {
+    AND?: UnderstandingVoteWhereInput | UnderstandingVoteWhereInput[]
+    OR?: UnderstandingVoteWhereInput[]
+    NOT?: UnderstandingVoteWhereInput | UnderstandingVoteWhereInput[]
+    id?: IntFilter<"UnderstandingVote"> | number
+    sessionId?: IntFilter<"UnderstandingVote"> | number
+    userId?: IntFilter<"UnderstandingVote"> | number
+    level?: IntFilter<"UnderstandingVote"> | number
+    updatedAt?: DateTimeFilter<"UnderstandingVote"> | Date | string
+    session?: XOR<LiveSessionRelationFilter, LiveSessionWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type UnderstandingVoteOrderByWithRelationInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    level?: SortOrder
+    updatedAt?: SortOrder
+    session?: LiveSessionOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type UnderstandingVoteWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    sessionId_userId?: UnderstandingVoteSessionIdUserIdCompoundUniqueInput
+    AND?: UnderstandingVoteWhereInput | UnderstandingVoteWhereInput[]
+    OR?: UnderstandingVoteWhereInput[]
+    NOT?: UnderstandingVoteWhereInput | UnderstandingVoteWhereInput[]
+    sessionId?: IntFilter<"UnderstandingVote"> | number
+    userId?: IntFilter<"UnderstandingVote"> | number
+    level?: IntFilter<"UnderstandingVote"> | number
+    updatedAt?: DateTimeFilter<"UnderstandingVote"> | Date | string
+    session?: XOR<LiveSessionRelationFilter, LiveSessionWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id" | "sessionId_userId">
+
+  export type UnderstandingVoteOrderByWithAggregationInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    level?: SortOrder
+    updatedAt?: SortOrder
+    _count?: UnderstandingVoteCountOrderByAggregateInput
+    _avg?: UnderstandingVoteAvgOrderByAggregateInput
+    _max?: UnderstandingVoteMaxOrderByAggregateInput
+    _min?: UnderstandingVoteMinOrderByAggregateInput
+    _sum?: UnderstandingVoteSumOrderByAggregateInput
+  }
+
+  export type UnderstandingVoteScalarWhereWithAggregatesInput = {
+    AND?: UnderstandingVoteScalarWhereWithAggregatesInput | UnderstandingVoteScalarWhereWithAggregatesInput[]
+    OR?: UnderstandingVoteScalarWhereWithAggregatesInput[]
+    NOT?: UnderstandingVoteScalarWhereWithAggregatesInput | UnderstandingVoteScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"UnderstandingVote"> | number
+    sessionId?: IntWithAggregatesFilter<"UnderstandingVote"> | number
+    userId?: IntWithAggregatesFilter<"UnderstandingVote"> | number
+    level?: IntWithAggregatesFilter<"UnderstandingVote"> | number
+    updatedAt?: DateTimeWithAggregatesFilter<"UnderstandingVote"> | Date | string
+  }
+
+  export type BreakoutGroupWhereInput = {
+    AND?: BreakoutGroupWhereInput | BreakoutGroupWhereInput[]
+    OR?: BreakoutGroupWhereInput[]
+    NOT?: BreakoutGroupWhereInput | BreakoutGroupWhereInput[]
+    id?: IntFilter<"BreakoutGroup"> | number
+    sessionId?: IntFilter<"BreakoutGroup"> | number
+    name?: StringFilter<"BreakoutGroup"> | string
+    session?: XOR<LiveSessionRelationFilter, LiveSessionWhereInput>
+    members?: BreakoutMemberListRelationFilter
+    messages?: ChatMessageListRelationFilter
+  }
+
+  export type BreakoutGroupOrderByWithRelationInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    name?: SortOrder
+    session?: LiveSessionOrderByWithRelationInput
+    members?: BreakoutMemberOrderByRelationAggregateInput
+    messages?: ChatMessageOrderByRelationAggregateInput
+  }
+
+  export type BreakoutGroupWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: BreakoutGroupWhereInput | BreakoutGroupWhereInput[]
+    OR?: BreakoutGroupWhereInput[]
+    NOT?: BreakoutGroupWhereInput | BreakoutGroupWhereInput[]
+    sessionId?: IntFilter<"BreakoutGroup"> | number
+    name?: StringFilter<"BreakoutGroup"> | string
+    session?: XOR<LiveSessionRelationFilter, LiveSessionWhereInput>
+    members?: BreakoutMemberListRelationFilter
+    messages?: ChatMessageListRelationFilter
+  }, "id">
+
+  export type BreakoutGroupOrderByWithAggregationInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    name?: SortOrder
+    _count?: BreakoutGroupCountOrderByAggregateInput
+    _avg?: BreakoutGroupAvgOrderByAggregateInput
+    _max?: BreakoutGroupMaxOrderByAggregateInput
+    _min?: BreakoutGroupMinOrderByAggregateInput
+    _sum?: BreakoutGroupSumOrderByAggregateInput
+  }
+
+  export type BreakoutGroupScalarWhereWithAggregatesInput = {
+    AND?: BreakoutGroupScalarWhereWithAggregatesInput | BreakoutGroupScalarWhereWithAggregatesInput[]
+    OR?: BreakoutGroupScalarWhereWithAggregatesInput[]
+    NOT?: BreakoutGroupScalarWhereWithAggregatesInput | BreakoutGroupScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"BreakoutGroup"> | number
+    sessionId?: IntWithAggregatesFilter<"BreakoutGroup"> | number
+    name?: StringWithAggregatesFilter<"BreakoutGroup"> | string
+  }
+
+  export type BreakoutMemberWhereInput = {
+    AND?: BreakoutMemberWhereInput | BreakoutMemberWhereInput[]
+    OR?: BreakoutMemberWhereInput[]
+    NOT?: BreakoutMemberWhereInput | BreakoutMemberWhereInput[]
+    id?: IntFilter<"BreakoutMember"> | number
+    groupId?: IntFilter<"BreakoutMember"> | number
+    userId?: IntFilter<"BreakoutMember"> | number
+    group?: XOR<BreakoutGroupRelationFilter, BreakoutGroupWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type BreakoutMemberOrderByWithRelationInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+    group?: BreakoutGroupOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type BreakoutMemberWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    groupId_userId?: BreakoutMemberGroupIdUserIdCompoundUniqueInput
+    AND?: BreakoutMemberWhereInput | BreakoutMemberWhereInput[]
+    OR?: BreakoutMemberWhereInput[]
+    NOT?: BreakoutMemberWhereInput | BreakoutMemberWhereInput[]
+    groupId?: IntFilter<"BreakoutMember"> | number
+    userId?: IntFilter<"BreakoutMember"> | number
+    group?: XOR<BreakoutGroupRelationFilter, BreakoutGroupWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id" | "groupId_userId">
+
+  export type BreakoutMemberOrderByWithAggregationInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+    _count?: BreakoutMemberCountOrderByAggregateInput
+    _avg?: BreakoutMemberAvgOrderByAggregateInput
+    _max?: BreakoutMemberMaxOrderByAggregateInput
+    _min?: BreakoutMemberMinOrderByAggregateInput
+    _sum?: BreakoutMemberSumOrderByAggregateInput
+  }
+
+  export type BreakoutMemberScalarWhereWithAggregatesInput = {
+    AND?: BreakoutMemberScalarWhereWithAggregatesInput | BreakoutMemberScalarWhereWithAggregatesInput[]
+    OR?: BreakoutMemberScalarWhereWithAggregatesInput[]
+    NOT?: BreakoutMemberScalarWhereWithAggregatesInput | BreakoutMemberScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"BreakoutMember"> | number
+    groupId?: IntWithAggregatesFilter<"BreakoutMember"> | number
+    userId?: IntWithAggregatesFilter<"BreakoutMember"> | number
+  }
+
+  export type ChatMessageWhereInput = {
+    AND?: ChatMessageWhereInput | ChatMessageWhereInput[]
+    OR?: ChatMessageWhereInput[]
+    NOT?: ChatMessageWhereInput | ChatMessageWhereInput[]
+    id?: IntFilter<"ChatMessage"> | number
+    groupId?: IntFilter<"ChatMessage"> | number
+    userId?: IntFilter<"ChatMessage"> | number
+    text?: StringFilter<"ChatMessage"> | string
+    createdAt?: DateTimeFilter<"ChatMessage"> | Date | string
+    group?: XOR<BreakoutGroupRelationFilter, BreakoutGroupWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type ChatMessageOrderByWithRelationInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+    text?: SortOrder
+    createdAt?: SortOrder
+    group?: BreakoutGroupOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type ChatMessageWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ChatMessageWhereInput | ChatMessageWhereInput[]
+    OR?: ChatMessageWhereInput[]
+    NOT?: ChatMessageWhereInput | ChatMessageWhereInput[]
+    groupId?: IntFilter<"ChatMessage"> | number
+    userId?: IntFilter<"ChatMessage"> | number
+    text?: StringFilter<"ChatMessage"> | string
+    createdAt?: DateTimeFilter<"ChatMessage"> | Date | string
+    group?: XOR<BreakoutGroupRelationFilter, BreakoutGroupWhereInput>
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type ChatMessageOrderByWithAggregationInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+    text?: SortOrder
+    createdAt?: SortOrder
+    _count?: ChatMessageCountOrderByAggregateInput
+    _avg?: ChatMessageAvgOrderByAggregateInput
+    _max?: ChatMessageMaxOrderByAggregateInput
+    _min?: ChatMessageMinOrderByAggregateInput
+    _sum?: ChatMessageSumOrderByAggregateInput
+  }
+
+  export type ChatMessageScalarWhereWithAggregatesInput = {
+    AND?: ChatMessageScalarWhereWithAggregatesInput | ChatMessageScalarWhereWithAggregatesInput[]
+    OR?: ChatMessageScalarWhereWithAggregatesInput[]
+    NOT?: ChatMessageScalarWhereWithAggregatesInput | ChatMessageScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ChatMessage"> | number
+    groupId?: IntWithAggregatesFilter<"ChatMessage"> | number
+    userId?: IntWithAggregatesFilter<"ChatMessage"> | number
+    text?: StringWithAggregatesFilter<"ChatMessage"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ChatMessage"> | Date | string
+  }
+
+  export type ParentReportWhereInput = {
+    AND?: ParentReportWhereInput | ParentReportWhereInput[]
+    OR?: ParentReportWhereInput[]
+    NOT?: ParentReportWhereInput | ParentReportWhereInput[]
+    id?: IntFilter<"ParentReport"> | number
+    classId?: IntFilter<"ParentReport"> | number
+    studentId?: IntFilter<"ParentReport"> | number
+    teacherId?: IntFilter<"ParentReport"> | number
+    content?: StringFilter<"ParentReport"> | string
+    createdAt?: DateTimeFilter<"ParentReport"> | Date | string
+    class?: XOR<ClassRoomRelationFilter, ClassRoomWhereInput>
+    student?: XOR<UserRelationFilter, UserWhereInput>
+    teacher?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type ParentReportOrderByWithRelationInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    studentId?: SortOrder
+    teacherId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    class?: ClassRoomOrderByWithRelationInput
+    student?: UserOrderByWithRelationInput
+    teacher?: UserOrderByWithRelationInput
+  }
+
+  export type ParentReportWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ParentReportWhereInput | ParentReportWhereInput[]
+    OR?: ParentReportWhereInput[]
+    NOT?: ParentReportWhereInput | ParentReportWhereInput[]
+    classId?: IntFilter<"ParentReport"> | number
+    studentId?: IntFilter<"ParentReport"> | number
+    teacherId?: IntFilter<"ParentReport"> | number
+    content?: StringFilter<"ParentReport"> | string
+    createdAt?: DateTimeFilter<"ParentReport"> | Date | string
+    class?: XOR<ClassRoomRelationFilter, ClassRoomWhereInput>
+    student?: XOR<UserRelationFilter, UserWhereInput>
+    teacher?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type ParentReportOrderByWithAggregationInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    studentId?: SortOrder
+    teacherId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    _count?: ParentReportCountOrderByAggregateInput
+    _avg?: ParentReportAvgOrderByAggregateInput
+    _max?: ParentReportMaxOrderByAggregateInput
+    _min?: ParentReportMinOrderByAggregateInput
+    _sum?: ParentReportSumOrderByAggregateInput
+  }
+
+  export type ParentReportScalarWhereWithAggregatesInput = {
+    AND?: ParentReportScalarWhereWithAggregatesInput | ParentReportScalarWhereWithAggregatesInput[]
+    OR?: ParentReportScalarWhereWithAggregatesInput[]
+    NOT?: ParentReportScalarWhereWithAggregatesInput | ParentReportScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"ParentReport"> | number
+    classId?: IntWithAggregatesFilter<"ParentReport"> | number
+    studentId?: IntWithAggregatesFilter<"ParentReport"> | number
+    teacherId?: IntWithAggregatesFilter<"ParentReport"> | number
+    content?: StringWithAggregatesFilter<"ParentReport"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ParentReport"> | Date | string
+  }
+
   export type UserCreateInput = {
     name: string
     email: string
@@ -8041,6 +19057,14 @@ export namespace Prisma {
     memberships?: ClassMemberCreateNestedManyWithoutUserInput
     submissions?: SubmissionCreateNestedManyWithoutStudentInput
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -8054,6 +19078,14 @@ export namespace Prisma {
     memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
     submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type UserUpdateInput = {
@@ -8066,6 +19098,14 @@ export namespace Prisma {
     memberships?: ClassMemberUpdateManyWithoutUserNestedInput
     submissions?: SubmissionUpdateManyWithoutStudentNestedInput
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -8079,6 +19119,14 @@ export namespace Prisma {
     memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
     submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -8114,6 +19162,8 @@ export namespace Prisma {
     teacher: UserCreateNestedOneWithoutClassesOwnedInput
     members?: ClassMemberCreateNestedManyWithoutClassInput
     tasks?: TaskCreateNestedManyWithoutClassInput
+    sessions?: LiveSessionCreateNestedManyWithoutClassInput
+    reports?: ParentReportCreateNestedManyWithoutClassInput
   }
 
   export type ClassRoomUncheckedCreateInput = {
@@ -8124,6 +19174,8 @@ export namespace Prisma {
     createdAt?: Date | string
     members?: ClassMemberUncheckedCreateNestedManyWithoutClassInput
     tasks?: TaskUncheckedCreateNestedManyWithoutClassInput
+    sessions?: LiveSessionUncheckedCreateNestedManyWithoutClassInput
+    reports?: ParentReportUncheckedCreateNestedManyWithoutClassInput
   }
 
   export type ClassRoomUpdateInput = {
@@ -8133,6 +19185,8 @@ export namespace Prisma {
     teacher?: UserUpdateOneRequiredWithoutClassesOwnedNestedInput
     members?: ClassMemberUpdateManyWithoutClassNestedInput
     tasks?: TaskUpdateManyWithoutClassNestedInput
+    sessions?: LiveSessionUpdateManyWithoutClassNestedInput
+    reports?: ParentReportUpdateManyWithoutClassNestedInput
   }
 
   export type ClassRoomUncheckedUpdateInput = {
@@ -8143,6 +19197,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     members?: ClassMemberUncheckedUpdateManyWithoutClassNestedInput
     tasks?: TaskUncheckedUpdateManyWithoutClassNestedInput
+    sessions?: LiveSessionUncheckedUpdateManyWithoutClassNestedInput
+    reports?: ParentReportUncheckedUpdateManyWithoutClassNestedInput
   }
 
   export type ClassRoomCreateManyInput = {
@@ -8419,6 +19475,530 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LiveSessionCreateInput = {
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    class: ClassRoomCreateNestedOneWithoutSessionsInput
+    teacher: UserCreateNestedOneWithoutLiveSessionsTaughtInput
+    attendances?: AttendanceCreateNestedManyWithoutSessionInput
+    quizzes?: LiveQuizCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionUncheckedCreateInput = {
+    id?: number
+    classId: number
+    teacherId: number
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutSessionInput
+    quizzes?: LiveQuizUncheckedCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteUncheckedCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    class?: ClassRoomUpdateOneRequiredWithoutSessionsNestedInput
+    teacher?: UserUpdateOneRequiredWithoutLiveSessionsTaughtNestedInput
+    attendances?: AttendanceUpdateManyWithoutSessionNestedInput
+    quizzes?: LiveQuizUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUpdateManyWithoutSessionNestedInput
+  }
+
+  export type LiveSessionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    attendances?: AttendanceUncheckedUpdateManyWithoutSessionNestedInput
+    quizzes?: LiveQuizUncheckedUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUncheckedUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type LiveSessionCreateManyInput = {
+    id?: number
+    classId: number
+    teacherId: number
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+  }
+
+  export type LiveSessionUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type LiveSessionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AttendanceCreateInput = {
+    joinedAt?: Date | string
+    session: LiveSessionCreateNestedOneWithoutAttendancesInput
+    user: UserCreateNestedOneWithoutAttendancesInput
+  }
+
+  export type AttendanceUncheckedCreateInput = {
+    id?: number
+    sessionId: number
+    userId: number
+    joinedAt?: Date | string
+  }
+
+  export type AttendanceUpdateInput = {
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    session?: LiveSessionUpdateOneRequiredWithoutAttendancesNestedInput
+    user?: UserUpdateOneRequiredWithoutAttendancesNestedInput
+  }
+
+  export type AttendanceUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AttendanceCreateManyInput = {
+    id?: number
+    sessionId: number
+    userId: number
+    joinedAt?: Date | string
+  }
+
+  export type AttendanceUpdateManyMutationInput = {
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AttendanceUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LiveQuizCreateInput = {
+    title: string
+    questions: string
+    status?: string
+    currentIndex?: number
+    bossMaxHp: number
+    createdAt?: Date | string
+    session: LiveSessionCreateNestedOneWithoutQuizzesInput
+    answers?: LiveAnswerCreateNestedManyWithoutQuizInput
+  }
+
+  export type LiveQuizUncheckedCreateInput = {
+    id?: number
+    sessionId: number
+    title: string
+    questions: string
+    status?: string
+    currentIndex?: number
+    bossMaxHp: number
+    createdAt?: Date | string
+    answers?: LiveAnswerUncheckedCreateNestedManyWithoutQuizInput
+  }
+
+  export type LiveQuizUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    questions?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentIndex?: IntFieldUpdateOperationsInput | number
+    bossMaxHp?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    session?: LiveSessionUpdateOneRequiredWithoutQuizzesNestedInput
+    answers?: LiveAnswerUpdateManyWithoutQuizNestedInput
+  }
+
+  export type LiveQuizUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    questions?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentIndex?: IntFieldUpdateOperationsInput | number
+    bossMaxHp?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    answers?: LiveAnswerUncheckedUpdateManyWithoutQuizNestedInput
+  }
+
+  export type LiveQuizCreateManyInput = {
+    id?: number
+    sessionId: number
+    title: string
+    questions: string
+    status?: string
+    currentIndex?: number
+    bossMaxHp: number
+    createdAt?: Date | string
+  }
+
+  export type LiveQuizUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    questions?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentIndex?: IntFieldUpdateOperationsInput | number
+    bossMaxHp?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LiveQuizUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    questions?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentIndex?: IntFieldUpdateOperationsInput | number
+    bossMaxHp?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LiveAnswerCreateInput = {
+    questionIndex: number
+    selectedIndex: number
+    correct: boolean
+    answeredAt?: Date | string
+    quiz: LiveQuizCreateNestedOneWithoutAnswersInput
+    user: UserCreateNestedOneWithoutLiveAnswersInput
+  }
+
+  export type LiveAnswerUncheckedCreateInput = {
+    id?: number
+    quizId: number
+    userId: number
+    questionIndex: number
+    selectedIndex: number
+    correct: boolean
+    answeredAt?: Date | string
+  }
+
+  export type LiveAnswerUpdateInput = {
+    questionIndex?: IntFieldUpdateOperationsInput | number
+    selectedIndex?: IntFieldUpdateOperationsInput | number
+    correct?: BoolFieldUpdateOperationsInput | boolean
+    answeredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    quiz?: LiveQuizUpdateOneRequiredWithoutAnswersNestedInput
+    user?: UserUpdateOneRequiredWithoutLiveAnswersNestedInput
+  }
+
+  export type LiveAnswerUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    quizId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    questionIndex?: IntFieldUpdateOperationsInput | number
+    selectedIndex?: IntFieldUpdateOperationsInput | number
+    correct?: BoolFieldUpdateOperationsInput | boolean
+    answeredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LiveAnswerCreateManyInput = {
+    id?: number
+    quizId: number
+    userId: number
+    questionIndex: number
+    selectedIndex: number
+    correct: boolean
+    answeredAt?: Date | string
+  }
+
+  export type LiveAnswerUpdateManyMutationInput = {
+    questionIndex?: IntFieldUpdateOperationsInput | number
+    selectedIndex?: IntFieldUpdateOperationsInput | number
+    correct?: BoolFieldUpdateOperationsInput | boolean
+    answeredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LiveAnswerUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    quizId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    questionIndex?: IntFieldUpdateOperationsInput | number
+    selectedIndex?: IntFieldUpdateOperationsInput | number
+    correct?: BoolFieldUpdateOperationsInput | boolean
+    answeredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UnderstandingVoteCreateInput = {
+    level: number
+    updatedAt?: Date | string
+    session: LiveSessionCreateNestedOneWithoutVotesInput
+    user: UserCreateNestedOneWithoutUnderstandingVotesInput
+  }
+
+  export type UnderstandingVoteUncheckedCreateInput = {
+    id?: number
+    sessionId: number
+    userId: number
+    level: number
+    updatedAt?: Date | string
+  }
+
+  export type UnderstandingVoteUpdateInput = {
+    level?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    session?: LiveSessionUpdateOneRequiredWithoutVotesNestedInput
+    user?: UserUpdateOneRequiredWithoutUnderstandingVotesNestedInput
+  }
+
+  export type UnderstandingVoteUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    level?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UnderstandingVoteCreateManyInput = {
+    id?: number
+    sessionId: number
+    userId: number
+    level: number
+    updatedAt?: Date | string
+  }
+
+  export type UnderstandingVoteUpdateManyMutationInput = {
+    level?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UnderstandingVoteUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    level?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BreakoutGroupCreateInput = {
+    name: string
+    session: LiveSessionCreateNestedOneWithoutGroupsInput
+    members?: BreakoutMemberCreateNestedManyWithoutGroupInput
+    messages?: ChatMessageCreateNestedManyWithoutGroupInput
+  }
+
+  export type BreakoutGroupUncheckedCreateInput = {
+    id?: number
+    sessionId: number
+    name: string
+    members?: BreakoutMemberUncheckedCreateNestedManyWithoutGroupInput
+    messages?: ChatMessageUncheckedCreateNestedManyWithoutGroupInput
+  }
+
+  export type BreakoutGroupUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    session?: LiveSessionUpdateOneRequiredWithoutGroupsNestedInput
+    members?: BreakoutMemberUpdateManyWithoutGroupNestedInput
+    messages?: ChatMessageUpdateManyWithoutGroupNestedInput
+  }
+
+  export type BreakoutGroupUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    members?: BreakoutMemberUncheckedUpdateManyWithoutGroupNestedInput
+    messages?: ChatMessageUncheckedUpdateManyWithoutGroupNestedInput
+  }
+
+  export type BreakoutGroupCreateManyInput = {
+    id?: number
+    sessionId: number
+    name: string
+  }
+
+  export type BreakoutGroupUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BreakoutGroupUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BreakoutMemberCreateInput = {
+    group: BreakoutGroupCreateNestedOneWithoutMembersInput
+    user: UserCreateNestedOneWithoutBreakoutMembershipsInput
+  }
+
+  export type BreakoutMemberUncheckedCreateInput = {
+    id?: number
+    groupId: number
+    userId: number
+  }
+
+  export type BreakoutMemberUpdateInput = {
+    group?: BreakoutGroupUpdateOneRequiredWithoutMembersNestedInput
+    user?: UserUpdateOneRequiredWithoutBreakoutMembershipsNestedInput
+  }
+
+  export type BreakoutMemberUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    groupId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BreakoutMemberCreateManyInput = {
+    id?: number
+    groupId: number
+    userId: number
+  }
+
+  export type BreakoutMemberUpdateManyMutationInput = {
+
+  }
+
+  export type BreakoutMemberUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    groupId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChatMessageCreateInput = {
+    text: string
+    createdAt?: Date | string
+    group: BreakoutGroupCreateNestedOneWithoutMessagesInput
+    user: UserCreateNestedOneWithoutChatMessagesInput
+  }
+
+  export type ChatMessageUncheckedCreateInput = {
+    id?: number
+    groupId: number
+    userId: number
+    text: string
+    createdAt?: Date | string
+  }
+
+  export type ChatMessageUpdateInput = {
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    group?: BreakoutGroupUpdateOneRequiredWithoutMessagesNestedInput
+    user?: UserUpdateOneRequiredWithoutChatMessagesNestedInput
+  }
+
+  export type ChatMessageUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    groupId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ChatMessageCreateManyInput = {
+    id?: number
+    groupId: number
+    userId: number
+    text: string
+    createdAt?: Date | string
+  }
+
+  export type ChatMessageUpdateManyMutationInput = {
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ChatMessageUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    groupId?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParentReportCreateInput = {
+    content: string
+    createdAt?: Date | string
+    class: ClassRoomCreateNestedOneWithoutReportsInput
+    student: UserCreateNestedOneWithoutReportsReceivedInput
+    teacher: UserCreateNestedOneWithoutReportsWrittenInput
+  }
+
+  export type ParentReportUncheckedCreateInput = {
+    id?: number
+    classId: number
+    studentId: number
+    teacherId: number
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ParentReportUpdateInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    class?: ClassRoomUpdateOneRequiredWithoutReportsNestedInput
+    student?: UserUpdateOneRequiredWithoutReportsReceivedNestedInput
+    teacher?: UserUpdateOneRequiredWithoutReportsWrittenNestedInput
+  }
+
+  export type ParentReportUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    studentId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParentReportCreateManyInput = {
+    id?: number
+    classId: number
+    studentId: number
+    teacherId: number
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ParentReportUpdateManyMutationInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParentReportUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    studentId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -8478,6 +20058,48 @@ export namespace Prisma {
     isNot?: ScoreSyncWhereInput | null
   }
 
+  export type LiveSessionListRelationFilter = {
+    every?: LiveSessionWhereInput
+    some?: LiveSessionWhereInput
+    none?: LiveSessionWhereInput
+  }
+
+  export type AttendanceListRelationFilter = {
+    every?: AttendanceWhereInput
+    some?: AttendanceWhereInput
+    none?: AttendanceWhereInput
+  }
+
+  export type LiveAnswerListRelationFilter = {
+    every?: LiveAnswerWhereInput
+    some?: LiveAnswerWhereInput
+    none?: LiveAnswerWhereInput
+  }
+
+  export type UnderstandingVoteListRelationFilter = {
+    every?: UnderstandingVoteWhereInput
+    some?: UnderstandingVoteWhereInput
+    none?: UnderstandingVoteWhereInput
+  }
+
+  export type BreakoutMemberListRelationFilter = {
+    every?: BreakoutMemberWhereInput
+    some?: BreakoutMemberWhereInput
+    none?: BreakoutMemberWhereInput
+  }
+
+  export type ChatMessageListRelationFilter = {
+    every?: ChatMessageWhereInput
+    some?: ChatMessageWhereInput
+    none?: ChatMessageWhereInput
+  }
+
+  export type ParentReportListRelationFilter = {
+    every?: ParentReportWhereInput
+    some?: ParentReportWhereInput
+    none?: ParentReportWhereInput
+  }
+
   export type ClassRoomOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -8487,6 +20109,34 @@ export namespace Prisma {
   }
 
   export type SubmissionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LiveSessionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AttendanceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LiveAnswerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UnderstandingVoteOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BreakoutMemberOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ChatMessageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ParentReportOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8876,6 +20526,447 @@ export namespace Prisma {
     simulatorBest?: SortOrder
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type LiveQuizListRelationFilter = {
+    every?: LiveQuizWhereInput
+    some?: LiveQuizWhereInput
+    none?: LiveQuizWhereInput
+  }
+
+  export type BreakoutGroupListRelationFilter = {
+    every?: BreakoutGroupWhereInput
+    some?: BreakoutGroupWhereInput
+    none?: BreakoutGroupWhereInput
+  }
+
+  export type LiveQuizOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BreakoutGroupOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LiveSessionCountOrderByAggregateInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    teacherId?: SortOrder
+    title?: SortOrder
+    openingText?: SortOrder
+    materialText?: SortOrder
+    status?: SortOrder
+    startedAt?: SortOrder
+    endedAt?: SortOrder
+  }
+
+  export type LiveSessionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    teacherId?: SortOrder
+  }
+
+  export type LiveSessionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    teacherId?: SortOrder
+    title?: SortOrder
+    openingText?: SortOrder
+    materialText?: SortOrder
+    status?: SortOrder
+    startedAt?: SortOrder
+    endedAt?: SortOrder
+  }
+
+  export type LiveSessionMinOrderByAggregateInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    teacherId?: SortOrder
+    title?: SortOrder
+    openingText?: SortOrder
+    materialText?: SortOrder
+    status?: SortOrder
+    startedAt?: SortOrder
+    endedAt?: SortOrder
+  }
+
+  export type LiveSessionSumOrderByAggregateInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    teacherId?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type LiveSessionRelationFilter = {
+    is?: LiveSessionWhereInput
+    isNot?: LiveSessionWhereInput
+  }
+
+  export type AttendanceSessionIdUserIdCompoundUniqueInput = {
+    sessionId: number
+    userId: number
+  }
+
+  export type AttendanceCountOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    joinedAt?: SortOrder
+  }
+
+  export type AttendanceAvgOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type AttendanceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    joinedAt?: SortOrder
+  }
+
+  export type AttendanceMinOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    joinedAt?: SortOrder
+  }
+
+  export type AttendanceSumOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type LiveQuizCountOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    title?: SortOrder
+    questions?: SortOrder
+    status?: SortOrder
+    currentIndex?: SortOrder
+    bossMaxHp?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LiveQuizAvgOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    currentIndex?: SortOrder
+    bossMaxHp?: SortOrder
+  }
+
+  export type LiveQuizMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    title?: SortOrder
+    questions?: SortOrder
+    status?: SortOrder
+    currentIndex?: SortOrder
+    bossMaxHp?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LiveQuizMinOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    title?: SortOrder
+    questions?: SortOrder
+    status?: SortOrder
+    currentIndex?: SortOrder
+    bossMaxHp?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LiveQuizSumOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    currentIndex?: SortOrder
+    bossMaxHp?: SortOrder
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type LiveQuizRelationFilter = {
+    is?: LiveQuizWhereInput
+    isNot?: LiveQuizWhereInput
+  }
+
+  export type LiveAnswerQuizIdUserIdQuestionIndexCompoundUniqueInput = {
+    quizId: number
+    userId: number
+    questionIndex: number
+  }
+
+  export type LiveAnswerCountOrderByAggregateInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    userId?: SortOrder
+    questionIndex?: SortOrder
+    selectedIndex?: SortOrder
+    correct?: SortOrder
+    answeredAt?: SortOrder
+  }
+
+  export type LiveAnswerAvgOrderByAggregateInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    userId?: SortOrder
+    questionIndex?: SortOrder
+    selectedIndex?: SortOrder
+  }
+
+  export type LiveAnswerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    userId?: SortOrder
+    questionIndex?: SortOrder
+    selectedIndex?: SortOrder
+    correct?: SortOrder
+    answeredAt?: SortOrder
+  }
+
+  export type LiveAnswerMinOrderByAggregateInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    userId?: SortOrder
+    questionIndex?: SortOrder
+    selectedIndex?: SortOrder
+    correct?: SortOrder
+    answeredAt?: SortOrder
+  }
+
+  export type LiveAnswerSumOrderByAggregateInput = {
+    id?: SortOrder
+    quizId?: SortOrder
+    userId?: SortOrder
+    questionIndex?: SortOrder
+    selectedIndex?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type UnderstandingVoteSessionIdUserIdCompoundUniqueInput = {
+    sessionId: number
+    userId: number
+  }
+
+  export type UnderstandingVoteCountOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    level?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UnderstandingVoteAvgOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    level?: SortOrder
+  }
+
+  export type UnderstandingVoteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    level?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UnderstandingVoteMinOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    level?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UnderstandingVoteSumOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    userId?: SortOrder
+    level?: SortOrder
+  }
+
+  export type BreakoutGroupCountOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    name?: SortOrder
+  }
+
+  export type BreakoutGroupAvgOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+  }
+
+  export type BreakoutGroupMaxOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    name?: SortOrder
+  }
+
+  export type BreakoutGroupMinOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+    name?: SortOrder
+  }
+
+  export type BreakoutGroupSumOrderByAggregateInput = {
+    id?: SortOrder
+    sessionId?: SortOrder
+  }
+
+  export type BreakoutGroupRelationFilter = {
+    is?: BreakoutGroupWhereInput
+    isNot?: BreakoutGroupWhereInput
+  }
+
+  export type BreakoutMemberGroupIdUserIdCompoundUniqueInput = {
+    groupId: number
+    userId: number
+  }
+
+  export type BreakoutMemberCountOrderByAggregateInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type BreakoutMemberAvgOrderByAggregateInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type BreakoutMemberMaxOrderByAggregateInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type BreakoutMemberMinOrderByAggregateInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type BreakoutMemberSumOrderByAggregateInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type ChatMessageCountOrderByAggregateInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+    text?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ChatMessageAvgOrderByAggregateInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type ChatMessageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+    text?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ChatMessageMinOrderByAggregateInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+    text?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ChatMessageSumOrderByAggregateInput = {
+    id?: SortOrder
+    groupId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type ParentReportCountOrderByAggregateInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    studentId?: SortOrder
+    teacherId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ParentReportAvgOrderByAggregateInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    studentId?: SortOrder
+    teacherId?: SortOrder
+  }
+
+  export type ParentReportMaxOrderByAggregateInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    studentId?: SortOrder
+    teacherId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ParentReportMinOrderByAggregateInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    studentId?: SortOrder
+    teacherId?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ParentReportSumOrderByAggregateInput = {
+    id?: SortOrder
+    classId?: SortOrder
+    studentId?: SortOrder
+    teacherId?: SortOrder
+  }
+
   export type ClassRoomCreateNestedManyWithoutTeacherInput = {
     create?: XOR<ClassRoomCreateWithoutTeacherInput, ClassRoomUncheckedCreateWithoutTeacherInput> | ClassRoomCreateWithoutTeacherInput[] | ClassRoomUncheckedCreateWithoutTeacherInput[]
     connectOrCreate?: ClassRoomCreateOrConnectWithoutTeacherInput | ClassRoomCreateOrConnectWithoutTeacherInput[]
@@ -8903,6 +20994,62 @@ export namespace Prisma {
     connect?: ScoreSyncWhereUniqueInput
   }
 
+  export type LiveSessionCreateNestedManyWithoutTeacherInput = {
+    create?: XOR<LiveSessionCreateWithoutTeacherInput, LiveSessionUncheckedCreateWithoutTeacherInput> | LiveSessionCreateWithoutTeacherInput[] | LiveSessionUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutTeacherInput | LiveSessionCreateOrConnectWithoutTeacherInput[]
+    createMany?: LiveSessionCreateManyTeacherInputEnvelope
+    connect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+  }
+
+  export type AttendanceCreateNestedManyWithoutUserInput = {
+    create?: XOR<AttendanceCreateWithoutUserInput, AttendanceUncheckedCreateWithoutUserInput> | AttendanceCreateWithoutUserInput[] | AttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutUserInput | AttendanceCreateOrConnectWithoutUserInput[]
+    createMany?: AttendanceCreateManyUserInputEnvelope
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+  }
+
+  export type LiveAnswerCreateNestedManyWithoutUserInput = {
+    create?: XOR<LiveAnswerCreateWithoutUserInput, LiveAnswerUncheckedCreateWithoutUserInput> | LiveAnswerCreateWithoutUserInput[] | LiveAnswerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LiveAnswerCreateOrConnectWithoutUserInput | LiveAnswerCreateOrConnectWithoutUserInput[]
+    createMany?: LiveAnswerCreateManyUserInputEnvelope
+    connect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+  }
+
+  export type UnderstandingVoteCreateNestedManyWithoutUserInput = {
+    create?: XOR<UnderstandingVoteCreateWithoutUserInput, UnderstandingVoteUncheckedCreateWithoutUserInput> | UnderstandingVoteCreateWithoutUserInput[] | UnderstandingVoteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UnderstandingVoteCreateOrConnectWithoutUserInput | UnderstandingVoteCreateOrConnectWithoutUserInput[]
+    createMany?: UnderstandingVoteCreateManyUserInputEnvelope
+    connect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+  }
+
+  export type BreakoutMemberCreateNestedManyWithoutUserInput = {
+    create?: XOR<BreakoutMemberCreateWithoutUserInput, BreakoutMemberUncheckedCreateWithoutUserInput> | BreakoutMemberCreateWithoutUserInput[] | BreakoutMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BreakoutMemberCreateOrConnectWithoutUserInput | BreakoutMemberCreateOrConnectWithoutUserInput[]
+    createMany?: BreakoutMemberCreateManyUserInputEnvelope
+    connect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+  }
+
+  export type ChatMessageCreateNestedManyWithoutUserInput = {
+    create?: XOR<ChatMessageCreateWithoutUserInput, ChatMessageUncheckedCreateWithoutUserInput> | ChatMessageCreateWithoutUserInput[] | ChatMessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutUserInput | ChatMessageCreateOrConnectWithoutUserInput[]
+    createMany?: ChatMessageCreateManyUserInputEnvelope
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+  }
+
+  export type ParentReportCreateNestedManyWithoutTeacherInput = {
+    create?: XOR<ParentReportCreateWithoutTeacherInput, ParentReportUncheckedCreateWithoutTeacherInput> | ParentReportCreateWithoutTeacherInput[] | ParentReportUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutTeacherInput | ParentReportCreateOrConnectWithoutTeacherInput[]
+    createMany?: ParentReportCreateManyTeacherInputEnvelope
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+  }
+
+  export type ParentReportCreateNestedManyWithoutStudentInput = {
+    create?: XOR<ParentReportCreateWithoutStudentInput, ParentReportUncheckedCreateWithoutStudentInput> | ParentReportCreateWithoutStudentInput[] | ParentReportUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutStudentInput | ParentReportCreateOrConnectWithoutStudentInput[]
+    createMany?: ParentReportCreateManyStudentInputEnvelope
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+  }
+
   export type ClassRoomUncheckedCreateNestedManyWithoutTeacherInput = {
     create?: XOR<ClassRoomCreateWithoutTeacherInput, ClassRoomUncheckedCreateWithoutTeacherInput> | ClassRoomCreateWithoutTeacherInput[] | ClassRoomUncheckedCreateWithoutTeacherInput[]
     connectOrCreate?: ClassRoomCreateOrConnectWithoutTeacherInput | ClassRoomCreateOrConnectWithoutTeacherInput[]
@@ -8928,6 +21075,62 @@ export namespace Prisma {
     create?: XOR<ScoreSyncCreateWithoutUserInput, ScoreSyncUncheckedCreateWithoutUserInput>
     connectOrCreate?: ScoreSyncCreateOrConnectWithoutUserInput
     connect?: ScoreSyncWhereUniqueInput
+  }
+
+  export type LiveSessionUncheckedCreateNestedManyWithoutTeacherInput = {
+    create?: XOR<LiveSessionCreateWithoutTeacherInput, LiveSessionUncheckedCreateWithoutTeacherInput> | LiveSessionCreateWithoutTeacherInput[] | LiveSessionUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutTeacherInput | LiveSessionCreateOrConnectWithoutTeacherInput[]
+    createMany?: LiveSessionCreateManyTeacherInputEnvelope
+    connect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+  }
+
+  export type AttendanceUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AttendanceCreateWithoutUserInput, AttendanceUncheckedCreateWithoutUserInput> | AttendanceCreateWithoutUserInput[] | AttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutUserInput | AttendanceCreateOrConnectWithoutUserInput[]
+    createMany?: AttendanceCreateManyUserInputEnvelope
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+  }
+
+  export type LiveAnswerUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<LiveAnswerCreateWithoutUserInput, LiveAnswerUncheckedCreateWithoutUserInput> | LiveAnswerCreateWithoutUserInput[] | LiveAnswerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LiveAnswerCreateOrConnectWithoutUserInput | LiveAnswerCreateOrConnectWithoutUserInput[]
+    createMany?: LiveAnswerCreateManyUserInputEnvelope
+    connect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+  }
+
+  export type UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UnderstandingVoteCreateWithoutUserInput, UnderstandingVoteUncheckedCreateWithoutUserInput> | UnderstandingVoteCreateWithoutUserInput[] | UnderstandingVoteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UnderstandingVoteCreateOrConnectWithoutUserInput | UnderstandingVoteCreateOrConnectWithoutUserInput[]
+    createMany?: UnderstandingVoteCreateManyUserInputEnvelope
+    connect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+  }
+
+  export type BreakoutMemberUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<BreakoutMemberCreateWithoutUserInput, BreakoutMemberUncheckedCreateWithoutUserInput> | BreakoutMemberCreateWithoutUserInput[] | BreakoutMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BreakoutMemberCreateOrConnectWithoutUserInput | BreakoutMemberCreateOrConnectWithoutUserInput[]
+    createMany?: BreakoutMemberCreateManyUserInputEnvelope
+    connect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+  }
+
+  export type ChatMessageUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ChatMessageCreateWithoutUserInput, ChatMessageUncheckedCreateWithoutUserInput> | ChatMessageCreateWithoutUserInput[] | ChatMessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutUserInput | ChatMessageCreateOrConnectWithoutUserInput[]
+    createMany?: ChatMessageCreateManyUserInputEnvelope
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+  }
+
+  export type ParentReportUncheckedCreateNestedManyWithoutTeacherInput = {
+    create?: XOR<ParentReportCreateWithoutTeacherInput, ParentReportUncheckedCreateWithoutTeacherInput> | ParentReportCreateWithoutTeacherInput[] | ParentReportUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutTeacherInput | ParentReportCreateOrConnectWithoutTeacherInput[]
+    createMany?: ParentReportCreateManyTeacherInputEnvelope
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+  }
+
+  export type ParentReportUncheckedCreateNestedManyWithoutStudentInput = {
+    create?: XOR<ParentReportCreateWithoutStudentInput, ParentReportUncheckedCreateWithoutStudentInput> | ParentReportCreateWithoutStudentInput[] | ParentReportUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutStudentInput | ParentReportCreateOrConnectWithoutStudentInput[]
+    createMany?: ParentReportCreateManyStudentInputEnvelope
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8990,6 +21193,118 @@ export namespace Prisma {
     update?: XOR<XOR<ScoreSyncUpdateToOneWithWhereWithoutUserInput, ScoreSyncUpdateWithoutUserInput>, ScoreSyncUncheckedUpdateWithoutUserInput>
   }
 
+  export type LiveSessionUpdateManyWithoutTeacherNestedInput = {
+    create?: XOR<LiveSessionCreateWithoutTeacherInput, LiveSessionUncheckedCreateWithoutTeacherInput> | LiveSessionCreateWithoutTeacherInput[] | LiveSessionUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutTeacherInput | LiveSessionCreateOrConnectWithoutTeacherInput[]
+    upsert?: LiveSessionUpsertWithWhereUniqueWithoutTeacherInput | LiveSessionUpsertWithWhereUniqueWithoutTeacherInput[]
+    createMany?: LiveSessionCreateManyTeacherInputEnvelope
+    set?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    disconnect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    delete?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    connect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    update?: LiveSessionUpdateWithWhereUniqueWithoutTeacherInput | LiveSessionUpdateWithWhereUniqueWithoutTeacherInput[]
+    updateMany?: LiveSessionUpdateManyWithWhereWithoutTeacherInput | LiveSessionUpdateManyWithWhereWithoutTeacherInput[]
+    deleteMany?: LiveSessionScalarWhereInput | LiveSessionScalarWhereInput[]
+  }
+
+  export type AttendanceUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AttendanceCreateWithoutUserInput, AttendanceUncheckedCreateWithoutUserInput> | AttendanceCreateWithoutUserInput[] | AttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutUserInput | AttendanceCreateOrConnectWithoutUserInput[]
+    upsert?: AttendanceUpsertWithWhereUniqueWithoutUserInput | AttendanceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AttendanceCreateManyUserInputEnvelope
+    set?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    disconnect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    delete?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    update?: AttendanceUpdateWithWhereUniqueWithoutUserInput | AttendanceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AttendanceUpdateManyWithWhereWithoutUserInput | AttendanceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+  }
+
+  export type LiveAnswerUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LiveAnswerCreateWithoutUserInput, LiveAnswerUncheckedCreateWithoutUserInput> | LiveAnswerCreateWithoutUserInput[] | LiveAnswerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LiveAnswerCreateOrConnectWithoutUserInput | LiveAnswerCreateOrConnectWithoutUserInput[]
+    upsert?: LiveAnswerUpsertWithWhereUniqueWithoutUserInput | LiveAnswerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LiveAnswerCreateManyUserInputEnvelope
+    set?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    disconnect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    delete?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    connect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    update?: LiveAnswerUpdateWithWhereUniqueWithoutUserInput | LiveAnswerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LiveAnswerUpdateManyWithWhereWithoutUserInput | LiveAnswerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LiveAnswerScalarWhereInput | LiveAnswerScalarWhereInput[]
+  }
+
+  export type UnderstandingVoteUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UnderstandingVoteCreateWithoutUserInput, UnderstandingVoteUncheckedCreateWithoutUserInput> | UnderstandingVoteCreateWithoutUserInput[] | UnderstandingVoteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UnderstandingVoteCreateOrConnectWithoutUserInput | UnderstandingVoteCreateOrConnectWithoutUserInput[]
+    upsert?: UnderstandingVoteUpsertWithWhereUniqueWithoutUserInput | UnderstandingVoteUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UnderstandingVoteCreateManyUserInputEnvelope
+    set?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    disconnect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    delete?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    connect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    update?: UnderstandingVoteUpdateWithWhereUniqueWithoutUserInput | UnderstandingVoteUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UnderstandingVoteUpdateManyWithWhereWithoutUserInput | UnderstandingVoteUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UnderstandingVoteScalarWhereInput | UnderstandingVoteScalarWhereInput[]
+  }
+
+  export type BreakoutMemberUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BreakoutMemberCreateWithoutUserInput, BreakoutMemberUncheckedCreateWithoutUserInput> | BreakoutMemberCreateWithoutUserInput[] | BreakoutMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BreakoutMemberCreateOrConnectWithoutUserInput | BreakoutMemberCreateOrConnectWithoutUserInput[]
+    upsert?: BreakoutMemberUpsertWithWhereUniqueWithoutUserInput | BreakoutMemberUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BreakoutMemberCreateManyUserInputEnvelope
+    set?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    disconnect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    delete?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    connect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    update?: BreakoutMemberUpdateWithWhereUniqueWithoutUserInput | BreakoutMemberUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BreakoutMemberUpdateManyWithWhereWithoutUserInput | BreakoutMemberUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BreakoutMemberScalarWhereInput | BreakoutMemberScalarWhereInput[]
+  }
+
+  export type ChatMessageUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ChatMessageCreateWithoutUserInput, ChatMessageUncheckedCreateWithoutUserInput> | ChatMessageCreateWithoutUserInput[] | ChatMessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutUserInput | ChatMessageCreateOrConnectWithoutUserInput[]
+    upsert?: ChatMessageUpsertWithWhereUniqueWithoutUserInput | ChatMessageUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ChatMessageCreateManyUserInputEnvelope
+    set?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    disconnect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    delete?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    update?: ChatMessageUpdateWithWhereUniqueWithoutUserInput | ChatMessageUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ChatMessageUpdateManyWithWhereWithoutUserInput | ChatMessageUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+  }
+
+  export type ParentReportUpdateManyWithoutTeacherNestedInput = {
+    create?: XOR<ParentReportCreateWithoutTeacherInput, ParentReportUncheckedCreateWithoutTeacherInput> | ParentReportCreateWithoutTeacherInput[] | ParentReportUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutTeacherInput | ParentReportCreateOrConnectWithoutTeacherInput[]
+    upsert?: ParentReportUpsertWithWhereUniqueWithoutTeacherInput | ParentReportUpsertWithWhereUniqueWithoutTeacherInput[]
+    createMany?: ParentReportCreateManyTeacherInputEnvelope
+    set?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    disconnect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    delete?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    update?: ParentReportUpdateWithWhereUniqueWithoutTeacherInput | ParentReportUpdateWithWhereUniqueWithoutTeacherInput[]
+    updateMany?: ParentReportUpdateManyWithWhereWithoutTeacherInput | ParentReportUpdateManyWithWhereWithoutTeacherInput[]
+    deleteMany?: ParentReportScalarWhereInput | ParentReportScalarWhereInput[]
+  }
+
+  export type ParentReportUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<ParentReportCreateWithoutStudentInput, ParentReportUncheckedCreateWithoutStudentInput> | ParentReportCreateWithoutStudentInput[] | ParentReportUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutStudentInput | ParentReportCreateOrConnectWithoutStudentInput[]
+    upsert?: ParentReportUpsertWithWhereUniqueWithoutStudentInput | ParentReportUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: ParentReportCreateManyStudentInputEnvelope
+    set?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    disconnect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    delete?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    update?: ParentReportUpdateWithWhereUniqueWithoutStudentInput | ParentReportUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: ParentReportUpdateManyWithWhereWithoutStudentInput | ParentReportUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: ParentReportScalarWhereInput | ParentReportScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -9050,6 +21365,118 @@ export namespace Prisma {
     update?: XOR<XOR<ScoreSyncUpdateToOneWithWhereWithoutUserInput, ScoreSyncUpdateWithoutUserInput>, ScoreSyncUncheckedUpdateWithoutUserInput>
   }
 
+  export type LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput = {
+    create?: XOR<LiveSessionCreateWithoutTeacherInput, LiveSessionUncheckedCreateWithoutTeacherInput> | LiveSessionCreateWithoutTeacherInput[] | LiveSessionUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutTeacherInput | LiveSessionCreateOrConnectWithoutTeacherInput[]
+    upsert?: LiveSessionUpsertWithWhereUniqueWithoutTeacherInput | LiveSessionUpsertWithWhereUniqueWithoutTeacherInput[]
+    createMany?: LiveSessionCreateManyTeacherInputEnvelope
+    set?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    disconnect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    delete?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    connect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    update?: LiveSessionUpdateWithWhereUniqueWithoutTeacherInput | LiveSessionUpdateWithWhereUniqueWithoutTeacherInput[]
+    updateMany?: LiveSessionUpdateManyWithWhereWithoutTeacherInput | LiveSessionUpdateManyWithWhereWithoutTeacherInput[]
+    deleteMany?: LiveSessionScalarWhereInput | LiveSessionScalarWhereInput[]
+  }
+
+  export type AttendanceUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AttendanceCreateWithoutUserInput, AttendanceUncheckedCreateWithoutUserInput> | AttendanceCreateWithoutUserInput[] | AttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutUserInput | AttendanceCreateOrConnectWithoutUserInput[]
+    upsert?: AttendanceUpsertWithWhereUniqueWithoutUserInput | AttendanceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AttendanceCreateManyUserInputEnvelope
+    set?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    disconnect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    delete?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    update?: AttendanceUpdateWithWhereUniqueWithoutUserInput | AttendanceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AttendanceUpdateManyWithWhereWithoutUserInput | AttendanceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+  }
+
+  export type LiveAnswerUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LiveAnswerCreateWithoutUserInput, LiveAnswerUncheckedCreateWithoutUserInput> | LiveAnswerCreateWithoutUserInput[] | LiveAnswerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LiveAnswerCreateOrConnectWithoutUserInput | LiveAnswerCreateOrConnectWithoutUserInput[]
+    upsert?: LiveAnswerUpsertWithWhereUniqueWithoutUserInput | LiveAnswerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LiveAnswerCreateManyUserInputEnvelope
+    set?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    disconnect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    delete?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    connect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    update?: LiveAnswerUpdateWithWhereUniqueWithoutUserInput | LiveAnswerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LiveAnswerUpdateManyWithWhereWithoutUserInput | LiveAnswerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LiveAnswerScalarWhereInput | LiveAnswerScalarWhereInput[]
+  }
+
+  export type UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UnderstandingVoteCreateWithoutUserInput, UnderstandingVoteUncheckedCreateWithoutUserInput> | UnderstandingVoteCreateWithoutUserInput[] | UnderstandingVoteUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UnderstandingVoteCreateOrConnectWithoutUserInput | UnderstandingVoteCreateOrConnectWithoutUserInput[]
+    upsert?: UnderstandingVoteUpsertWithWhereUniqueWithoutUserInput | UnderstandingVoteUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UnderstandingVoteCreateManyUserInputEnvelope
+    set?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    disconnect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    delete?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    connect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    update?: UnderstandingVoteUpdateWithWhereUniqueWithoutUserInput | UnderstandingVoteUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UnderstandingVoteUpdateManyWithWhereWithoutUserInput | UnderstandingVoteUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UnderstandingVoteScalarWhereInput | UnderstandingVoteScalarWhereInput[]
+  }
+
+  export type BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BreakoutMemberCreateWithoutUserInput, BreakoutMemberUncheckedCreateWithoutUserInput> | BreakoutMemberCreateWithoutUserInput[] | BreakoutMemberUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BreakoutMemberCreateOrConnectWithoutUserInput | BreakoutMemberCreateOrConnectWithoutUserInput[]
+    upsert?: BreakoutMemberUpsertWithWhereUniqueWithoutUserInput | BreakoutMemberUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BreakoutMemberCreateManyUserInputEnvelope
+    set?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    disconnect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    delete?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    connect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    update?: BreakoutMemberUpdateWithWhereUniqueWithoutUserInput | BreakoutMemberUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BreakoutMemberUpdateManyWithWhereWithoutUserInput | BreakoutMemberUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BreakoutMemberScalarWhereInput | BreakoutMemberScalarWhereInput[]
+  }
+
+  export type ChatMessageUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ChatMessageCreateWithoutUserInput, ChatMessageUncheckedCreateWithoutUserInput> | ChatMessageCreateWithoutUserInput[] | ChatMessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutUserInput | ChatMessageCreateOrConnectWithoutUserInput[]
+    upsert?: ChatMessageUpsertWithWhereUniqueWithoutUserInput | ChatMessageUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ChatMessageCreateManyUserInputEnvelope
+    set?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    disconnect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    delete?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    update?: ChatMessageUpdateWithWhereUniqueWithoutUserInput | ChatMessageUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ChatMessageUpdateManyWithWhereWithoutUserInput | ChatMessageUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+  }
+
+  export type ParentReportUncheckedUpdateManyWithoutTeacherNestedInput = {
+    create?: XOR<ParentReportCreateWithoutTeacherInput, ParentReportUncheckedCreateWithoutTeacherInput> | ParentReportCreateWithoutTeacherInput[] | ParentReportUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutTeacherInput | ParentReportCreateOrConnectWithoutTeacherInput[]
+    upsert?: ParentReportUpsertWithWhereUniqueWithoutTeacherInput | ParentReportUpsertWithWhereUniqueWithoutTeacherInput[]
+    createMany?: ParentReportCreateManyTeacherInputEnvelope
+    set?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    disconnect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    delete?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    update?: ParentReportUpdateWithWhereUniqueWithoutTeacherInput | ParentReportUpdateWithWhereUniqueWithoutTeacherInput[]
+    updateMany?: ParentReportUpdateManyWithWhereWithoutTeacherInput | ParentReportUpdateManyWithWhereWithoutTeacherInput[]
+    deleteMany?: ParentReportScalarWhereInput | ParentReportScalarWhereInput[]
+  }
+
+  export type ParentReportUncheckedUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<ParentReportCreateWithoutStudentInput, ParentReportUncheckedCreateWithoutStudentInput> | ParentReportCreateWithoutStudentInput[] | ParentReportUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutStudentInput | ParentReportCreateOrConnectWithoutStudentInput[]
+    upsert?: ParentReportUpsertWithWhereUniqueWithoutStudentInput | ParentReportUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: ParentReportCreateManyStudentInputEnvelope
+    set?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    disconnect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    delete?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    update?: ParentReportUpdateWithWhereUniqueWithoutStudentInput | ParentReportUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: ParentReportUpdateManyWithWhereWithoutStudentInput | ParentReportUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: ParentReportScalarWhereInput | ParentReportScalarWhereInput[]
+  }
+
   export type UserCreateNestedOneWithoutClassesOwnedInput = {
     create?: XOR<UserCreateWithoutClassesOwnedInput, UserUncheckedCreateWithoutClassesOwnedInput>
     connectOrCreate?: UserCreateOrConnectWithoutClassesOwnedInput
@@ -9070,6 +21497,20 @@ export namespace Prisma {
     connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
   }
 
+  export type LiveSessionCreateNestedManyWithoutClassInput = {
+    create?: XOR<LiveSessionCreateWithoutClassInput, LiveSessionUncheckedCreateWithoutClassInput> | LiveSessionCreateWithoutClassInput[] | LiveSessionUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutClassInput | LiveSessionCreateOrConnectWithoutClassInput[]
+    createMany?: LiveSessionCreateManyClassInputEnvelope
+    connect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+  }
+
+  export type ParentReportCreateNestedManyWithoutClassInput = {
+    create?: XOR<ParentReportCreateWithoutClassInput, ParentReportUncheckedCreateWithoutClassInput> | ParentReportCreateWithoutClassInput[] | ParentReportUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutClassInput | ParentReportCreateOrConnectWithoutClassInput[]
+    createMany?: ParentReportCreateManyClassInputEnvelope
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+  }
+
   export type ClassMemberUncheckedCreateNestedManyWithoutClassInput = {
     create?: XOR<ClassMemberCreateWithoutClassInput, ClassMemberUncheckedCreateWithoutClassInput> | ClassMemberCreateWithoutClassInput[] | ClassMemberUncheckedCreateWithoutClassInput[]
     connectOrCreate?: ClassMemberCreateOrConnectWithoutClassInput | ClassMemberCreateOrConnectWithoutClassInput[]
@@ -9082,6 +21523,20 @@ export namespace Prisma {
     connectOrCreate?: TaskCreateOrConnectWithoutClassInput | TaskCreateOrConnectWithoutClassInput[]
     createMany?: TaskCreateManyClassInputEnvelope
     connect?: TaskWhereUniqueInput | TaskWhereUniqueInput[]
+  }
+
+  export type LiveSessionUncheckedCreateNestedManyWithoutClassInput = {
+    create?: XOR<LiveSessionCreateWithoutClassInput, LiveSessionUncheckedCreateWithoutClassInput> | LiveSessionCreateWithoutClassInput[] | LiveSessionUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutClassInput | LiveSessionCreateOrConnectWithoutClassInput[]
+    createMany?: LiveSessionCreateManyClassInputEnvelope
+    connect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+  }
+
+  export type ParentReportUncheckedCreateNestedManyWithoutClassInput = {
+    create?: XOR<ParentReportCreateWithoutClassInput, ParentReportUncheckedCreateWithoutClassInput> | ParentReportCreateWithoutClassInput[] | ParentReportUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutClassInput | ParentReportCreateOrConnectWithoutClassInput[]
+    createMany?: ParentReportCreateManyClassInputEnvelope
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutClassesOwnedNestedInput = {
@@ -9120,6 +21575,34 @@ export namespace Prisma {
     deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
   }
 
+  export type LiveSessionUpdateManyWithoutClassNestedInput = {
+    create?: XOR<LiveSessionCreateWithoutClassInput, LiveSessionUncheckedCreateWithoutClassInput> | LiveSessionCreateWithoutClassInput[] | LiveSessionUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutClassInput | LiveSessionCreateOrConnectWithoutClassInput[]
+    upsert?: LiveSessionUpsertWithWhereUniqueWithoutClassInput | LiveSessionUpsertWithWhereUniqueWithoutClassInput[]
+    createMany?: LiveSessionCreateManyClassInputEnvelope
+    set?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    disconnect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    delete?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    connect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    update?: LiveSessionUpdateWithWhereUniqueWithoutClassInput | LiveSessionUpdateWithWhereUniqueWithoutClassInput[]
+    updateMany?: LiveSessionUpdateManyWithWhereWithoutClassInput | LiveSessionUpdateManyWithWhereWithoutClassInput[]
+    deleteMany?: LiveSessionScalarWhereInput | LiveSessionScalarWhereInput[]
+  }
+
+  export type ParentReportUpdateManyWithoutClassNestedInput = {
+    create?: XOR<ParentReportCreateWithoutClassInput, ParentReportUncheckedCreateWithoutClassInput> | ParentReportCreateWithoutClassInput[] | ParentReportUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutClassInput | ParentReportCreateOrConnectWithoutClassInput[]
+    upsert?: ParentReportUpsertWithWhereUniqueWithoutClassInput | ParentReportUpsertWithWhereUniqueWithoutClassInput[]
+    createMany?: ParentReportCreateManyClassInputEnvelope
+    set?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    disconnect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    delete?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    update?: ParentReportUpdateWithWhereUniqueWithoutClassInput | ParentReportUpdateWithWhereUniqueWithoutClassInput[]
+    updateMany?: ParentReportUpdateManyWithWhereWithoutClassInput | ParentReportUpdateManyWithWhereWithoutClassInput[]
+    deleteMany?: ParentReportScalarWhereInput | ParentReportScalarWhereInput[]
+  }
+
   export type ClassMemberUncheckedUpdateManyWithoutClassNestedInput = {
     create?: XOR<ClassMemberCreateWithoutClassInput, ClassMemberUncheckedCreateWithoutClassInput> | ClassMemberCreateWithoutClassInput[] | ClassMemberUncheckedCreateWithoutClassInput[]
     connectOrCreate?: ClassMemberCreateOrConnectWithoutClassInput | ClassMemberCreateOrConnectWithoutClassInput[]
@@ -9146,6 +21629,34 @@ export namespace Prisma {
     update?: TaskUpdateWithWhereUniqueWithoutClassInput | TaskUpdateWithWhereUniqueWithoutClassInput[]
     updateMany?: TaskUpdateManyWithWhereWithoutClassInput | TaskUpdateManyWithWhereWithoutClassInput[]
     deleteMany?: TaskScalarWhereInput | TaskScalarWhereInput[]
+  }
+
+  export type LiveSessionUncheckedUpdateManyWithoutClassNestedInput = {
+    create?: XOR<LiveSessionCreateWithoutClassInput, LiveSessionUncheckedCreateWithoutClassInput> | LiveSessionCreateWithoutClassInput[] | LiveSessionUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutClassInput | LiveSessionCreateOrConnectWithoutClassInput[]
+    upsert?: LiveSessionUpsertWithWhereUniqueWithoutClassInput | LiveSessionUpsertWithWhereUniqueWithoutClassInput[]
+    createMany?: LiveSessionCreateManyClassInputEnvelope
+    set?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    disconnect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    delete?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    connect?: LiveSessionWhereUniqueInput | LiveSessionWhereUniqueInput[]
+    update?: LiveSessionUpdateWithWhereUniqueWithoutClassInput | LiveSessionUpdateWithWhereUniqueWithoutClassInput[]
+    updateMany?: LiveSessionUpdateManyWithWhereWithoutClassInput | LiveSessionUpdateManyWithWhereWithoutClassInput[]
+    deleteMany?: LiveSessionScalarWhereInput | LiveSessionScalarWhereInput[]
+  }
+
+  export type ParentReportUncheckedUpdateManyWithoutClassNestedInput = {
+    create?: XOR<ParentReportCreateWithoutClassInput, ParentReportUncheckedCreateWithoutClassInput> | ParentReportCreateWithoutClassInput[] | ParentReportUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: ParentReportCreateOrConnectWithoutClassInput | ParentReportCreateOrConnectWithoutClassInput[]
+    upsert?: ParentReportUpsertWithWhereUniqueWithoutClassInput | ParentReportUpsertWithWhereUniqueWithoutClassInput[]
+    createMany?: ParentReportCreateManyClassInputEnvelope
+    set?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    disconnect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    delete?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    connect?: ParentReportWhereUniqueInput | ParentReportWhereUniqueInput[]
+    update?: ParentReportUpdateWithWhereUniqueWithoutClassInput | ParentReportUpdateWithWhereUniqueWithoutClassInput[]
+    updateMany?: ParentReportUpdateManyWithWhereWithoutClassInput | ParentReportUpdateManyWithWhereWithoutClassInput[]
+    deleteMany?: ParentReportScalarWhereInput | ParentReportScalarWhereInput[]
   }
 
   export type ClassRoomCreateNestedOneWithoutMembersInput = {
@@ -9284,6 +21795,546 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutScoreSyncInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutScoreSyncInput, UserUpdateWithoutScoreSyncInput>, UserUncheckedUpdateWithoutScoreSyncInput>
+  }
+
+  export type ClassRoomCreateNestedOneWithoutSessionsInput = {
+    create?: XOR<ClassRoomCreateWithoutSessionsInput, ClassRoomUncheckedCreateWithoutSessionsInput>
+    connectOrCreate?: ClassRoomCreateOrConnectWithoutSessionsInput
+    connect?: ClassRoomWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutLiveSessionsTaughtInput = {
+    create?: XOR<UserCreateWithoutLiveSessionsTaughtInput, UserUncheckedCreateWithoutLiveSessionsTaughtInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLiveSessionsTaughtInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type AttendanceCreateNestedManyWithoutSessionInput = {
+    create?: XOR<AttendanceCreateWithoutSessionInput, AttendanceUncheckedCreateWithoutSessionInput> | AttendanceCreateWithoutSessionInput[] | AttendanceUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutSessionInput | AttendanceCreateOrConnectWithoutSessionInput[]
+    createMany?: AttendanceCreateManySessionInputEnvelope
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+  }
+
+  export type LiveQuizCreateNestedManyWithoutSessionInput = {
+    create?: XOR<LiveQuizCreateWithoutSessionInput, LiveQuizUncheckedCreateWithoutSessionInput> | LiveQuizCreateWithoutSessionInput[] | LiveQuizUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: LiveQuizCreateOrConnectWithoutSessionInput | LiveQuizCreateOrConnectWithoutSessionInput[]
+    createMany?: LiveQuizCreateManySessionInputEnvelope
+    connect?: LiveQuizWhereUniqueInput | LiveQuizWhereUniqueInput[]
+  }
+
+  export type UnderstandingVoteCreateNestedManyWithoutSessionInput = {
+    create?: XOR<UnderstandingVoteCreateWithoutSessionInput, UnderstandingVoteUncheckedCreateWithoutSessionInput> | UnderstandingVoteCreateWithoutSessionInput[] | UnderstandingVoteUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: UnderstandingVoteCreateOrConnectWithoutSessionInput | UnderstandingVoteCreateOrConnectWithoutSessionInput[]
+    createMany?: UnderstandingVoteCreateManySessionInputEnvelope
+    connect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+  }
+
+  export type BreakoutGroupCreateNestedManyWithoutSessionInput = {
+    create?: XOR<BreakoutGroupCreateWithoutSessionInput, BreakoutGroupUncheckedCreateWithoutSessionInput> | BreakoutGroupCreateWithoutSessionInput[] | BreakoutGroupUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: BreakoutGroupCreateOrConnectWithoutSessionInput | BreakoutGroupCreateOrConnectWithoutSessionInput[]
+    createMany?: BreakoutGroupCreateManySessionInputEnvelope
+    connect?: BreakoutGroupWhereUniqueInput | BreakoutGroupWhereUniqueInput[]
+  }
+
+  export type AttendanceUncheckedCreateNestedManyWithoutSessionInput = {
+    create?: XOR<AttendanceCreateWithoutSessionInput, AttendanceUncheckedCreateWithoutSessionInput> | AttendanceCreateWithoutSessionInput[] | AttendanceUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutSessionInput | AttendanceCreateOrConnectWithoutSessionInput[]
+    createMany?: AttendanceCreateManySessionInputEnvelope
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+  }
+
+  export type LiveQuizUncheckedCreateNestedManyWithoutSessionInput = {
+    create?: XOR<LiveQuizCreateWithoutSessionInput, LiveQuizUncheckedCreateWithoutSessionInput> | LiveQuizCreateWithoutSessionInput[] | LiveQuizUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: LiveQuizCreateOrConnectWithoutSessionInput | LiveQuizCreateOrConnectWithoutSessionInput[]
+    createMany?: LiveQuizCreateManySessionInputEnvelope
+    connect?: LiveQuizWhereUniqueInput | LiveQuizWhereUniqueInput[]
+  }
+
+  export type UnderstandingVoteUncheckedCreateNestedManyWithoutSessionInput = {
+    create?: XOR<UnderstandingVoteCreateWithoutSessionInput, UnderstandingVoteUncheckedCreateWithoutSessionInput> | UnderstandingVoteCreateWithoutSessionInput[] | UnderstandingVoteUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: UnderstandingVoteCreateOrConnectWithoutSessionInput | UnderstandingVoteCreateOrConnectWithoutSessionInput[]
+    createMany?: UnderstandingVoteCreateManySessionInputEnvelope
+    connect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+  }
+
+  export type BreakoutGroupUncheckedCreateNestedManyWithoutSessionInput = {
+    create?: XOR<BreakoutGroupCreateWithoutSessionInput, BreakoutGroupUncheckedCreateWithoutSessionInput> | BreakoutGroupCreateWithoutSessionInput[] | BreakoutGroupUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: BreakoutGroupCreateOrConnectWithoutSessionInput | BreakoutGroupCreateOrConnectWithoutSessionInput[]
+    createMany?: BreakoutGroupCreateManySessionInputEnvelope
+    connect?: BreakoutGroupWhereUniqueInput | BreakoutGroupWhereUniqueInput[]
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type ClassRoomUpdateOneRequiredWithoutSessionsNestedInput = {
+    create?: XOR<ClassRoomCreateWithoutSessionsInput, ClassRoomUncheckedCreateWithoutSessionsInput>
+    connectOrCreate?: ClassRoomCreateOrConnectWithoutSessionsInput
+    upsert?: ClassRoomUpsertWithoutSessionsInput
+    connect?: ClassRoomWhereUniqueInput
+    update?: XOR<XOR<ClassRoomUpdateToOneWithWhereWithoutSessionsInput, ClassRoomUpdateWithoutSessionsInput>, ClassRoomUncheckedUpdateWithoutSessionsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutLiveSessionsTaughtNestedInput = {
+    create?: XOR<UserCreateWithoutLiveSessionsTaughtInput, UserUncheckedCreateWithoutLiveSessionsTaughtInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLiveSessionsTaughtInput
+    upsert?: UserUpsertWithoutLiveSessionsTaughtInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLiveSessionsTaughtInput, UserUpdateWithoutLiveSessionsTaughtInput>, UserUncheckedUpdateWithoutLiveSessionsTaughtInput>
+  }
+
+  export type AttendanceUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<AttendanceCreateWithoutSessionInput, AttendanceUncheckedCreateWithoutSessionInput> | AttendanceCreateWithoutSessionInput[] | AttendanceUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutSessionInput | AttendanceCreateOrConnectWithoutSessionInput[]
+    upsert?: AttendanceUpsertWithWhereUniqueWithoutSessionInput | AttendanceUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: AttendanceCreateManySessionInputEnvelope
+    set?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    disconnect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    delete?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    update?: AttendanceUpdateWithWhereUniqueWithoutSessionInput | AttendanceUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: AttendanceUpdateManyWithWhereWithoutSessionInput | AttendanceUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+  }
+
+  export type LiveQuizUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<LiveQuizCreateWithoutSessionInput, LiveQuizUncheckedCreateWithoutSessionInput> | LiveQuizCreateWithoutSessionInput[] | LiveQuizUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: LiveQuizCreateOrConnectWithoutSessionInput | LiveQuizCreateOrConnectWithoutSessionInput[]
+    upsert?: LiveQuizUpsertWithWhereUniqueWithoutSessionInput | LiveQuizUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: LiveQuizCreateManySessionInputEnvelope
+    set?: LiveQuizWhereUniqueInput | LiveQuizWhereUniqueInput[]
+    disconnect?: LiveQuizWhereUniqueInput | LiveQuizWhereUniqueInput[]
+    delete?: LiveQuizWhereUniqueInput | LiveQuizWhereUniqueInput[]
+    connect?: LiveQuizWhereUniqueInput | LiveQuizWhereUniqueInput[]
+    update?: LiveQuizUpdateWithWhereUniqueWithoutSessionInput | LiveQuizUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: LiveQuizUpdateManyWithWhereWithoutSessionInput | LiveQuizUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: LiveQuizScalarWhereInput | LiveQuizScalarWhereInput[]
+  }
+
+  export type UnderstandingVoteUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<UnderstandingVoteCreateWithoutSessionInput, UnderstandingVoteUncheckedCreateWithoutSessionInput> | UnderstandingVoteCreateWithoutSessionInput[] | UnderstandingVoteUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: UnderstandingVoteCreateOrConnectWithoutSessionInput | UnderstandingVoteCreateOrConnectWithoutSessionInput[]
+    upsert?: UnderstandingVoteUpsertWithWhereUniqueWithoutSessionInput | UnderstandingVoteUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: UnderstandingVoteCreateManySessionInputEnvelope
+    set?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    disconnect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    delete?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    connect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    update?: UnderstandingVoteUpdateWithWhereUniqueWithoutSessionInput | UnderstandingVoteUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: UnderstandingVoteUpdateManyWithWhereWithoutSessionInput | UnderstandingVoteUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: UnderstandingVoteScalarWhereInput | UnderstandingVoteScalarWhereInput[]
+  }
+
+  export type BreakoutGroupUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<BreakoutGroupCreateWithoutSessionInput, BreakoutGroupUncheckedCreateWithoutSessionInput> | BreakoutGroupCreateWithoutSessionInput[] | BreakoutGroupUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: BreakoutGroupCreateOrConnectWithoutSessionInput | BreakoutGroupCreateOrConnectWithoutSessionInput[]
+    upsert?: BreakoutGroupUpsertWithWhereUniqueWithoutSessionInput | BreakoutGroupUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: BreakoutGroupCreateManySessionInputEnvelope
+    set?: BreakoutGroupWhereUniqueInput | BreakoutGroupWhereUniqueInput[]
+    disconnect?: BreakoutGroupWhereUniqueInput | BreakoutGroupWhereUniqueInput[]
+    delete?: BreakoutGroupWhereUniqueInput | BreakoutGroupWhereUniqueInput[]
+    connect?: BreakoutGroupWhereUniqueInput | BreakoutGroupWhereUniqueInput[]
+    update?: BreakoutGroupUpdateWithWhereUniqueWithoutSessionInput | BreakoutGroupUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: BreakoutGroupUpdateManyWithWhereWithoutSessionInput | BreakoutGroupUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: BreakoutGroupScalarWhereInput | BreakoutGroupScalarWhereInput[]
+  }
+
+  export type AttendanceUncheckedUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<AttendanceCreateWithoutSessionInput, AttendanceUncheckedCreateWithoutSessionInput> | AttendanceCreateWithoutSessionInput[] | AttendanceUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutSessionInput | AttendanceCreateOrConnectWithoutSessionInput[]
+    upsert?: AttendanceUpsertWithWhereUniqueWithoutSessionInput | AttendanceUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: AttendanceCreateManySessionInputEnvelope
+    set?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    disconnect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    delete?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    update?: AttendanceUpdateWithWhereUniqueWithoutSessionInput | AttendanceUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: AttendanceUpdateManyWithWhereWithoutSessionInput | AttendanceUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+  }
+
+  export type LiveQuizUncheckedUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<LiveQuizCreateWithoutSessionInput, LiveQuizUncheckedCreateWithoutSessionInput> | LiveQuizCreateWithoutSessionInput[] | LiveQuizUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: LiveQuizCreateOrConnectWithoutSessionInput | LiveQuizCreateOrConnectWithoutSessionInput[]
+    upsert?: LiveQuizUpsertWithWhereUniqueWithoutSessionInput | LiveQuizUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: LiveQuizCreateManySessionInputEnvelope
+    set?: LiveQuizWhereUniqueInput | LiveQuizWhereUniqueInput[]
+    disconnect?: LiveQuizWhereUniqueInput | LiveQuizWhereUniqueInput[]
+    delete?: LiveQuizWhereUniqueInput | LiveQuizWhereUniqueInput[]
+    connect?: LiveQuizWhereUniqueInput | LiveQuizWhereUniqueInput[]
+    update?: LiveQuizUpdateWithWhereUniqueWithoutSessionInput | LiveQuizUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: LiveQuizUpdateManyWithWhereWithoutSessionInput | LiveQuizUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: LiveQuizScalarWhereInput | LiveQuizScalarWhereInput[]
+  }
+
+  export type UnderstandingVoteUncheckedUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<UnderstandingVoteCreateWithoutSessionInput, UnderstandingVoteUncheckedCreateWithoutSessionInput> | UnderstandingVoteCreateWithoutSessionInput[] | UnderstandingVoteUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: UnderstandingVoteCreateOrConnectWithoutSessionInput | UnderstandingVoteCreateOrConnectWithoutSessionInput[]
+    upsert?: UnderstandingVoteUpsertWithWhereUniqueWithoutSessionInput | UnderstandingVoteUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: UnderstandingVoteCreateManySessionInputEnvelope
+    set?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    disconnect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    delete?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    connect?: UnderstandingVoteWhereUniqueInput | UnderstandingVoteWhereUniqueInput[]
+    update?: UnderstandingVoteUpdateWithWhereUniqueWithoutSessionInput | UnderstandingVoteUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: UnderstandingVoteUpdateManyWithWhereWithoutSessionInput | UnderstandingVoteUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: UnderstandingVoteScalarWhereInput | UnderstandingVoteScalarWhereInput[]
+  }
+
+  export type BreakoutGroupUncheckedUpdateManyWithoutSessionNestedInput = {
+    create?: XOR<BreakoutGroupCreateWithoutSessionInput, BreakoutGroupUncheckedCreateWithoutSessionInput> | BreakoutGroupCreateWithoutSessionInput[] | BreakoutGroupUncheckedCreateWithoutSessionInput[]
+    connectOrCreate?: BreakoutGroupCreateOrConnectWithoutSessionInput | BreakoutGroupCreateOrConnectWithoutSessionInput[]
+    upsert?: BreakoutGroupUpsertWithWhereUniqueWithoutSessionInput | BreakoutGroupUpsertWithWhereUniqueWithoutSessionInput[]
+    createMany?: BreakoutGroupCreateManySessionInputEnvelope
+    set?: BreakoutGroupWhereUniqueInput | BreakoutGroupWhereUniqueInput[]
+    disconnect?: BreakoutGroupWhereUniqueInput | BreakoutGroupWhereUniqueInput[]
+    delete?: BreakoutGroupWhereUniqueInput | BreakoutGroupWhereUniqueInput[]
+    connect?: BreakoutGroupWhereUniqueInput | BreakoutGroupWhereUniqueInput[]
+    update?: BreakoutGroupUpdateWithWhereUniqueWithoutSessionInput | BreakoutGroupUpdateWithWhereUniqueWithoutSessionInput[]
+    updateMany?: BreakoutGroupUpdateManyWithWhereWithoutSessionInput | BreakoutGroupUpdateManyWithWhereWithoutSessionInput[]
+    deleteMany?: BreakoutGroupScalarWhereInput | BreakoutGroupScalarWhereInput[]
+  }
+
+  export type LiveSessionCreateNestedOneWithoutAttendancesInput = {
+    create?: XOR<LiveSessionCreateWithoutAttendancesInput, LiveSessionUncheckedCreateWithoutAttendancesInput>
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutAttendancesInput
+    connect?: LiveSessionWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutAttendancesInput = {
+    create?: XOR<UserCreateWithoutAttendancesInput, UserUncheckedCreateWithoutAttendancesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAttendancesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type LiveSessionUpdateOneRequiredWithoutAttendancesNestedInput = {
+    create?: XOR<LiveSessionCreateWithoutAttendancesInput, LiveSessionUncheckedCreateWithoutAttendancesInput>
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutAttendancesInput
+    upsert?: LiveSessionUpsertWithoutAttendancesInput
+    connect?: LiveSessionWhereUniqueInput
+    update?: XOR<XOR<LiveSessionUpdateToOneWithWhereWithoutAttendancesInput, LiveSessionUpdateWithoutAttendancesInput>, LiveSessionUncheckedUpdateWithoutAttendancesInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutAttendancesNestedInput = {
+    create?: XOR<UserCreateWithoutAttendancesInput, UserUncheckedCreateWithoutAttendancesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAttendancesInput
+    upsert?: UserUpsertWithoutAttendancesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAttendancesInput, UserUpdateWithoutAttendancesInput>, UserUncheckedUpdateWithoutAttendancesInput>
+  }
+
+  export type LiveSessionCreateNestedOneWithoutQuizzesInput = {
+    create?: XOR<LiveSessionCreateWithoutQuizzesInput, LiveSessionUncheckedCreateWithoutQuizzesInput>
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutQuizzesInput
+    connect?: LiveSessionWhereUniqueInput
+  }
+
+  export type LiveAnswerCreateNestedManyWithoutQuizInput = {
+    create?: XOR<LiveAnswerCreateWithoutQuizInput, LiveAnswerUncheckedCreateWithoutQuizInput> | LiveAnswerCreateWithoutQuizInput[] | LiveAnswerUncheckedCreateWithoutQuizInput[]
+    connectOrCreate?: LiveAnswerCreateOrConnectWithoutQuizInput | LiveAnswerCreateOrConnectWithoutQuizInput[]
+    createMany?: LiveAnswerCreateManyQuizInputEnvelope
+    connect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+  }
+
+  export type LiveAnswerUncheckedCreateNestedManyWithoutQuizInput = {
+    create?: XOR<LiveAnswerCreateWithoutQuizInput, LiveAnswerUncheckedCreateWithoutQuizInput> | LiveAnswerCreateWithoutQuizInput[] | LiveAnswerUncheckedCreateWithoutQuizInput[]
+    connectOrCreate?: LiveAnswerCreateOrConnectWithoutQuizInput | LiveAnswerCreateOrConnectWithoutQuizInput[]
+    createMany?: LiveAnswerCreateManyQuizInputEnvelope
+    connect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+  }
+
+  export type LiveSessionUpdateOneRequiredWithoutQuizzesNestedInput = {
+    create?: XOR<LiveSessionCreateWithoutQuizzesInput, LiveSessionUncheckedCreateWithoutQuizzesInput>
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutQuizzesInput
+    upsert?: LiveSessionUpsertWithoutQuizzesInput
+    connect?: LiveSessionWhereUniqueInput
+    update?: XOR<XOR<LiveSessionUpdateToOneWithWhereWithoutQuizzesInput, LiveSessionUpdateWithoutQuizzesInput>, LiveSessionUncheckedUpdateWithoutQuizzesInput>
+  }
+
+  export type LiveAnswerUpdateManyWithoutQuizNestedInput = {
+    create?: XOR<LiveAnswerCreateWithoutQuizInput, LiveAnswerUncheckedCreateWithoutQuizInput> | LiveAnswerCreateWithoutQuizInput[] | LiveAnswerUncheckedCreateWithoutQuizInput[]
+    connectOrCreate?: LiveAnswerCreateOrConnectWithoutQuizInput | LiveAnswerCreateOrConnectWithoutQuizInput[]
+    upsert?: LiveAnswerUpsertWithWhereUniqueWithoutQuizInput | LiveAnswerUpsertWithWhereUniqueWithoutQuizInput[]
+    createMany?: LiveAnswerCreateManyQuizInputEnvelope
+    set?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    disconnect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    delete?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    connect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    update?: LiveAnswerUpdateWithWhereUniqueWithoutQuizInput | LiveAnswerUpdateWithWhereUniqueWithoutQuizInput[]
+    updateMany?: LiveAnswerUpdateManyWithWhereWithoutQuizInput | LiveAnswerUpdateManyWithWhereWithoutQuizInput[]
+    deleteMany?: LiveAnswerScalarWhereInput | LiveAnswerScalarWhereInput[]
+  }
+
+  export type LiveAnswerUncheckedUpdateManyWithoutQuizNestedInput = {
+    create?: XOR<LiveAnswerCreateWithoutQuizInput, LiveAnswerUncheckedCreateWithoutQuizInput> | LiveAnswerCreateWithoutQuizInput[] | LiveAnswerUncheckedCreateWithoutQuizInput[]
+    connectOrCreate?: LiveAnswerCreateOrConnectWithoutQuizInput | LiveAnswerCreateOrConnectWithoutQuizInput[]
+    upsert?: LiveAnswerUpsertWithWhereUniqueWithoutQuizInput | LiveAnswerUpsertWithWhereUniqueWithoutQuizInput[]
+    createMany?: LiveAnswerCreateManyQuizInputEnvelope
+    set?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    disconnect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    delete?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    connect?: LiveAnswerWhereUniqueInput | LiveAnswerWhereUniqueInput[]
+    update?: LiveAnswerUpdateWithWhereUniqueWithoutQuizInput | LiveAnswerUpdateWithWhereUniqueWithoutQuizInput[]
+    updateMany?: LiveAnswerUpdateManyWithWhereWithoutQuizInput | LiveAnswerUpdateManyWithWhereWithoutQuizInput[]
+    deleteMany?: LiveAnswerScalarWhereInput | LiveAnswerScalarWhereInput[]
+  }
+
+  export type LiveQuizCreateNestedOneWithoutAnswersInput = {
+    create?: XOR<LiveQuizCreateWithoutAnswersInput, LiveQuizUncheckedCreateWithoutAnswersInput>
+    connectOrCreate?: LiveQuizCreateOrConnectWithoutAnswersInput
+    connect?: LiveQuizWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutLiveAnswersInput = {
+    create?: XOR<UserCreateWithoutLiveAnswersInput, UserUncheckedCreateWithoutLiveAnswersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLiveAnswersInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type LiveQuizUpdateOneRequiredWithoutAnswersNestedInput = {
+    create?: XOR<LiveQuizCreateWithoutAnswersInput, LiveQuizUncheckedCreateWithoutAnswersInput>
+    connectOrCreate?: LiveQuizCreateOrConnectWithoutAnswersInput
+    upsert?: LiveQuizUpsertWithoutAnswersInput
+    connect?: LiveQuizWhereUniqueInput
+    update?: XOR<XOR<LiveQuizUpdateToOneWithWhereWithoutAnswersInput, LiveQuizUpdateWithoutAnswersInput>, LiveQuizUncheckedUpdateWithoutAnswersInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutLiveAnswersNestedInput = {
+    create?: XOR<UserCreateWithoutLiveAnswersInput, UserUncheckedCreateWithoutLiveAnswersInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLiveAnswersInput
+    upsert?: UserUpsertWithoutLiveAnswersInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLiveAnswersInput, UserUpdateWithoutLiveAnswersInput>, UserUncheckedUpdateWithoutLiveAnswersInput>
+  }
+
+  export type LiveSessionCreateNestedOneWithoutVotesInput = {
+    create?: XOR<LiveSessionCreateWithoutVotesInput, LiveSessionUncheckedCreateWithoutVotesInput>
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutVotesInput
+    connect?: LiveSessionWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutUnderstandingVotesInput = {
+    create?: XOR<UserCreateWithoutUnderstandingVotesInput, UserUncheckedCreateWithoutUnderstandingVotesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUnderstandingVotesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type LiveSessionUpdateOneRequiredWithoutVotesNestedInput = {
+    create?: XOR<LiveSessionCreateWithoutVotesInput, LiveSessionUncheckedCreateWithoutVotesInput>
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutVotesInput
+    upsert?: LiveSessionUpsertWithoutVotesInput
+    connect?: LiveSessionWhereUniqueInput
+    update?: XOR<XOR<LiveSessionUpdateToOneWithWhereWithoutVotesInput, LiveSessionUpdateWithoutVotesInput>, LiveSessionUncheckedUpdateWithoutVotesInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutUnderstandingVotesNestedInput = {
+    create?: XOR<UserCreateWithoutUnderstandingVotesInput, UserUncheckedCreateWithoutUnderstandingVotesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUnderstandingVotesInput
+    upsert?: UserUpsertWithoutUnderstandingVotesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUnderstandingVotesInput, UserUpdateWithoutUnderstandingVotesInput>, UserUncheckedUpdateWithoutUnderstandingVotesInput>
+  }
+
+  export type LiveSessionCreateNestedOneWithoutGroupsInput = {
+    create?: XOR<LiveSessionCreateWithoutGroupsInput, LiveSessionUncheckedCreateWithoutGroupsInput>
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutGroupsInput
+    connect?: LiveSessionWhereUniqueInput
+  }
+
+  export type BreakoutMemberCreateNestedManyWithoutGroupInput = {
+    create?: XOR<BreakoutMemberCreateWithoutGroupInput, BreakoutMemberUncheckedCreateWithoutGroupInput> | BreakoutMemberCreateWithoutGroupInput[] | BreakoutMemberUncheckedCreateWithoutGroupInput[]
+    connectOrCreate?: BreakoutMemberCreateOrConnectWithoutGroupInput | BreakoutMemberCreateOrConnectWithoutGroupInput[]
+    createMany?: BreakoutMemberCreateManyGroupInputEnvelope
+    connect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+  }
+
+  export type ChatMessageCreateNestedManyWithoutGroupInput = {
+    create?: XOR<ChatMessageCreateWithoutGroupInput, ChatMessageUncheckedCreateWithoutGroupInput> | ChatMessageCreateWithoutGroupInput[] | ChatMessageUncheckedCreateWithoutGroupInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutGroupInput | ChatMessageCreateOrConnectWithoutGroupInput[]
+    createMany?: ChatMessageCreateManyGroupInputEnvelope
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+  }
+
+  export type BreakoutMemberUncheckedCreateNestedManyWithoutGroupInput = {
+    create?: XOR<BreakoutMemberCreateWithoutGroupInput, BreakoutMemberUncheckedCreateWithoutGroupInput> | BreakoutMemberCreateWithoutGroupInput[] | BreakoutMemberUncheckedCreateWithoutGroupInput[]
+    connectOrCreate?: BreakoutMemberCreateOrConnectWithoutGroupInput | BreakoutMemberCreateOrConnectWithoutGroupInput[]
+    createMany?: BreakoutMemberCreateManyGroupInputEnvelope
+    connect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+  }
+
+  export type ChatMessageUncheckedCreateNestedManyWithoutGroupInput = {
+    create?: XOR<ChatMessageCreateWithoutGroupInput, ChatMessageUncheckedCreateWithoutGroupInput> | ChatMessageCreateWithoutGroupInput[] | ChatMessageUncheckedCreateWithoutGroupInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutGroupInput | ChatMessageCreateOrConnectWithoutGroupInput[]
+    createMany?: ChatMessageCreateManyGroupInputEnvelope
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+  }
+
+  export type LiveSessionUpdateOneRequiredWithoutGroupsNestedInput = {
+    create?: XOR<LiveSessionCreateWithoutGroupsInput, LiveSessionUncheckedCreateWithoutGroupsInput>
+    connectOrCreate?: LiveSessionCreateOrConnectWithoutGroupsInput
+    upsert?: LiveSessionUpsertWithoutGroupsInput
+    connect?: LiveSessionWhereUniqueInput
+    update?: XOR<XOR<LiveSessionUpdateToOneWithWhereWithoutGroupsInput, LiveSessionUpdateWithoutGroupsInput>, LiveSessionUncheckedUpdateWithoutGroupsInput>
+  }
+
+  export type BreakoutMemberUpdateManyWithoutGroupNestedInput = {
+    create?: XOR<BreakoutMemberCreateWithoutGroupInput, BreakoutMemberUncheckedCreateWithoutGroupInput> | BreakoutMemberCreateWithoutGroupInput[] | BreakoutMemberUncheckedCreateWithoutGroupInput[]
+    connectOrCreate?: BreakoutMemberCreateOrConnectWithoutGroupInput | BreakoutMemberCreateOrConnectWithoutGroupInput[]
+    upsert?: BreakoutMemberUpsertWithWhereUniqueWithoutGroupInput | BreakoutMemberUpsertWithWhereUniqueWithoutGroupInput[]
+    createMany?: BreakoutMemberCreateManyGroupInputEnvelope
+    set?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    disconnect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    delete?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    connect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    update?: BreakoutMemberUpdateWithWhereUniqueWithoutGroupInput | BreakoutMemberUpdateWithWhereUniqueWithoutGroupInput[]
+    updateMany?: BreakoutMemberUpdateManyWithWhereWithoutGroupInput | BreakoutMemberUpdateManyWithWhereWithoutGroupInput[]
+    deleteMany?: BreakoutMemberScalarWhereInput | BreakoutMemberScalarWhereInput[]
+  }
+
+  export type ChatMessageUpdateManyWithoutGroupNestedInput = {
+    create?: XOR<ChatMessageCreateWithoutGroupInput, ChatMessageUncheckedCreateWithoutGroupInput> | ChatMessageCreateWithoutGroupInput[] | ChatMessageUncheckedCreateWithoutGroupInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutGroupInput | ChatMessageCreateOrConnectWithoutGroupInput[]
+    upsert?: ChatMessageUpsertWithWhereUniqueWithoutGroupInput | ChatMessageUpsertWithWhereUniqueWithoutGroupInput[]
+    createMany?: ChatMessageCreateManyGroupInputEnvelope
+    set?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    disconnect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    delete?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    update?: ChatMessageUpdateWithWhereUniqueWithoutGroupInput | ChatMessageUpdateWithWhereUniqueWithoutGroupInput[]
+    updateMany?: ChatMessageUpdateManyWithWhereWithoutGroupInput | ChatMessageUpdateManyWithWhereWithoutGroupInput[]
+    deleteMany?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+  }
+
+  export type BreakoutMemberUncheckedUpdateManyWithoutGroupNestedInput = {
+    create?: XOR<BreakoutMemberCreateWithoutGroupInput, BreakoutMemberUncheckedCreateWithoutGroupInput> | BreakoutMemberCreateWithoutGroupInput[] | BreakoutMemberUncheckedCreateWithoutGroupInput[]
+    connectOrCreate?: BreakoutMemberCreateOrConnectWithoutGroupInput | BreakoutMemberCreateOrConnectWithoutGroupInput[]
+    upsert?: BreakoutMemberUpsertWithWhereUniqueWithoutGroupInput | BreakoutMemberUpsertWithWhereUniqueWithoutGroupInput[]
+    createMany?: BreakoutMemberCreateManyGroupInputEnvelope
+    set?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    disconnect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    delete?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    connect?: BreakoutMemberWhereUniqueInput | BreakoutMemberWhereUniqueInput[]
+    update?: BreakoutMemberUpdateWithWhereUniqueWithoutGroupInput | BreakoutMemberUpdateWithWhereUniqueWithoutGroupInput[]
+    updateMany?: BreakoutMemberUpdateManyWithWhereWithoutGroupInput | BreakoutMemberUpdateManyWithWhereWithoutGroupInput[]
+    deleteMany?: BreakoutMemberScalarWhereInput | BreakoutMemberScalarWhereInput[]
+  }
+
+  export type ChatMessageUncheckedUpdateManyWithoutGroupNestedInput = {
+    create?: XOR<ChatMessageCreateWithoutGroupInput, ChatMessageUncheckedCreateWithoutGroupInput> | ChatMessageCreateWithoutGroupInput[] | ChatMessageUncheckedCreateWithoutGroupInput[]
+    connectOrCreate?: ChatMessageCreateOrConnectWithoutGroupInput | ChatMessageCreateOrConnectWithoutGroupInput[]
+    upsert?: ChatMessageUpsertWithWhereUniqueWithoutGroupInput | ChatMessageUpsertWithWhereUniqueWithoutGroupInput[]
+    createMany?: ChatMessageCreateManyGroupInputEnvelope
+    set?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    disconnect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    delete?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    connect?: ChatMessageWhereUniqueInput | ChatMessageWhereUniqueInput[]
+    update?: ChatMessageUpdateWithWhereUniqueWithoutGroupInput | ChatMessageUpdateWithWhereUniqueWithoutGroupInput[]
+    updateMany?: ChatMessageUpdateManyWithWhereWithoutGroupInput | ChatMessageUpdateManyWithWhereWithoutGroupInput[]
+    deleteMany?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+  }
+
+  export type BreakoutGroupCreateNestedOneWithoutMembersInput = {
+    create?: XOR<BreakoutGroupCreateWithoutMembersInput, BreakoutGroupUncheckedCreateWithoutMembersInput>
+    connectOrCreate?: BreakoutGroupCreateOrConnectWithoutMembersInput
+    connect?: BreakoutGroupWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutBreakoutMembershipsInput = {
+    create?: XOR<UserCreateWithoutBreakoutMembershipsInput, UserUncheckedCreateWithoutBreakoutMembershipsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBreakoutMembershipsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BreakoutGroupUpdateOneRequiredWithoutMembersNestedInput = {
+    create?: XOR<BreakoutGroupCreateWithoutMembersInput, BreakoutGroupUncheckedCreateWithoutMembersInput>
+    connectOrCreate?: BreakoutGroupCreateOrConnectWithoutMembersInput
+    upsert?: BreakoutGroupUpsertWithoutMembersInput
+    connect?: BreakoutGroupWhereUniqueInput
+    update?: XOR<XOR<BreakoutGroupUpdateToOneWithWhereWithoutMembersInput, BreakoutGroupUpdateWithoutMembersInput>, BreakoutGroupUncheckedUpdateWithoutMembersInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutBreakoutMembershipsNestedInput = {
+    create?: XOR<UserCreateWithoutBreakoutMembershipsInput, UserUncheckedCreateWithoutBreakoutMembershipsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBreakoutMembershipsInput
+    upsert?: UserUpsertWithoutBreakoutMembershipsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBreakoutMembershipsInput, UserUpdateWithoutBreakoutMembershipsInput>, UserUncheckedUpdateWithoutBreakoutMembershipsInput>
+  }
+
+  export type BreakoutGroupCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<BreakoutGroupCreateWithoutMessagesInput, BreakoutGroupUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: BreakoutGroupCreateOrConnectWithoutMessagesInput
+    connect?: BreakoutGroupWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutChatMessagesInput = {
+    create?: XOR<UserCreateWithoutChatMessagesInput, UserUncheckedCreateWithoutChatMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutChatMessagesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BreakoutGroupUpdateOneRequiredWithoutMessagesNestedInput = {
+    create?: XOR<BreakoutGroupCreateWithoutMessagesInput, BreakoutGroupUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: BreakoutGroupCreateOrConnectWithoutMessagesInput
+    upsert?: BreakoutGroupUpsertWithoutMessagesInput
+    connect?: BreakoutGroupWhereUniqueInput
+    update?: XOR<XOR<BreakoutGroupUpdateToOneWithWhereWithoutMessagesInput, BreakoutGroupUpdateWithoutMessagesInput>, BreakoutGroupUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutChatMessagesNestedInput = {
+    create?: XOR<UserCreateWithoutChatMessagesInput, UserUncheckedCreateWithoutChatMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutChatMessagesInput
+    upsert?: UserUpsertWithoutChatMessagesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutChatMessagesInput, UserUpdateWithoutChatMessagesInput>, UserUncheckedUpdateWithoutChatMessagesInput>
+  }
+
+  export type ClassRoomCreateNestedOneWithoutReportsInput = {
+    create?: XOR<ClassRoomCreateWithoutReportsInput, ClassRoomUncheckedCreateWithoutReportsInput>
+    connectOrCreate?: ClassRoomCreateOrConnectWithoutReportsInput
+    connect?: ClassRoomWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutReportsReceivedInput = {
+    create?: XOR<UserCreateWithoutReportsReceivedInput, UserUncheckedCreateWithoutReportsReceivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReportsReceivedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutReportsWrittenInput = {
+    create?: XOR<UserCreateWithoutReportsWrittenInput, UserUncheckedCreateWithoutReportsWrittenInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReportsWrittenInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ClassRoomUpdateOneRequiredWithoutReportsNestedInput = {
+    create?: XOR<ClassRoomCreateWithoutReportsInput, ClassRoomUncheckedCreateWithoutReportsInput>
+    connectOrCreate?: ClassRoomCreateOrConnectWithoutReportsInput
+    upsert?: ClassRoomUpsertWithoutReportsInput
+    connect?: ClassRoomWhereUniqueInput
+    update?: XOR<XOR<ClassRoomUpdateToOneWithWhereWithoutReportsInput, ClassRoomUpdateWithoutReportsInput>, ClassRoomUncheckedUpdateWithoutReportsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutReportsReceivedNestedInput = {
+    create?: XOR<UserCreateWithoutReportsReceivedInput, UserUncheckedCreateWithoutReportsReceivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReportsReceivedInput
+    upsert?: UserUpsertWithoutReportsReceivedInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReportsReceivedInput, UserUpdateWithoutReportsReceivedInput>, UserUncheckedUpdateWithoutReportsReceivedInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutReportsWrittenNestedInput = {
+    create?: XOR<UserCreateWithoutReportsWrittenInput, UserUncheckedCreateWithoutReportsWrittenInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReportsWrittenInput
+    upsert?: UserUpsertWithoutReportsWrittenInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReportsWrittenInput, UserUpdateWithoutReportsWrittenInput>, UserUncheckedUpdateWithoutReportsWrittenInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -9449,12 +22500,52 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type ClassRoomCreateWithoutTeacherInput = {
     name: string
     code: string
     createdAt?: Date | string
     members?: ClassMemberCreateNestedManyWithoutClassInput
     tasks?: TaskCreateNestedManyWithoutClassInput
+    sessions?: LiveSessionCreateNestedManyWithoutClassInput
+    reports?: ParentReportCreateNestedManyWithoutClassInput
   }
 
   export type ClassRoomUncheckedCreateWithoutTeacherInput = {
@@ -9464,6 +22555,8 @@ export namespace Prisma {
     createdAt?: Date | string
     members?: ClassMemberUncheckedCreateNestedManyWithoutClassInput
     tasks?: TaskUncheckedCreateNestedManyWithoutClassInput
+    sessions?: LiveSessionUncheckedCreateNestedManyWithoutClassInput
+    reports?: ParentReportUncheckedCreateNestedManyWithoutClassInput
   }
 
   export type ClassRoomCreateOrConnectWithoutTeacherInput = {
@@ -9543,6 +22636,200 @@ export namespace Prisma {
   export type ScoreSyncCreateOrConnectWithoutUserInput = {
     where: ScoreSyncWhereUniqueInput
     create: XOR<ScoreSyncCreateWithoutUserInput, ScoreSyncUncheckedCreateWithoutUserInput>
+  }
+
+  export type LiveSessionCreateWithoutTeacherInput = {
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    class: ClassRoomCreateNestedOneWithoutSessionsInput
+    attendances?: AttendanceCreateNestedManyWithoutSessionInput
+    quizzes?: LiveQuizCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionUncheckedCreateWithoutTeacherInput = {
+    id?: number
+    classId: number
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutSessionInput
+    quizzes?: LiveQuizUncheckedCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteUncheckedCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionCreateOrConnectWithoutTeacherInput = {
+    where: LiveSessionWhereUniqueInput
+    create: XOR<LiveSessionCreateWithoutTeacherInput, LiveSessionUncheckedCreateWithoutTeacherInput>
+  }
+
+  export type LiveSessionCreateManyTeacherInputEnvelope = {
+    data: LiveSessionCreateManyTeacherInput | LiveSessionCreateManyTeacherInput[]
+  }
+
+  export type AttendanceCreateWithoutUserInput = {
+    joinedAt?: Date | string
+    session: LiveSessionCreateNestedOneWithoutAttendancesInput
+  }
+
+  export type AttendanceUncheckedCreateWithoutUserInput = {
+    id?: number
+    sessionId: number
+    joinedAt?: Date | string
+  }
+
+  export type AttendanceCreateOrConnectWithoutUserInput = {
+    where: AttendanceWhereUniqueInput
+    create: XOR<AttendanceCreateWithoutUserInput, AttendanceUncheckedCreateWithoutUserInput>
+  }
+
+  export type AttendanceCreateManyUserInputEnvelope = {
+    data: AttendanceCreateManyUserInput | AttendanceCreateManyUserInput[]
+  }
+
+  export type LiveAnswerCreateWithoutUserInput = {
+    questionIndex: number
+    selectedIndex: number
+    correct: boolean
+    answeredAt?: Date | string
+    quiz: LiveQuizCreateNestedOneWithoutAnswersInput
+  }
+
+  export type LiveAnswerUncheckedCreateWithoutUserInput = {
+    id?: number
+    quizId: number
+    questionIndex: number
+    selectedIndex: number
+    correct: boolean
+    answeredAt?: Date | string
+  }
+
+  export type LiveAnswerCreateOrConnectWithoutUserInput = {
+    where: LiveAnswerWhereUniqueInput
+    create: XOR<LiveAnswerCreateWithoutUserInput, LiveAnswerUncheckedCreateWithoutUserInput>
+  }
+
+  export type LiveAnswerCreateManyUserInputEnvelope = {
+    data: LiveAnswerCreateManyUserInput | LiveAnswerCreateManyUserInput[]
+  }
+
+  export type UnderstandingVoteCreateWithoutUserInput = {
+    level: number
+    updatedAt?: Date | string
+    session: LiveSessionCreateNestedOneWithoutVotesInput
+  }
+
+  export type UnderstandingVoteUncheckedCreateWithoutUserInput = {
+    id?: number
+    sessionId: number
+    level: number
+    updatedAt?: Date | string
+  }
+
+  export type UnderstandingVoteCreateOrConnectWithoutUserInput = {
+    where: UnderstandingVoteWhereUniqueInput
+    create: XOR<UnderstandingVoteCreateWithoutUserInput, UnderstandingVoteUncheckedCreateWithoutUserInput>
+  }
+
+  export type UnderstandingVoteCreateManyUserInputEnvelope = {
+    data: UnderstandingVoteCreateManyUserInput | UnderstandingVoteCreateManyUserInput[]
+  }
+
+  export type BreakoutMemberCreateWithoutUserInput = {
+    group: BreakoutGroupCreateNestedOneWithoutMembersInput
+  }
+
+  export type BreakoutMemberUncheckedCreateWithoutUserInput = {
+    id?: number
+    groupId: number
+  }
+
+  export type BreakoutMemberCreateOrConnectWithoutUserInput = {
+    where: BreakoutMemberWhereUniqueInput
+    create: XOR<BreakoutMemberCreateWithoutUserInput, BreakoutMemberUncheckedCreateWithoutUserInput>
+  }
+
+  export type BreakoutMemberCreateManyUserInputEnvelope = {
+    data: BreakoutMemberCreateManyUserInput | BreakoutMemberCreateManyUserInput[]
+  }
+
+  export type ChatMessageCreateWithoutUserInput = {
+    text: string
+    createdAt?: Date | string
+    group: BreakoutGroupCreateNestedOneWithoutMessagesInput
+  }
+
+  export type ChatMessageUncheckedCreateWithoutUserInput = {
+    id?: number
+    groupId: number
+    text: string
+    createdAt?: Date | string
+  }
+
+  export type ChatMessageCreateOrConnectWithoutUserInput = {
+    where: ChatMessageWhereUniqueInput
+    create: XOR<ChatMessageCreateWithoutUserInput, ChatMessageUncheckedCreateWithoutUserInput>
+  }
+
+  export type ChatMessageCreateManyUserInputEnvelope = {
+    data: ChatMessageCreateManyUserInput | ChatMessageCreateManyUserInput[]
+  }
+
+  export type ParentReportCreateWithoutTeacherInput = {
+    content: string
+    createdAt?: Date | string
+    class: ClassRoomCreateNestedOneWithoutReportsInput
+    student: UserCreateNestedOneWithoutReportsReceivedInput
+  }
+
+  export type ParentReportUncheckedCreateWithoutTeacherInput = {
+    id?: number
+    classId: number
+    studentId: number
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ParentReportCreateOrConnectWithoutTeacherInput = {
+    where: ParentReportWhereUniqueInput
+    create: XOR<ParentReportCreateWithoutTeacherInput, ParentReportUncheckedCreateWithoutTeacherInput>
+  }
+
+  export type ParentReportCreateManyTeacherInputEnvelope = {
+    data: ParentReportCreateManyTeacherInput | ParentReportCreateManyTeacherInput[]
+  }
+
+  export type ParentReportCreateWithoutStudentInput = {
+    content: string
+    createdAt?: Date | string
+    class: ClassRoomCreateNestedOneWithoutReportsInput
+    teacher: UserCreateNestedOneWithoutReportsWrittenInput
+  }
+
+  export type ParentReportUncheckedCreateWithoutStudentInput = {
+    id?: number
+    classId: number
+    teacherId: number
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ParentReportCreateOrConnectWithoutStudentInput = {
+    where: ParentReportWhereUniqueInput
+    create: XOR<ParentReportCreateWithoutStudentInput, ParentReportUncheckedCreateWithoutStudentInput>
+  }
+
+  export type ParentReportCreateManyStudentInputEnvelope = {
+    data: ParentReportCreateManyStudentInput | ParentReportCreateManyStudentInput[]
   }
 
   export type ClassRoomUpsertWithWhereUniqueWithoutTeacherInput = {
@@ -9656,6 +22943,215 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LiveSessionUpsertWithWhereUniqueWithoutTeacherInput = {
+    where: LiveSessionWhereUniqueInput
+    update: XOR<LiveSessionUpdateWithoutTeacherInput, LiveSessionUncheckedUpdateWithoutTeacherInput>
+    create: XOR<LiveSessionCreateWithoutTeacherInput, LiveSessionUncheckedCreateWithoutTeacherInput>
+  }
+
+  export type LiveSessionUpdateWithWhereUniqueWithoutTeacherInput = {
+    where: LiveSessionWhereUniqueInput
+    data: XOR<LiveSessionUpdateWithoutTeacherInput, LiveSessionUncheckedUpdateWithoutTeacherInput>
+  }
+
+  export type LiveSessionUpdateManyWithWhereWithoutTeacherInput = {
+    where: LiveSessionScalarWhereInput
+    data: XOR<LiveSessionUpdateManyMutationInput, LiveSessionUncheckedUpdateManyWithoutTeacherInput>
+  }
+
+  export type LiveSessionScalarWhereInput = {
+    AND?: LiveSessionScalarWhereInput | LiveSessionScalarWhereInput[]
+    OR?: LiveSessionScalarWhereInput[]
+    NOT?: LiveSessionScalarWhereInput | LiveSessionScalarWhereInput[]
+    id?: IntFilter<"LiveSession"> | number
+    classId?: IntFilter<"LiveSession"> | number
+    teacherId?: IntFilter<"LiveSession"> | number
+    title?: StringFilter<"LiveSession"> | string
+    openingText?: StringNullableFilter<"LiveSession"> | string | null
+    materialText?: StringNullableFilter<"LiveSession"> | string | null
+    status?: StringFilter<"LiveSession"> | string
+    startedAt?: DateTimeFilter<"LiveSession"> | Date | string
+    endedAt?: DateTimeNullableFilter<"LiveSession"> | Date | string | null
+  }
+
+  export type AttendanceUpsertWithWhereUniqueWithoutUserInput = {
+    where: AttendanceWhereUniqueInput
+    update: XOR<AttendanceUpdateWithoutUserInput, AttendanceUncheckedUpdateWithoutUserInput>
+    create: XOR<AttendanceCreateWithoutUserInput, AttendanceUncheckedCreateWithoutUserInput>
+  }
+
+  export type AttendanceUpdateWithWhereUniqueWithoutUserInput = {
+    where: AttendanceWhereUniqueInput
+    data: XOR<AttendanceUpdateWithoutUserInput, AttendanceUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AttendanceUpdateManyWithWhereWithoutUserInput = {
+    where: AttendanceScalarWhereInput
+    data: XOR<AttendanceUpdateManyMutationInput, AttendanceUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type AttendanceScalarWhereInput = {
+    AND?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+    OR?: AttendanceScalarWhereInput[]
+    NOT?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+    id?: IntFilter<"Attendance"> | number
+    sessionId?: IntFilter<"Attendance"> | number
+    userId?: IntFilter<"Attendance"> | number
+    joinedAt?: DateTimeFilter<"Attendance"> | Date | string
+  }
+
+  export type LiveAnswerUpsertWithWhereUniqueWithoutUserInput = {
+    where: LiveAnswerWhereUniqueInput
+    update: XOR<LiveAnswerUpdateWithoutUserInput, LiveAnswerUncheckedUpdateWithoutUserInput>
+    create: XOR<LiveAnswerCreateWithoutUserInput, LiveAnswerUncheckedCreateWithoutUserInput>
+  }
+
+  export type LiveAnswerUpdateWithWhereUniqueWithoutUserInput = {
+    where: LiveAnswerWhereUniqueInput
+    data: XOR<LiveAnswerUpdateWithoutUserInput, LiveAnswerUncheckedUpdateWithoutUserInput>
+  }
+
+  export type LiveAnswerUpdateManyWithWhereWithoutUserInput = {
+    where: LiveAnswerScalarWhereInput
+    data: XOR<LiveAnswerUpdateManyMutationInput, LiveAnswerUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type LiveAnswerScalarWhereInput = {
+    AND?: LiveAnswerScalarWhereInput | LiveAnswerScalarWhereInput[]
+    OR?: LiveAnswerScalarWhereInput[]
+    NOT?: LiveAnswerScalarWhereInput | LiveAnswerScalarWhereInput[]
+    id?: IntFilter<"LiveAnswer"> | number
+    quizId?: IntFilter<"LiveAnswer"> | number
+    userId?: IntFilter<"LiveAnswer"> | number
+    questionIndex?: IntFilter<"LiveAnswer"> | number
+    selectedIndex?: IntFilter<"LiveAnswer"> | number
+    correct?: BoolFilter<"LiveAnswer"> | boolean
+    answeredAt?: DateTimeFilter<"LiveAnswer"> | Date | string
+  }
+
+  export type UnderstandingVoteUpsertWithWhereUniqueWithoutUserInput = {
+    where: UnderstandingVoteWhereUniqueInput
+    update: XOR<UnderstandingVoteUpdateWithoutUserInput, UnderstandingVoteUncheckedUpdateWithoutUserInput>
+    create: XOR<UnderstandingVoteCreateWithoutUserInput, UnderstandingVoteUncheckedCreateWithoutUserInput>
+  }
+
+  export type UnderstandingVoteUpdateWithWhereUniqueWithoutUserInput = {
+    where: UnderstandingVoteWhereUniqueInput
+    data: XOR<UnderstandingVoteUpdateWithoutUserInput, UnderstandingVoteUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UnderstandingVoteUpdateManyWithWhereWithoutUserInput = {
+    where: UnderstandingVoteScalarWhereInput
+    data: XOR<UnderstandingVoteUpdateManyMutationInput, UnderstandingVoteUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UnderstandingVoteScalarWhereInput = {
+    AND?: UnderstandingVoteScalarWhereInput | UnderstandingVoteScalarWhereInput[]
+    OR?: UnderstandingVoteScalarWhereInput[]
+    NOT?: UnderstandingVoteScalarWhereInput | UnderstandingVoteScalarWhereInput[]
+    id?: IntFilter<"UnderstandingVote"> | number
+    sessionId?: IntFilter<"UnderstandingVote"> | number
+    userId?: IntFilter<"UnderstandingVote"> | number
+    level?: IntFilter<"UnderstandingVote"> | number
+    updatedAt?: DateTimeFilter<"UnderstandingVote"> | Date | string
+  }
+
+  export type BreakoutMemberUpsertWithWhereUniqueWithoutUserInput = {
+    where: BreakoutMemberWhereUniqueInput
+    update: XOR<BreakoutMemberUpdateWithoutUserInput, BreakoutMemberUncheckedUpdateWithoutUserInput>
+    create: XOR<BreakoutMemberCreateWithoutUserInput, BreakoutMemberUncheckedCreateWithoutUserInput>
+  }
+
+  export type BreakoutMemberUpdateWithWhereUniqueWithoutUserInput = {
+    where: BreakoutMemberWhereUniqueInput
+    data: XOR<BreakoutMemberUpdateWithoutUserInput, BreakoutMemberUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BreakoutMemberUpdateManyWithWhereWithoutUserInput = {
+    where: BreakoutMemberScalarWhereInput
+    data: XOR<BreakoutMemberUpdateManyMutationInput, BreakoutMemberUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BreakoutMemberScalarWhereInput = {
+    AND?: BreakoutMemberScalarWhereInput | BreakoutMemberScalarWhereInput[]
+    OR?: BreakoutMemberScalarWhereInput[]
+    NOT?: BreakoutMemberScalarWhereInput | BreakoutMemberScalarWhereInput[]
+    id?: IntFilter<"BreakoutMember"> | number
+    groupId?: IntFilter<"BreakoutMember"> | number
+    userId?: IntFilter<"BreakoutMember"> | number
+  }
+
+  export type ChatMessageUpsertWithWhereUniqueWithoutUserInput = {
+    where: ChatMessageWhereUniqueInput
+    update: XOR<ChatMessageUpdateWithoutUserInput, ChatMessageUncheckedUpdateWithoutUserInput>
+    create: XOR<ChatMessageCreateWithoutUserInput, ChatMessageUncheckedCreateWithoutUserInput>
+  }
+
+  export type ChatMessageUpdateWithWhereUniqueWithoutUserInput = {
+    where: ChatMessageWhereUniqueInput
+    data: XOR<ChatMessageUpdateWithoutUserInput, ChatMessageUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ChatMessageUpdateManyWithWhereWithoutUserInput = {
+    where: ChatMessageScalarWhereInput
+    data: XOR<ChatMessageUpdateManyMutationInput, ChatMessageUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ChatMessageScalarWhereInput = {
+    AND?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+    OR?: ChatMessageScalarWhereInput[]
+    NOT?: ChatMessageScalarWhereInput | ChatMessageScalarWhereInput[]
+    id?: IntFilter<"ChatMessage"> | number
+    groupId?: IntFilter<"ChatMessage"> | number
+    userId?: IntFilter<"ChatMessage"> | number
+    text?: StringFilter<"ChatMessage"> | string
+    createdAt?: DateTimeFilter<"ChatMessage"> | Date | string
+  }
+
+  export type ParentReportUpsertWithWhereUniqueWithoutTeacherInput = {
+    where: ParentReportWhereUniqueInput
+    update: XOR<ParentReportUpdateWithoutTeacherInput, ParentReportUncheckedUpdateWithoutTeacherInput>
+    create: XOR<ParentReportCreateWithoutTeacherInput, ParentReportUncheckedCreateWithoutTeacherInput>
+  }
+
+  export type ParentReportUpdateWithWhereUniqueWithoutTeacherInput = {
+    where: ParentReportWhereUniqueInput
+    data: XOR<ParentReportUpdateWithoutTeacherInput, ParentReportUncheckedUpdateWithoutTeacherInput>
+  }
+
+  export type ParentReportUpdateManyWithWhereWithoutTeacherInput = {
+    where: ParentReportScalarWhereInput
+    data: XOR<ParentReportUpdateManyMutationInput, ParentReportUncheckedUpdateManyWithoutTeacherInput>
+  }
+
+  export type ParentReportScalarWhereInput = {
+    AND?: ParentReportScalarWhereInput | ParentReportScalarWhereInput[]
+    OR?: ParentReportScalarWhereInput[]
+    NOT?: ParentReportScalarWhereInput | ParentReportScalarWhereInput[]
+    id?: IntFilter<"ParentReport"> | number
+    classId?: IntFilter<"ParentReport"> | number
+    studentId?: IntFilter<"ParentReport"> | number
+    teacherId?: IntFilter<"ParentReport"> | number
+    content?: StringFilter<"ParentReport"> | string
+    createdAt?: DateTimeFilter<"ParentReport"> | Date | string
+  }
+
+  export type ParentReportUpsertWithWhereUniqueWithoutStudentInput = {
+    where: ParentReportWhereUniqueInput
+    update: XOR<ParentReportUpdateWithoutStudentInput, ParentReportUncheckedUpdateWithoutStudentInput>
+    create: XOR<ParentReportCreateWithoutStudentInput, ParentReportUncheckedCreateWithoutStudentInput>
+  }
+
+  export type ParentReportUpdateWithWhereUniqueWithoutStudentInput = {
+    where: ParentReportWhereUniqueInput
+    data: XOR<ParentReportUpdateWithoutStudentInput, ParentReportUncheckedUpdateWithoutStudentInput>
+  }
+
+  export type ParentReportUpdateManyWithWhereWithoutStudentInput = {
+    where: ParentReportScalarWhereInput
+    data: XOR<ParentReportUpdateManyMutationInput, ParentReportUncheckedUpdateManyWithoutStudentInput>
+  }
+
   export type UserCreateWithoutClassesOwnedInput = {
     name: string
     email: string
@@ -9665,6 +23161,14 @@ export namespace Prisma {
     memberships?: ClassMemberCreateNestedManyWithoutUserInput
     submissions?: SubmissionCreateNestedManyWithoutStudentInput
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
   }
 
   export type UserUncheckedCreateWithoutClassesOwnedInput = {
@@ -9677,6 +23181,14 @@ export namespace Prisma {
     memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
     submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type UserCreateOrConnectWithoutClassesOwnedInput = {
@@ -9732,6 +23244,68 @@ export namespace Prisma {
     data: TaskCreateManyClassInput | TaskCreateManyClassInput[]
   }
 
+  export type LiveSessionCreateWithoutClassInput = {
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    teacher: UserCreateNestedOneWithoutLiveSessionsTaughtInput
+    attendances?: AttendanceCreateNestedManyWithoutSessionInput
+    quizzes?: LiveQuizCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionUncheckedCreateWithoutClassInput = {
+    id?: number
+    teacherId: number
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutSessionInput
+    quizzes?: LiveQuizUncheckedCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteUncheckedCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionCreateOrConnectWithoutClassInput = {
+    where: LiveSessionWhereUniqueInput
+    create: XOR<LiveSessionCreateWithoutClassInput, LiveSessionUncheckedCreateWithoutClassInput>
+  }
+
+  export type LiveSessionCreateManyClassInputEnvelope = {
+    data: LiveSessionCreateManyClassInput | LiveSessionCreateManyClassInput[]
+  }
+
+  export type ParentReportCreateWithoutClassInput = {
+    content: string
+    createdAt?: Date | string
+    student: UserCreateNestedOneWithoutReportsReceivedInput
+    teacher: UserCreateNestedOneWithoutReportsWrittenInput
+  }
+
+  export type ParentReportUncheckedCreateWithoutClassInput = {
+    id?: number
+    studentId: number
+    teacherId: number
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ParentReportCreateOrConnectWithoutClassInput = {
+    where: ParentReportWhereUniqueInput
+    create: XOR<ParentReportCreateWithoutClassInput, ParentReportUncheckedCreateWithoutClassInput>
+  }
+
+  export type ParentReportCreateManyClassInputEnvelope = {
+    data: ParentReportCreateManyClassInput | ParentReportCreateManyClassInput[]
+  }
+
   export type UserUpsertWithoutClassesOwnedInput = {
     update: XOR<UserUpdateWithoutClassesOwnedInput, UserUncheckedUpdateWithoutClassesOwnedInput>
     create: XOR<UserCreateWithoutClassesOwnedInput, UserUncheckedCreateWithoutClassesOwnedInput>
@@ -9752,6 +23326,14 @@ export namespace Prisma {
     memberships?: ClassMemberUpdateManyWithoutUserNestedInput
     submissions?: SubmissionUpdateManyWithoutStudentNestedInput
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
   }
 
   export type UserUncheckedUpdateWithoutClassesOwnedInput = {
@@ -9764,6 +23346,14 @@ export namespace Prisma {
     memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
     submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type ClassMemberUpsertWithWhereUniqueWithoutClassInput = {
@@ -9811,12 +23401,46 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Task"> | Date | string
   }
 
+  export type LiveSessionUpsertWithWhereUniqueWithoutClassInput = {
+    where: LiveSessionWhereUniqueInput
+    update: XOR<LiveSessionUpdateWithoutClassInput, LiveSessionUncheckedUpdateWithoutClassInput>
+    create: XOR<LiveSessionCreateWithoutClassInput, LiveSessionUncheckedCreateWithoutClassInput>
+  }
+
+  export type LiveSessionUpdateWithWhereUniqueWithoutClassInput = {
+    where: LiveSessionWhereUniqueInput
+    data: XOR<LiveSessionUpdateWithoutClassInput, LiveSessionUncheckedUpdateWithoutClassInput>
+  }
+
+  export type LiveSessionUpdateManyWithWhereWithoutClassInput = {
+    where: LiveSessionScalarWhereInput
+    data: XOR<LiveSessionUpdateManyMutationInput, LiveSessionUncheckedUpdateManyWithoutClassInput>
+  }
+
+  export type ParentReportUpsertWithWhereUniqueWithoutClassInput = {
+    where: ParentReportWhereUniqueInput
+    update: XOR<ParentReportUpdateWithoutClassInput, ParentReportUncheckedUpdateWithoutClassInput>
+    create: XOR<ParentReportCreateWithoutClassInput, ParentReportUncheckedCreateWithoutClassInput>
+  }
+
+  export type ParentReportUpdateWithWhereUniqueWithoutClassInput = {
+    where: ParentReportWhereUniqueInput
+    data: XOR<ParentReportUpdateWithoutClassInput, ParentReportUncheckedUpdateWithoutClassInput>
+  }
+
+  export type ParentReportUpdateManyWithWhereWithoutClassInput = {
+    where: ParentReportScalarWhereInput
+    data: XOR<ParentReportUpdateManyMutationInput, ParentReportUncheckedUpdateManyWithoutClassInput>
+  }
+
   export type ClassRoomCreateWithoutMembersInput = {
     name: string
     code: string
     createdAt?: Date | string
     teacher: UserCreateNestedOneWithoutClassesOwnedInput
     tasks?: TaskCreateNestedManyWithoutClassInput
+    sessions?: LiveSessionCreateNestedManyWithoutClassInput
+    reports?: ParentReportCreateNestedManyWithoutClassInput
   }
 
   export type ClassRoomUncheckedCreateWithoutMembersInput = {
@@ -9826,6 +23450,8 @@ export namespace Prisma {
     teacherId: number
     createdAt?: Date | string
     tasks?: TaskUncheckedCreateNestedManyWithoutClassInput
+    sessions?: LiveSessionUncheckedCreateNestedManyWithoutClassInput
+    reports?: ParentReportUncheckedCreateNestedManyWithoutClassInput
   }
 
   export type ClassRoomCreateOrConnectWithoutMembersInput = {
@@ -9842,6 +23468,14 @@ export namespace Prisma {
     classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
     submissions?: SubmissionCreateNestedManyWithoutStudentInput
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
   }
 
   export type UserUncheckedCreateWithoutMembershipsInput = {
@@ -9854,6 +23488,14 @@ export namespace Prisma {
     classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
     submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type UserCreateOrConnectWithoutMembershipsInput = {
@@ -9878,6 +23520,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     teacher?: UserUpdateOneRequiredWithoutClassesOwnedNestedInput
     tasks?: TaskUpdateManyWithoutClassNestedInput
+    sessions?: LiveSessionUpdateManyWithoutClassNestedInput
+    reports?: ParentReportUpdateManyWithoutClassNestedInput
   }
 
   export type ClassRoomUncheckedUpdateWithoutMembersInput = {
@@ -9887,6 +23531,8 @@ export namespace Prisma {
     teacherId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tasks?: TaskUncheckedUpdateManyWithoutClassNestedInput
+    sessions?: LiveSessionUncheckedUpdateManyWithoutClassNestedInput
+    reports?: ParentReportUncheckedUpdateManyWithoutClassNestedInput
   }
 
   export type UserUpsertWithoutMembershipsInput = {
@@ -9909,6 +23555,14 @@ export namespace Prisma {
     classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
     submissions?: SubmissionUpdateManyWithoutStudentNestedInput
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMembershipsInput = {
@@ -9921,6 +23575,14 @@ export namespace Prisma {
     classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
     submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type ClassRoomCreateWithoutTasksInput = {
@@ -9929,6 +23591,8 @@ export namespace Prisma {
     createdAt?: Date | string
     teacher: UserCreateNestedOneWithoutClassesOwnedInput
     members?: ClassMemberCreateNestedManyWithoutClassInput
+    sessions?: LiveSessionCreateNestedManyWithoutClassInput
+    reports?: ParentReportCreateNestedManyWithoutClassInput
   }
 
   export type ClassRoomUncheckedCreateWithoutTasksInput = {
@@ -9938,6 +23602,8 @@ export namespace Prisma {
     teacherId: number
     createdAt?: Date | string
     members?: ClassMemberUncheckedCreateNestedManyWithoutClassInput
+    sessions?: LiveSessionUncheckedCreateNestedManyWithoutClassInput
+    reports?: ParentReportUncheckedCreateNestedManyWithoutClassInput
   }
 
   export type ClassRoomCreateOrConnectWithoutTasksInput = {
@@ -9990,6 +23656,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     teacher?: UserUpdateOneRequiredWithoutClassesOwnedNestedInput
     members?: ClassMemberUpdateManyWithoutClassNestedInput
+    sessions?: LiveSessionUpdateManyWithoutClassNestedInput
+    reports?: ParentReportUpdateManyWithoutClassNestedInput
   }
 
   export type ClassRoomUncheckedUpdateWithoutTasksInput = {
@@ -9999,6 +23667,8 @@ export namespace Prisma {
     teacherId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     members?: ClassMemberUncheckedUpdateManyWithoutClassNestedInput
+    sessions?: LiveSessionUncheckedUpdateManyWithoutClassNestedInput
+    reports?: ParentReportUncheckedUpdateManyWithoutClassNestedInput
   }
 
   export type SubmissionUpsertWithWhereUniqueWithoutTaskInput = {
@@ -10050,6 +23720,14 @@ export namespace Prisma {
     classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
     memberships?: ClassMemberCreateNestedManyWithoutUserInput
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
   }
 
   export type UserUncheckedCreateWithoutSubmissionsInput = {
@@ -10062,6 +23740,14 @@ export namespace Prisma {
     classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
     memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type UserCreateOrConnectWithoutSubmissionsInput = {
@@ -10119,6 +23805,14 @@ export namespace Prisma {
     classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
     memberships?: ClassMemberUpdateManyWithoutUserNestedInput
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSubmissionsInput = {
@@ -10131,6 +23825,14 @@ export namespace Prisma {
     classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
     memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type UserCreateWithoutScoreSyncInput = {
@@ -10142,6 +23844,14 @@ export namespace Prisma {
     classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
     memberships?: ClassMemberCreateNestedManyWithoutUserInput
     submissions?: SubmissionCreateNestedManyWithoutStudentInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
   }
 
   export type UserUncheckedCreateWithoutScoreSyncInput = {
@@ -10154,6 +23864,14 @@ export namespace Prisma {
     classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
     memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
     submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type UserCreateOrConnectWithoutScoreSyncInput = {
@@ -10181,6 +23899,14 @@ export namespace Prisma {
     classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
     memberships?: ClassMemberUpdateManyWithoutUserNestedInput
     submissions?: SubmissionUpdateManyWithoutStudentNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
   }
 
   export type UserUncheckedUpdateWithoutScoreSyncInput = {
@@ -10193,6 +23919,1615 @@ export namespace Prisma {
     classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
     memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
     submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type ClassRoomCreateWithoutSessionsInput = {
+    name: string
+    code: string
+    createdAt?: Date | string
+    teacher: UserCreateNestedOneWithoutClassesOwnedInput
+    members?: ClassMemberCreateNestedManyWithoutClassInput
+    tasks?: TaskCreateNestedManyWithoutClassInput
+    reports?: ParentReportCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassRoomUncheckedCreateWithoutSessionsInput = {
+    id?: number
+    name: string
+    code: string
+    teacherId: number
+    createdAt?: Date | string
+    members?: ClassMemberUncheckedCreateNestedManyWithoutClassInput
+    tasks?: TaskUncheckedCreateNestedManyWithoutClassInput
+    reports?: ParentReportUncheckedCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassRoomCreateOrConnectWithoutSessionsInput = {
+    where: ClassRoomWhereUniqueInput
+    create: XOR<ClassRoomCreateWithoutSessionsInput, ClassRoomUncheckedCreateWithoutSessionsInput>
+  }
+
+  export type UserCreateWithoutLiveSessionsTaughtInput = {
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserUncheckedCreateWithoutLiveSessionsTaughtInput = {
+    id?: number
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserCreateOrConnectWithoutLiveSessionsTaughtInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutLiveSessionsTaughtInput, UserUncheckedCreateWithoutLiveSessionsTaughtInput>
+  }
+
+  export type AttendanceCreateWithoutSessionInput = {
+    joinedAt?: Date | string
+    user: UserCreateNestedOneWithoutAttendancesInput
+  }
+
+  export type AttendanceUncheckedCreateWithoutSessionInput = {
+    id?: number
+    userId: number
+    joinedAt?: Date | string
+  }
+
+  export type AttendanceCreateOrConnectWithoutSessionInput = {
+    where: AttendanceWhereUniqueInput
+    create: XOR<AttendanceCreateWithoutSessionInput, AttendanceUncheckedCreateWithoutSessionInput>
+  }
+
+  export type AttendanceCreateManySessionInputEnvelope = {
+    data: AttendanceCreateManySessionInput | AttendanceCreateManySessionInput[]
+  }
+
+  export type LiveQuizCreateWithoutSessionInput = {
+    title: string
+    questions: string
+    status?: string
+    currentIndex?: number
+    bossMaxHp: number
+    createdAt?: Date | string
+    answers?: LiveAnswerCreateNestedManyWithoutQuizInput
+  }
+
+  export type LiveQuizUncheckedCreateWithoutSessionInput = {
+    id?: number
+    title: string
+    questions: string
+    status?: string
+    currentIndex?: number
+    bossMaxHp: number
+    createdAt?: Date | string
+    answers?: LiveAnswerUncheckedCreateNestedManyWithoutQuizInput
+  }
+
+  export type LiveQuizCreateOrConnectWithoutSessionInput = {
+    where: LiveQuizWhereUniqueInput
+    create: XOR<LiveQuizCreateWithoutSessionInput, LiveQuizUncheckedCreateWithoutSessionInput>
+  }
+
+  export type LiveQuizCreateManySessionInputEnvelope = {
+    data: LiveQuizCreateManySessionInput | LiveQuizCreateManySessionInput[]
+  }
+
+  export type UnderstandingVoteCreateWithoutSessionInput = {
+    level: number
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutUnderstandingVotesInput
+  }
+
+  export type UnderstandingVoteUncheckedCreateWithoutSessionInput = {
+    id?: number
+    userId: number
+    level: number
+    updatedAt?: Date | string
+  }
+
+  export type UnderstandingVoteCreateOrConnectWithoutSessionInput = {
+    where: UnderstandingVoteWhereUniqueInput
+    create: XOR<UnderstandingVoteCreateWithoutSessionInput, UnderstandingVoteUncheckedCreateWithoutSessionInput>
+  }
+
+  export type UnderstandingVoteCreateManySessionInputEnvelope = {
+    data: UnderstandingVoteCreateManySessionInput | UnderstandingVoteCreateManySessionInput[]
+  }
+
+  export type BreakoutGroupCreateWithoutSessionInput = {
+    name: string
+    members?: BreakoutMemberCreateNestedManyWithoutGroupInput
+    messages?: ChatMessageCreateNestedManyWithoutGroupInput
+  }
+
+  export type BreakoutGroupUncheckedCreateWithoutSessionInput = {
+    id?: number
+    name: string
+    members?: BreakoutMemberUncheckedCreateNestedManyWithoutGroupInput
+    messages?: ChatMessageUncheckedCreateNestedManyWithoutGroupInput
+  }
+
+  export type BreakoutGroupCreateOrConnectWithoutSessionInput = {
+    where: BreakoutGroupWhereUniqueInput
+    create: XOR<BreakoutGroupCreateWithoutSessionInput, BreakoutGroupUncheckedCreateWithoutSessionInput>
+  }
+
+  export type BreakoutGroupCreateManySessionInputEnvelope = {
+    data: BreakoutGroupCreateManySessionInput | BreakoutGroupCreateManySessionInput[]
+  }
+
+  export type ClassRoomUpsertWithoutSessionsInput = {
+    update: XOR<ClassRoomUpdateWithoutSessionsInput, ClassRoomUncheckedUpdateWithoutSessionsInput>
+    create: XOR<ClassRoomCreateWithoutSessionsInput, ClassRoomUncheckedCreateWithoutSessionsInput>
+    where?: ClassRoomWhereInput
+  }
+
+  export type ClassRoomUpdateToOneWithWhereWithoutSessionsInput = {
+    where?: ClassRoomWhereInput
+    data: XOR<ClassRoomUpdateWithoutSessionsInput, ClassRoomUncheckedUpdateWithoutSessionsInput>
+  }
+
+  export type ClassRoomUpdateWithoutSessionsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher?: UserUpdateOneRequiredWithoutClassesOwnedNestedInput
+    members?: ClassMemberUpdateManyWithoutClassNestedInput
+    tasks?: TaskUpdateManyWithoutClassNestedInput
+    reports?: ParentReportUpdateManyWithoutClassNestedInput
+  }
+
+  export type ClassRoomUncheckedUpdateWithoutSessionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    teacherId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    members?: ClassMemberUncheckedUpdateManyWithoutClassNestedInput
+    tasks?: TaskUncheckedUpdateManyWithoutClassNestedInput
+    reports?: ParentReportUncheckedUpdateManyWithoutClassNestedInput
+  }
+
+  export type UserUpsertWithoutLiveSessionsTaughtInput = {
+    update: XOR<UserUpdateWithoutLiveSessionsTaughtInput, UserUncheckedUpdateWithoutLiveSessionsTaughtInput>
+    create: XOR<UserCreateWithoutLiveSessionsTaughtInput, UserUncheckedCreateWithoutLiveSessionsTaughtInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutLiveSessionsTaughtInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutLiveSessionsTaughtInput, UserUncheckedUpdateWithoutLiveSessionsTaughtInput>
+  }
+
+  export type UserUpdateWithoutLiveSessionsTaughtInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutLiveSessionsTaughtInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type AttendanceUpsertWithWhereUniqueWithoutSessionInput = {
+    where: AttendanceWhereUniqueInput
+    update: XOR<AttendanceUpdateWithoutSessionInput, AttendanceUncheckedUpdateWithoutSessionInput>
+    create: XOR<AttendanceCreateWithoutSessionInput, AttendanceUncheckedCreateWithoutSessionInput>
+  }
+
+  export type AttendanceUpdateWithWhereUniqueWithoutSessionInput = {
+    where: AttendanceWhereUniqueInput
+    data: XOR<AttendanceUpdateWithoutSessionInput, AttendanceUncheckedUpdateWithoutSessionInput>
+  }
+
+  export type AttendanceUpdateManyWithWhereWithoutSessionInput = {
+    where: AttendanceScalarWhereInput
+    data: XOR<AttendanceUpdateManyMutationInput, AttendanceUncheckedUpdateManyWithoutSessionInput>
+  }
+
+  export type LiveQuizUpsertWithWhereUniqueWithoutSessionInput = {
+    where: LiveQuizWhereUniqueInput
+    update: XOR<LiveQuizUpdateWithoutSessionInput, LiveQuizUncheckedUpdateWithoutSessionInput>
+    create: XOR<LiveQuizCreateWithoutSessionInput, LiveQuizUncheckedCreateWithoutSessionInput>
+  }
+
+  export type LiveQuizUpdateWithWhereUniqueWithoutSessionInput = {
+    where: LiveQuizWhereUniqueInput
+    data: XOR<LiveQuizUpdateWithoutSessionInput, LiveQuizUncheckedUpdateWithoutSessionInput>
+  }
+
+  export type LiveQuizUpdateManyWithWhereWithoutSessionInput = {
+    where: LiveQuizScalarWhereInput
+    data: XOR<LiveQuizUpdateManyMutationInput, LiveQuizUncheckedUpdateManyWithoutSessionInput>
+  }
+
+  export type LiveQuizScalarWhereInput = {
+    AND?: LiveQuizScalarWhereInput | LiveQuizScalarWhereInput[]
+    OR?: LiveQuizScalarWhereInput[]
+    NOT?: LiveQuizScalarWhereInput | LiveQuizScalarWhereInput[]
+    id?: IntFilter<"LiveQuiz"> | number
+    sessionId?: IntFilter<"LiveQuiz"> | number
+    title?: StringFilter<"LiveQuiz"> | string
+    questions?: StringFilter<"LiveQuiz"> | string
+    status?: StringFilter<"LiveQuiz"> | string
+    currentIndex?: IntFilter<"LiveQuiz"> | number
+    bossMaxHp?: IntFilter<"LiveQuiz"> | number
+    createdAt?: DateTimeFilter<"LiveQuiz"> | Date | string
+  }
+
+  export type UnderstandingVoteUpsertWithWhereUniqueWithoutSessionInput = {
+    where: UnderstandingVoteWhereUniqueInput
+    update: XOR<UnderstandingVoteUpdateWithoutSessionInput, UnderstandingVoteUncheckedUpdateWithoutSessionInput>
+    create: XOR<UnderstandingVoteCreateWithoutSessionInput, UnderstandingVoteUncheckedCreateWithoutSessionInput>
+  }
+
+  export type UnderstandingVoteUpdateWithWhereUniqueWithoutSessionInput = {
+    where: UnderstandingVoteWhereUniqueInput
+    data: XOR<UnderstandingVoteUpdateWithoutSessionInput, UnderstandingVoteUncheckedUpdateWithoutSessionInput>
+  }
+
+  export type UnderstandingVoteUpdateManyWithWhereWithoutSessionInput = {
+    where: UnderstandingVoteScalarWhereInput
+    data: XOR<UnderstandingVoteUpdateManyMutationInput, UnderstandingVoteUncheckedUpdateManyWithoutSessionInput>
+  }
+
+  export type BreakoutGroupUpsertWithWhereUniqueWithoutSessionInput = {
+    where: BreakoutGroupWhereUniqueInput
+    update: XOR<BreakoutGroupUpdateWithoutSessionInput, BreakoutGroupUncheckedUpdateWithoutSessionInput>
+    create: XOR<BreakoutGroupCreateWithoutSessionInput, BreakoutGroupUncheckedCreateWithoutSessionInput>
+  }
+
+  export type BreakoutGroupUpdateWithWhereUniqueWithoutSessionInput = {
+    where: BreakoutGroupWhereUniqueInput
+    data: XOR<BreakoutGroupUpdateWithoutSessionInput, BreakoutGroupUncheckedUpdateWithoutSessionInput>
+  }
+
+  export type BreakoutGroupUpdateManyWithWhereWithoutSessionInput = {
+    where: BreakoutGroupScalarWhereInput
+    data: XOR<BreakoutGroupUpdateManyMutationInput, BreakoutGroupUncheckedUpdateManyWithoutSessionInput>
+  }
+
+  export type BreakoutGroupScalarWhereInput = {
+    AND?: BreakoutGroupScalarWhereInput | BreakoutGroupScalarWhereInput[]
+    OR?: BreakoutGroupScalarWhereInput[]
+    NOT?: BreakoutGroupScalarWhereInput | BreakoutGroupScalarWhereInput[]
+    id?: IntFilter<"BreakoutGroup"> | number
+    sessionId?: IntFilter<"BreakoutGroup"> | number
+    name?: StringFilter<"BreakoutGroup"> | string
+  }
+
+  export type LiveSessionCreateWithoutAttendancesInput = {
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    class: ClassRoomCreateNestedOneWithoutSessionsInput
+    teacher: UserCreateNestedOneWithoutLiveSessionsTaughtInput
+    quizzes?: LiveQuizCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionUncheckedCreateWithoutAttendancesInput = {
+    id?: number
+    classId: number
+    teacherId: number
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    quizzes?: LiveQuizUncheckedCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteUncheckedCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionCreateOrConnectWithoutAttendancesInput = {
+    where: LiveSessionWhereUniqueInput
+    create: XOR<LiveSessionCreateWithoutAttendancesInput, LiveSessionUncheckedCreateWithoutAttendancesInput>
+  }
+
+  export type UserCreateWithoutAttendancesInput = {
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserUncheckedCreateWithoutAttendancesInput = {
+    id?: number
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserCreateOrConnectWithoutAttendancesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAttendancesInput, UserUncheckedCreateWithoutAttendancesInput>
+  }
+
+  export type LiveSessionUpsertWithoutAttendancesInput = {
+    update: XOR<LiveSessionUpdateWithoutAttendancesInput, LiveSessionUncheckedUpdateWithoutAttendancesInput>
+    create: XOR<LiveSessionCreateWithoutAttendancesInput, LiveSessionUncheckedCreateWithoutAttendancesInput>
+    where?: LiveSessionWhereInput
+  }
+
+  export type LiveSessionUpdateToOneWithWhereWithoutAttendancesInput = {
+    where?: LiveSessionWhereInput
+    data: XOR<LiveSessionUpdateWithoutAttendancesInput, LiveSessionUncheckedUpdateWithoutAttendancesInput>
+  }
+
+  export type LiveSessionUpdateWithoutAttendancesInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    class?: ClassRoomUpdateOneRequiredWithoutSessionsNestedInput
+    teacher?: UserUpdateOneRequiredWithoutLiveSessionsTaughtNestedInput
+    quizzes?: LiveQuizUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUpdateManyWithoutSessionNestedInput
+  }
+
+  export type LiveSessionUncheckedUpdateWithoutAttendancesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    quizzes?: LiveQuizUncheckedUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUncheckedUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type UserUpsertWithoutAttendancesInput = {
+    update: XOR<UserUpdateWithoutAttendancesInput, UserUncheckedUpdateWithoutAttendancesInput>
+    create: XOR<UserCreateWithoutAttendancesInput, UserUncheckedCreateWithoutAttendancesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAttendancesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAttendancesInput, UserUncheckedUpdateWithoutAttendancesInput>
+  }
+
+  export type UserUpdateWithoutAttendancesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAttendancesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type LiveSessionCreateWithoutQuizzesInput = {
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    class: ClassRoomCreateNestedOneWithoutSessionsInput
+    teacher: UserCreateNestedOneWithoutLiveSessionsTaughtInput
+    attendances?: AttendanceCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionUncheckedCreateWithoutQuizzesInput = {
+    id?: number
+    classId: number
+    teacherId: number
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteUncheckedCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionCreateOrConnectWithoutQuizzesInput = {
+    where: LiveSessionWhereUniqueInput
+    create: XOR<LiveSessionCreateWithoutQuizzesInput, LiveSessionUncheckedCreateWithoutQuizzesInput>
+  }
+
+  export type LiveAnswerCreateWithoutQuizInput = {
+    questionIndex: number
+    selectedIndex: number
+    correct: boolean
+    answeredAt?: Date | string
+    user: UserCreateNestedOneWithoutLiveAnswersInput
+  }
+
+  export type LiveAnswerUncheckedCreateWithoutQuizInput = {
+    id?: number
+    userId: number
+    questionIndex: number
+    selectedIndex: number
+    correct: boolean
+    answeredAt?: Date | string
+  }
+
+  export type LiveAnswerCreateOrConnectWithoutQuizInput = {
+    where: LiveAnswerWhereUniqueInput
+    create: XOR<LiveAnswerCreateWithoutQuizInput, LiveAnswerUncheckedCreateWithoutQuizInput>
+  }
+
+  export type LiveAnswerCreateManyQuizInputEnvelope = {
+    data: LiveAnswerCreateManyQuizInput | LiveAnswerCreateManyQuizInput[]
+  }
+
+  export type LiveSessionUpsertWithoutQuizzesInput = {
+    update: XOR<LiveSessionUpdateWithoutQuizzesInput, LiveSessionUncheckedUpdateWithoutQuizzesInput>
+    create: XOR<LiveSessionCreateWithoutQuizzesInput, LiveSessionUncheckedCreateWithoutQuizzesInput>
+    where?: LiveSessionWhereInput
+  }
+
+  export type LiveSessionUpdateToOneWithWhereWithoutQuizzesInput = {
+    where?: LiveSessionWhereInput
+    data: XOR<LiveSessionUpdateWithoutQuizzesInput, LiveSessionUncheckedUpdateWithoutQuizzesInput>
+  }
+
+  export type LiveSessionUpdateWithoutQuizzesInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    class?: ClassRoomUpdateOneRequiredWithoutSessionsNestedInput
+    teacher?: UserUpdateOneRequiredWithoutLiveSessionsTaughtNestedInput
+    attendances?: AttendanceUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUpdateManyWithoutSessionNestedInput
+  }
+
+  export type LiveSessionUncheckedUpdateWithoutQuizzesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    attendances?: AttendanceUncheckedUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUncheckedUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type LiveAnswerUpsertWithWhereUniqueWithoutQuizInput = {
+    where: LiveAnswerWhereUniqueInput
+    update: XOR<LiveAnswerUpdateWithoutQuizInput, LiveAnswerUncheckedUpdateWithoutQuizInput>
+    create: XOR<LiveAnswerCreateWithoutQuizInput, LiveAnswerUncheckedCreateWithoutQuizInput>
+  }
+
+  export type LiveAnswerUpdateWithWhereUniqueWithoutQuizInput = {
+    where: LiveAnswerWhereUniqueInput
+    data: XOR<LiveAnswerUpdateWithoutQuizInput, LiveAnswerUncheckedUpdateWithoutQuizInput>
+  }
+
+  export type LiveAnswerUpdateManyWithWhereWithoutQuizInput = {
+    where: LiveAnswerScalarWhereInput
+    data: XOR<LiveAnswerUpdateManyMutationInput, LiveAnswerUncheckedUpdateManyWithoutQuizInput>
+  }
+
+  export type LiveQuizCreateWithoutAnswersInput = {
+    title: string
+    questions: string
+    status?: string
+    currentIndex?: number
+    bossMaxHp: number
+    createdAt?: Date | string
+    session: LiveSessionCreateNestedOneWithoutQuizzesInput
+  }
+
+  export type LiveQuizUncheckedCreateWithoutAnswersInput = {
+    id?: number
+    sessionId: number
+    title: string
+    questions: string
+    status?: string
+    currentIndex?: number
+    bossMaxHp: number
+    createdAt?: Date | string
+  }
+
+  export type LiveQuizCreateOrConnectWithoutAnswersInput = {
+    where: LiveQuizWhereUniqueInput
+    create: XOR<LiveQuizCreateWithoutAnswersInput, LiveQuizUncheckedCreateWithoutAnswersInput>
+  }
+
+  export type UserCreateWithoutLiveAnswersInput = {
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserUncheckedCreateWithoutLiveAnswersInput = {
+    id?: number
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserCreateOrConnectWithoutLiveAnswersInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutLiveAnswersInput, UserUncheckedCreateWithoutLiveAnswersInput>
+  }
+
+  export type LiveQuizUpsertWithoutAnswersInput = {
+    update: XOR<LiveQuizUpdateWithoutAnswersInput, LiveQuizUncheckedUpdateWithoutAnswersInput>
+    create: XOR<LiveQuizCreateWithoutAnswersInput, LiveQuizUncheckedCreateWithoutAnswersInput>
+    where?: LiveQuizWhereInput
+  }
+
+  export type LiveQuizUpdateToOneWithWhereWithoutAnswersInput = {
+    where?: LiveQuizWhereInput
+    data: XOR<LiveQuizUpdateWithoutAnswersInput, LiveQuizUncheckedUpdateWithoutAnswersInput>
+  }
+
+  export type LiveQuizUpdateWithoutAnswersInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    questions?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentIndex?: IntFieldUpdateOperationsInput | number
+    bossMaxHp?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    session?: LiveSessionUpdateOneRequiredWithoutQuizzesNestedInput
+  }
+
+  export type LiveQuizUncheckedUpdateWithoutAnswersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    questions?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentIndex?: IntFieldUpdateOperationsInput | number
+    bossMaxHp?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutLiveAnswersInput = {
+    update: XOR<UserUpdateWithoutLiveAnswersInput, UserUncheckedUpdateWithoutLiveAnswersInput>
+    create: XOR<UserCreateWithoutLiveAnswersInput, UserUncheckedCreateWithoutLiveAnswersInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutLiveAnswersInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutLiveAnswersInput, UserUncheckedUpdateWithoutLiveAnswersInput>
+  }
+
+  export type UserUpdateWithoutLiveAnswersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutLiveAnswersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type LiveSessionCreateWithoutVotesInput = {
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    class: ClassRoomCreateNestedOneWithoutSessionsInput
+    teacher: UserCreateNestedOneWithoutLiveSessionsTaughtInput
+    attendances?: AttendanceCreateNestedManyWithoutSessionInput
+    quizzes?: LiveQuizCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionUncheckedCreateWithoutVotesInput = {
+    id?: number
+    classId: number
+    teacherId: number
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutSessionInput
+    quizzes?: LiveQuizUncheckedCreateNestedManyWithoutSessionInput
+    groups?: BreakoutGroupUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionCreateOrConnectWithoutVotesInput = {
+    where: LiveSessionWhereUniqueInput
+    create: XOR<LiveSessionCreateWithoutVotesInput, LiveSessionUncheckedCreateWithoutVotesInput>
+  }
+
+  export type UserCreateWithoutUnderstandingVotesInput = {
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserUncheckedCreateWithoutUnderstandingVotesInput = {
+    id?: number
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserCreateOrConnectWithoutUnderstandingVotesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUnderstandingVotesInput, UserUncheckedCreateWithoutUnderstandingVotesInput>
+  }
+
+  export type LiveSessionUpsertWithoutVotesInput = {
+    update: XOR<LiveSessionUpdateWithoutVotesInput, LiveSessionUncheckedUpdateWithoutVotesInput>
+    create: XOR<LiveSessionCreateWithoutVotesInput, LiveSessionUncheckedCreateWithoutVotesInput>
+    where?: LiveSessionWhereInput
+  }
+
+  export type LiveSessionUpdateToOneWithWhereWithoutVotesInput = {
+    where?: LiveSessionWhereInput
+    data: XOR<LiveSessionUpdateWithoutVotesInput, LiveSessionUncheckedUpdateWithoutVotesInput>
+  }
+
+  export type LiveSessionUpdateWithoutVotesInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    class?: ClassRoomUpdateOneRequiredWithoutSessionsNestedInput
+    teacher?: UserUpdateOneRequiredWithoutLiveSessionsTaughtNestedInput
+    attendances?: AttendanceUpdateManyWithoutSessionNestedInput
+    quizzes?: LiveQuizUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUpdateManyWithoutSessionNestedInput
+  }
+
+  export type LiveSessionUncheckedUpdateWithoutVotesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    attendances?: AttendanceUncheckedUpdateManyWithoutSessionNestedInput
+    quizzes?: LiveQuizUncheckedUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type UserUpsertWithoutUnderstandingVotesInput = {
+    update: XOR<UserUpdateWithoutUnderstandingVotesInput, UserUncheckedUpdateWithoutUnderstandingVotesInput>
+    create: XOR<UserCreateWithoutUnderstandingVotesInput, UserUncheckedCreateWithoutUnderstandingVotesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUnderstandingVotesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUnderstandingVotesInput, UserUncheckedUpdateWithoutUnderstandingVotesInput>
+  }
+
+  export type UserUpdateWithoutUnderstandingVotesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutUnderstandingVotesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type LiveSessionCreateWithoutGroupsInput = {
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    class: ClassRoomCreateNestedOneWithoutSessionsInput
+    teacher: UserCreateNestedOneWithoutLiveSessionsTaughtInput
+    attendances?: AttendanceCreateNestedManyWithoutSessionInput
+    quizzes?: LiveQuizCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionUncheckedCreateWithoutGroupsInput = {
+    id?: number
+    classId: number
+    teacherId: number
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutSessionInput
+    quizzes?: LiveQuizUncheckedCreateNestedManyWithoutSessionInput
+    votes?: UnderstandingVoteUncheckedCreateNestedManyWithoutSessionInput
+  }
+
+  export type LiveSessionCreateOrConnectWithoutGroupsInput = {
+    where: LiveSessionWhereUniqueInput
+    create: XOR<LiveSessionCreateWithoutGroupsInput, LiveSessionUncheckedCreateWithoutGroupsInput>
+  }
+
+  export type BreakoutMemberCreateWithoutGroupInput = {
+    user: UserCreateNestedOneWithoutBreakoutMembershipsInput
+  }
+
+  export type BreakoutMemberUncheckedCreateWithoutGroupInput = {
+    id?: number
+    userId: number
+  }
+
+  export type BreakoutMemberCreateOrConnectWithoutGroupInput = {
+    where: BreakoutMemberWhereUniqueInput
+    create: XOR<BreakoutMemberCreateWithoutGroupInput, BreakoutMemberUncheckedCreateWithoutGroupInput>
+  }
+
+  export type BreakoutMemberCreateManyGroupInputEnvelope = {
+    data: BreakoutMemberCreateManyGroupInput | BreakoutMemberCreateManyGroupInput[]
+  }
+
+  export type ChatMessageCreateWithoutGroupInput = {
+    text: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutChatMessagesInput
+  }
+
+  export type ChatMessageUncheckedCreateWithoutGroupInput = {
+    id?: number
+    userId: number
+    text: string
+    createdAt?: Date | string
+  }
+
+  export type ChatMessageCreateOrConnectWithoutGroupInput = {
+    where: ChatMessageWhereUniqueInput
+    create: XOR<ChatMessageCreateWithoutGroupInput, ChatMessageUncheckedCreateWithoutGroupInput>
+  }
+
+  export type ChatMessageCreateManyGroupInputEnvelope = {
+    data: ChatMessageCreateManyGroupInput | ChatMessageCreateManyGroupInput[]
+  }
+
+  export type LiveSessionUpsertWithoutGroupsInput = {
+    update: XOR<LiveSessionUpdateWithoutGroupsInput, LiveSessionUncheckedUpdateWithoutGroupsInput>
+    create: XOR<LiveSessionCreateWithoutGroupsInput, LiveSessionUncheckedCreateWithoutGroupsInput>
+    where?: LiveSessionWhereInput
+  }
+
+  export type LiveSessionUpdateToOneWithWhereWithoutGroupsInput = {
+    where?: LiveSessionWhereInput
+    data: XOR<LiveSessionUpdateWithoutGroupsInput, LiveSessionUncheckedUpdateWithoutGroupsInput>
+  }
+
+  export type LiveSessionUpdateWithoutGroupsInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    class?: ClassRoomUpdateOneRequiredWithoutSessionsNestedInput
+    teacher?: UserUpdateOneRequiredWithoutLiveSessionsTaughtNestedInput
+    attendances?: AttendanceUpdateManyWithoutSessionNestedInput
+    quizzes?: LiveQuizUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUpdateManyWithoutSessionNestedInput
+  }
+
+  export type LiveSessionUncheckedUpdateWithoutGroupsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    attendances?: AttendanceUncheckedUpdateManyWithoutSessionNestedInput
+    quizzes?: LiveQuizUncheckedUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type BreakoutMemberUpsertWithWhereUniqueWithoutGroupInput = {
+    where: BreakoutMemberWhereUniqueInput
+    update: XOR<BreakoutMemberUpdateWithoutGroupInput, BreakoutMemberUncheckedUpdateWithoutGroupInput>
+    create: XOR<BreakoutMemberCreateWithoutGroupInput, BreakoutMemberUncheckedCreateWithoutGroupInput>
+  }
+
+  export type BreakoutMemberUpdateWithWhereUniqueWithoutGroupInput = {
+    where: BreakoutMemberWhereUniqueInput
+    data: XOR<BreakoutMemberUpdateWithoutGroupInput, BreakoutMemberUncheckedUpdateWithoutGroupInput>
+  }
+
+  export type BreakoutMemberUpdateManyWithWhereWithoutGroupInput = {
+    where: BreakoutMemberScalarWhereInput
+    data: XOR<BreakoutMemberUpdateManyMutationInput, BreakoutMemberUncheckedUpdateManyWithoutGroupInput>
+  }
+
+  export type ChatMessageUpsertWithWhereUniqueWithoutGroupInput = {
+    where: ChatMessageWhereUniqueInput
+    update: XOR<ChatMessageUpdateWithoutGroupInput, ChatMessageUncheckedUpdateWithoutGroupInput>
+    create: XOR<ChatMessageCreateWithoutGroupInput, ChatMessageUncheckedCreateWithoutGroupInput>
+  }
+
+  export type ChatMessageUpdateWithWhereUniqueWithoutGroupInput = {
+    where: ChatMessageWhereUniqueInput
+    data: XOR<ChatMessageUpdateWithoutGroupInput, ChatMessageUncheckedUpdateWithoutGroupInput>
+  }
+
+  export type ChatMessageUpdateManyWithWhereWithoutGroupInput = {
+    where: ChatMessageScalarWhereInput
+    data: XOR<ChatMessageUpdateManyMutationInput, ChatMessageUncheckedUpdateManyWithoutGroupInput>
+  }
+
+  export type BreakoutGroupCreateWithoutMembersInput = {
+    name: string
+    session: LiveSessionCreateNestedOneWithoutGroupsInput
+    messages?: ChatMessageCreateNestedManyWithoutGroupInput
+  }
+
+  export type BreakoutGroupUncheckedCreateWithoutMembersInput = {
+    id?: number
+    sessionId: number
+    name: string
+    messages?: ChatMessageUncheckedCreateNestedManyWithoutGroupInput
+  }
+
+  export type BreakoutGroupCreateOrConnectWithoutMembersInput = {
+    where: BreakoutGroupWhereUniqueInput
+    create: XOR<BreakoutGroupCreateWithoutMembersInput, BreakoutGroupUncheckedCreateWithoutMembersInput>
+  }
+
+  export type UserCreateWithoutBreakoutMembershipsInput = {
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserUncheckedCreateWithoutBreakoutMembershipsInput = {
+    id?: number
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserCreateOrConnectWithoutBreakoutMembershipsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutBreakoutMembershipsInput, UserUncheckedCreateWithoutBreakoutMembershipsInput>
+  }
+
+  export type BreakoutGroupUpsertWithoutMembersInput = {
+    update: XOR<BreakoutGroupUpdateWithoutMembersInput, BreakoutGroupUncheckedUpdateWithoutMembersInput>
+    create: XOR<BreakoutGroupCreateWithoutMembersInput, BreakoutGroupUncheckedCreateWithoutMembersInput>
+    where?: BreakoutGroupWhereInput
+  }
+
+  export type BreakoutGroupUpdateToOneWithWhereWithoutMembersInput = {
+    where?: BreakoutGroupWhereInput
+    data: XOR<BreakoutGroupUpdateWithoutMembersInput, BreakoutGroupUncheckedUpdateWithoutMembersInput>
+  }
+
+  export type BreakoutGroupUpdateWithoutMembersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    session?: LiveSessionUpdateOneRequiredWithoutGroupsNestedInput
+    messages?: ChatMessageUpdateManyWithoutGroupNestedInput
+  }
+
+  export type BreakoutGroupUncheckedUpdateWithoutMembersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    messages?: ChatMessageUncheckedUpdateManyWithoutGroupNestedInput
+  }
+
+  export type UserUpsertWithoutBreakoutMembershipsInput = {
+    update: XOR<UserUpdateWithoutBreakoutMembershipsInput, UserUncheckedUpdateWithoutBreakoutMembershipsInput>
+    create: XOR<UserCreateWithoutBreakoutMembershipsInput, UserUncheckedCreateWithoutBreakoutMembershipsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutBreakoutMembershipsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutBreakoutMembershipsInput, UserUncheckedUpdateWithoutBreakoutMembershipsInput>
+  }
+
+  export type UserUpdateWithoutBreakoutMembershipsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutBreakoutMembershipsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type BreakoutGroupCreateWithoutMessagesInput = {
+    name: string
+    session: LiveSessionCreateNestedOneWithoutGroupsInput
+    members?: BreakoutMemberCreateNestedManyWithoutGroupInput
+  }
+
+  export type BreakoutGroupUncheckedCreateWithoutMessagesInput = {
+    id?: number
+    sessionId: number
+    name: string
+    members?: BreakoutMemberUncheckedCreateNestedManyWithoutGroupInput
+  }
+
+  export type BreakoutGroupCreateOrConnectWithoutMessagesInput = {
+    where: BreakoutGroupWhereUniqueInput
+    create: XOR<BreakoutGroupCreateWithoutMessagesInput, BreakoutGroupUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type UserCreateWithoutChatMessagesInput = {
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserUncheckedCreateWithoutChatMessagesInput = {
+    id?: number
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserCreateOrConnectWithoutChatMessagesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutChatMessagesInput, UserUncheckedCreateWithoutChatMessagesInput>
+  }
+
+  export type BreakoutGroupUpsertWithoutMessagesInput = {
+    update: XOR<BreakoutGroupUpdateWithoutMessagesInput, BreakoutGroupUncheckedUpdateWithoutMessagesInput>
+    create: XOR<BreakoutGroupCreateWithoutMessagesInput, BreakoutGroupUncheckedCreateWithoutMessagesInput>
+    where?: BreakoutGroupWhereInput
+  }
+
+  export type BreakoutGroupUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: BreakoutGroupWhereInput
+    data: XOR<BreakoutGroupUpdateWithoutMessagesInput, BreakoutGroupUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type BreakoutGroupUpdateWithoutMessagesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    session?: LiveSessionUpdateOneRequiredWithoutGroupsNestedInput
+    members?: BreakoutMemberUpdateManyWithoutGroupNestedInput
+  }
+
+  export type BreakoutGroupUncheckedUpdateWithoutMessagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    members?: BreakoutMemberUncheckedUpdateManyWithoutGroupNestedInput
+  }
+
+  export type UserUpsertWithoutChatMessagesInput = {
+    update: XOR<UserUpdateWithoutChatMessagesInput, UserUncheckedUpdateWithoutChatMessagesInput>
+    create: XOR<UserCreateWithoutChatMessagesInput, UserUncheckedCreateWithoutChatMessagesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutChatMessagesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutChatMessagesInput, UserUncheckedUpdateWithoutChatMessagesInput>
+  }
+
+  export type UserUpdateWithoutChatMessagesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutChatMessagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
+  }
+
+  export type ClassRoomCreateWithoutReportsInput = {
+    name: string
+    code: string
+    createdAt?: Date | string
+    teacher: UserCreateNestedOneWithoutClassesOwnedInput
+    members?: ClassMemberCreateNestedManyWithoutClassInput
+    tasks?: TaskCreateNestedManyWithoutClassInput
+    sessions?: LiveSessionCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassRoomUncheckedCreateWithoutReportsInput = {
+    id?: number
+    name: string
+    code: string
+    teacherId: number
+    createdAt?: Date | string
+    members?: ClassMemberUncheckedCreateNestedManyWithoutClassInput
+    tasks?: TaskUncheckedCreateNestedManyWithoutClassInput
+    sessions?: LiveSessionUncheckedCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassRoomCreateOrConnectWithoutReportsInput = {
+    where: ClassRoomWhereUniqueInput
+    create: XOR<ClassRoomCreateWithoutReportsInput, ClassRoomUncheckedCreateWithoutReportsInput>
+  }
+
+  export type UserCreateWithoutReportsReceivedInput = {
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+  }
+
+  export type UserUncheckedCreateWithoutReportsReceivedInput = {
+    id?: number
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+  }
+
+  export type UserCreateOrConnectWithoutReportsReceivedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReportsReceivedInput, UserUncheckedCreateWithoutReportsReceivedInput>
+  }
+
+  export type UserCreateWithoutReportsWrittenInput = {
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserUncheckedCreateWithoutReportsWrittenInput = {
+    id?: number
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type UserCreateOrConnectWithoutReportsWrittenInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReportsWrittenInput, UserUncheckedCreateWithoutReportsWrittenInput>
+  }
+
+  export type ClassRoomUpsertWithoutReportsInput = {
+    update: XOR<ClassRoomUpdateWithoutReportsInput, ClassRoomUncheckedUpdateWithoutReportsInput>
+    create: XOR<ClassRoomCreateWithoutReportsInput, ClassRoomUncheckedCreateWithoutReportsInput>
+    where?: ClassRoomWhereInput
+  }
+
+  export type ClassRoomUpdateToOneWithWhereWithoutReportsInput = {
+    where?: ClassRoomWhereInput
+    data: XOR<ClassRoomUpdateWithoutReportsInput, ClassRoomUncheckedUpdateWithoutReportsInput>
+  }
+
+  export type ClassRoomUpdateWithoutReportsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher?: UserUpdateOneRequiredWithoutClassesOwnedNestedInput
+    members?: ClassMemberUpdateManyWithoutClassNestedInput
+    tasks?: TaskUpdateManyWithoutClassNestedInput
+    sessions?: LiveSessionUpdateManyWithoutClassNestedInput
+  }
+
+  export type ClassRoomUncheckedUpdateWithoutReportsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    teacherId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    members?: ClassMemberUncheckedUpdateManyWithoutClassNestedInput
+    tasks?: TaskUncheckedUpdateManyWithoutClassNestedInput
+    sessions?: LiveSessionUncheckedUpdateManyWithoutClassNestedInput
+  }
+
+  export type UserUpsertWithoutReportsReceivedInput = {
+    update: XOR<UserUpdateWithoutReportsReceivedInput, UserUncheckedUpdateWithoutReportsReceivedInput>
+    create: XOR<UserCreateWithoutReportsReceivedInput, UserUncheckedCreateWithoutReportsReceivedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReportsReceivedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReportsReceivedInput, UserUncheckedUpdateWithoutReportsReceivedInput>
+  }
+
+  export type UserUpdateWithoutReportsReceivedInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReportsReceivedInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+  }
+
+  export type UserUpsertWithoutReportsWrittenInput = {
+    update: XOR<UserUpdateWithoutReportsWrittenInput, UserUncheckedUpdateWithoutReportsWrittenInput>
+    create: XOR<UserCreateWithoutReportsWrittenInput, UserUncheckedCreateWithoutReportsWrittenInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReportsWrittenInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReportsWrittenInput, UserUncheckedUpdateWithoutReportsWrittenInput>
+  }
+
+  export type UserUpdateWithoutReportsWrittenInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReportsWrittenInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type ClassRoomCreateManyTeacherInput = {
@@ -10218,12 +25553,75 @@ export namespace Prisma {
     submittedAt?: Date | string
   }
 
+  export type LiveSessionCreateManyTeacherInput = {
+    id?: number
+    classId: number
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+  }
+
+  export type AttendanceCreateManyUserInput = {
+    id?: number
+    sessionId: number
+    joinedAt?: Date | string
+  }
+
+  export type LiveAnswerCreateManyUserInput = {
+    id?: number
+    quizId: number
+    questionIndex: number
+    selectedIndex: number
+    correct: boolean
+    answeredAt?: Date | string
+  }
+
+  export type UnderstandingVoteCreateManyUserInput = {
+    id?: number
+    sessionId: number
+    level: number
+    updatedAt?: Date | string
+  }
+
+  export type BreakoutMemberCreateManyUserInput = {
+    id?: number
+    groupId: number
+  }
+
+  export type ChatMessageCreateManyUserInput = {
+    id?: number
+    groupId: number
+    text: string
+    createdAt?: Date | string
+  }
+
+  export type ParentReportCreateManyTeacherInput = {
+    id?: number
+    classId: number
+    studentId: number
+    content: string
+    createdAt?: Date | string
+  }
+
+  export type ParentReportCreateManyStudentInput = {
+    id?: number
+    classId: number
+    teacherId: number
+    content: string
+    createdAt?: Date | string
+  }
+
   export type ClassRoomUpdateWithoutTeacherInput = {
     name?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     members?: ClassMemberUpdateManyWithoutClassNestedInput
     tasks?: TaskUpdateManyWithoutClassNestedInput
+    sessions?: LiveSessionUpdateManyWithoutClassNestedInput
+    reports?: ParentReportUpdateManyWithoutClassNestedInput
   }
 
   export type ClassRoomUncheckedUpdateWithoutTeacherInput = {
@@ -10233,6 +25631,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     members?: ClassMemberUncheckedUpdateManyWithoutClassNestedInput
     tasks?: TaskUncheckedUpdateManyWithoutClassNestedInput
+    sessions?: LiveSessionUncheckedUpdateManyWithoutClassNestedInput
+    reports?: ParentReportUncheckedUpdateManyWithoutClassNestedInput
   }
 
   export type ClassRoomUncheckedUpdateManyWithoutTeacherInput = {
@@ -10288,6 +25688,189 @@ export namespace Prisma {
     submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LiveSessionUpdateWithoutTeacherInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    class?: ClassRoomUpdateOneRequiredWithoutSessionsNestedInput
+    attendances?: AttendanceUpdateManyWithoutSessionNestedInput
+    quizzes?: LiveQuizUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUpdateManyWithoutSessionNestedInput
+  }
+
+  export type LiveSessionUncheckedUpdateWithoutTeacherInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    attendances?: AttendanceUncheckedUpdateManyWithoutSessionNestedInput
+    quizzes?: LiveQuizUncheckedUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUncheckedUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type LiveSessionUncheckedUpdateManyWithoutTeacherInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type AttendanceUpdateWithoutUserInput = {
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    session?: LiveSessionUpdateOneRequiredWithoutAttendancesNestedInput
+  }
+
+  export type AttendanceUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AttendanceUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LiveAnswerUpdateWithoutUserInput = {
+    questionIndex?: IntFieldUpdateOperationsInput | number
+    selectedIndex?: IntFieldUpdateOperationsInput | number
+    correct?: BoolFieldUpdateOperationsInput | boolean
+    answeredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    quiz?: LiveQuizUpdateOneRequiredWithoutAnswersNestedInput
+  }
+
+  export type LiveAnswerUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    quizId?: IntFieldUpdateOperationsInput | number
+    questionIndex?: IntFieldUpdateOperationsInput | number
+    selectedIndex?: IntFieldUpdateOperationsInput | number
+    correct?: BoolFieldUpdateOperationsInput | boolean
+    answeredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LiveAnswerUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    quizId?: IntFieldUpdateOperationsInput | number
+    questionIndex?: IntFieldUpdateOperationsInput | number
+    selectedIndex?: IntFieldUpdateOperationsInput | number
+    correct?: BoolFieldUpdateOperationsInput | boolean
+    answeredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UnderstandingVoteUpdateWithoutUserInput = {
+    level?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    session?: LiveSessionUpdateOneRequiredWithoutVotesNestedInput
+  }
+
+  export type UnderstandingVoteUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    level?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UnderstandingVoteUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    sessionId?: IntFieldUpdateOperationsInput | number
+    level?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BreakoutMemberUpdateWithoutUserInput = {
+    group?: BreakoutGroupUpdateOneRequiredWithoutMembersNestedInput
+  }
+
+  export type BreakoutMemberUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    groupId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BreakoutMemberUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    groupId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChatMessageUpdateWithoutUserInput = {
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    group?: BreakoutGroupUpdateOneRequiredWithoutMessagesNestedInput
+  }
+
+  export type ChatMessageUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    groupId?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ChatMessageUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    groupId?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParentReportUpdateWithoutTeacherInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    class?: ClassRoomUpdateOneRequiredWithoutReportsNestedInput
+    student?: UserUpdateOneRequiredWithoutReportsReceivedNestedInput
+  }
+
+  export type ParentReportUncheckedUpdateWithoutTeacherInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    studentId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParentReportUncheckedUpdateManyWithoutTeacherInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    studentId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParentReportUpdateWithoutStudentInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    class?: ClassRoomUpdateOneRequiredWithoutReportsNestedInput
+    teacher?: UserUpdateOneRequiredWithoutReportsWrittenNestedInput
+  }
+
+  export type ParentReportUncheckedUpdateWithoutStudentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParentReportUncheckedUpdateManyWithoutStudentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    classId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type ClassMemberCreateManyClassInput = {
     id?: number
     userId: number
@@ -10300,6 +25883,25 @@ export namespace Prisma {
     title: string
     description?: string | null
     questions: string
+    createdAt?: Date | string
+  }
+
+  export type LiveSessionCreateManyClassInput = {
+    id?: number
+    teacherId: number
+    title: string
+    openingText?: string | null
+    materialText?: string | null
+    status?: string
+    startedAt?: Date | string
+    endedAt?: Date | string | null
+  }
+
+  export type ParentReportCreateManyClassInput = {
+    id?: number
+    studentId: number
+    teacherId: number
+    content: string
     createdAt?: Date | string
   }
 
@@ -10348,6 +25950,69 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LiveSessionUpdateWithoutClassInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    teacher?: UserUpdateOneRequiredWithoutLiveSessionsTaughtNestedInput
+    attendances?: AttendanceUpdateManyWithoutSessionNestedInput
+    quizzes?: LiveQuizUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUpdateManyWithoutSessionNestedInput
+  }
+
+  export type LiveSessionUncheckedUpdateWithoutClassInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    attendances?: AttendanceUncheckedUpdateManyWithoutSessionNestedInput
+    quizzes?: LiveQuizUncheckedUpdateManyWithoutSessionNestedInput
+    votes?: UnderstandingVoteUncheckedUpdateManyWithoutSessionNestedInput
+    groups?: BreakoutGroupUncheckedUpdateManyWithoutSessionNestedInput
+  }
+
+  export type LiveSessionUncheckedUpdateManyWithoutClassInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    openingText?: NullableStringFieldUpdateOperationsInput | string | null
+    materialText?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    startedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ParentReportUpdateWithoutClassInput = {
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    student?: UserUpdateOneRequiredWithoutReportsReceivedNestedInput
+    teacher?: UserUpdateOneRequiredWithoutReportsWrittenNestedInput
+  }
+
+  export type ParentReportUncheckedUpdateWithoutClassInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    studentId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParentReportUncheckedUpdateManyWithoutClassInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    studentId?: IntFieldUpdateOperationsInput | number
+    teacherId?: IntFieldUpdateOperationsInput | number
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type SubmissionCreateManyTaskInput = {
     id?: number
     studentId: number
@@ -10387,6 +26052,201 @@ export namespace Prisma {
     submittedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AttendanceCreateManySessionInput = {
+    id?: number
+    userId: number
+    joinedAt?: Date | string
+  }
+
+  export type LiveQuizCreateManySessionInput = {
+    id?: number
+    title: string
+    questions: string
+    status?: string
+    currentIndex?: number
+    bossMaxHp: number
+    createdAt?: Date | string
+  }
+
+  export type UnderstandingVoteCreateManySessionInput = {
+    id?: number
+    userId: number
+    level: number
+    updatedAt?: Date | string
+  }
+
+  export type BreakoutGroupCreateManySessionInput = {
+    id?: number
+    name: string
+  }
+
+  export type AttendanceUpdateWithoutSessionInput = {
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAttendancesNestedInput
+  }
+
+  export type AttendanceUncheckedUpdateWithoutSessionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AttendanceUncheckedUpdateManyWithoutSessionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LiveQuizUpdateWithoutSessionInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    questions?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentIndex?: IntFieldUpdateOperationsInput | number
+    bossMaxHp?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    answers?: LiveAnswerUpdateManyWithoutQuizNestedInput
+  }
+
+  export type LiveQuizUncheckedUpdateWithoutSessionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    questions?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentIndex?: IntFieldUpdateOperationsInput | number
+    bossMaxHp?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    answers?: LiveAnswerUncheckedUpdateManyWithoutQuizNestedInput
+  }
+
+  export type LiveQuizUncheckedUpdateManyWithoutSessionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    questions?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    currentIndex?: IntFieldUpdateOperationsInput | number
+    bossMaxHp?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UnderstandingVoteUpdateWithoutSessionInput = {
+    level?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutUnderstandingVotesNestedInput
+  }
+
+  export type UnderstandingVoteUncheckedUpdateWithoutSessionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    level?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UnderstandingVoteUncheckedUpdateManyWithoutSessionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    level?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BreakoutGroupUpdateWithoutSessionInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    members?: BreakoutMemberUpdateManyWithoutGroupNestedInput
+    messages?: ChatMessageUpdateManyWithoutGroupNestedInput
+  }
+
+  export type BreakoutGroupUncheckedUpdateWithoutSessionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    members?: BreakoutMemberUncheckedUpdateManyWithoutGroupNestedInput
+    messages?: ChatMessageUncheckedUpdateManyWithoutGroupNestedInput
+  }
+
+  export type BreakoutGroupUncheckedUpdateManyWithoutSessionInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LiveAnswerCreateManyQuizInput = {
+    id?: number
+    userId: number
+    questionIndex: number
+    selectedIndex: number
+    correct: boolean
+    answeredAt?: Date | string
+  }
+
+  export type LiveAnswerUpdateWithoutQuizInput = {
+    questionIndex?: IntFieldUpdateOperationsInput | number
+    selectedIndex?: IntFieldUpdateOperationsInput | number
+    correct?: BoolFieldUpdateOperationsInput | boolean
+    answeredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLiveAnswersNestedInput
+  }
+
+  export type LiveAnswerUncheckedUpdateWithoutQuizInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    questionIndex?: IntFieldUpdateOperationsInput | number
+    selectedIndex?: IntFieldUpdateOperationsInput | number
+    correct?: BoolFieldUpdateOperationsInput | boolean
+    answeredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LiveAnswerUncheckedUpdateManyWithoutQuizInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    questionIndex?: IntFieldUpdateOperationsInput | number
+    selectedIndex?: IntFieldUpdateOperationsInput | number
+    correct?: BoolFieldUpdateOperationsInput | boolean
+    answeredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BreakoutMemberCreateManyGroupInput = {
+    id?: number
+    userId: number
+  }
+
+  export type ChatMessageCreateManyGroupInput = {
+    id?: number
+    userId: number
+    text: string
+    createdAt?: Date | string
+  }
+
+  export type BreakoutMemberUpdateWithoutGroupInput = {
+    user?: UserUpdateOneRequiredWithoutBreakoutMembershipsNestedInput
+  }
+
+  export type BreakoutMemberUncheckedUpdateWithoutGroupInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type BreakoutMemberUncheckedUpdateManyWithoutGroupInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ChatMessageUpdateWithoutGroupInput = {
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutChatMessagesNestedInput
+  }
+
+  export type ChatMessageUncheckedUpdateWithoutGroupInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ChatMessageUncheckedUpdateManyWithoutGroupInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
 
 
   /**
@@ -10404,6 +26264,18 @@ export namespace Prisma {
      * @deprecated Use TaskCountOutputTypeDefaultArgs instead
      */
     export type TaskCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TaskCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LiveSessionCountOutputTypeDefaultArgs instead
+     */
+    export type LiveSessionCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LiveSessionCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LiveQuizCountOutputTypeDefaultArgs instead
+     */
+    export type LiveQuizCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LiveQuizCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use BreakoutGroupCountOutputTypeDefaultArgs instead
+     */
+    export type BreakoutGroupCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BreakoutGroupCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */
@@ -10428,6 +26300,42 @@ export namespace Prisma {
      * @deprecated Use ScoreSyncDefaultArgs instead
      */
     export type ScoreSyncArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ScoreSyncDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LiveSessionDefaultArgs instead
+     */
+    export type LiveSessionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LiveSessionDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use AttendanceDefaultArgs instead
+     */
+    export type AttendanceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AttendanceDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LiveQuizDefaultArgs instead
+     */
+    export type LiveQuizArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LiveQuizDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LiveAnswerDefaultArgs instead
+     */
+    export type LiveAnswerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LiveAnswerDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use UnderstandingVoteDefaultArgs instead
+     */
+    export type UnderstandingVoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UnderstandingVoteDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use BreakoutGroupDefaultArgs instead
+     */
+    export type BreakoutGroupArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BreakoutGroupDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use BreakoutMemberDefaultArgs instead
+     */
+    export type BreakoutMemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BreakoutMemberDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ChatMessageDefaultArgs instead
+     */
+    export type ChatMessageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ChatMessageDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ParentReportDefaultArgs instead
+     */
+    export type ParentReportArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ParentReportDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

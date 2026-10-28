@@ -174,6 +174,83 @@ exports.Prisma.ScoreSyncScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.LiveSessionScalarFieldEnum = {
+  id: 'id',
+  classId: 'classId',
+  teacherId: 'teacherId',
+  title: 'title',
+  openingText: 'openingText',
+  materialText: 'materialText',
+  status: 'status',
+  startedAt: 'startedAt',
+  endedAt: 'endedAt'
+};
+
+exports.Prisma.AttendanceScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  userId: 'userId',
+  joinedAt: 'joinedAt'
+};
+
+exports.Prisma.LiveQuizScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  title: 'title',
+  questions: 'questions',
+  status: 'status',
+  currentIndex: 'currentIndex',
+  bossMaxHp: 'bossMaxHp',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LiveAnswerScalarFieldEnum = {
+  id: 'id',
+  quizId: 'quizId',
+  userId: 'userId',
+  questionIndex: 'questionIndex',
+  selectedIndex: 'selectedIndex',
+  correct: 'correct',
+  answeredAt: 'answeredAt'
+};
+
+exports.Prisma.UnderstandingVoteScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  userId: 'userId',
+  level: 'level',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BreakoutGroupScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  name: 'name'
+};
+
+exports.Prisma.BreakoutMemberScalarFieldEnum = {
+  id: 'id',
+  groupId: 'groupId',
+  userId: 'userId'
+};
+
+exports.Prisma.ChatMessageScalarFieldEnum = {
+  id: 'id',
+  groupId: 'groupId',
+  userId: 'userId',
+  text: 'text',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ParentReportScalarFieldEnum = {
+  id: 'id',
+  classId: 'classId',
+  studentId: 'studentId',
+  teacherId: 'teacherId',
+  content: 'content',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -191,7 +268,16 @@ exports.Prisma.ModelName = {
   ClassMember: 'ClassMember',
   Task: 'Task',
   Submission: 'Submission',
-  ScoreSync: 'ScoreSync'
+  ScoreSync: 'ScoreSync',
+  LiveSession: 'LiveSession',
+  Attendance: 'Attendance',
+  LiveQuiz: 'LiveQuiz',
+  LiveAnswer: 'LiveAnswer',
+  UnderstandingVote: 'UnderstandingVote',
+  BreakoutGroup: 'BreakoutGroup',
+  BreakoutMember: 'BreakoutMember',
+  ChatMessage: 'ChatMessage',
+  ParentReport: 'ParentReport'
 };
 
 /**
