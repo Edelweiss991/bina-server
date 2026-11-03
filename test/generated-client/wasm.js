@@ -150,6 +150,9 @@ exports.Prisma.TaskScalarFieldEnum = {
   title: 'title',
   description: 'description',
   questions: 'questions',
+  type: 'type',
+  opensAt: 'opensAt',
+  dueAt: 'dueAt',
   createdAt: 'createdAt'
 };
 
@@ -161,6 +164,9 @@ exports.Prisma.SubmissionScalarFieldEnum = {
   autoScore: 'autoScore',
   score: 'score',
   review: 'review',
+  fileName: 'fileName',
+  fileMime: 'fileMime',
+  fileData: 'fileData',
   submittedAt: 'submittedAt'
 };
 
@@ -295,6 +301,19 @@ exports.Prisma.ConversationMessageScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.MaterialScalarFieldEnum = {
+  id: 'id',
+  classId: 'classId',
+  teacherId: 'teacherId',
+  title: 'title',
+  description: 'description',
+  linkUrl: 'linkUrl',
+  fileName: 'fileName',
+  fileMime: 'fileMime',
+  fileData: 'fileData',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -326,7 +345,8 @@ exports.Prisma.ModelName = {
   Schedule: 'Schedule',
   SchedulePart: 'SchedulePart',
   ChatConversation: 'ChatConversation',
-  ConversationMessage: 'ConversationMessage'
+  ConversationMessage: 'ConversationMessage',
+  Material: 'Material'
 };
 
 /**

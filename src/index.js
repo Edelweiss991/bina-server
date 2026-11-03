@@ -14,11 +14,12 @@ import scoreRoutes from './routes/scores.js';
 import liveRoutes from './routes/live.js';
 import guruRoutes from './routes/guru.js';
 import chatRoutes from './routes/chat.js';
+import fiturRoutes from './routes/fitur.js';
 
 const app = express();
 
 app.use(cors());
-app.use(express.json({ limit: '256kb' }));
+app.use(express.json({ limit: '12mb' }));
 
 app.get('/health', (req, res) => res.json({ ok: true }));
 
@@ -29,6 +30,7 @@ app.use('/api', scoreRoutes);
 app.use('/api', liveRoutes);
 app.use('/api', guruRoutes);
 app.use('/api', chatRoutes);
+app.use('/api', fiturRoutes);
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
 app.use((req, res) => {

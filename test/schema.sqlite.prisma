@@ -44,6 +44,7 @@ model User {
   chatAsTeacher      ChatConversation[]  @relation("ChatTeacher")
   chatAsStudent      ChatConversation[]  @relation("ChatStudent")
   directMessages     ConversationMessage[]
+  materialsShared    Material[]          @relation("MaterialTeacher")
 }
 
 model ClassRoom {
@@ -54,6 +55,7 @@ model ClassRoom {
   teacher   User          @relation("ClassTeacher", fields: [teacherId], references: [id])
   members   ClassMember[]
   tasks     Task[]
+  materials Material[]
   sessions  LiveSession[]
   reports   ParentReport[]
   announcements Announcement[]
@@ -80,6 +82,12 @@ model Task {
   title       String
   description String?
   questions   String // JSON ter-encode (lihat catatan di atas)
+  // 'quiz' (soal pilihan ganda, dinilai otomatis) | 'assignment'
+  // (tugas bebas: kiriman teks/tautan/berkas, dinilai guru).
+  type        String       @default("quiz")
+  // Jendela pengerjaan opsional (kuis terjadwal / tenggat tugas).
+  opensAt     DateTime?
+  dueAt       DateTime?
   class       ClassRoom    @relation(fields: [classId], references: [id])
   submissions Submission[]
   createdAt   DateTime     @default(now())
@@ -93,6 +101,10 @@ model Submission {
   autoScore   Int
   score       Int?
   review      String?
+  // Berkas opsional untuk tugas bebas (assignment).
+  fileName    String?
+  fileMime    String?
+  fileData    Bytes?
   submittedAt DateTime @default(now())
   task        Task     @relation(fields: [taskId], references: [id])
   student     User     @relation(fields: [studentId], references: [id])
@@ -282,4 +294,24 @@ model ConversationMessage {
   createdAt      DateTime         @default(now())
   conversation   ChatConversation @relation(fields: [conversationId], references: [id])
   sender         User             @relation(fields: [senderId], references: [id])
+}
+
+// ─── Putaran FITUR PEMBELAJARAN: materi kelas dari guru ─────────────────────
+// Materi bisa berupa teks/deskripsi, tautan (mis. Google Drive/YouTube),
+// dan/atau satu berkas yang diunggah guru (disimpan sebagai bytea/BLOB,
+// batas ±6 MB ditegakkan di route). Siswa anggota kelas mengunduh berkas
+// lewat tautan unduh bertanda tangan (token HMAC berumur pendek).
+model Material {
+  id          Int       @id @default(autoincrement())
+  classId     Int
+  teacherId   Int
+  title       String
+  description String?
+  linkUrl     String?
+  fileName    String?
+  fileMime    String?
+  fileData    Bytes?
+  createdAt   DateTime  @default(now())
+  class       ClassRoom @relation(fields: [classId], references: [id])
+  teacher     User      @relation("MaterialTeacher", fields: [teacherId], references: [id])
 }
