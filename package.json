@@ -11,6 +11,7 @@
     "prisma:generate": "prisma generate",
     "db:push": "prisma db push",
     "smoke": "node test/smoke.mjs",
+    "smoke:admin": "node test/smoke-admin.mjs",
     "smoke:live": "node test/smoke-live.mjs",
     "smoke:guru": "node test/smoke-guru.mjs",
     "smoke:fitur": "node test/smoke-fitur.mjs"
