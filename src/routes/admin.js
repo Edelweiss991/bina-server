@@ -103,6 +103,7 @@ async function deleteUserCascade(tx, userId) {
   await tx.classMember.deleteMany({ where: { userId } });
   await tx.scoreSync.deleteMany({ where: { userId } });
   await tx.attendance.deleteMany({ where: { userId } });
+  await tx.faceAttendance.deleteMany({ where: { userId } });
   await tx.liveAnswer.deleteMany({ where: { userId } });
   await tx.understandingVote.deleteMany({ where: { userId } });
   await tx.breakoutMember.deleteMany({ where: { userId } });

@@ -32,6 +32,7 @@ model User {
 
   liveSessionsTaught  LiveSession[]       @relation("SessionTeacher")
   attendances         Attendance[]
+  faceAttendances     FaceAttendance[]
   liveAnswers         LiveAnswer[]
   understandingVotes  UnderstandingVote[]
   breakoutMemberships BreakoutMember[]
@@ -153,6 +154,18 @@ model Attendance {
   user      User        @relation(fields: [userId], references: [id])
 
   @@unique([sessionId, userId])
+}
+
+model FaceAttendance {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  date      String
+  time      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, date])
+  @@index([date])
 }
 
 model LiveQuiz {

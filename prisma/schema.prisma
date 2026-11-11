@@ -30,6 +30,7 @@ model User {
 
   liveSessionsTaught LiveSession[]       @relation("SessionTeacher")
   attendances        Attendance[]
+  faceAttendances    FaceAttendance[]
   liveAnswers        LiveAnswer[]
   understandingVotes UnderstandingVote[]
   breakoutMemberships BreakoutMember[]
@@ -153,6 +154,22 @@ model Attendance {
   user      User        @relation(fields: [userId], references: [id])
 
   @@unique([sessionId, userId])
+}
+
+// Absensi wajah harian dari aplikasi siswa (putaran 12 Nov 2026):
+// satu catatan per siswa per tanggal; tanggal/jam disimpan apa adanya
+// dari perangkat siswa ('yyyy-MM-dd' / 'HH:mm') agar cocok dengan
+// riwayat lokal di aplikasi. Guru membaca per kelas + tanggal.
+model FaceAttendance {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  date      String
+  time      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, date])
+  @@index([date])
 }
 
 model LiveQuiz {

@@ -18,6 +18,7 @@ import liveRoutes from './routes/live.js';
 import guruRoutes from './routes/guru.js';
 import chatRoutes from './routes/chat.js';
 import fiturRoutes from './routes/fitur.js';
+import attendanceRoutes from './routes/attendance.js';
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use('/api', liveRoutes);
 app.use('/api', guruRoutes);
 app.use('/api', chatRoutes);
 app.use('/api', fiturRoutes);
+app.use('/api', attendanceRoutes);
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
 app.use((req, res) => {

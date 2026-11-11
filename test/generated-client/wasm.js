@@ -199,6 +199,14 @@ exports.Prisma.AttendanceScalarFieldEnum = {
   joinedAt: 'joinedAt'
 };
 
+exports.Prisma.FaceAttendanceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  date: 'date',
+  time: 'time',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.LiveQuizScalarFieldEnum = {
   id: 'id',
   sessionId: 'sessionId',
@@ -334,6 +342,7 @@ exports.Prisma.ModelName = {
   ScoreSync: 'ScoreSync',
   LiveSession: 'LiveSession',
   Attendance: 'Attendance',
+  FaceAttendance: 'FaceAttendance',
   LiveQuiz: 'LiveQuiz',
   LiveAnswer: 'LiveAnswer',
   UnderstandingVote: 'UnderstandingVote',

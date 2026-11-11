@@ -54,6 +54,11 @@ export type LiveSession = $Result.DefaultSelection<Prisma.$LiveSessionPayload>
  */
 export type Attendance = $Result.DefaultSelection<Prisma.$AttendancePayload>
 /**
+ * Model FaceAttendance
+ * 
+ */
+export type FaceAttendance = $Result.DefaultSelection<Prisma.$FaceAttendancePayload>
+/**
  * Model LiveQuiz
  * 
  */
@@ -321,6 +326,16 @@ export class PrismaClient<
     * ```
     */
   get attendance(): Prisma.AttendanceDelegate<ExtArgs>;
+
+  /**
+   * `prisma.faceAttendance`: Exposes CRUD operations for the **FaceAttendance** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FaceAttendances
+    * const faceAttendances = await prisma.faceAttendance.findMany()
+    * ```
+    */
+  get faceAttendance(): Prisma.FaceAttendanceDelegate<ExtArgs>;
 
   /**
    * `prisma.liveQuiz`: Exposes CRUD operations for the **LiveQuiz** model.
@@ -900,6 +915,7 @@ export namespace Prisma {
     ScoreSync: 'ScoreSync',
     LiveSession: 'LiveSession',
     Attendance: 'Attendance',
+    FaceAttendance: 'FaceAttendance',
     LiveQuiz: 'LiveQuiz',
     LiveAnswer: 'LiveAnswer',
     UnderstandingVote: 'UnderstandingVote',
@@ -928,7 +944,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "classRoom" | "classMember" | "task" | "submission" | "scoreSync" | "liveSession" | "attendance" | "liveQuiz" | "liveAnswer" | "understandingVote" | "breakoutGroup" | "breakoutMember" | "chatMessage" | "parentReport" | "announcement" | "schedule" | "schedulePart" | "chatConversation" | "conversationMessage" | "material"
+      modelProps: "user" | "classRoom" | "classMember" | "task" | "submission" | "scoreSync" | "liveSession" | "attendance" | "faceAttendance" | "liveQuiz" | "liveAnswer" | "understandingVote" | "breakoutGroup" | "breakoutMember" | "chatMessage" | "parentReport" | "announcement" | "schedule" | "schedulePart" | "chatConversation" | "conversationMessage" | "material"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1489,6 +1505,76 @@ export namespace Prisma {
           count: {
             args: Prisma.AttendanceCountArgs<ExtArgs>
             result: $Utils.Optional<AttendanceCountAggregateOutputType> | number
+          }
+        }
+      }
+      FaceAttendance: {
+        payload: Prisma.$FaceAttendancePayload<ExtArgs>
+        fields: Prisma.FaceAttendanceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FaceAttendanceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAttendancePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FaceAttendanceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAttendancePayload>
+          }
+          findFirst: {
+            args: Prisma.FaceAttendanceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAttendancePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FaceAttendanceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAttendancePayload>
+          }
+          findMany: {
+            args: Prisma.FaceAttendanceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAttendancePayload>[]
+          }
+          create: {
+            args: Prisma.FaceAttendanceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAttendancePayload>
+          }
+          createMany: {
+            args: Prisma.FaceAttendanceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FaceAttendanceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAttendancePayload>[]
+          }
+          delete: {
+            args: Prisma.FaceAttendanceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAttendancePayload>
+          }
+          update: {
+            args: Prisma.FaceAttendanceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAttendancePayload>
+          }
+          deleteMany: {
+            args: Prisma.FaceAttendanceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FaceAttendanceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.FaceAttendanceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FaceAttendancePayload>
+          }
+          aggregate: {
+            args: Prisma.FaceAttendanceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFaceAttendance>
+          }
+          groupBy: {
+            args: Prisma.FaceAttendanceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FaceAttendanceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FaceAttendanceCountArgs<ExtArgs>
+            result: $Utils.Optional<FaceAttendanceCountAggregateOutputType> | number
           }
         }
       }
@@ -2568,6 +2654,7 @@ export namespace Prisma {
     submissions: number
     liveSessionsTaught: number
     attendances: number
+    faceAttendances: number
     liveAnswers: number
     understandingVotes: number
     breakoutMemberships: number
@@ -2588,6 +2675,7 @@ export namespace Prisma {
     submissions?: boolean | UserCountOutputTypeCountSubmissionsArgs
     liveSessionsTaught?: boolean | UserCountOutputTypeCountLiveSessionsTaughtArgs
     attendances?: boolean | UserCountOutputTypeCountAttendancesArgs
+    faceAttendances?: boolean | UserCountOutputTypeCountFaceAttendancesArgs
     liveAnswers?: boolean | UserCountOutputTypeCountLiveAnswersArgs
     understandingVotes?: boolean | UserCountOutputTypeCountUnderstandingVotesArgs
     breakoutMemberships?: boolean | UserCountOutputTypeCountBreakoutMembershipsArgs
@@ -2646,6 +2734,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountAttendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AttendanceWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountFaceAttendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FaceAttendanceWhereInput
   }
 
   /**
@@ -3265,6 +3360,7 @@ export namespace Prisma {
     scoreSync?: boolean | User$scoreSyncArgs<ExtArgs>
     liveSessionsTaught?: boolean | User$liveSessionsTaughtArgs<ExtArgs>
     attendances?: boolean | User$attendancesArgs<ExtArgs>
+    faceAttendances?: boolean | User$faceAttendancesArgs<ExtArgs>
     liveAnswers?: boolean | User$liveAnswersArgs<ExtArgs>
     understandingVotes?: boolean | User$understandingVotesArgs<ExtArgs>
     breakoutMemberships?: boolean | User$breakoutMembershipsArgs<ExtArgs>
@@ -3305,6 +3401,7 @@ export namespace Prisma {
     scoreSync?: boolean | User$scoreSyncArgs<ExtArgs>
     liveSessionsTaught?: boolean | User$liveSessionsTaughtArgs<ExtArgs>
     attendances?: boolean | User$attendancesArgs<ExtArgs>
+    faceAttendances?: boolean | User$faceAttendancesArgs<ExtArgs>
     liveAnswers?: boolean | User$liveAnswersArgs<ExtArgs>
     understandingVotes?: boolean | User$understandingVotesArgs<ExtArgs>
     breakoutMemberships?: boolean | User$breakoutMembershipsArgs<ExtArgs>
@@ -3330,6 +3427,7 @@ export namespace Prisma {
       scoreSync: Prisma.$ScoreSyncPayload<ExtArgs> | null
       liveSessionsTaught: Prisma.$LiveSessionPayload<ExtArgs>[]
       attendances: Prisma.$AttendancePayload<ExtArgs>[]
+      faceAttendances: Prisma.$FaceAttendancePayload<ExtArgs>[]
       liveAnswers: Prisma.$LiveAnswerPayload<ExtArgs>[]
       understandingVotes: Prisma.$UnderstandingVotePayload<ExtArgs>[]
       breakoutMemberships: Prisma.$BreakoutMemberPayload<ExtArgs>[]
@@ -3720,6 +3818,7 @@ export namespace Prisma {
     scoreSync<T extends User$scoreSyncArgs<ExtArgs> = {}>(args?: Subset<T, User$scoreSyncArgs<ExtArgs>>): Prisma__ScoreSyncClient<$Result.GetResult<Prisma.$ScoreSyncPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     liveSessionsTaught<T extends User$liveSessionsTaughtArgs<ExtArgs> = {}>(args?: Subset<T, User$liveSessionsTaughtArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveSessionPayload<ExtArgs>, T, "findMany"> | Null>
     attendances<T extends User$attendancesArgs<ExtArgs> = {}>(args?: Subset<T, User$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany"> | Null>
+    faceAttendances<T extends User$faceAttendancesArgs<ExtArgs> = {}>(args?: Subset<T, User$faceAttendancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FaceAttendancePayload<ExtArgs>, T, "findMany"> | Null>
     liveAnswers<T extends User$liveAnswersArgs<ExtArgs> = {}>(args?: Subset<T, User$liveAnswersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LiveAnswerPayload<ExtArgs>, T, "findMany"> | Null>
     understandingVotes<T extends User$understandingVotesArgs<ExtArgs> = {}>(args?: Subset<T, User$understandingVotesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UnderstandingVotePayload<ExtArgs>, T, "findMany"> | Null>
     breakoutMemberships<T extends User$breakoutMembershipsArgs<ExtArgs> = {}>(args?: Subset<T, User$breakoutMembershipsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BreakoutMemberPayload<ExtArgs>, T, "findMany"> | Null>
@@ -4191,6 +4290,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AttendanceScalarFieldEnum | AttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * User.faceAttendances
+   */
+  export type User$faceAttendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceInclude<ExtArgs> | null
+    where?: FaceAttendanceWhereInput
+    orderBy?: FaceAttendanceOrderByWithRelationInput | FaceAttendanceOrderByWithRelationInput[]
+    cursor?: FaceAttendanceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FaceAttendanceScalarFieldEnum | FaceAttendanceScalarFieldEnum[]
   }
 
   /**
@@ -11794,6 +11913,975 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: AttendanceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FaceAttendance
+   */
+
+  export type AggregateFaceAttendance = {
+    _count: FaceAttendanceCountAggregateOutputType | null
+    _avg: FaceAttendanceAvgAggregateOutputType | null
+    _sum: FaceAttendanceSumAggregateOutputType | null
+    _min: FaceAttendanceMinAggregateOutputType | null
+    _max: FaceAttendanceMaxAggregateOutputType | null
+  }
+
+  export type FaceAttendanceAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type FaceAttendanceSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type FaceAttendanceMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    date: string | null
+    time: string | null
+    createdAt: Date | null
+  }
+
+  export type FaceAttendanceMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    date: string | null
+    time: string | null
+    createdAt: Date | null
+  }
+
+  export type FaceAttendanceCountAggregateOutputType = {
+    id: number
+    userId: number
+    date: number
+    time: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type FaceAttendanceAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type FaceAttendanceSumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type FaceAttendanceMinAggregateInputType = {
+    id?: true
+    userId?: true
+    date?: true
+    time?: true
+    createdAt?: true
+  }
+
+  export type FaceAttendanceMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    date?: true
+    time?: true
+    createdAt?: true
+  }
+
+  export type FaceAttendanceCountAggregateInputType = {
+    id?: true
+    userId?: true
+    date?: true
+    time?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type FaceAttendanceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FaceAttendance to aggregate.
+     */
+    where?: FaceAttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FaceAttendances to fetch.
+     */
+    orderBy?: FaceAttendanceOrderByWithRelationInput | FaceAttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FaceAttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FaceAttendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FaceAttendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FaceAttendances
+    **/
+    _count?: true | FaceAttendanceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FaceAttendanceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FaceAttendanceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FaceAttendanceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FaceAttendanceMaxAggregateInputType
+  }
+
+  export type GetFaceAttendanceAggregateType<T extends FaceAttendanceAggregateArgs> = {
+        [P in keyof T & keyof AggregateFaceAttendance]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFaceAttendance[P]>
+      : GetScalarType<T[P], AggregateFaceAttendance[P]>
+  }
+
+
+
+
+  export type FaceAttendanceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FaceAttendanceWhereInput
+    orderBy?: FaceAttendanceOrderByWithAggregationInput | FaceAttendanceOrderByWithAggregationInput[]
+    by: FaceAttendanceScalarFieldEnum[] | FaceAttendanceScalarFieldEnum
+    having?: FaceAttendanceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FaceAttendanceCountAggregateInputType | true
+    _avg?: FaceAttendanceAvgAggregateInputType
+    _sum?: FaceAttendanceSumAggregateInputType
+    _min?: FaceAttendanceMinAggregateInputType
+    _max?: FaceAttendanceMaxAggregateInputType
+  }
+
+  export type FaceAttendanceGroupByOutputType = {
+    id: number
+    userId: number
+    date: string
+    time: string
+    createdAt: Date
+    _count: FaceAttendanceCountAggregateOutputType | null
+    _avg: FaceAttendanceAvgAggregateOutputType | null
+    _sum: FaceAttendanceSumAggregateOutputType | null
+    _min: FaceAttendanceMinAggregateOutputType | null
+    _max: FaceAttendanceMaxAggregateOutputType | null
+  }
+
+  type GetFaceAttendanceGroupByPayload<T extends FaceAttendanceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FaceAttendanceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FaceAttendanceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FaceAttendanceGroupByOutputType[P]>
+            : GetScalarType<T[P], FaceAttendanceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FaceAttendanceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    date?: boolean
+    time?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["faceAttendance"]>
+
+  export type FaceAttendanceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    date?: boolean
+    time?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["faceAttendance"]>
+
+  export type FaceAttendanceSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    date?: boolean
+    time?: boolean
+    createdAt?: boolean
+  }
+
+  export type FaceAttendanceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FaceAttendanceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $FaceAttendancePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FaceAttendance"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      date: string
+      time: string
+      createdAt: Date
+    }, ExtArgs["result"]["faceAttendance"]>
+    composites: {}
+  }
+
+  type FaceAttendanceGetPayload<S extends boolean | null | undefined | FaceAttendanceDefaultArgs> = $Result.GetResult<Prisma.$FaceAttendancePayload, S>
+
+  type FaceAttendanceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<FaceAttendanceFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: FaceAttendanceCountAggregateInputType | true
+    }
+
+  export interface FaceAttendanceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FaceAttendance'], meta: { name: 'FaceAttendance' } }
+    /**
+     * Find zero or one FaceAttendance that matches the filter.
+     * @param {FaceAttendanceFindUniqueArgs} args - Arguments to find a FaceAttendance
+     * @example
+     * // Get one FaceAttendance
+     * const faceAttendance = await prisma.faceAttendance.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FaceAttendanceFindUniqueArgs>(args: SelectSubset<T, FaceAttendanceFindUniqueArgs<ExtArgs>>): Prisma__FaceAttendanceClient<$Result.GetResult<Prisma.$FaceAttendancePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one FaceAttendance that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {FaceAttendanceFindUniqueOrThrowArgs} args - Arguments to find a FaceAttendance
+     * @example
+     * // Get one FaceAttendance
+     * const faceAttendance = await prisma.faceAttendance.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FaceAttendanceFindUniqueOrThrowArgs>(args: SelectSubset<T, FaceAttendanceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FaceAttendanceClient<$Result.GetResult<Prisma.$FaceAttendancePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first FaceAttendance that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAttendanceFindFirstArgs} args - Arguments to find a FaceAttendance
+     * @example
+     * // Get one FaceAttendance
+     * const faceAttendance = await prisma.faceAttendance.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FaceAttendanceFindFirstArgs>(args?: SelectSubset<T, FaceAttendanceFindFirstArgs<ExtArgs>>): Prisma__FaceAttendanceClient<$Result.GetResult<Prisma.$FaceAttendancePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first FaceAttendance that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAttendanceFindFirstOrThrowArgs} args - Arguments to find a FaceAttendance
+     * @example
+     * // Get one FaceAttendance
+     * const faceAttendance = await prisma.faceAttendance.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FaceAttendanceFindFirstOrThrowArgs>(args?: SelectSubset<T, FaceAttendanceFindFirstOrThrowArgs<ExtArgs>>): Prisma__FaceAttendanceClient<$Result.GetResult<Prisma.$FaceAttendancePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more FaceAttendances that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAttendanceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FaceAttendances
+     * const faceAttendances = await prisma.faceAttendance.findMany()
+     * 
+     * // Get first 10 FaceAttendances
+     * const faceAttendances = await prisma.faceAttendance.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const faceAttendanceWithIdOnly = await prisma.faceAttendance.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FaceAttendanceFindManyArgs>(args?: SelectSubset<T, FaceAttendanceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FaceAttendancePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a FaceAttendance.
+     * @param {FaceAttendanceCreateArgs} args - Arguments to create a FaceAttendance.
+     * @example
+     * // Create one FaceAttendance
+     * const FaceAttendance = await prisma.faceAttendance.create({
+     *   data: {
+     *     // ... data to create a FaceAttendance
+     *   }
+     * })
+     * 
+     */
+    create<T extends FaceAttendanceCreateArgs>(args: SelectSubset<T, FaceAttendanceCreateArgs<ExtArgs>>): Prisma__FaceAttendanceClient<$Result.GetResult<Prisma.$FaceAttendancePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many FaceAttendances.
+     * @param {FaceAttendanceCreateManyArgs} args - Arguments to create many FaceAttendances.
+     * @example
+     * // Create many FaceAttendances
+     * const faceAttendance = await prisma.faceAttendance.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FaceAttendanceCreateManyArgs>(args?: SelectSubset<T, FaceAttendanceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FaceAttendances and returns the data saved in the database.
+     * @param {FaceAttendanceCreateManyAndReturnArgs} args - Arguments to create many FaceAttendances.
+     * @example
+     * // Create many FaceAttendances
+     * const faceAttendance = await prisma.faceAttendance.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FaceAttendances and only return the `id`
+     * const faceAttendanceWithIdOnly = await prisma.faceAttendance.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FaceAttendanceCreateManyAndReturnArgs>(args?: SelectSubset<T, FaceAttendanceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FaceAttendancePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a FaceAttendance.
+     * @param {FaceAttendanceDeleteArgs} args - Arguments to delete one FaceAttendance.
+     * @example
+     * // Delete one FaceAttendance
+     * const FaceAttendance = await prisma.faceAttendance.delete({
+     *   where: {
+     *     // ... filter to delete one FaceAttendance
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FaceAttendanceDeleteArgs>(args: SelectSubset<T, FaceAttendanceDeleteArgs<ExtArgs>>): Prisma__FaceAttendanceClient<$Result.GetResult<Prisma.$FaceAttendancePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one FaceAttendance.
+     * @param {FaceAttendanceUpdateArgs} args - Arguments to update one FaceAttendance.
+     * @example
+     * // Update one FaceAttendance
+     * const faceAttendance = await prisma.faceAttendance.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FaceAttendanceUpdateArgs>(args: SelectSubset<T, FaceAttendanceUpdateArgs<ExtArgs>>): Prisma__FaceAttendanceClient<$Result.GetResult<Prisma.$FaceAttendancePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more FaceAttendances.
+     * @param {FaceAttendanceDeleteManyArgs} args - Arguments to filter FaceAttendances to delete.
+     * @example
+     * // Delete a few FaceAttendances
+     * const { count } = await prisma.faceAttendance.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FaceAttendanceDeleteManyArgs>(args?: SelectSubset<T, FaceAttendanceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FaceAttendances.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAttendanceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FaceAttendances
+     * const faceAttendance = await prisma.faceAttendance.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FaceAttendanceUpdateManyArgs>(args: SelectSubset<T, FaceAttendanceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one FaceAttendance.
+     * @param {FaceAttendanceUpsertArgs} args - Arguments to update or create a FaceAttendance.
+     * @example
+     * // Update or create a FaceAttendance
+     * const faceAttendance = await prisma.faceAttendance.upsert({
+     *   create: {
+     *     // ... data to create a FaceAttendance
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FaceAttendance we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FaceAttendanceUpsertArgs>(args: SelectSubset<T, FaceAttendanceUpsertArgs<ExtArgs>>): Prisma__FaceAttendanceClient<$Result.GetResult<Prisma.$FaceAttendancePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of FaceAttendances.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAttendanceCountArgs} args - Arguments to filter FaceAttendances to count.
+     * @example
+     * // Count the number of FaceAttendances
+     * const count = await prisma.faceAttendance.count({
+     *   where: {
+     *     // ... the filter for the FaceAttendances we want to count
+     *   }
+     * })
+    **/
+    count<T extends FaceAttendanceCountArgs>(
+      args?: Subset<T, FaceAttendanceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FaceAttendanceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FaceAttendance.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAttendanceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FaceAttendanceAggregateArgs>(args: Subset<T, FaceAttendanceAggregateArgs>): Prisma.PrismaPromise<GetFaceAttendanceAggregateType<T>>
+
+    /**
+     * Group by FaceAttendance.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FaceAttendanceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FaceAttendanceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FaceAttendanceGroupByArgs['orderBy'] }
+        : { orderBy?: FaceAttendanceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FaceAttendanceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFaceAttendanceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FaceAttendance model
+   */
+  readonly fields: FaceAttendanceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FaceAttendance.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FaceAttendanceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FaceAttendance model
+   */ 
+  interface FaceAttendanceFieldRefs {
+    readonly id: FieldRef<"FaceAttendance", 'Int'>
+    readonly userId: FieldRef<"FaceAttendance", 'Int'>
+    readonly date: FieldRef<"FaceAttendance", 'String'>
+    readonly time: FieldRef<"FaceAttendance", 'String'>
+    readonly createdAt: FieldRef<"FaceAttendance", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FaceAttendance findUnique
+   */
+  export type FaceAttendanceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which FaceAttendance to fetch.
+     */
+    where: FaceAttendanceWhereUniqueInput
+  }
+
+  /**
+   * FaceAttendance findUniqueOrThrow
+   */
+  export type FaceAttendanceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which FaceAttendance to fetch.
+     */
+    where: FaceAttendanceWhereUniqueInput
+  }
+
+  /**
+   * FaceAttendance findFirst
+   */
+  export type FaceAttendanceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which FaceAttendance to fetch.
+     */
+    where?: FaceAttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FaceAttendances to fetch.
+     */
+    orderBy?: FaceAttendanceOrderByWithRelationInput | FaceAttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FaceAttendances.
+     */
+    cursor?: FaceAttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FaceAttendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FaceAttendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FaceAttendances.
+     */
+    distinct?: FaceAttendanceScalarFieldEnum | FaceAttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * FaceAttendance findFirstOrThrow
+   */
+  export type FaceAttendanceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which FaceAttendance to fetch.
+     */
+    where?: FaceAttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FaceAttendances to fetch.
+     */
+    orderBy?: FaceAttendanceOrderByWithRelationInput | FaceAttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FaceAttendances.
+     */
+    cursor?: FaceAttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FaceAttendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FaceAttendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FaceAttendances.
+     */
+    distinct?: FaceAttendanceScalarFieldEnum | FaceAttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * FaceAttendance findMany
+   */
+  export type FaceAttendanceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which FaceAttendances to fetch.
+     */
+    where?: FaceAttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FaceAttendances to fetch.
+     */
+    orderBy?: FaceAttendanceOrderByWithRelationInput | FaceAttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FaceAttendances.
+     */
+    cursor?: FaceAttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FaceAttendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FaceAttendances.
+     */
+    skip?: number
+    distinct?: FaceAttendanceScalarFieldEnum | FaceAttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * FaceAttendance create
+   */
+  export type FaceAttendanceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FaceAttendance.
+     */
+    data: XOR<FaceAttendanceCreateInput, FaceAttendanceUncheckedCreateInput>
+  }
+
+  /**
+   * FaceAttendance createMany
+   */
+  export type FaceAttendanceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FaceAttendances.
+     */
+    data: FaceAttendanceCreateManyInput | FaceAttendanceCreateManyInput[]
+  }
+
+  /**
+   * FaceAttendance createManyAndReturn
+   */
+  export type FaceAttendanceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many FaceAttendances.
+     */
+    data: FaceAttendanceCreateManyInput | FaceAttendanceCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FaceAttendance update
+   */
+  export type FaceAttendanceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FaceAttendance.
+     */
+    data: XOR<FaceAttendanceUpdateInput, FaceAttendanceUncheckedUpdateInput>
+    /**
+     * Choose, which FaceAttendance to update.
+     */
+    where: FaceAttendanceWhereUniqueInput
+  }
+
+  /**
+   * FaceAttendance updateMany
+   */
+  export type FaceAttendanceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FaceAttendances.
+     */
+    data: XOR<FaceAttendanceUpdateManyMutationInput, FaceAttendanceUncheckedUpdateManyInput>
+    /**
+     * Filter which FaceAttendances to update
+     */
+    where?: FaceAttendanceWhereInput
+  }
+
+  /**
+   * FaceAttendance upsert
+   */
+  export type FaceAttendanceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FaceAttendance to update in case it exists.
+     */
+    where: FaceAttendanceWhereUniqueInput
+    /**
+     * In case the FaceAttendance found by the `where` argument doesn't exist, create a new FaceAttendance with this data.
+     */
+    create: XOR<FaceAttendanceCreateInput, FaceAttendanceUncheckedCreateInput>
+    /**
+     * In case the FaceAttendance was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FaceAttendanceUpdateInput, FaceAttendanceUncheckedUpdateInput>
+  }
+
+  /**
+   * FaceAttendance delete
+   */
+  export type FaceAttendanceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter which FaceAttendance to delete.
+     */
+    where: FaceAttendanceWhereUniqueInput
+  }
+
+  /**
+   * FaceAttendance deleteMany
+   */
+  export type FaceAttendanceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FaceAttendances to delete
+     */
+    where?: FaceAttendanceWhereInput
+  }
+
+  /**
+   * FaceAttendance without action
+   */
+  export type FaceAttendanceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FaceAttendance
+     */
+    select?: FaceAttendanceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FaceAttendanceInclude<ExtArgs> | null
   }
 
 
@@ -24913,6 +26001,17 @@ export namespace Prisma {
   export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
 
 
+  export const FaceAttendanceScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    date: 'date',
+    time: 'time',
+    createdAt: 'createdAt'
+  };
+
+  export type FaceAttendanceScalarFieldEnum = (typeof FaceAttendanceScalarFieldEnum)[keyof typeof FaceAttendanceScalarFieldEnum]
+
+
   export const LiveQuizScalarFieldEnum: {
     id: 'id',
     sessionId: 'sessionId',
@@ -25149,6 +26248,7 @@ export namespace Prisma {
     scoreSync?: XOR<ScoreSyncNullableRelationFilter, ScoreSyncWhereInput> | null
     liveSessionsTaught?: LiveSessionListRelationFilter
     attendances?: AttendanceListRelationFilter
+    faceAttendances?: FaceAttendanceListRelationFilter
     liveAnswers?: LiveAnswerListRelationFilter
     understandingVotes?: UnderstandingVoteListRelationFilter
     breakoutMemberships?: BreakoutMemberListRelationFilter
@@ -25176,6 +26276,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncOrderByWithRelationInput
     liveSessionsTaught?: LiveSessionOrderByRelationAggregateInput
     attendances?: AttendanceOrderByRelationAggregateInput
+    faceAttendances?: FaceAttendanceOrderByRelationAggregateInput
     liveAnswers?: LiveAnswerOrderByRelationAggregateInput
     understandingVotes?: UnderstandingVoteOrderByRelationAggregateInput
     breakoutMemberships?: BreakoutMemberOrderByRelationAggregateInput
@@ -25206,6 +26307,7 @@ export namespace Prisma {
     scoreSync?: XOR<ScoreSyncNullableRelationFilter, ScoreSyncWhereInput> | null
     liveSessionsTaught?: LiveSessionListRelationFilter
     attendances?: AttendanceListRelationFilter
+    faceAttendances?: FaceAttendanceListRelationFilter
     liveAnswers?: LiveAnswerListRelationFilter
     understandingVotes?: UnderstandingVoteListRelationFilter
     breakoutMemberships?: BreakoutMemberListRelationFilter
@@ -25772,6 +26874,64 @@ export namespace Prisma {
     sessionId?: IntWithAggregatesFilter<"Attendance"> | number
     userId?: IntWithAggregatesFilter<"Attendance"> | number
     joinedAt?: DateTimeWithAggregatesFilter<"Attendance"> | Date | string
+  }
+
+  export type FaceAttendanceWhereInput = {
+    AND?: FaceAttendanceWhereInput | FaceAttendanceWhereInput[]
+    OR?: FaceAttendanceWhereInput[]
+    NOT?: FaceAttendanceWhereInput | FaceAttendanceWhereInput[]
+    id?: IntFilter<"FaceAttendance"> | number
+    userId?: IntFilter<"FaceAttendance"> | number
+    date?: StringFilter<"FaceAttendance"> | string
+    time?: StringFilter<"FaceAttendance"> | string
+    createdAt?: DateTimeFilter<"FaceAttendance"> | Date | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }
+
+  export type FaceAttendanceOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type FaceAttendanceWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    userId_date?: FaceAttendanceUserIdDateCompoundUniqueInput
+    AND?: FaceAttendanceWhereInput | FaceAttendanceWhereInput[]
+    OR?: FaceAttendanceWhereInput[]
+    NOT?: FaceAttendanceWhereInput | FaceAttendanceWhereInput[]
+    userId?: IntFilter<"FaceAttendance"> | number
+    date?: StringFilter<"FaceAttendance"> | string
+    time?: StringFilter<"FaceAttendance"> | string
+    createdAt?: DateTimeFilter<"FaceAttendance"> | Date | string
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id" | "userId_date">
+
+  export type FaceAttendanceOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+    _count?: FaceAttendanceCountOrderByAggregateInput
+    _avg?: FaceAttendanceAvgOrderByAggregateInput
+    _max?: FaceAttendanceMaxOrderByAggregateInput
+    _min?: FaceAttendanceMinOrderByAggregateInput
+    _sum?: FaceAttendanceSumOrderByAggregateInput
+  }
+
+  export type FaceAttendanceScalarWhereWithAggregatesInput = {
+    AND?: FaceAttendanceScalarWhereWithAggregatesInput | FaceAttendanceScalarWhereWithAggregatesInput[]
+    OR?: FaceAttendanceScalarWhereWithAggregatesInput[]
+    NOT?: FaceAttendanceScalarWhereWithAggregatesInput | FaceAttendanceScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"FaceAttendance"> | number
+    userId?: IntWithAggregatesFilter<"FaceAttendance"> | number
+    date?: StringWithAggregatesFilter<"FaceAttendance"> | string
+    time?: StringWithAggregatesFilter<"FaceAttendance"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"FaceAttendance"> | Date | string
   }
 
   export type LiveQuizWhereInput = {
@@ -26637,6 +27797,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -26664,6 +27825,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -26690,6 +27852,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -26717,6 +27880,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -27272,6 +28436,58 @@ export namespace Prisma {
     sessionId?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FaceAttendanceCreateInput = {
+    date: string
+    time: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutFaceAttendancesInput
+  }
+
+  export type FaceAttendanceUncheckedCreateInput = {
+    id?: number
+    userId: number
+    date: string
+    time: string
+    createdAt?: Date | string
+  }
+
+  export type FaceAttendanceUpdateInput = {
+    date?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutFaceAttendancesNestedInput
+  }
+
+  export type FaceAttendanceUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    date?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FaceAttendanceCreateManyInput = {
+    id?: number
+    userId: number
+    date: string
+    time: string
+    createdAt?: Date | string
+  }
+
+  export type FaceAttendanceUpdateManyMutationInput = {
+    date?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FaceAttendanceUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    date?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LiveQuizCreateInput = {
@@ -28107,6 +29323,12 @@ export namespace Prisma {
     none?: AttendanceWhereInput
   }
 
+  export type FaceAttendanceListRelationFilter = {
+    every?: FaceAttendanceWhereInput
+    some?: FaceAttendanceWhereInput
+    none?: FaceAttendanceWhereInput
+  }
+
   export type LiveAnswerListRelationFilter = {
     every?: LiveAnswerWhereInput
     some?: LiveAnswerWhereInput
@@ -28184,6 +29406,10 @@ export namespace Prisma {
   }
 
   export type AttendanceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FaceAttendanceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -28781,6 +30007,45 @@ export namespace Prisma {
   export type AttendanceSumOrderByAggregateInput = {
     id?: SortOrder
     sessionId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type FaceAttendanceUserIdDateCompoundUniqueInput = {
+    userId: number
+    date: string
+  }
+
+  export type FaceAttendanceCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type FaceAttendanceAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type FaceAttendanceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type FaceAttendanceMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    date?: SortOrder
+    time?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type FaceAttendanceSumOrderByAggregateInput = {
+    id?: SortOrder
     userId?: SortOrder
   }
 
@@ -29400,6 +30665,13 @@ export namespace Prisma {
     connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
   }
 
+  export type FaceAttendanceCreateNestedManyWithoutUserInput = {
+    create?: XOR<FaceAttendanceCreateWithoutUserInput, FaceAttendanceUncheckedCreateWithoutUserInput> | FaceAttendanceCreateWithoutUserInput[] | FaceAttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FaceAttendanceCreateOrConnectWithoutUserInput | FaceAttendanceCreateOrConnectWithoutUserInput[]
+    createMany?: FaceAttendanceCreateManyUserInputEnvelope
+    connect?: FaceAttendanceWhereUniqueInput | FaceAttendanceWhereUniqueInput[]
+  }
+
   export type LiveAnswerCreateNestedManyWithoutUserInput = {
     create?: XOR<LiveAnswerCreateWithoutUserInput, LiveAnswerUncheckedCreateWithoutUserInput> | LiveAnswerCreateWithoutUserInput[] | LiveAnswerUncheckedCreateWithoutUserInput[]
     connectOrCreate?: LiveAnswerCreateOrConnectWithoutUserInput | LiveAnswerCreateOrConnectWithoutUserInput[]
@@ -29523,6 +30795,13 @@ export namespace Prisma {
     connectOrCreate?: AttendanceCreateOrConnectWithoutUserInput | AttendanceCreateOrConnectWithoutUserInput[]
     createMany?: AttendanceCreateManyUserInputEnvelope
     connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+  }
+
+  export type FaceAttendanceUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<FaceAttendanceCreateWithoutUserInput, FaceAttendanceUncheckedCreateWithoutUserInput> | FaceAttendanceCreateWithoutUserInput[] | FaceAttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FaceAttendanceCreateOrConnectWithoutUserInput | FaceAttendanceCreateOrConnectWithoutUserInput[]
+    createMany?: FaceAttendanceCreateManyUserInputEnvelope
+    connect?: FaceAttendanceWhereUniqueInput | FaceAttendanceWhereUniqueInput[]
   }
 
   export type LiveAnswerUncheckedCreateNestedManyWithoutUserInput = {
@@ -29695,6 +30974,20 @@ export namespace Prisma {
     update?: AttendanceUpdateWithWhereUniqueWithoutUserInput | AttendanceUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AttendanceUpdateManyWithWhereWithoutUserInput | AttendanceUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+  }
+
+  export type FaceAttendanceUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FaceAttendanceCreateWithoutUserInput, FaceAttendanceUncheckedCreateWithoutUserInput> | FaceAttendanceCreateWithoutUserInput[] | FaceAttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FaceAttendanceCreateOrConnectWithoutUserInput | FaceAttendanceCreateOrConnectWithoutUserInput[]
+    upsert?: FaceAttendanceUpsertWithWhereUniqueWithoutUserInput | FaceAttendanceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FaceAttendanceCreateManyUserInputEnvelope
+    set?: FaceAttendanceWhereUniqueInput | FaceAttendanceWhereUniqueInput[]
+    disconnect?: FaceAttendanceWhereUniqueInput | FaceAttendanceWhereUniqueInput[]
+    delete?: FaceAttendanceWhereUniqueInput | FaceAttendanceWhereUniqueInput[]
+    connect?: FaceAttendanceWhereUniqueInput | FaceAttendanceWhereUniqueInput[]
+    update?: FaceAttendanceUpdateWithWhereUniqueWithoutUserInput | FaceAttendanceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FaceAttendanceUpdateManyWithWhereWithoutUserInput | FaceAttendanceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FaceAttendanceScalarWhereInput | FaceAttendanceScalarWhereInput[]
   }
 
   export type LiveAnswerUpdateManyWithoutUserNestedInput = {
@@ -29951,6 +31244,20 @@ export namespace Prisma {
     update?: AttendanceUpdateWithWhereUniqueWithoutUserInput | AttendanceUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: AttendanceUpdateManyWithWhereWithoutUserInput | AttendanceUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+  }
+
+  export type FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FaceAttendanceCreateWithoutUserInput, FaceAttendanceUncheckedCreateWithoutUserInput> | FaceAttendanceCreateWithoutUserInput[] | FaceAttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FaceAttendanceCreateOrConnectWithoutUserInput | FaceAttendanceCreateOrConnectWithoutUserInput[]
+    upsert?: FaceAttendanceUpsertWithWhereUniqueWithoutUserInput | FaceAttendanceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FaceAttendanceCreateManyUserInputEnvelope
+    set?: FaceAttendanceWhereUniqueInput | FaceAttendanceWhereUniqueInput[]
+    disconnect?: FaceAttendanceWhereUniqueInput | FaceAttendanceWhereUniqueInput[]
+    delete?: FaceAttendanceWhereUniqueInput | FaceAttendanceWhereUniqueInput[]
+    connect?: FaceAttendanceWhereUniqueInput | FaceAttendanceWhereUniqueInput[]
+    update?: FaceAttendanceUpdateWithWhereUniqueWithoutUserInput | FaceAttendanceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FaceAttendanceUpdateManyWithWhereWithoutUserInput | FaceAttendanceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FaceAttendanceScalarWhereInput | FaceAttendanceScalarWhereInput[]
   }
 
   export type LiveAnswerUncheckedUpdateManyWithoutUserNestedInput = {
@@ -30839,6 +32146,20 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutAttendancesInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAttendancesInput, UserUpdateWithoutAttendancesInput>, UserUncheckedUpdateWithoutAttendancesInput>
+  }
+
+  export type UserCreateNestedOneWithoutFaceAttendancesInput = {
+    create?: XOR<UserCreateWithoutFaceAttendancesInput, UserUncheckedCreateWithoutFaceAttendancesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFaceAttendancesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutFaceAttendancesNestedInput = {
+    create?: XOR<UserCreateWithoutFaceAttendancesInput, UserUncheckedCreateWithoutFaceAttendancesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFaceAttendancesInput
+    upsert?: UserUpsertWithoutFaceAttendancesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFaceAttendancesInput, UserUpdateWithoutFaceAttendancesInput>, UserUncheckedUpdateWithoutFaceAttendancesInput>
   }
 
   export type LiveSessionCreateNestedOneWithoutQuizzesInput = {
@@ -31795,6 +33116,28 @@ export namespace Prisma {
     data: AttendanceCreateManyUserInput | AttendanceCreateManyUserInput[]
   }
 
+  export type FaceAttendanceCreateWithoutUserInput = {
+    date: string
+    time: string
+    createdAt?: Date | string
+  }
+
+  export type FaceAttendanceUncheckedCreateWithoutUserInput = {
+    id?: number
+    date: string
+    time: string
+    createdAt?: Date | string
+  }
+
+  export type FaceAttendanceCreateOrConnectWithoutUserInput = {
+    where: FaceAttendanceWhereUniqueInput
+    create: XOR<FaceAttendanceCreateWithoutUserInput, FaceAttendanceUncheckedCreateWithoutUserInput>
+  }
+
+  export type FaceAttendanceCreateManyUserInputEnvelope = {
+    data: FaceAttendanceCreateManyUserInput | FaceAttendanceCreateManyUserInput[]
+  }
+
   export type LiveAnswerCreateWithoutUserInput = {
     questionIndex: number
     selectedIndex: number
@@ -32260,6 +33603,33 @@ export namespace Prisma {
     joinedAt?: DateTimeFilter<"Attendance"> | Date | string
   }
 
+  export type FaceAttendanceUpsertWithWhereUniqueWithoutUserInput = {
+    where: FaceAttendanceWhereUniqueInput
+    update: XOR<FaceAttendanceUpdateWithoutUserInput, FaceAttendanceUncheckedUpdateWithoutUserInput>
+    create: XOR<FaceAttendanceCreateWithoutUserInput, FaceAttendanceUncheckedCreateWithoutUserInput>
+  }
+
+  export type FaceAttendanceUpdateWithWhereUniqueWithoutUserInput = {
+    where: FaceAttendanceWhereUniqueInput
+    data: XOR<FaceAttendanceUpdateWithoutUserInput, FaceAttendanceUncheckedUpdateWithoutUserInput>
+  }
+
+  export type FaceAttendanceUpdateManyWithWhereWithoutUserInput = {
+    where: FaceAttendanceScalarWhereInput
+    data: XOR<FaceAttendanceUpdateManyMutationInput, FaceAttendanceUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type FaceAttendanceScalarWhereInput = {
+    AND?: FaceAttendanceScalarWhereInput | FaceAttendanceScalarWhereInput[]
+    OR?: FaceAttendanceScalarWhereInput[]
+    NOT?: FaceAttendanceScalarWhereInput | FaceAttendanceScalarWhereInput[]
+    id?: IntFilter<"FaceAttendance"> | number
+    userId?: IntFilter<"FaceAttendance"> | number
+    date?: StringFilter<"FaceAttendance"> | string
+    time?: StringFilter<"FaceAttendance"> | string
+    createdAt?: DateTimeFilter<"FaceAttendance"> | Date | string
+  }
+
   export type LiveAnswerUpsertWithWhereUniqueWithoutUserInput = {
     where: LiveAnswerWhereUniqueInput
     update: XOR<LiveAnswerUpdateWithoutUserInput, LiveAnswerUncheckedUpdateWithoutUserInput>
@@ -32582,6 +33952,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -32608,6 +33979,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -32873,6 +34245,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -32899,6 +34272,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -33102,6 +34476,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -33128,6 +34503,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -33209,6 +34585,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -33235,6 +34612,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -33414,6 +34792,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -33440,6 +34819,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -33517,6 +34897,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -33543,6 +34924,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -33568,6 +34950,7 @@ export namespace Prisma {
     submissions?: SubmissionCreateNestedManyWithoutStudentInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -33594,6 +34977,7 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -33635,6 +35019,7 @@ export namespace Prisma {
     submissions?: SubmissionUpdateManyWithoutStudentNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -33661,6 +35046,7 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -33720,6 +35106,7 @@ export namespace Prisma {
     submissions?: SubmissionCreateNestedManyWithoutStudentInput
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -33746,6 +35133,7 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -33921,6 +35309,7 @@ export namespace Prisma {
     submissions?: SubmissionUpdateManyWithoutStudentNestedInput
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -33947,6 +35336,7 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -34093,6 +35483,7 @@ export namespace Prisma {
     submissions?: SubmissionCreateNestedManyWithoutStudentInput
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -34119,6 +35510,7 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -34200,6 +35592,7 @@ export namespace Prisma {
     submissions?: SubmissionUpdateManyWithoutStudentNestedInput
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -34226,6 +35619,129 @@ export namespace Prisma {
     submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUncheckedUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUncheckedUpdateManyWithoutStudentNestedInput
+    announcements?: AnnouncementUncheckedUpdateManyWithoutAuthorNestedInput
+    schedulesTaught?: ScheduleUncheckedUpdateManyWithoutTeacherNestedInput
+    chatAsTeacher?: ChatConversationUncheckedUpdateManyWithoutTeacherNestedInput
+    chatAsStudent?: ChatConversationUncheckedUpdateManyWithoutStudentNestedInput
+    directMessages?: ConversationMessageUncheckedUpdateManyWithoutSenderNestedInput
+    materialsShared?: MaterialUncheckedUpdateManyWithoutTeacherNestedInput
+  }
+
+  export type UserCreateWithoutFaceAttendancesInput = {
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberCreateNestedManyWithoutUserInput
+    submissions?: SubmissionCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportCreateNestedManyWithoutStudentInput
+    announcements?: AnnouncementCreateNestedManyWithoutAuthorInput
+    schedulesTaught?: ScheduleCreateNestedManyWithoutTeacherInput
+    chatAsTeacher?: ChatConversationCreateNestedManyWithoutTeacherInput
+    chatAsStudent?: ChatConversationCreateNestedManyWithoutStudentInput
+    directMessages?: ConversationMessageCreateNestedManyWithoutSenderInput
+    materialsShared?: MaterialCreateNestedManyWithoutTeacherInput
+  }
+
+  export type UserUncheckedCreateWithoutFaceAttendancesInput = {
+    id?: number
+    name: string
+    email: string
+    passwordHash: string
+    role: string
+    createdAt?: Date | string
+    classesOwned?: ClassRoomUncheckedCreateNestedManyWithoutTeacherInput
+    memberships?: ClassMemberUncheckedCreateNestedManyWithoutUserInput
+    submissions?: SubmissionUncheckedCreateNestedManyWithoutStudentInput
+    scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
+    liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
+    attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
+    understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
+    breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
+    chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
+    reportsWritten?: ParentReportUncheckedCreateNestedManyWithoutTeacherInput
+    reportsReceived?: ParentReportUncheckedCreateNestedManyWithoutStudentInput
+    announcements?: AnnouncementUncheckedCreateNestedManyWithoutAuthorInput
+    schedulesTaught?: ScheduleUncheckedCreateNestedManyWithoutTeacherInput
+    chatAsTeacher?: ChatConversationUncheckedCreateNestedManyWithoutTeacherInput
+    chatAsStudent?: ChatConversationUncheckedCreateNestedManyWithoutStudentInput
+    directMessages?: ConversationMessageUncheckedCreateNestedManyWithoutSenderInput
+    materialsShared?: MaterialUncheckedCreateNestedManyWithoutTeacherInput
+  }
+
+  export type UserCreateOrConnectWithoutFaceAttendancesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutFaceAttendancesInput, UserUncheckedCreateWithoutFaceAttendancesInput>
+  }
+
+  export type UserUpsertWithoutFaceAttendancesInput = {
+    update: XOR<UserUpdateWithoutFaceAttendancesInput, UserUncheckedUpdateWithoutFaceAttendancesInput>
+    create: XOR<UserCreateWithoutFaceAttendancesInput, UserUncheckedCreateWithoutFaceAttendancesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutFaceAttendancesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutFaceAttendancesInput, UserUncheckedUpdateWithoutFaceAttendancesInput>
+  }
+
+  export type UserUpdateWithoutFaceAttendancesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
+    understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
+    breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
+    chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
+    reportsWritten?: ParentReportUpdateManyWithoutTeacherNestedInput
+    reportsReceived?: ParentReportUpdateManyWithoutStudentNestedInput
+    announcements?: AnnouncementUpdateManyWithoutAuthorNestedInput
+    schedulesTaught?: ScheduleUpdateManyWithoutTeacherNestedInput
+    chatAsTeacher?: ChatConversationUpdateManyWithoutTeacherNestedInput
+    chatAsStudent?: ChatConversationUpdateManyWithoutStudentNestedInput
+    directMessages?: ConversationMessageUpdateManyWithoutSenderNestedInput
+    materialsShared?: MaterialUpdateManyWithoutTeacherNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutFaceAttendancesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    classesOwned?: ClassRoomUncheckedUpdateManyWithoutTeacherNestedInput
+    memberships?: ClassMemberUncheckedUpdateManyWithoutUserNestedInput
+    submissions?: SubmissionUncheckedUpdateManyWithoutStudentNestedInput
+    scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
+    liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
+    attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -34394,6 +35910,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
     chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
@@ -34420,6 +35937,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
     chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
@@ -34493,6 +36011,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
     chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
@@ -34519,6 +36038,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
     chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
@@ -34578,6 +36098,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
     chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
@@ -34604,6 +36125,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
     chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
@@ -34685,6 +36207,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
     chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
@@ -34711,6 +36234,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
     chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
@@ -34900,6 +36424,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     chatMessages?: ChatMessageCreateNestedManyWithoutUserInput
@@ -34926,6 +36451,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     chatMessages?: ChatMessageUncheckedCreateNestedManyWithoutUserInput
@@ -34991,6 +36517,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     chatMessages?: ChatMessageUpdateManyWithoutUserNestedInput
@@ -35017,6 +36544,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     chatMessages?: ChatMessageUncheckedUpdateManyWithoutUserNestedInput
@@ -35060,6 +36588,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -35086,6 +36615,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -35151,6 +36681,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -35177,6 +36708,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -35236,6 +36768,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -35262,6 +36795,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -35292,6 +36826,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -35318,6 +36853,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -35399,6 +36935,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -35425,6 +36962,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -35461,6 +36999,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -35487,6 +37026,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -35546,6 +37086,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -35572,6 +37113,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -35653,6 +37195,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -35679,6 +37222,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -35738,6 +37282,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -35764,6 +37309,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -35869,6 +37415,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -35895,6 +37442,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -36032,6 +37580,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -36058,6 +37607,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -36088,6 +37638,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -36114,6 +37665,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -36217,6 +37769,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -36243,6 +37796,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -36279,6 +37833,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -36305,6 +37860,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -36370,6 +37926,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -36396,6 +37953,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -36467,6 +38025,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -36493,6 +38052,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -36552,6 +38112,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberCreateNestedManyWithoutUserInput
@@ -36578,6 +38139,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedCreateNestedOneWithoutUserInput
     liveSessionsTaught?: LiveSessionUncheckedCreateNestedManyWithoutTeacherInput
     attendances?: AttendanceUncheckedCreateNestedManyWithoutUserInput
+    faceAttendances?: FaceAttendanceUncheckedCreateNestedManyWithoutUserInput
     liveAnswers?: LiveAnswerUncheckedCreateNestedManyWithoutUserInput
     understandingVotes?: UnderstandingVoteUncheckedCreateNestedManyWithoutUserInput
     breakoutMemberships?: BreakoutMemberUncheckedCreateNestedManyWithoutUserInput
@@ -36659,6 +38221,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUpdateManyWithoutUserNestedInput
@@ -36685,6 +38248,7 @@ export namespace Prisma {
     scoreSync?: ScoreSyncUncheckedUpdateOneWithoutUserNestedInput
     liveSessionsTaught?: LiveSessionUncheckedUpdateManyWithoutTeacherNestedInput
     attendances?: AttendanceUncheckedUpdateManyWithoutUserNestedInput
+    faceAttendances?: FaceAttendanceUncheckedUpdateManyWithoutUserNestedInput
     liveAnswers?: LiveAnswerUncheckedUpdateManyWithoutUserNestedInput
     understandingVotes?: UnderstandingVoteUncheckedUpdateManyWithoutUserNestedInput
     breakoutMemberships?: BreakoutMemberUncheckedUpdateManyWithoutUserNestedInput
@@ -36739,6 +38303,13 @@ export namespace Prisma {
     id?: number
     sessionId: number
     joinedAt?: Date | string
+  }
+
+  export type FaceAttendanceCreateManyUserInput = {
+    id?: number
+    date: string
+    time: string
+    createdAt?: Date | string
   }
 
   export type LiveAnswerCreateManyUserInput = {
@@ -36983,6 +38554,26 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     sessionId?: IntFieldUpdateOperationsInput | number
     joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FaceAttendanceUpdateWithoutUserInput = {
+    date?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FaceAttendanceUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    date?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FaceAttendanceUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    date?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type LiveAnswerUpdateWithoutUserInput = {
@@ -37938,6 +39529,10 @@ export namespace Prisma {
      * @deprecated Use AttendanceDefaultArgs instead
      */
     export type AttendanceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AttendanceDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use FaceAttendanceDefaultArgs instead
+     */
+    export type FaceAttendanceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = FaceAttendanceDefaultArgs<ExtArgs>
     /**
      * @deprecated Use LiveQuizDefaultArgs instead
      */
