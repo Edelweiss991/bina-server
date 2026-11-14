@@ -254,6 +254,40 @@ try {
   });
   check('login sandi baru setelah ganti → 200', r.status === 200, `status ${r.status}`);
 
+  // 7c) Edit profil sendiri (PATCH /api/me) — 14 Nov 2026 malam
+  r = await api('PATCH', '/api/me', {
+    token: siswaToken,
+    body: { name: 'Andi Diperbarui', email: 'andi.baru@smoke.id' },
+  });
+  check('edit profil sendiri → 200 & tercermin', r.status === 200 && r.json.user?.name === 'Andi Diperbarui' && r.json.user?.email === 'andi.baru@smoke.id', `status ${r.status}`);
+  r = await api('GET', '/api/me', { token: siswaToken });
+  check('GET /me memuat profil baru', r.status === 200 && r.json.user?.email === 'andi.baru@smoke.id', `status ${r.status}`);
+  r = await api('PATCH', '/api/me', {
+    token: siswaToken,
+    body: { email: 'admin@smoke.id' },
+  });
+  check('edit profil ke email duplikat → 409', r.status === 409, `status ${r.status}`);
+  r = await api('PATCH', '/api/me', {
+    token: siswaToken,
+    body: { role: 'admin' },
+  });
+  check('edit profil tidak bisa ubah peran → 400', r.status === 400, `status ${r.status}`);
+  r = await api('PATCH', '/api/me', {
+    token: siswaToken,
+    body: { name: 'A' },
+  });
+  check('edit profil nama terlalu pendek → 400', r.status === 400, `status ${r.status}`);
+  r = await api('PATCH', '/api/me', {
+    body: { name: 'Tanpa Token' },
+  });
+  check('edit profil tanpa token → 401', r.status === 401, `status ${r.status}`);
+  // Pulihkan email Andi agar cek-cek berikutnya tetap memakai alamat lama
+  r = await api('PATCH', '/api/me', {
+    token: siswaToken,
+    body: { email: 'siswa@smoke.id' },
+  });
+  check('pulihkan email sendiri → 200', r.status === 200, `status ${r.status}`);
+
   // 8) Daftar pengguna memuat hitungan kelas
   r = await api('GET', '/api/admin/users', { token: adminToken });
   const guruRow = (r.json.users ?? []).find((u) => u.id === guruId);

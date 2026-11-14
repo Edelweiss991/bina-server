@@ -87,6 +87,41 @@ router.post('/auth/change-password', requireAuth, async (req, res, next) => {
   }
 });
 
+// Edit profil sendiri (nama & email) saat sedang login — perintah
+// pengguna 14 Nov 2026 malam: info profil siswa & guru harus bisa
+// diedit sendiri. Peran TIDAK bisa diubah lewat sini (itu hak admin).
+router.patch('/me', requireAuth, async (req, res, next) => {
+  try {
+    const { name, email } = req.body ?? {};
+    const data = {};
+    if (name !== undefined) {
+      if (typeof name !== 'string' || name.trim().length < 2) {
+        return res.status(400).json({ error: 'Nama minimal 2 karakter.' });
+      }
+      data.name = name.trim();
+    }
+    if (email !== undefined) {
+      if (typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+        return res.status(400).json({ error: 'Format email tidak valid.' });
+      }
+      data.email = email.trim().toLowerCase();
+    }
+    if (Object.keys(data).length === 0) {
+      return res.status(400).json({ error: 'Tidak ada data yang diubah.' });
+    }
+    if (data.email) {
+      const existing = await prisma.user.findUnique({ where: { email: data.email } });
+      if (existing && existing.id !== req.user.id) {
+        return res.status(409).json({ error: 'Email sudah dipakai akun lain.' });
+      }
+    }
+    const user = await prisma.user.update({ where: { id: req.user.id }, data });
+    return res.json({ user: publicUser(user) });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 router.get('/me', requireAuth, async (req, res, next) => {
   try {
     const user = await prisma.user.findUnique({ where: { id: req.user.id } });
