@@ -27,6 +27,52 @@ app.use(express.json({ limit: '12mb' }));
 
 app.get('/health', (req, res) => res.json({ ok: true }));
 
+// Halaman pemutar YouTube untuk aplikasi BINA (14 Nov 2026 malam):
+// WebView aplikasi memuat halaman ini dari origin HTTPS asli server
+// karena YouTube menolak embed yang dimuat dari halaman lokal
+// (loadData/file) di WebView — error 152/153 "Video unavailable"
+// pada HP pengguna meski videonya boleh di-embed. ID divalidasi
+// ketat (11 karakter format ID YouTube) sebelum disisipkan.
+app.get('/player/:videoId', (req, res) => {
+  const id = String(req.params.videoId || '');
+  if (!/^[A-Za-z0-9_-]{11}$/.test(id)) {
+    return res.status(400).send('ID video tidak valid.');
+  }
+  res.type('html').send(`<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<style>
+  html, body { margin: 0; padding: 0; background: #000; height: 100%; }
+  #player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+</style>
+<script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+<div id="player"></div>
+<script>
+  var ytPlayer;
+  function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player('player', {
+      width: '100%',
+      height: '100%',
+      videoId: '${id}',
+      playerVars: {
+        'playsinline': 1,
+        'rel': 0,
+        'modestbranding': 1,
+        'origin': 'https://bina-api-0aax.onrender.com'
+      },
+      events: {
+        'onError': function (e) { document.title = 'YT_ERROR_' + e.data; }
+      }
+    });
+  }
+</script>
+</body>
+</html>`);
+});
+
 app.use('/api', authRoutes);
 app.use('/api', adminRoutes);
 app.use('/api', classRoutes);
