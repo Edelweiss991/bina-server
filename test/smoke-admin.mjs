@@ -195,6 +195,190 @@ try {
     JSON.stringify(guruRow),
   );
 
+  // 8b) Hapus pengguna/kelas dengan DATA KAYA (regresi 14 Nov 2026):
+  //     chat breakout milik siswa LAIN menempel ke kelompok sesi live —
+  //     dulu membuat hapus guru/kelas selalu gagal 409.
+  r = await api('POST', '/api/auth/register', {
+    body: { name: 'Guru Kaya', email: 'gurukaya@smoke.id', password: 'guru123', role: 'guru' },
+  });
+  const guruRToken = r.json.token;
+  const guruRId = r.json.user?.id;
+  check('register guru kaya → 201', r.status === 201, `status ${r.status}`);
+
+  r = await api('POST', '/api/auth/register', {
+    body: { name: 'Siswa Tiga', email: 'siswa3@smoke.id', password: 'siswa123', role: 'siswa' },
+  });
+  const siswa3Token = r.json.token;
+  const siswa3Id = r.json.user?.id;
+  check('register siswa3 → 201', r.status === 201, `status ${r.status}`);
+
+  r = await api('POST', '/api/classes', { token: guruRToken, body: { name: 'Kelas Kaya Data' } });
+  const richClassId = r.json.class?.id;
+  const richCode = r.json.class?.code;
+  check('guru kaya buat kelas → 201', r.status === 201, `status ${r.status}`);
+
+  r = await api('POST', '/api/classes/join', { token: siswaToken, body: { code: richCode } });
+  check('siswa join kelas kaya → 200', r.status === 200, `status ${r.status}`);
+  r = await api('POST', '/api/classes/join', { token: siswa3Token, body: { code: richCode } });
+  check('siswa3 join kelas kaya → 200', r.status === 200, `status ${r.status}`);
+
+  r = await api('POST', '/api/scores/sync', { token: siswaToken, body: { pretest: 55, posttest: 77 } });
+  check('siswa sync skor → 200', r.status === 200, `status ${r.status}`);
+  r = await api('POST', '/api/attendance/check-in', {
+    token: siswaToken,
+    body: { date: '2026-11-14', time: '07:15' },
+  });
+  check('siswa check-in absensi wajah → 2xx', r.status === 200 || r.status === 201, `status ${r.status}`);
+
+  const questions = [
+    { question: 'Fungsi RAM?', options: ['Simpan sementara', 'Pendingin', 'Daya', 'Tampilan'], correctIndex: 0 },
+  ];
+  r = await api('POST', `/api/classes/${richClassId}/tasks`, {
+    token: guruRToken,
+    body: { title: 'Kuis Kaya', questions },
+  });
+  const richTaskId = r.json.task?.id;
+  check('guru kaya buat tugas → 201', r.status === 201, `status ${r.status}`);
+  r = await api('POST', `/api/tasks/${richTaskId}/submit`, { token: siswaToken, body: { answers: [0] } });
+  check('siswa kumpulkan tugas → 2xx', r.status === 200 || r.status === 201, `status ${r.status}`);
+
+  r = await api('POST', `/api/classes/${richClassId}/announcements`, {
+    token: guruRToken,
+    body: { text: 'Pengumuman kelas kaya data.' },
+  });
+  check('guru kaya buat pengumuman → 2xx', r.status === 200 || r.status === 201, `status ${r.status}`);
+
+  r = await api('POST', '/api/chat/conversations', {
+    token: guruRToken,
+    body: { classId: richClassId, studentId: siswaId },
+  });
+  const convId = r.json.conversation?.id;
+  check('guru kaya buka percakapan → 201', r.status === 201, `status ${r.status}`);
+  r = await api('POST', `/api/chat/conversations/${convId}/messages`, {
+    token: guruRToken,
+    body: { text: 'Halo, ini guru.' },
+  });
+  check('guru kirim DM → 2xx', r.status === 200 || r.status === 201, `status ${r.status}`);
+  r = await api('POST', `/api/chat/conversations/${convId}/messages`, {
+    token: siswaToken,
+    body: { text: 'Siap, Bu.' },
+  });
+  check('siswa balas DM → 2xx', r.status === 200 || r.status === 201, `status ${r.status}`);
+
+  r = await api('POST', `/api/classes/${richClassId}/sessions`, {
+    token: guruRToken,
+    body: { title: 'Sesi Kaya' },
+  });
+  const richSessionId = r.json.session?.id;
+  check('guru kaya buat sesi live → 201', r.status === 201, `status ${r.status}`);
+  r = await api('POST', `/api/sessions/${richSessionId}/join`, { token: siswaToken });
+  check('siswa join sesi kaya → 200', r.status === 200, `status ${r.status}`);
+  r = await api('POST', `/api/sessions/${richSessionId}/join`, { token: siswa3Token });
+  check('siswa3 join sesi kaya → 200', r.status === 200, `status ${r.status}`);
+  r = await api('PUT', `/api/sessions/${richSessionId}/understanding`, {
+    token: siswaToken,
+    body: { level: 2 },
+  });
+  check('siswa kirim lampu pemahaman → 200', r.status === 200, `status ${r.status}`);
+
+  r = await api('POST', `/api/sessions/${richSessionId}/quizzes`, {
+    token: guruRToken,
+    body: { title: 'Kuis Live Kaya', bossMaxHp: 10, questions },
+  });
+  const richQuizId = r.json.quiz?.id;
+  check('guru kaya buat kuis live → 201', r.status === 201, `status ${r.status}`);
+  r = await api('POST', `/api/quizzes/${richQuizId}/control`, { token: guruRToken, body: { action: 'start' } });
+  check('kuis live kaya dimulai → 200', r.status === 200, `status ${r.status}`);
+  r = await api('POST', `/api/quizzes/${richQuizId}/answer`, {
+    token: siswaToken,
+    body: { questionIndex: 0, selectedIndex: 0 },
+  });
+  check('siswa jawab kuis live → 201', r.status === 201, `status ${r.status}`);
+
+  r = await api('POST', `/api/sessions/${richSessionId}/groups`, {
+    token: guruRToken,
+    body: { groupCount: 1 },
+  });
+  check('guru kaya buat kelompok breakout → 201', r.status === 201, `status ${r.status}`);
+  r = await api('GET', `/api/sessions/${richSessionId}/groups`, { token: siswa3Token });
+  const richGroupId = r.json.myGroupId;
+  check('siswa3 punya kelompok', typeof richGroupId === 'number', JSON.stringify(r.json).slice(0, 160));
+  r = await api('POST', `/api/groups/${richGroupId}/messages`, {
+    token: siswa3Token,
+    body: { text: 'Chat breakout dari siswa3.' },
+  });
+  check('siswa3 kirim chat breakout → 201', r.status === 201, `status ${r.status}`);
+  r = await api('POST', `/api/groups/${richGroupId}/messages`, {
+    token: siswaToken,
+    body: { text: 'Chat breakout dari siswa.' },
+  });
+  check('siswa kirim chat breakout → 201', r.status === 201, `status ${r.status}`);
+
+  r = await api('POST', `/api/classes/${richClassId}/students/${siswaId}/parent-report`, {
+    token: guruRToken,
+    body: {},
+  });
+  check('guru kaya buat laporan orang tua → 2xx', r.status === 200 || r.status === 201, `status ${r.status}`);
+
+  // Hapus SISWA yang datanya kaya → harus 200
+  r = await api('DELETE', `/api/admin/users/${siswaId}`, { token: adminToken });
+  check('admin hapus siswa kaya data → 200', r.status === 200, `status ${r.status} ${JSON.stringify(r.json)}`);
+  r = await api('POST', '/api/auth/login', {
+    body: { email: 'siswa@smoke.id', password: 'siswa123' },
+  });
+  check('siswa kaya terhapus tidak bisa login → 401', r.status === 401, `status ${r.status}`);
+  r = await api('POST', '/api/auth/login', {
+    body: { email: 'siswa3@smoke.id', password: 'siswa123' },
+  });
+  check('siswa3 (pemilik chat breakout) masih bisa login → 200', r.status === 200, `status ${r.status}`);
+
+  // Hapus GURU pemilik kelas kaya — chat breakout siswa3 masih ada di
+  // kelas itu; inilah kasus yang dulu selalu gagal 409.
+  r = await api('DELETE', `/api/admin/users/${guruRId}`, { token: adminToken });
+  check('admin hapus guru kaya data → 200', r.status === 200, `status ${r.status} ${JSON.stringify(r.json)}`);
+  r = await api('GET', '/api/admin/classes', { token: adminToken });
+  check(
+    'kelas kaya ikut terhapus bersama gurunya',
+    !(r.json.classes ?? []).some((c) => c.id === richClassId),
+  );
+  r = await api('POST', '/api/auth/login', {
+    body: { email: 'siswa3@smoke.id', password: 'siswa123' },
+  });
+  check('siswa3 tetap hidup setelah kelasnya terhapus → 200', r.status === 200, `status ${r.status}`);
+
+  // 8c) Hapus KELAS kaya secara langsung (jalur deleteClassCascade murni)
+  r = await api('POST', '/api/auth/register', {
+    body: { name: 'Guru Kelas', email: 'gurukelas@smoke.id', password: 'guru123', role: 'guru' },
+  });
+  const guruKToken = r.json.token;
+  check('register guru kelas → 201', r.status === 201, `status ${r.status}`);
+  r = await api('POST', '/api/classes', { token: guruKToken, body: { name: 'Kelas Langsung Hapus' } });
+  const directClassId = r.json.class?.id;
+  const directCode = r.json.class?.code;
+  r = await api('POST', '/api/classes/join', { token: siswa3Token, body: { code: directCode } });
+  check('siswa3 join kelas langsung → 200', r.status === 200, `status ${r.status}`);
+  r = await api('POST', `/api/classes/${directClassId}/sessions`, {
+    token: guruKToken,
+    body: { title: 'Sesi Langsung' },
+  });
+  const directSessionId = r.json.session?.id;
+  r = await api('POST', `/api/sessions/${directSessionId}/join`, { token: siswa3Token });
+  check('siswa3 join sesi langsung → 200', r.status === 200, `status ${r.status}`);
+  r = await api('POST', `/api/sessions/${directSessionId}/groups`, {
+    token: guruKToken,
+    body: { groupCount: 1 },
+  });
+  check('breakout kelas langsung dibuat → 201', r.status === 201, `status ${r.status}`);
+  r = await api('GET', `/api/sessions/${directSessionId}/groups`, { token: siswa3Token });
+  const directGroupId = r.json.myGroupId;
+  r = await api('POST', `/api/groups/${directGroupId}/messages`, {
+    token: siswa3Token,
+    body: { text: 'Chat penutup kelas langsung.' },
+  });
+  check('siswa3 chat di kelas langsung → 201', r.status === 201, `status ${r.status}`);
+  r = await api('DELETE', `/api/admin/classes/${directClassId}`, { token: adminToken });
+  check('admin hapus kelas kaya secara langsung → 200', r.status === 200, `status ${r.status} ${JSON.stringify(r.json)}`);
+
   // 9) Hapus kelas oleh admin
   r = await api('DELETE', `/api/admin/classes/${classId}`, { token: adminToken });
   check('admin hapus kelas → 200', r.status === 200, `status ${r.status}`);
@@ -208,12 +392,13 @@ try {
   r = await api('DELETE', `/api/admin/users/${adminId}`, { token: adminToken });
   check('hapus akun sendiri → 400', r.status === 400, `status ${r.status}`);
 
-  r = await api('DELETE', `/api/admin/users/${siswaId}`, { token: adminToken });
-  check('admin hapus siswa → 200', r.status === 200, `status ${r.status}`);
+  // (Siswa pertama sudah dihapus di 8b; di sini siswa3 yang dihapus.)
+  r = await api('DELETE', `/api/admin/users/${siswa3Id}`, { token: adminToken });
+  check('admin hapus siswa3 → 200', r.status === 200, `status ${r.status}`);
   r = await api('POST', '/api/auth/login', {
-    body: { email: 'siswa@smoke.id', password: 'siswa123' },
+    body: { email: 'siswa3@smoke.id', password: 'siswa123' },
   });
-  check('siswa terhapus tidak bisa login → 401', r.status === 401, `status ${r.status}`);
+  check('siswa3 terhapus tidak bisa login → 401', r.status === 401, `status ${r.status}`);
 
   console.log('');
   console.log(failures === 0 ? 'SEMUA LULUS ✅' : `ADA ${failures} KEGAGALAN ❌`);

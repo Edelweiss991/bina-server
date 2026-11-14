@@ -23,6 +23,46 @@ const ROLES = ['guru', 'siswa', 'admin'];
 
 // ─── Helper hapus berantai ───────────────────────────────────────────────────
 
+/** Hapus sesi live beserta seluruh data turunannya. */
+async function deleteLiveSessionsCascade(tx, sessionIds) {
+  if (!sessionIds.length) return;
+  const quizIds = (
+    await tx.liveQuiz.findMany({
+      where: { sessionId: { in: sessionIds } },
+      select: { id: true },
+    })
+  ).map((q) => q.id);
+  if (quizIds.length) {
+    await tx.liveAnswer.deleteMany({ where: { quizId: { in: quizIds } } });
+  }
+  await tx.liveQuiz.deleteMany({ where: { sessionId: { in: sessionIds } } });
+  await tx.attendance.deleteMany({ where: { sessionId: { in: sessionIds } } });
+  await tx.understandingVote.deleteMany({
+    where: { sessionId: { in: sessionIds } },
+  });
+  const groupIds = (
+    await tx.breakoutGroup.findMany({
+      where: { sessionId: { in: sessionIds } },
+      select: { id: true },
+    })
+  ).map((g) => g.id);
+  if (groupIds.length) {
+    // PENTING: pesan chat breakout menempel ke kelompok (ChatMessage.groupId).
+    // Baris ini dulu terlewat — menghapus kelompok yang punya riwayat chat
+    // selalu gagal kunci asing, sehingga hapus kelas/guru ditolak dengan
+    // pesan "data terkait tidak dapat dihapus otomatis" (dilaporkan user
+    // 14 Nov 2026 saat membersihkan akun-akun uji E2E).
+    await tx.chatMessage.deleteMany({ where: { groupId: { in: groupIds } } });
+    await tx.breakoutMember.deleteMany({
+      where: { groupId: { in: groupIds } },
+    });
+  }
+  await tx.breakoutGroup.deleteMany({
+    where: { sessionId: { in: sessionIds } },
+  });
+  await tx.liveSession.deleteMany({ where: { id: { in: sessionIds } } });
+}
+
 /** Hapus satu kelas beserta seluruh data yang menempel padanya. */
 async function deleteClassCascade(tx, classId) {
   const taskIds = (
@@ -63,42 +103,60 @@ async function deleteClassCascade(tx, classId) {
       select: { id: true },
     })
   ).map((s) => s.id);
-  if (sessionIds.length) {
-    const quizIds = (
-      await tx.liveQuiz.findMany({
-        where: { sessionId: { in: sessionIds } },
-        select: { id: true },
-      })
-    ).map((q) => q.id);
-    if (quizIds.length) {
-      await tx.liveAnswer.deleteMany({ where: { quizId: { in: quizIds } } });
-    }
-    await tx.liveQuiz.deleteMany({ where: { sessionId: { in: sessionIds } } });
-    await tx.attendance.deleteMany({ where: { sessionId: { in: sessionIds } } });
-    await tx.understandingVote.deleteMany({
-      where: { sessionId: { in: sessionIds } },
-    });
-    const groupIds = (
-      await tx.breakoutGroup.findMany({
-        where: { sessionId: { in: sessionIds } },
-        select: { id: true },
-      })
-    ).map((g) => g.id);
-    if (groupIds.length) {
-      await tx.breakoutMember.deleteMany({
-        where: { groupId: { in: groupIds } },
-      });
-    }
-    await tx.breakoutGroup.deleteMany({
-      where: { sessionId: { in: sessionIds } },
-    });
-    await tx.liveSession.deleteMany({ where: { id: { in: sessionIds } } });
-  }
+  await deleteLiveSessionsCascade(tx, sessionIds);
   await tx.classRoom.delete({ where: { id: classId } });
 }
 
-/** Hapus satu pengguna beserta data inti miliknya & kelas yang ia miliki. */
+/** Hapus satu pengguna beserta SEMUA data yang menempel padanya. */
 async function deleteUserCascade(tx, userId) {
+  // 1) Kelas milik pengguna (guru) lebih dulu — berantai penuh, termasuk
+  //    tugas/jadwal/materi/pengumuman/sesi live/percakapan di kelas itu.
+  const owned = await tx.classRoom.findMany({
+    where: { teacherId: userId },
+    select: { id: true },
+  });
+  for (const room of owned) {
+    await deleteClassCascade(tx, room.id);
+  }
+
+  // 2) Jaring pengaman: sisa baris yang menunjuk pengguna sebagai
+  //    guru/pembuat di luar kelas miliknya (normalnya sudah bersih
+  //    di langkah 1; tetap dihapus agar tidak ada kunci asing tersisa).
+  const strayTaskIds = (
+    await tx.task.findMany({
+      where: { teacherId: userId },
+      select: { id: true },
+    })
+  ).map((t) => t.id);
+  if (strayTaskIds.length) {
+    await tx.submission.deleteMany({
+      where: { taskId: { in: strayTaskIds } },
+    });
+    await tx.task.deleteMany({ where: { id: { in: strayTaskIds } } });
+  }
+  const straySessionIds = (
+    await tx.liveSession.findMany({
+      where: { teacherId: userId },
+      select: { id: true },
+    })
+  ).map((s) => s.id);
+  await deleteLiveSessionsCascade(tx, straySessionIds);
+  const strayScheduleIds = (
+    await tx.schedule.findMany({
+      where: { teacherId: userId },
+      select: { id: true },
+    })
+  ).map((s) => s.id);
+  if (strayScheduleIds.length) {
+    await tx.schedulePart.deleteMany({
+      where: { scheduleId: { in: strayScheduleIds } },
+    });
+    await tx.schedule.deleteMany({ where: { id: { in: strayScheduleIds } } });
+  }
+  await tx.material.deleteMany({ where: { teacherId: userId } });
+  await tx.announcement.deleteMany({ where: { authorId: userId } });
+
+  // 3) Data pribadi pengguna (sebagai siswa/peserta/pengirim).
   await tx.submission.deleteMany({ where: { studentId: userId } });
   await tx.classMember.deleteMany({ where: { userId } });
   await tx.scoreSync.deleteMany({ where: { userId } });
@@ -110,6 +168,10 @@ async function deleteUserCascade(tx, userId) {
   await tx.chatMessage.deleteMany({ where: { userId } });
   await tx.parentReport.deleteMany({ where: { studentId: userId } });
   await tx.parentReport.deleteMany({ where: { teacherId: userId } });
+
+  // 4) Percakapan langsung: pesan kiriman pengguna di mana pun, lalu
+  //    percakapan yang melibatkan pengguna beserta seluruh pesannya.
+  await tx.conversationMessage.deleteMany({ where: { senderId: userId } });
   const convIds = (
     await tx.chatConversation.findMany({
       where: { OR: [{ teacherId: userId }, { studentId: userId }] },
@@ -122,13 +184,7 @@ async function deleteUserCascade(tx, userId) {
     });
     await tx.chatConversation.deleteMany({ where: { id: { in: convIds } } });
   }
-  const owned = await tx.classRoom.findMany({
-    where: { teacherId: userId },
-    select: { id: true },
-  });
-  for (const room of owned) {
-    await deleteClassCascade(tx, room.id);
-  }
+
   await tx.user.delete({ where: { id: userId } });
 }
 
@@ -309,10 +365,15 @@ router.delete('/admin/users/:id', ...adminOnly, async (req, res, next) => {
         .json({ error: 'Tidak dapat menghapus admin terakhir.' });
     }
     try {
-      await prisma.$transaction(async (tx) => {
-        await deleteUserCascade(tx, id);
-      });
-    } catch {
+      await prisma.$transaction(
+        async (tx) => {
+          await deleteUserCascade(tx, id);
+        },
+        { timeout: 30000, maxWait: 15000 },
+      );
+    } catch (err) {
+      // Catat sebab asli di log server — jangan ditelan diam-diam.
+      console.error('[admin] gagal menghapus pengguna', id, err);
       return res.status(409).json({
         error:
           'Pengguna masih memiliki data terkait yang tidak dapat dihapus otomatis.',
@@ -365,10 +426,15 @@ router.delete('/admin/classes/:id', ...adminOnly, async (req, res, next) => {
       return res.status(404).json({ error: 'Kelas tidak ditemukan.' });
     }
     try {
-      await prisma.$transaction(async (tx) => {
-        await deleteClassCascade(tx, id);
-      });
-    } catch {
+      await prisma.$transaction(
+        async (tx) => {
+          await deleteClassCascade(tx, id);
+        },
+        { timeout: 30000, maxWait: 15000 },
+      );
+    } catch (err) {
+      // Catat sebab asli di log server — jangan ditelan diam-diam.
+      console.error('[admin] gagal menghapus kelas', id, err);
       return res.status(409).json({
         error:
           'Kelas masih memiliki data terkait yang tidak dapat dihapus otomatis.',
