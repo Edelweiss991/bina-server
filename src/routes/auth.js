@@ -60,6 +60,33 @@ router.post('/auth/login', async (req, res, next) => {
   }
 });
 
+// Ganti kata sandi sendiri (semua peran) — wajib kata sandi lama yang
+// benar. Ditambahkan 14 Nov 2026 agar pengguna (termasuk admin) bisa
+// memasang sandi yang mudah diingat tanpa bantuan siapa pun.
+router.post('/auth/change-password', requireAuth, async (req, res, next) => {
+  try {
+    const { currentPassword, newPassword } = req.body ?? {};
+    if (!currentPassword || typeof currentPassword !== 'string') {
+      return res.status(400).json({ error: 'Kata sandi lama wajib diisi.' });
+    }
+    if (!newPassword || typeof newPassword !== 'string' || newPassword.length < 6) {
+      return res.status(400).json({ error: 'Kata sandi baru minimal 6 karakter.' });
+    }
+    const user = await prisma.user.findUnique({ where: { id: req.user.id } });
+    if (!user) {
+      return res.status(404).json({ error: 'Pengguna tidak ditemukan.' });
+    }
+    if (!(await bcrypt.compare(currentPassword, user.passwordHash))) {
+      return res.status(401).json({ error: 'Kata sandi lama salah.' });
+    }
+    const passwordHash = await bcrypt.hash(newPassword, 10);
+    await prisma.user.update({ where: { id: user.id }, data: { passwordHash } });
+    return res.json({ ok: true });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 router.get('/me', requireAuth, async (req, res, next) => {
   try {
     const user = await prisma.user.findUnique({ where: { id: req.user.id } });

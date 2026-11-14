@@ -344,6 +344,80 @@ router.patch('/admin/users/:id/role', ...adminOnly, async (req, res, next) => {
   }
 });
 
+// Edit lengkap satu pengguna (14 Nov 2026): nama, email, peran, dan/atau
+// kata sandi baru — semua opsional, hanya yang dikirim yang berubah.
+// Pengaman peran sama seperti PATCH /role: tidak bisa mengubah peran
+// akun sendiri dan admin terakhir tidak bisa diturunkan.
+router.patch('/admin/users/:id', ...adminOnly, async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id) || id <= 0) {
+      return res.status(400).json({ error: 'ID pengguna tidak valid.' });
+    }
+    const { name, email, role, password } = req.body ?? {};
+    const data = {};
+    if (name !== undefined) {
+      if (!name || typeof name !== 'string' || name.trim().length < 1) {
+        return res.status(400).json({ error: 'Nama wajib diisi.' });
+      }
+      data.name = name.trim();
+    }
+    if (email !== undefined) {
+      if (!email || typeof email !== 'string' || email.trim().length < 1) {
+        return res.status(400).json({ error: 'Email wajib diisi.' });
+      }
+      data.email = email.trim().toLowerCase();
+    }
+    if (role !== undefined) {
+      if (!ROLES.includes(role)) {
+        return res
+          .status(400)
+          .json({ error: "Peran harus 'guru', 'siswa', atau 'admin'." });
+      }
+      data.role = role;
+    }
+    if (password !== undefined) {
+      if (!password || typeof password !== 'string' || password.length < 6) {
+        return res.status(400).json({ error: 'Password minimal 6 karakter.' });
+      }
+    }
+    if (Object.keys(data).length === 0 && password === undefined) {
+      return res.status(400).json({ error: 'Tidak ada perubahan.' });
+    }
+    const target = await prisma.user.findUnique({ where: { id } });
+    if (!target) {
+      return res.status(404).json({ error: 'Pengguna tidak ditemukan.' });
+    }
+    if (data.email && data.email !== target.email) {
+      const existing = await prisma.user.findUnique({
+        where: { email: data.email },
+      });
+      if (existing) {
+        return res.status(409).json({ error: 'Email sudah terdaftar.' });
+      }
+    }
+    if (data.role && data.role !== target.role) {
+      if (id === req.user.id) {
+        return res
+          .status(400)
+          .json({ error: 'Tidak dapat mengubah peran akun sendiri.' });
+      }
+      if (target.role === 'admin' && (await countAdmins()) <= 1) {
+        return res
+          .status(400)
+          .json({ error: 'Tidak dapat menurunkan admin terakhir.' });
+      }
+    }
+    if (password !== undefined) {
+      data.passwordHash = await bcrypt.hash(password, 10);
+    }
+    const user = await prisma.user.update({ where: { id }, data });
+    return res.json({ user: publicUser(user) });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 router.delete('/admin/users/:id', ...adminOnly, async (req, res, next) => {
   try {
     const id = Number(req.params.id);

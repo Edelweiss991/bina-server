@@ -186,6 +186,74 @@ try {
   });
   check('turunkan admin kedua (masih ada admin lain) → 200', r.status === 200, `status ${r.status}`);
 
+  // 7b) Edit lengkap pengguna + ganti kata sandi sendiri (14 Nov 2026)
+  r = await api('PATCH', `/api/admin/users/${siswa2Id}`, {
+    token: adminToken,
+    body: { name: 'Siswa Dua Baru', email: 'siswa2baru@smoke.id' },
+  });
+  check(
+    'edit nama+email siswa2 → 200 & berubah',
+    r.status === 200 && r.json.user?.name === 'Siswa Dua Baru' && r.json.user?.email === 'siswa2baru@smoke.id',
+    `status ${r.status} ${JSON.stringify(r.json).slice(0, 160)}`,
+  );
+
+  r = await api('PATCH', `/api/admin/users/${siswa2Id}`, {
+    token: adminToken,
+    body: { email: 'guru@smoke.id' },
+  });
+  check('edit email ke email yang sudah dipakai → 409', r.status === 409, `status ${r.status}`);
+
+  r = await api('PATCH', `/api/admin/users/${siswa2Id}`, {
+    token: adminToken,
+    body: { password: 'baru12345' },
+  });
+  check('admin atur kata sandi baru siswa2 → 200', r.status === 200, `status ${r.status}`);
+  r = await api('POST', '/api/auth/login', {
+    body: { email: 'siswa2baru@smoke.id', password: 'siswa234' },
+  });
+  check('login sandi lama siswa2 → 401', r.status === 401, `status ${r.status}`);
+  r = await api('POST', '/api/auth/login', {
+    body: { email: 'siswa2baru@smoke.id', password: 'baru12345' },
+  });
+  check('login sandi baru siswa2 → 200', r.status === 200, `status ${r.status}`);
+
+  r = await api('PATCH', `/api/admin/users/${adminId}`, {
+    token: adminToken,
+    body: { role: 'siswa' },
+  });
+  check('edit peran diri sendiri lewat edit lengkap → 400', r.status === 400, `status ${r.status}`);
+  r = await api('PATCH', `/api/admin/users/${adminId}`, {
+    token: adminToken,
+    body: { name: 'Admin Utama' },
+  });
+  check('edit nama diri sendiri → 200', r.status === 200 && r.json.user?.name === 'Admin Utama', `status ${r.status}`);
+
+  r = await api('PATCH', `/api/admin/users/${siswa2Id}`, {
+    token: adminToken,
+    body: {},
+  });
+  check('edit tanpa perubahan → 400', r.status === 400, `status ${r.status}`);
+
+  // Ganti kata sandi sendiri (siswa Andi)
+  r = await api('POST', '/api/auth/change-password', {
+    token: siswaToken,
+    body: { currentPassword: 'salah123', newPassword: 'andi9999' },
+  });
+  check('ganti sandi dengan sandi lama salah → 401', r.status === 401, `status ${r.status}`);
+  r = await api('POST', '/api/auth/change-password', {
+    token: siswaToken,
+    body: { currentPassword: 'siswa123', newPassword: 'andi9999' },
+  });
+  check('ganti sandi sendiri → 200', r.status === 200, `status ${r.status}`);
+  r = await api('POST', '/api/auth/login', {
+    body: { email: 'siswa@smoke.id', password: 'siswa123' },
+  });
+  check('login sandi lama setelah ganti → 401', r.status === 401, `status ${r.status}`);
+  r = await api('POST', '/api/auth/login', {
+    body: { email: 'siswa@smoke.id', password: 'andi9999' },
+  });
+  check('login sandi baru setelah ganti → 200', r.status === 200, `status ${r.status}`);
+
   // 8) Daftar pengguna memuat hitungan kelas
   r = await api('GET', '/api/admin/users', { token: adminToken });
   const guruRow = (r.json.users ?? []).find((u) => u.id === guruId);
