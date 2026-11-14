@@ -119,6 +119,74 @@ router.post('/classes/join', requireAuth, requireRole('siswa'), async (req, res,
   }
 });
 
+// ─── Pratinjau kelas dari kode (siswa, sebelum gabung) ───────────────────────
+// Dipakai layar gerbang Gabung Kelas: siswa melihat nama kelas + guru
+// dan mengonfirmasi dulu sebelum benar-benar bergabung.
+router.get('/classes/lookup/:code', requireAuth, requireRole('siswa'), async (req, res, next) => {
+  try {
+    const code = String(req.params.code ?? '').trim().toUpperCase();
+    const room = await prisma.classRoom.findUnique({
+      where: { code },
+      include: { teacher: true, _count: { select: { members: true } } },
+    });
+    if (!room) {
+      return res.status(404).json({ error: 'Kode kelas tidak ditemukan.' });
+    }
+    return res.json({
+      class: classSummary(room, {
+        teacherName: room.teacher.name,
+        memberCount: room._count.members,
+      }),
+    });
+  } catch (err) {
+    return next(err);
+  }
+});
+
+// ─── Atur ulang kode kelas (guru pemilik) ────────────────────────────────────
+// Kode lama berhenti berlaku; siswa yang sudah menjadi anggota TIDAK
+// ikut terkeluar — kode hanya gerbang masuk bagi anggota baru.
+router.post('/classes/:id/reset-code', requireAuth, requireRole('guru'), async (req, res, next) => {
+  try {
+    const classId = Number(req.params.id);
+    const room = await prisma.classRoom.findUnique({ where: { id: classId } });
+    if (!room) return res.status(404).json({ error: 'Kelas tidak ditemukan.' });
+    if (room.teacherId !== req.user.id) {
+      return res.status(403).json({ error: 'Kelas ini bukan milik Anda.' });
+    }
+    const updated = await prisma.classRoom.update({
+      where: { id: classId },
+      data: { code: await uniqueCode() },
+    });
+    return res.json({ class: classSummary(updated) });
+  } catch (err) {
+    return next(err);
+  }
+});
+
+// ─── Keluarkan anggota dari kelas (guru pemilik) ─────────────────────────────
+router.delete('/classes/:id/members/:userId', requireAuth, requireRole('guru'), async (req, res, next) => {
+  try {
+    const classId = Number(req.params.id);
+    const userId = Number(req.params.userId);
+    const room = await prisma.classRoom.findUnique({ where: { id: classId } });
+    if (!room) return res.status(404).json({ error: 'Kelas tidak ditemukan.' });
+    if (room.teacherId !== req.user.id) {
+      return res.status(403).json({ error: 'Kelas ini bukan milik Anda.' });
+    }
+    const member = await prisma.classMember.findUnique({
+      where: { classId_userId: { classId, userId } },
+    });
+    if (!member) {
+      return res.status(404).json({ error: 'Siswa ini bukan anggota kelas.' });
+    }
+    await prisma.classMember.delete({ where: { id: member.id } });
+    return res.json({ removed: true, userId });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 // ─── Anggota kelas + skor tersinkron (guru pemilik) ───────────────────────────
 router.get('/classes/:id/members', requireAuth, requireRole('guru'), async (req, res, next) => {
   try {

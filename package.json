@@ -15,7 +15,8 @@
     "smoke:absensi": "node test/smoke-attendance.mjs",
     "smoke:live": "node test/smoke-live.mjs",
     "smoke:guru": "node test/smoke-guru.mjs",
-    "smoke:fitur": "node test/smoke-fitur.mjs"
+    "smoke:fitur": "node test/smoke-fitur.mjs",
+    "smoke:gabung": "node test/smoke-gabung.mjs"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",
